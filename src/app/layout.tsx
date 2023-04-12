@@ -30,12 +30,12 @@ const quickSandBold = localFont({
 });
 
 const apekMK3ExtraLight = localFont({
-  src: '../assets/fonts/Apex-Mk3-ExtraLight.otf',
+  src: '../assets/fonts/Apex-Mk3-ExtraLight.ttf',
   variable: '--apek-mk3-200'
 });
 
 const apekMK3ExtraMedium = localFont({
-  src: '../assets/fonts/Apex-Mk3-Medium.otf',
+  src: '../assets/fonts/Apex-Mk3-Medium.ttf',
   variable: '--apek-mk3-500'
 });
 
