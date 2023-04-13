@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         {/* @ts-expect-error Server Component */}
-        {/*<Footer />*/}
+        <Footer />
       </body>
     </html>
   );
