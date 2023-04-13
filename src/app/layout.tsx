@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import ctl from '@netlify/classnames-template-literals';
 import localFont from '@next/font/local';
 
 export const metadata = {
@@ -39,15 +39,15 @@ const apekMK3ExtraMedium = localFont({
   variable: '--apek-mk3-500'
 });
 
-const fontsVariables = clsx(
-  apekMK3ExtraLight.variable,
-  apekMK3ExtraMedium.variable,
-  quickSandBold.variable,
-  quickSandLight.variable,
-  quickSandMedium.variable,
-  quickSandRegular.variable,
-  quickSandSemiBold.variable
-);
+const fontsVariables = ctl(`
+  ${apekMK3ExtraLight.variable}
+  ${apekMK3ExtraMedium.variable}
+  ${quickSandBold.variable}
+  ${quickSandLight.variable}
+  ${quickSandMedium.variable}
+  ${quickSandRegular.variable}
+  ${quickSandSemiBold.variable}
+`);
 
 import './globals.css';
 import Footer from '@app/components/Footer/Footer';
