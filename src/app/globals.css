@@ -16,18 +16,23 @@
 
 @layer utilities {
   body {
+    background-color: #000;
     @apply font-qs-400;
   }
 
-  .container {
+  .grid-container {
     @apply grid grid-cols-4 md:grid-cols-12; /* Grid */
     @apply gap-x-2.5 md:gap-x-3 lg:gap-x-5; /* Columns Gap */
-    @apply mx-5 md:mx-10 lg:mx-20 max:mx-auto; /* Margin */
-    @apply w-full max:max-w-container-max; /* Width */
+    @apply px-5 md:px-10 lg:px-20 max:mx-auto; /* Margin & Padding */
+    @apply max:max-w-container-max; /* Width */
+  }
+
+  .hero-gradient {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
   }
 
   .two-color {
-    @apply text-light;
+    @apply text-white;
     @apply [&_b,&_strong]:font-normal [&_b,&_strong]:text-primary;
   }
 }
