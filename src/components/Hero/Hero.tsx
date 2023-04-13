@@ -2,7 +2,7 @@
 
 import styles from './Hero.styles';
 import useDownloader from 'react-use-downloader';
-import Button from '../Button/Button';
+import Button from '../../atoms/Button/Button';
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 

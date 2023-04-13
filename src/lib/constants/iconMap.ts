@@ -1,4 +1,4 @@
-import { DownloadIcon } from '@app/components/Icon/Icon';
+import { DownloadIcon } from '@app/atoms/Icon/Icon';
 import { SVGProps } from 'react';
 
 export type IconType = (props: SVGProps<SVGSVGElement>) => JSX.Element;
