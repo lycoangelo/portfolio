@@ -12,7 +12,8 @@ module.exports = {
       primary: '#00C9E3',
       secondary: '#039EB2',
       dark: '#030303',
-      light: '#ffffff'
+      black: '#000000',
+      white: '#ffffff'
     },
     extend: {
       fontFamily: {
@@ -25,7 +26,7 @@ module.exports = {
         'qs-700': 'var(--quicksand-700)'
       },
       maxWidth: {
-        'container-max': '1760px'
+        'container-max': '1920px'
       }
     },
     screens: {
