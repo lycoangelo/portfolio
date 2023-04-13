@@ -1,32 +1,17 @@
 import ctl from '@netlify/classnames-template-literals';
+import { Quicksand, Roboto } from '@next/font/google';
 import localFont from '@next/font/local';
 
 export const metadata = {
   title: 'My Title'
 };
 
-const quickSandLight = localFont({
-  src: '../assets/fonts/Quicksand-Light.ttf',
-  variable: '--quicksand-300'
-});
+const quicksand = Quicksand({ subsets: ['latin'], variable: '--quicksand' });
 
-const quickSandRegular = localFont({
-  src: '../assets/fonts/Quicksand-Regular.ttf',
-  variable: '--quicksand-400'
-});
-const quickSandMedium = localFont({
-  src: '../assets/fonts/Quicksand-Medium.ttf',
-  variable: '--quicksand-500'
-});
-
-const quickSandSemiBold = localFont({
-  src: '../assets/fonts/Quicksand-SemiBold.ttf',
-  variable: '--quicksand-600'
-});
-
-const quickSandBold = localFont({
-  src: '../assets/fonts/Quicksand-Bold.ttf',
-  variable: '--quicksand-700'
+const roboto = Roboto({
+  subsets: ['latin'],
+  variable: '--roboto',
+  weight: ['100', '300', '400', '500', '700', '900']
 });
 
 const apekMK3ExtraLight = localFont({
@@ -42,11 +27,8 @@ const apekMK3ExtraMedium = localFont({
 const fontsVariables = ctl(`
   ${apekMK3ExtraLight.variable}
   ${apekMK3ExtraMedium.variable}
-  ${quickSandBold.variable}
-  ${quickSandLight.variable}
-  ${quickSandMedium.variable}
-  ${quickSandRegular.variable}
-  ${quickSandSemiBold.variable}
+  ${quicksand.variable}
+  ${roboto.variable}
 `);
 
 import './globals.css';
@@ -66,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         {/* @ts-expect-error Server Component */}
-        <Footer />
+        {/*<Footer />*/}
       </body>
     </html>
   );

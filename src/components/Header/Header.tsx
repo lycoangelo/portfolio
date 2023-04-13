@@ -1,14 +1,13 @@
 import globalsQuery from '@app/lib/queries/global-settings.query';
-import { fetchGraphQL } from '@app/lib/helpers/api';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Link from 'next/link';
+import styles from './Header.styles';
 
 export default async function Header() {
-  const response = await fetchGraphQL(globalsQuery('branding { json }'), false);
-  const {
-    data: { globalSettings = {} }
-  } = await response.json();
-
-  const { branding } = globalSettings;
-
-  return branding?.json && <header>{documentToReactComponents(branding.json)}</header>;
+  return (
+    <header className={styles.header}>
+      <Link className={styles.branding} href="/" title="Go to Homepage">
+        <b>L</b>A
+      </Link>
+    </header>
+  );
 }

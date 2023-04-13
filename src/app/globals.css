@@ -17,7 +17,12 @@
 @layer utilities {
   body {
     background-color: #000;
-    @apply font-qs-400;
+    @apply font-quicksand;
+  }
+
+  .block-container {
+    @apply block max:max-w-container-max;
+    @apply px-5 md:px-10 lg:px-20 max:mx-auto; /* Margin & Padding */
   }
 
   .grid-container {
@@ -34,5 +39,10 @@
   .two-color {
     @apply text-white;
     @apply [&_b,&_strong]:font-normal [&_b,&_strong]:text-primary;
+  }
+
+  .two-color-bold {
+    @apply font-bold text-white;
+    @apply [&_b,&_strong]:font-bold [&_b,&_strong]:text-primary;
   }
 }

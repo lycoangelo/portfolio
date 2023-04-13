@@ -19,11 +19,8 @@ module.exports = {
       fontFamily: {
         'am-200': 'var(--apek-mk3-200)',
         'am-500': 'var(--apek-mk3-500)',
-        'qs-300': 'var(--quicksand-300)',
-        'qs-400': 'var(--quicksand-400)',
-        'qs-500': 'var(--quicksand-500)',
-        'qs-600': 'var(--quicksand-600)',
-        'qs-700': 'var(--quicksand-700)'
+        roboto: 'var(--roboto)',
+        quicksand: 'var(--quicksand)'
       },
       maxWidth: {
         'container-max': '1920px'
