@@ -9,11 +9,12 @@ module.exports = {
   ],
   theme: {
     colors: {
-      primary: '#00C9E3',
-      secondary: '#039EB2',
+      primary: '#00c9e3',
+      secondary: '#039eb2',
       dark: '#030303',
       black: '#000000',
-      white: '#ffffff'
+      white: '#ffffff',
+      gray: '#3c3c3c'
     },
     extend: {
       fontFamily: {
@@ -22,8 +23,18 @@ module.exports = {
         roboto: 'var(--roboto)',
         quicksand: 'var(--quicksand)'
       },
+      lineHeight: {
+        11: '44px',
+        12: '48px',
+        13: '52px',
+        14: '56px',
+        15: '60px'
+      },
       maxWidth: {
         'container-max': '1920px'
+      },
+      minWidth: {
+        'btn-lg': '160px'
       }
     },
     screens: {
