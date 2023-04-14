@@ -10,7 +10,8 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write --ignore-unknown",
+    "*.js": "eslint --cache --color --fix"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.16.3",
