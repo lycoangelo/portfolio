@@ -14,6 +14,25 @@
   }
 }
 
+@layer components {
+  .label {
+    letter-spacing: 0.2em;
+    @apply font-semibold text-sm uppercase text-primary;
+  }
+
+  .section-title-right {
+    @apply font-am-200 text-5xl leading-15 relative;
+  }
+
+  .section-title-right::after {
+    height: 7px;
+    margin-bottom: 7px;
+    width: 16.5%;
+
+    @apply bg-primary left-0 absolute content-[''] -bottom-2;
+  }
+}
+
 @layer utilities {
   body {
     background-color: #000;
