@@ -16,33 +16,71 @@ const borderEffect: string = `
 	after:translate-y-1
 	after:w-full
 	after:z-[-1]
-	[&:hover::after]:transition-transform
-	[&:hover::after]:translate-x-0
-	[&:hover::after]:translate-y-0
+	[&:focus::after]:transition-transform
+	[&:focus::after]:translate-x-0
+	[&:focus::after]:translate-y-0
 `;
 
 const colors: ObjectKey = {
-  primary:
-    'border border-white bg-black hover:bg-white focus:bg-primary text-white hover:text-black'
+  active: `
+		bg-primary
+		border
+		border-primary
+	`,
+  primary: `
+		bg-black
+		border
+		border-white
+		text-white
+		hover:bg-white
+		hover:text-black
+		focus:border-primary
+		focus:bg-primary
+		focus:text-white
+	`,
+  transparent: `
+		border-0
+		text-white
+		hover:text-secondary
+		focus:text-primary
+	`
 };
 
 const sizes: ObjectKey = {
-  lg: 'px-4 py-1.5 leading-5 text-lg lg:text-xl'
+  fit: 'w-fit',
+  lg: `
+		min-w-btn-lg
+		leading-5
+		px-7
+		py-1.5
+		text-lg
+		lg:text-xl
+	`
 };
 
 const iconColors: ObjectKey = {
-  primary:
-    '[&_path]:transition-colors [&_path]:duration-300 [&_path]:fill-white [button:hover_&_path]:fill-black'
+  active: `
+		[&_path]:fill-white
+	`,
+  primary: `
+		[&_path]:fill-white
+		[button:hover_&_path]:fill-black
+		[button:focus_&_path]:!fill-white
+	`
 };
 
 const iconSizes: ObjectKey = {
-  lg: 'ml-2 h-5 w-4'
+  lg: `
+		ml-2
+		h-5
+		w-4
+	`
 };
 
 const styles: {
   [key: string]: Function;
 } = {
-  button: (color: string, size: string, className?: string) =>
+  button: (color: string, size: string, className?: string, hasBorderEffect?: boolean) =>
     ctl(`
 			duration-300
 			flex
@@ -50,10 +88,10 @@ const styles: {
 			relative
 			uppercase
 			transition-colors
-			${borderEffect}
 			${className}
 			${colors[color]}
 			${sizes[size]}
+			${hasBorderEffect && borderEffect}
 		`),
   icon: (color: string, size: string) =>
     ctl(`

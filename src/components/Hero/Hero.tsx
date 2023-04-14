@@ -31,6 +31,7 @@ export default function Hero({ background, cv, description, headline }: HeroProp
           <Button
             className={styles.cv}
             color="primary"
+            hasBorderEffect
             icon="download"
             onClick={() => download(cv.url, cv.title)}
             size="lg"
