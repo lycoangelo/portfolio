@@ -1,3 +1,9 @@
+const commonPixelValues = {
+  0.25: '1px',
+  0.75: '3px',
+  2.75: '11px'
+};
+
 module.exports = {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
@@ -10,11 +16,12 @@ module.exports = {
   theme: {
     colors: {
       primary: '#00c9e3',
-      secondary: '#039eb2',
+      secondary: '#cccccc',
       dark: '#030303',
       black: '#000000',
       white: '#ffffff',
-      gray: '#3c3c3c'
+      gray: '#3c3c3c',
+      inactive: '#707070'
     },
     extend: {
       fontFamily: {
@@ -34,7 +41,21 @@ module.exports = {
         'container-max': '1920px'
       },
       minWidth: {
-        'btn-lg': '160px'
+        'btn-xs': '80px',
+        'btn-sm': '120px',
+        'btn-md': '160px',
+        'btn-lg': '200px',
+        'btn-xl': '240px'
+      },
+      spacing: {
+        unset: 'unset',
+        ...commonPixelValues
+      },
+      height: {
+        ...commonPixelValues
+      },
+      width: {
+        ...commonPixelValues
       }
     },
     screens: {
