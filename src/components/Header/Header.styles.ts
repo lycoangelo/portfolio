@@ -11,8 +11,8 @@ styles.branding = ctl(`
 `);
 
 styles.header = ctl(`
+	absolute
 	block-container
-	fixed
 	py-10
 	top-0
 	z-50
