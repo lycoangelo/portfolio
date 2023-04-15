@@ -43,16 +43,14 @@ styles.content = ctl(`
 	flex
 	flex-col
 	items-start
-	justify-center
+	justify-end
+	pb-20
 	relative
 	uppercase
 	z-10
+	md:justify-center
 	md:col-span-9
 	xl:col-span-6
-`);
-
-styles.cv = ctl(`
-	
 `);
 
 styles.description = ctl(`
@@ -65,14 +63,13 @@ styles.description = ctl(`
 styles.title = ctl(`
 	font-am-200
 	leading-30
-	mb-9
+	mb-5
 	two-color
 	text-6xl
 	md:text-7xl
-	md:mb-10
 	md:leading-23
 	lg:leading-[8.5vw]
-	lg:mb-4
+	lg:mb-2
 	lg:text-[7.5vw]
 `);
 
