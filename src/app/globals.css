@@ -16,20 +16,39 @@
 
 @layer components {
   .label {
-    letter-spacing: 0.2em;
     @apply font-semibold text-sm uppercase text-primary;
+    letter-spacing: 0.2em;
+  }
+
+  @media (min-width: 768px) {
+    .job-timeline-grid {
+      @apply grid;
+      grid-template-columns: 141.5px 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .job-timeline-grid {
+      @apply grid;
+      grid-template-columns: 170px 1fr;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .job-timeline-grid {
+      grid-template-columns: 210px 1fr;
+    }
   }
 
   .section-title-right {
-    @apply font-am-200 text-5xl leading-15 relative;
+    @apply font-am-200 text-2xl md:text-3xl md:leading-8 lg:text-5xl lg:leading-15 relative;
   }
 
   .section-title-right::after {
-    height: 7px;
-    margin-bottom: 7px;
-    width: 16.5%;
-
     @apply bg-primary left-0 absolute content-[''] -bottom-2;
+    height: 7px;
+    margin-top: 7px;
+    width: 16.5%;
   }
 }
 
@@ -46,8 +65,8 @@
 
   .grid-container {
     @apply grid grid-cols-4 md:grid-cols-12; /* Grid */
-    @apply gap-x-2.5 md:gap-x-3 lg:gap-x-5; /* Columns Gap */
-    @apply px-5 md:px-10 lg:px-20 max:mx-auto; /* Margin & Padding */
+    @apply gap-x-5 md:gap-x-3 lg:gap-x-5; /* Columns Gap */
+    @apply px-5 md:px-10 xl:px-20 max:mx-auto; /* Margin & Padding */
     @apply max:max-w-container-max; /* Width */
   }
 
