@@ -3,21 +3,38 @@
 import styles from './PersonalDetails.styles';
 import Button from '@app/atoms/Button/Button';
 import Essay from '@app/components/PersonalDetails/Essay/Essay';
+import SkillSetList from '@app/components/PersonalDetails/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/PersonalDetails/TimelineJobs/TimelineJobs';
 import { PersonalDetailsProps, PersonalDetailsMap } from './PersonalDetails.interface';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useWindowSize } from 'rooks';
 
 const personalDetailsMap: PersonalDetailsMap = {
   Essay,
+  SkillSetList,
   TimelineJobs
 };
 
 export default function PersonalDetails({ sectionsCollection }: PersonalDetailsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [minHeight, setMinHeight] = useState<number | string>('unset');
+  const panelsRef = useRef<(HTMLElement | null)[]>([]);
   const tabs = sectionsCollection.items;
 
+  const { innerWidth } = useWindowSize();
+
+  useEffect(() => {
+    let containerMinHeight = 0;
+    panelsRef.current.forEach((panel) => {
+      console.log(panel?.offsetHeight);
+      const panelHeight = panel?.offsetHeight || 0;
+      if (panelHeight > containerMinHeight) containerMinHeight = panelHeight;
+    });
+    setMinHeight(containerMinHeight);
+  }, [innerWidth]);
+
   return (
-    <section className={styles.container}>
+    <section className={styles.container} style={{ minHeight }}>
       <div className={styles.tabList} role="tablist">
         <div className={styles.animation} role="presentation" />
         {tabs.map((tab, index) => (
@@ -42,6 +59,9 @@ export default function PersonalDetails({ sectionsCollection }: PersonalDetailsP
               aria-hidden={index !== activeTabIndex}
               className={styles.panel(index === activeTabIndex)}
               key={index}
+              ref={(el) => {
+                panelsRef.current[index] = el;
+              }}
               role="tabpanel"
             >
               <p className={styles.eyebrow}>{tab.name}</p>
