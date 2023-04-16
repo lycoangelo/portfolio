@@ -37,6 +37,10 @@ styles.container = ctl(`
 	w-screen
 `);
 
+styles.cv = ctl(`
+	whitespace-nowrap
+`);
+
 styles.content = ctl(`
 	col-span-full
 	col-start-1

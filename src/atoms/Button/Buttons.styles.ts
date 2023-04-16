@@ -138,7 +138,6 @@ const styles: {
 			relative
 			text-center
 			transition-colors
-			whitespace-nowrap
 			uppercase
 			${className}
 			${colors[color]}

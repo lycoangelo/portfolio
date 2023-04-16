@@ -29,6 +29,7 @@ export default function Hero({ background, cv, description, headline }: HeroProp
         <p className={styles.description}>{description}</p>
         {cv && (
           <Button
+            className={styles.cv}
             color="primary"
             hasBorderEffect
             icon="download"
