@@ -22,7 +22,9 @@ module.exports = {
       black: '#000000',
       white: '#ffffff',
       gray: '#3c3c3c',
-      inactive: '#707070'
+      inactive: '#707070',
+      teal: '#005864',
+      turquoise: '#0193a7'
     },
     extend: {
       fontFamily: {
@@ -46,7 +48,8 @@ module.exports = {
         'btn-sm': '120px',
         'btn-md': '160px',
         'btn-lg': '200px',
-        'btn-xl': '240px'
+        'btn-xl': '240px',
+        'screen-min': '375px'
       },
       spacing: {
         unset: 'unset',

@@ -14,6 +14,12 @@
   }
 }
 
+@layer base {
+  body {
+    @apply min-w-screen-min;
+  }
+}
+
 @layer components {
   .label {
     @apply font-semibold text-sm uppercase text-primary;
@@ -67,7 +73,7 @@
     @apply grid grid-cols-4 md:grid-cols-12; /* Grid */
     @apply gap-x-5 md:gap-x-3 lg:gap-x-5; /* Columns Gap */
     @apply px-5 md:px-10 xl:px-20 max:mx-auto; /* Margin & Padding */
-    @apply max:max-w-container-max; /* Width */
+    @apply max:max-w-container-max min-w-screen-min; /* Width */
   }
 
   .hero-gradient {
