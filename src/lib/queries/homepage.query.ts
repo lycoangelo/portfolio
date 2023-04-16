@@ -4,6 +4,7 @@ const homepageQuery = `
       cv {
         contentType
         title
+        fileName
         url
       }
       description
@@ -14,35 +15,51 @@ const homepageQuery = `
         title
         url
       }
-      flexibleComponentsAreaCollection(limit: 10) {
-        items {
-          ... on PersonalDetails {
-            __typename
-            sectionsCollection(limit: 6) {
-              items {
-                ... on Essay {
-                  __typename
-                  name
+      personalDetails {
+        __typename
+        sectionsCollection(limit: 4) {
+          items {
+            ... on Essay {
+              __typename
+              name
+              title
+              essay {
+                json
+              }
+            }
+            ... on TimelineJobs {
+              __typename
+              name
+              title
+              timelinesCollection(limit: 2) {
+                items {
                   title
-                  essay {
-                    json
+                  jobsCollection(limit: 20) {
+                    items {
+                      company
+                      role
+                      startDate
+                      endDate
+                      isPresent
+                    }
                   }
                 }
-                ... on TimelineJobs {
-                  __typename
+              }
+            }
+            ... on SkillSetList {
+              __typename
+              name
+              title
+              listCollection(limit: 10) {
+                items {
                   name
-                  title
-                  timelinesCollection(limit: 2) {
+                  skillsCollection(limit: 50) {
                     items {
-                      title
-                      jobsCollection(limit: 10) {
-                        items {
-                          company
-                          role
-                          startDate
-                          endDate
-                          isPresent
-                        }
+                      name
+                      level
+                      logo {
+                        url
+                        title
                       }
                     }
                   }
