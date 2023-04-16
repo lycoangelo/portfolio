@@ -66,6 +66,20 @@ const homepageQuery = `
                 }
               }
             }
+            ... on IconShowcase {
+              __typename
+              name
+              title
+              iconsCollection(limit: 20) {
+                items {
+                  name
+                  icon {
+                    url
+                    title
+                  }
+                }
+              }
+            }
           }
         }
       }
