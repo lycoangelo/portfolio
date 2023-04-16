@@ -3,6 +3,7 @@
 import styles from './PersonalDetails.styles';
 import Button from '@app/atoms/Button/Button';
 import Essay from '@app/components/PersonalDetails/Essay/Essay';
+import IconShowcase from '@app/components/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/PersonalDetails/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/PersonalDetails/TimelineJobs/TimelineJobs';
 import { PersonalDetailsProps, PersonalDetailsMap } from './PersonalDetails.interface';
@@ -11,6 +12,7 @@ import { useWindowSize } from 'rooks';
 
 const personalDetailsMap: PersonalDetailsMap = {
   Essay,
+  IconShowcase,
   SkillSetList,
   TimelineJobs
 };
@@ -26,7 +28,6 @@ export default function PersonalDetails({ sectionsCollection }: PersonalDetailsP
   useEffect(() => {
     let containerMinHeight = 0;
     panelsRef.current.forEach((panel) => {
-      console.log(panel?.offsetHeight);
       const panelHeight = panel?.offsetHeight || 0;
       if (panelHeight > containerMinHeight) containerMinHeight = panelHeight;
     });
