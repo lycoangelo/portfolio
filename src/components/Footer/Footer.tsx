@@ -4,17 +4,17 @@ import { fetchGraphQL } from '@app/lib/helpers/api';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 export default async function Footer() {
-  const response = await fetchGraphQL(globalsQuery('copyright { json }'), false);
+  const response = await fetchGraphQL(globalsQuery('footerText { json }'), false);
 
   const {
     data: { globalSettings = {} }
   } = await response.json();
 
-  const { copyright } = globalSettings;
+  const { footerText } = globalSettings;
 
   return (
-    copyright?.json && (
-      <footer className={styles.footer}>{documentToReactComponents(copyright.json)}</footer>
+    footerText?.json && (
+      <footer className={styles.footer}>{documentToReactComponents(footerText.json)}</footer>
     )
   );
 }
