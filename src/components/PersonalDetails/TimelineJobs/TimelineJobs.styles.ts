@@ -8,16 +8,18 @@ styles.company = ctl(`
 	text-sm
 
 	md:mt-0
+	md:text-lg
 `);
 
 styles.date = ctl(`
 	font-bold
-	ml-auto
-	mr-5
+	pr-5
 	text-primary
 	text-sm
-
-	md:pt-5
+	w-full
+	
+	md:pt-6
+	md:text-right
 `);
 
 styles.details = ctl(`
