@@ -1,7 +1,8 @@
 const commonPixelValues = {
   0.25: '1px',
   0.75: '3px',
-  2.75: '11px'
+  2.75: '11px',
+  7.5: '30px'
 };
 
 module.exports = {
