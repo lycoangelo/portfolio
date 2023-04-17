@@ -1,4 +1,3 @@
-import globalsQuery from '@app/lib/queries/global-settings.query';
 import Link from 'next/link';
 import styles from './Header.styles';
 
