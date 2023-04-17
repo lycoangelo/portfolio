@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
-import iconMap, { IconType } from '@app/lib/constants/iconMap';
+import iconMap from '@app/lib/constants/iconMap';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
