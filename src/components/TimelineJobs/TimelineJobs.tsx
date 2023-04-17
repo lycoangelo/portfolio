@@ -1,7 +1,7 @@
 import styles from './TimelineJobs.styles';
 import Button from '@app/atoms/Button/Button';
 import { useState } from 'react';
-import { TimelineJobsProps } from '../PersonalDetails.interface';
+import { TimelineJobsProps } from './TimelineJobs.interface';
 import { getYear } from '@app/lib/helpers/date';
 
 export default function TimelineJobs({ timelinesCollection }: TimelineJobsProps) {

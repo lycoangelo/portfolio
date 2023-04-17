@@ -2,10 +2,10 @@
 
 import styles from './PersonalDetails.styles';
 import Button from '@app/atoms/Button/Button';
-import Essay from '@app/components/PersonalDetails/Essay/Essay';
+import Essay from '@app/components/Essay/Essay';
 import IconShowcase from '@app/components/IconShowcase/IconShowcase';
-import SkillSetList from '@app/components/PersonalDetails/SkillSetList/SkillSetList';
-import TimelineJobs from '@app/components/PersonalDetails/TimelineJobs/TimelineJobs';
+import SkillSetList from '@app/components/SkillSetList/SkillSetList';
+import TimelineJobs from '@app/components/TimelineJobs/TimelineJobs';
 import { PersonalDetailsProps, PersonalDetailsMap } from './PersonalDetails.interface';
 import { useEffect, useRef, useState } from 'react';
 import { useWindowSize } from 'rooks';
