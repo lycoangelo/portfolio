@@ -1,0 +1,10 @@
+build/*
+dist/*
+public/*
+.next/*
+node_modules/*
+package.json
+*.log
+storybook-static
+possibleTypes.json
+postcss.config.js

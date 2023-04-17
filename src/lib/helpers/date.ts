@@ -53,7 +53,4 @@ export const formatDate = (
   dateString: string,
   locales = 'en-US',
   options?: Intl.DateTimeFormatOptions
-) => {
-  const formatter = new Intl.DateTimeFormat(locales, options);
-  return formatter.format(convertToDate(dateString));
-};
+) => new Intl.DateTimeFormat(locales, options).format(convertToDate(dateString));
