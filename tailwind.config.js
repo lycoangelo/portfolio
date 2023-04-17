@@ -60,6 +60,9 @@ module.exports = {
       },
       width: {
         ...commonPixelValues
+      },
+      zIndex: {
+        1: '1'
       }
     },
     screens: {

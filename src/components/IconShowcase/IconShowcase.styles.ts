@@ -8,7 +8,7 @@ styles.container = ctl(`
 `);
 
 styles.icon = ctl(`
-	mr-4
+	mr-5
 `);
 
 export default styles;
