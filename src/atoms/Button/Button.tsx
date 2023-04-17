@@ -1,15 +1,6 @@
-import { ButtonHTMLAttributes } from 'react';
 import styles from './Buttons.styles';
 import iconMap, { IconType } from '@app/lib/constants/iconMap';
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  children: any;
-  color: string;
-  icon?: keyof typeof iconMap;
-  hasBorderEffect?: boolean;
-  size: string;
-}
+import { ButtonProps } from './Button.interface';
 
 export default function Button({
   className,

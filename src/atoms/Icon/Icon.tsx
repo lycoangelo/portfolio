@@ -2,19 +2,9 @@ import DownloadIcon from '@app/assets/icons/download.svg';
 import iconMap from '@app/lib/constants/iconMap';
 import styles from './Icon.styles';
 import Image from 'next/image';
+import { SquircleIconProps } from './Icon.interface';
 
-const SquircleIcon = ({
-  className = '',
-  icon,
-  image
-}: {
-  className?: string;
-  icon?: string;
-  image?: {
-    title: string;
-    url: string;
-  };
-}) => {
+const SquircleIcon = ({ className = '', icon, image }: SquircleIconProps) => {
   const Icon = icon && iconMap[icon];
 
   return (

@@ -8,6 +8,10 @@
   margin: 0;
 }
 
+body {
+  @apply text-white;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -44,17 +48,6 @@
     .job-timeline-grid {
       grid-template-columns: 210px 1fr;
     }
-  }
-
-  .section-title-right {
-    @apply font-am-200 text-2xl md:text-3xl md:leading-8 lg:text-5xl lg:leading-15 relative;
-  }
-
-  .section-title-right::after {
-    @apply bg-primary left-0 absolute content-[''] -bottom-2;
-    height: 7px;
-    margin-top: 7px;
-    width: 16.5%;
   }
 }
 

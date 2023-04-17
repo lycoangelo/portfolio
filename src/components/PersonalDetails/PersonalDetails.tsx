@@ -3,6 +3,7 @@
 import styles from './PersonalDetails.styles';
 import Button from '@app/atoms/Button/Button';
 import Essay from '@app/components/Essay/Essay';
+import SectionHeader from '@app/atoms/SectionHeader/SectionHeader';
 import IconShowcase from '@app/components/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/TimelineJobs/TimelineJobs';
@@ -65,8 +66,7 @@ export default function PersonalDetails({ sectionsCollection }: PersonalDetailsP
               }}
               role="tabpanel"
             >
-              <p className={styles.eyebrow}>{tab.name}</p>
-              <h2 className={styles.title}>{tab.title}</h2>
+              <SectionHeader layout="right" name={tab.name} title={tab.title} />
               <Component {...tab} />
             </div>
           );

@@ -5,19 +5,7 @@ import useDownloader from 'react-use-downloader';
 import Button from '../../atoms/Button/Button';
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-
-interface HeroProps {
-  background: {
-    title: string;
-    url: string;
-  };
-  cv?: {
-    title: string;
-    url: string;
-  };
-  description: string;
-  headline: any;
-}
+import { HeroProps } from './Hero.interface';
 
 export default function Hero({ background, cv, description, headline }: HeroProps) {
   const { download, error } = useDownloader();
