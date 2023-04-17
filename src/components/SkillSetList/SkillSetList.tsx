@@ -1,4 +1,4 @@
-import { SkillSetListProps } from '../PersonalDetails/PersonalDetails.interface';
+import { SkillSetListProps } from './SkillSetList.interface';
 import { skillsLegends } from '@app/lib/constants/legends';
 import styles from './SkillSetList.styles';
 import Image from 'next/image';
