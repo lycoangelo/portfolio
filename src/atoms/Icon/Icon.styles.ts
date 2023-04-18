@@ -24,7 +24,8 @@ styles.figure = (className: string) =>
 `);
 
 styles.image = ctl(`
-	
+	w-auto
+  h-auto
 `);
 
 export default styles;
