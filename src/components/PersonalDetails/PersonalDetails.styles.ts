@@ -23,9 +23,6 @@ styles.eyebrow = ctl(`
 
 styles.panel = (isActive: boolean) =>
   ctl(`
-  border-b
-  border-b-gray
-  h-full
   ml-auto
   mr-0
   pb-5
@@ -48,9 +45,11 @@ styles.panel = (isActive: boolean) =>
 `);
 
 styles.panels = ctl(`
-  relative
+  border-b
+  border-b-gray
   col-span-3
   col-start-2
+  relative
 
   md:col-span-6
   md:col-start-7
