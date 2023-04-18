@@ -25,6 +25,7 @@ export default function SkillSetList({ listCollection }: SkillSetListProps) {
                       className={styles.logo}
                       src={skill.logo.url}
                       alt={skill.logo.title}
+                      sizes="100px"
                       fill
                     />
                   </figure>
