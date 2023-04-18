@@ -3,17 +3,17 @@ import ctl from '@netlify/classnames-template-literals';
 const styles: { [key: string]: any } = {};
 
 styles.animation = ctl(`
-  border
-  border-primary
   mb-20
   h-40
   w-full
+  border
+  border-primary
 `);
 
 styles.container = ctl(`
   grid-container
-  mb-32
   overflow-hidden]
+  mb-32
 `);
 
 styles.eyebrow = ctl(`
@@ -23,33 +23,33 @@ styles.eyebrow = ctl(`
 
 styles.panel = (isActive: boolean) =>
   ctl(`
+  top-0
   ml-auto
   mr-0
-  pb-5
-  top-0
   w-full
+  pb-5
 
   ${
     isActive
       ? `
-    opacity-100
     visibile
     relative
+    opacity-100
   `
       : `
-    opacity-0
     invisible
     absolute
+    opacity-0
   `
   }
 `);
 
 styles.panels = ctl(`
-  border-b
-  border-b-gray
+  relative
   col-span-3
   col-start-2
-  relative
+  border-b
+  border-b-gray
 
   md:col-span-6
   md:col-start-7
@@ -82,11 +82,11 @@ styles.tabList = ctl(`
 `);
 
 styles.title = ctl(`
+  section-title-right
+  mb-8
   border-b
   border-gray
-  mb-8
   pb-5
-  section-title-right
 `);
 
 export default styles;
