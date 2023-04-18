@@ -1,9 +1,9 @@
 import { EssayProps } from '../Essay/Essay.interface';
-import { TimelineJobs } from '../TimelineJobs/TimelineJobs.interface';
+import { TimelineJobsProps } from '../TimelineJobs/TimelineJobs.interface';
 
 export interface PersonalDetailsProps {
   sectionsCollection: {
-    items: (EssayProps | TimelineJobs)[];
+    items: (EssayProps | TimelineJobsProps)[];
   };
 }
 

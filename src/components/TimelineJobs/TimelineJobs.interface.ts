@@ -14,13 +14,10 @@ export interface JobsCollectionProps {
 }
 
 export interface TimelineJobsProps {
-  timelinesCollection: {
-    items: JobsCollectionProps[];
-  };
-}
-
-export interface TimelineJobs extends TimelineJobsProps {
   __typename: string;
   name: string;
   title: string;
+  timelinesCollection: {
+    items: JobsCollectionProps[];
+  };
 }
