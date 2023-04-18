@@ -14,7 +14,10 @@ export default function Button({
   const Icon = iconMap[icon] as IconType;
 
   return (
-    <button {...props} className={styles.button(color, size, className, hasBorderEffect)}>
+    <button
+      {...props}
+      className={styles.button(color, size, className, hasBorderEffect)}
+    >
       {children} {Icon && <Icon className={styles.icon(color, size)} />}
     </button>
   );

@@ -4,7 +4,9 @@ import { useState } from 'react';
 import { TimelineJobsProps } from './TimelineJobs.interface';
 import { getYear } from '@app/lib/helpers/date';
 
-export default function TimelineJobs({ timelinesCollection }: TimelineJobsProps) {
+export default function TimelineJobs({
+  timelinesCollection
+}: TimelineJobsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const timelines = timelinesCollection.items;
 
@@ -16,7 +18,10 @@ export default function TimelineJobs({ timelinesCollection }: TimelineJobsProps)
           const isFirstChild = index === 0;
 
           return (
-            <div className={styles.timelineTabWrapper(isFirstChild, isActive)} key={index}>
+            <div
+              className={styles.timelineTabWrapper(isFirstChild, isActive)}
+              key={index}
+            >
               <Button
                 className={styles.timelineTab(isFirstChild, isActive)}
                 color={index === activeTabIndex ? 'active' : 'inactive'}

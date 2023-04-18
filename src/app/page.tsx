@@ -12,7 +12,8 @@ export default async function Home() {
   if (errors.length > 0) notFound();
 
   const { homepage = {} } = data || {};
-  const { background, cv, description, headline, personalDetails, projects } = homepage;
+  const { background, cv, description, headline, personalDetails, projects } =
+    homepage;
   const heroData = { background, cv, description, headline };
 
   return (

@@ -7,9 +7,13 @@ import SectionHeader from '@app/atoms/SectionHeader/SectionHeader';
 import IconShowcase from '@app/components/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/TimelineJobs/TimelineJobs';
-import { PersonalDetailsProps, PersonalDetailsMap } from './PersonalDetails.interface';
 import { useEffect, useRef, useState } from 'react';
 import { useWindowSize } from 'rooks';
+
+import {
+  PersonalDetailsProps,
+  PersonalDetailsMap
+} from './PersonalDetails.interface';
 
 const personalDetailsMap: PersonalDetailsMap = {
   Essay,
@@ -18,7 +22,9 @@ const personalDetailsMap: PersonalDetailsMap = {
   TimelineJobs
 };
 
-export default function PersonalDetails({ sectionsCollection }: PersonalDetailsProps) {
+export default function PersonalDetails({
+  sectionsCollection
+}: PersonalDetailsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [minHeight, setMinHeight] = useState<number | string>('unset');
   const panelsRef = useRef<(HTMLElement | null)[]>([]);

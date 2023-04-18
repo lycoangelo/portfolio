@@ -12,7 +12,12 @@ export default function TimelineProjects({
 }: TimelineProjectsProps) {
   return (
     <section className={styles.container}>
-      <SectionHeader className={styles.header} layout="left" name={name} title={title} />
+      <SectionHeader
+        className={styles.header}
+        layout="left"
+        name={name}
+        title={title}
+      />
       <div className={styles.projects}>
         {projectsCollection.items.map(
           ({ company, endDate, isPresent, name, role, startDate }, index) => {

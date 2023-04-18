@@ -8,7 +8,11 @@ export default function SkillSetList({ listCollection }: SkillSetListProps) {
     <div className={styles.container}>
       <div className={styles.legends}>
         {skillsLegends.map(({ color, level }, index) => (
-          <div aria-label={`${color} for ${level}`} className={styles.color(level)} key={index}>
+          <div
+            aria-label={`${color} for ${level}`}
+            className={styles.color(level)}
+            key={index}
+          >
             {level}
           </div>
         ))}
@@ -19,7 +23,10 @@ export default function SkillSetList({ listCollection }: SkillSetListProps) {
             <h3 className={styles.skillSetName}>{skillSet.name}</h3>
             <ul className={styles.skills}>
               {skillSet.skillsCollection.items.map((skill, skillIndex) => (
-                <li className={styles.skill(skill.level.toLowerCase())} key={skillIndex}>
+                <li
+                  className={styles.skill(skill.level.toLowerCase())}
+                  key={skillIndex}
+                >
                   <figure className={styles.logoWrapper}>
                     <Image
                       className={styles.logo}

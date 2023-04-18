@@ -4,7 +4,10 @@ import { fetchGraphQL } from '@app/lib/helpers/api';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 export default async function Footer() {
-  const response = await fetchGraphQL(globalsQuery('footerText { json }'), false);
+  const response = await fetchGraphQL(
+    globalsQuery('footerText { json }'),
+    false
+  );
 
   const {
     data: { globalSettings = {} }
@@ -14,7 +17,9 @@ export default async function Footer() {
 
   return (
     footerText?.json && (
-      <footer className={styles.footer}>{documentToReactComponents(footerText.json)}</footer>
+      <footer className={styles.footer}>
+        {documentToReactComponents(footerText.json)}
+      </footer>
     )
   );
 }
