@@ -4,16 +4,12 @@ import styles from './TimelineProjects.styles';
 import SectionHeader from '@app/atoms/SectionHeader/SectionHeader';
 import { TimelineProjectsProps } from './TimelineProjects.interface';
 import { getYear } from '@app/lib/helpers/date';
-import { useEffect, useState } from 'react';
-import { useIntersectionObserverRef, useInViewRef } from 'rooks';
 
 export default function TimelineProjects({
   name,
   title,
   projectsCollection
 }: TimelineProjectsProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <section className={styles.container}>
       <SectionHeader className={styles.header} layout="left" name={name} title={title} />
