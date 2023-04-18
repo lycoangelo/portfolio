@@ -14,13 +14,21 @@ styles.eyebrow = ctl(`
 `);
 
 styles.title = ctl(`
+  relative
+  mb-8
   border-b
   border-gray
-  font-am-200
-  mb-8
   pb-5
-  relative
+  font-am-200
   text-2xl
+
+  after:absolute
+  after:-bottom-1.75
+  after:mt-2.75
+  after:h-1.75
+  after:w-[16.5%]
+  after:bg-primary
+  after:content-['']
 
   md:text-3xl
   md:leading-8
@@ -28,18 +36,8 @@ styles.title = ctl(`
   lg:text-5xl
   lg:leading-15
 
-  after:absolute
-  after:bg-primary
-  after:-bottom-2;
-  after:content-['']
-  after:h-1.75
-  after:mt-2.75
-  after:-bottom-1.75
-  after:w-[16.5%]
-
   [.text-left>&]:after:left-0
   [.text-right>&]:after:right-0
-  }
 `);
 
 export default styles;

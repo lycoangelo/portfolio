@@ -7,13 +7,20 @@ import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { HeroProps } from './Hero.interface';
 
-export default function Hero({ background, cv, description, headline }: HeroProps) {
-  const { download, error } = useDownloader();
+export default function Hero({
+  background,
+  cv,
+  description,
+  headline
+}: HeroProps) {
+  const { download } = useDownloader();
 
   return (
     <section className={styles.container}>
       <div className={styles.content}>
-        <h1 className={styles.title}>{documentToReactComponents(headline.json)}</h1>
+        <h1 className={styles.title}>
+          {documentToReactComponents(headline.json)}
+        </h1>
         <p className={styles.description}>{description}</p>
         {cv && (
           <Button

@@ -4,30 +4,31 @@ const styles: { [key: string]: string } = {};
 
 styles.background = ctl(`
   absolute
-  grayscale
   inset-0
   max-w-full
+  grayscale
 `);
 
 styles.backgroundImage = ctl(`
-  duration-300
   h-auto
   max-h-[125vh]
   min-h-screen
   object-cover
   object-[75%_0%]
   transition-all
+  duration-300
 
   lg:object-right-top
 `);
 
 styles.backgroundWrapper = ctl(`
   relative
-  after:absolute
+
   after:hero-gradient
-  after:h-1/2
+  after:absolute
   after:left-0
   after:bottom-0
+  after:h-1/2
   after:w-full
 `);
 
@@ -43,6 +44,8 @@ styles.cv = ctl(`
 `);
 
 styles.content = ctl(`
+  relative
+  z-10
   col-span-full
   col-start-1
   flex
@@ -50,12 +53,10 @@ styles.content = ctl(`
   items-start
   justify-end
   pb-20
-  relative
   uppercase
-  z-10
 
-  md:justify-center
   md:col-span-9
+  md:justify-center
 
   xl:col-span-6
 `);
@@ -70,18 +71,18 @@ styles.description = ctl(`
 `);
 
 styles.title = ctl(`
-  font-am-200
   leading-30
-  mb-5
   two-color
+  mb-5
+  font-am-200
   text-6xl
 
   md:text-7xl
   md:leading-23
 
-  lg:leading-[8.5vw]
   lg:mb-2
   lg:text-[7.5vw]
+  lg:leading-[8.5vw]
 `);
 
 export default styles;

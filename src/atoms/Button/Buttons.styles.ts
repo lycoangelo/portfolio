@@ -100,7 +100,7 @@ const sizes: ButtonSizes = {
 
     md:min-w-btn-md
     md:px-6
-    md:text-md
+    md:text-base
 
     lg:min-w-btn-lg
     lg:px-7
@@ -149,14 +149,14 @@ const styles: {
     hasBorderEffect?: boolean
   ) =>
     ctl(`
-      duration-300
+      relative
       flex
       items-center
       justify-center
-      relative
       text-center
-      transition-colors
       uppercase
+      transition-colors
+      duration-300
       ${className}
       ${colors[color]}
       ${sizes[size]}
@@ -164,8 +164,8 @@ const styles: {
     `),
   icon: (color: string, size: string) =>
     ctl(`
-      [&_path]:duration-300
       [&_path]:transition-colors
+      [&_path]:duration-300
       ${iconColors[color]}
       ${iconSizes[size]}
     `)

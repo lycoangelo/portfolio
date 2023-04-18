@@ -12,8 +12,8 @@ styles.animation = ctl(`
 
 styles.container = ctl(`
   grid-container
-  overflow-hidden]
   mb-32
+  overflow-hidden
 `);
 
 styles.eyebrow = ctl(`
@@ -32,7 +32,7 @@ styles.panel = (isActive: boolean) =>
   ${
     isActive
       ? `
-    visibile
+    visible
     relative
     opacity-100
   `
@@ -82,7 +82,6 @@ styles.tabList = ctl(`
 `);
 
 styles.title = ctl(`
-  section-title-right
   mb-8
   border-b
   border-gray

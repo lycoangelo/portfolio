@@ -1,17 +1,11 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:sonarjs/recommended",
-    // "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "plugin:tailwindcss/recommended"
-  ],
+  "extends": ["next/core-web-vitals", "plugin:sonarjs/recommended"],
   "plugins": ["unused-imports"],
   "rules": {
     "unused-imports/no-unused-imports": "error",
     "no-unused-expressions": "error",
     "no-console": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "eqeqeq": "error"
   }
 }

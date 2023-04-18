@@ -3,6 +3,7 @@ const commonPixelValues = {
   0.75: '3px',
   1.75: '7px',
   2.75: '11px',
+  4.5: '18px',
   7.5: '30px'
 };
 
@@ -39,7 +40,8 @@ module.exports = {
         12: '48px',
         13: '52px',
         14: '56px',
-        15: '60px'
+        15: '60px',
+        23: '92px'
       },
       maxWidth: {
         'container-max': '1920px'

@@ -8,5 +8,5 @@ export interface PersonalDetailsProps {
 }
 
 export interface PersonalDetailsMap {
-  [key: string]: (props: any) => JSX.Element;
+  [key: string]: (_props: any) => JSX.Element;
 }

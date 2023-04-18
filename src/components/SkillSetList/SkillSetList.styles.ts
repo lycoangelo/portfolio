@@ -20,30 +20,30 @@ const skillsBg: ObjectKey = {
 
 styles.color = (level: string) =>
   ctl(`
-	flex
-	items-center
 	mb-2
 	mr-5
+	flex
+	items-center
 	text-xs
 	uppercase
 
+	before:mr-1.5
 	before:block
 	before:h-2.5
-	before:mr-1.5
 	before:w-2.5
 	${levelsBG[level]}
 `);
 
 styles.container = ctl(`
-	mt-7.5
 	relative
+	mt-7.5
 `);
 
 styles.legends = ctl(`
+	mb-10
 	flex
 	flex-wrap
 	items-center
-	mb-10
 `);
 
 styles.logo = ctl(`
@@ -51,22 +51,22 @@ styles.logo = ctl(`
 `);
 
 styles.logoWrapper = ctl(`
-	h-3.5
-	mr-2
-	grayscale
 	relative
+	mr-2
+	h-3.5
 	w-3
+	grayscale
 `);
 
 styles.skill = (level: string) =>
   ctl(`
-	bg-primary
+	mr-2
 	flex
 	items-center
-	mr-2
+	rounded-md
+	bg-primary
 	px-2
 	py-1
-	rounded-md
 	text-xs
 
 	${skillsBg[level]}
@@ -74,9 +74,9 @@ styles.skill = (level: string) =>
 
 styles.skills = ctl(`
 	flex
+	w-fit
 	flex-wrap
 	justify-between
-	w-fit
 `);
 
 styles.skillSet = ctl(`
@@ -87,13 +87,13 @@ styles.skillSet = ctl(`
 `);
 
 styles.skillSetList = ctl(`
-	block
 	relative
+	block
 `);
 
 styles.skillSetName = ctl(`
-	font-am-500
 	mb-3
+	font-am-500
 	text-sm
 
 	md:text-lg

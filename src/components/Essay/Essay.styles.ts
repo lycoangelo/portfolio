@@ -3,13 +3,13 @@ import ctl from '@netlify/classnames-template-literals';
 const styles: { [key: string]: any } = {};
 
 styles.essay = ctl(`
-	leading-7
 	text-sm
+	leading-7
 
-	md:text-md
+	md:text-base
 
-	xl:leading-8
 	xl:text-lg
+	xl:leading-8
 `);
 
 export default styles;

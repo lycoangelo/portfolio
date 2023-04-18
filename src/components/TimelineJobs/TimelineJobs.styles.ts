@@ -3,8 +3,8 @@ import ctl from '@netlify/classnames-template-literals';
 const styles: { [key: string]: any } = {};
 
 styles.company = ctl(`
-  font-am-500
   mt-1
+  font-am-500
   text-sm
 
   md:mt-0
@@ -12,19 +12,19 @@ styles.company = ctl(`
 `);
 
 styles.date = ctl(`
-  font-bold
-  pr-5
-  text-primary
-  text-sm
   w-full
+  pr-5
+  text-sm
+  font-bold
+  text-primary
 
   md:pt-6
   md:text-right
 `);
 
 styles.details = ctl(`
-  border-primary
   relative
+  border-primary
 
   md:border-b
   md:border-l
@@ -32,39 +32,39 @@ styles.details = ctl(`
 
   md:after:absolute
   md:after:bottom-[-5.5px]
-  md:after:bg-primary
-  md:after:h-2.75
   md:after:left-[-5.5px]
-  md:after:rounded-full
+  md:after:h-2.75
   md:after:w-2.75
+  md:after:rounded-full
+  md:after:bg-primary
 `);
 
 styles.job = ctl(`
+  job-timeline-grid
+  relative
   border-b
   border-l
   border-primary
-  job-timeline-grid
   p-5
-  relative
-
-  md:border-0
-  md:p-0
 
   after:absolute
   after:bottom-[-5.5px]
-  after:bg-primary
-  after:h-2.75
   after:left-[-5.5px]
-  after:rounded-full
+  after:h-2.75
   after:w-2.75
+  after:rounded-full
+  after:bg-primary
+
+  md:border-0
+  md:p-0
 
   md:after:content-none
 `);
 
 styles.role = ctl(`
-  font-medium
   mt-1
   text-sm
+  font-medium
   text-secondary
 `);
 
@@ -72,14 +72,14 @@ styles.timelinePanel = (isActive: boolean) =>
   ctl(
     isActive
       ? `
-    opacity-100
-    visibile
+    visible
     relative
+    opacity-100
   `
       : `
-    opacity-0
     invisible
     absolute
+    opacity-0
   `
   );
 
@@ -94,36 +94,35 @@ styles.timelines = ctl(`
   w-full
 `);
 
-styles.timelineTab = (isFirstChild: boolean, isActive: boolean) =>
+styles.timelineTab = (isActive: boolean) =>
   ctl(`
-  ml-5
   relative
+  ml-5
 
   after:absolute
-  after:bg-primary
-  after:h-0.25
   after:-left-5
+  after:h-0.25
+  after:bg-primary
   after:transition-all
   ${isActive ? 'after:w-5' : 'after:w-0'}
 
-  md:after:w-2.5
-
   before:absolute
-  before:bg-inactive
-  before:h-0.25
   before:-left-5
+  before:h-0.25
   before:w-5
+  before:bg-inactive
   md:before:w-2.5
+  md:after:w-2.5
 
   [:first-child>&]:md:ml-0
   [:first-child>&]:md:mr-2.5
-  [:first-child>&]:md:after:left-unset
-  [:first-child>&]:md:after:-right-2.75
   [:first-child>&]:md:before:left-unset
   [:first-child>&]:md:before:-right-2.75
+  [:first-child>&]:md:after:left-unset
+  [:first-child>&]:md:after:-right-2.75
 
-  [:not(:first-child)>&]:md:before:-left-2.75
   [:not(:first-child)>&]:md:ml-2.5
+  [:not(:first-child)>&]:md:before:-left-2.75
   [:not(:first-child)>&]:md:after:-left-2.75
 `);
 
@@ -136,27 +135,26 @@ styles.timelineTabList = ctl(`
 
 styles.timelineTabWrapper = (isFirstChild: boolean, isActive: boolean) =>
   ctl(`
-  mb-3
   relative
-
-  md:mb-0
-
-  after:absolute
-  after:duration-300
-  after:h-[calc(100%+50%)]
-  after:top-1/2
-  after:transition-all
-  after:w-0.25
-  after:z-20
-
-  md:after:bg-primary
+  mb-3
 
   before:absolute
-  before:bg-inactive
-  before:h-[calc(100%+50%)]
   before:top-1/2
-  before:w-0.25
   before:z-10
+  before:h-[calc(100%+50%)]
+  before:w-0.25
+  before:bg-inactive
+
+  after:absolute
+  after:top-1/2
+  after:z-20
+  after:h-[calc(100%+50%)]
+  after:w-0.25
+  after:transition-all
+  after:duration-300
+
+  md:mb-0
+  md:after:bg-primary
 
   ${
     isFirstChild
@@ -167,8 +165,8 @@ styles.timelineTabWrapper = (isFirstChild: boolean, isActive: boolean) =>
     ${
       !isActive
         ? `
-      after:bg-inactive
       after:h-[calc(100%+50%)]
+      after:bg-inactive
     `
         : `
       after:bg-primary

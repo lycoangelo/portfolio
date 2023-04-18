@@ -4,28 +4,27 @@ const styles: { [key: string]: any } = {};
 
 styles.figure = (className: string) =>
   ctl(`
-  bg-black
-	border
-	border-primary
-	p-4.5
-  p-5
   relative
-  h-auto
-  w-fit
+	h-auto
+	w-fit
+	border
+  border-primary
+  bg-black
+  p-5
   ${className}
 
   before:absolute
-  before:bg-primary
-  before:h-full
-  before:w-full
   before:left-1
   before:top-1
   before:-z-1
+  before:h-full
+  before:w-full
+  before:bg-primary
 `);
 
 styles.image = ctl(`
-	w-auto
-  h-auto
+	h-auto
+  w-auto
 `);
 
 export default styles;

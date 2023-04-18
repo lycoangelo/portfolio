@@ -1,7 +1,7 @@
 import PersonalDetails from '@app/components/PersonalDetails/PersonalDetails';
 
 interface ComponentMapKey {
-  [key: string]: (props: any) => JSX.Element;
+  [key: string]: (_props: any) => JSX.Element;
 }
 
 // Define the component map object

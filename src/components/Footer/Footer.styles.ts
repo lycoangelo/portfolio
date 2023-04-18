@@ -3,19 +3,19 @@ import ctl from '@netlify/classnames-template-literals';
 const styles: { [key: string]: string } = {};
 
 styles.footer = ctl(`
-	border-t
 	block-container
-	py-5
 	relative
-	text-sm
-	w-full
 	z-10
+	w-full
+	border-t
+	py-5
+	text-sm
 
 	lg:py-7.5
 	lg:text-xl
 
-	[&>p]:text-center
 	[&>p]:two-color
+	[&>p]:text-center
 `);
 
 export default styles;

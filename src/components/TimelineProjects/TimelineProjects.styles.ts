@@ -7,36 +7,34 @@ styles.container = ctl(`
 `);
 
 styles.dateRange = ctl(`
+  relative
+  flex
   border-b
   border-primary
-  flex
-  font-bold
   pb-2
-  relative
+  font-bold
   text-primary
+
+  after:absolute
+  after:-bottom-2
+  after:h-4
+  after:w-4
+  after:rounded-full
+  after:bg-primary
 
   lg:pb-3
   lg:text-lg
 
-  [:not(:first-child)>&]:border-r
-
-  [:not(:first-child)>&]:md:border-r-0
-
-  [:nth-child(even)>&]:md:pl-4
-
-  [:nth-child(odd)>&]:md:pr-3
-
   [:last-child>&]:md:border-l
 
-  after:absolute
-  after:bg-primary
-  after:rounded-full
-  after:-bottom-2
-  after:h-4
-  after:w-4
+  [:not(:first-child)>&]:border-r
+  [:not(:first-child)>&]:md:border-r-0
 
   [:nth-child(even)>&]:after:-left-2
+  [:nth-child(even)>&]:md:pl-4
+
   [:nth-child(odd)>&]:after:-right-2
+  [:nth-child(odd)>&]:md:pr-3
 `);
 
 styles.dateSeparator = ctl(`
@@ -44,58 +42,58 @@ styles.dateSeparator = ctl(`
 `);
 
 styles.detail = ctl(`
-  flex
-  flex-col
   label
   mb-3
+  flex
+  flex-col
 
-  sm:flex-row
   sm:mb-1
+  sm:flex-row
 
-  md:flex-col
   md:mb-3
+  md:flex-col
 
-  xl:flex-row
   xl:mb-1
+  xl:flex-row
 `);
 
 styles.details = ctl(`
-  border-primary
+  relative
   col-span-4
+  border-primary
   pb-14
   pr-5
   pt-2.5
-  relative
 
+  after:absolute
+  after:-right-2
+
+  after:-top-2
+  after:h-4
+
+  after:w-4
+
+  after:rounded-full
+
+  after:bg-primary
   md:col-span-6
+
   md:pt-5
 
+  after:md:content-none
   lg:col-span-5
   lg:col-start-2
-
-  [:not(:last-child)>&]:border-r
-
   [:not(:last-child):not(:first-child)>&]:md:border-r-0
-
+  [:not(:last-child)>&]:border-r
   [:nth-child(even)>&]:md:pl-5
   [:nth-child(even)>&]:md:pr-0
 
   [:nth-child(odd)>&]:md:pr-5
-
-  after:absolute
-  after:bg-primary
-  after:rounded-full
-  after:-right-2
-  after:-top-2
-  after:h-4
-  after:w-4
-
-  after:md:content-none
 `);
 
 styles.header = ctl(`
-  col-span-3
   relative
+  col-span-3
 
   md:col-span-6
 
@@ -108,8 +106,8 @@ styles.label = ctl(`
 `);
 
 styles.name = ctl(`
-  font-am-500
   mb-3
+  font-am-500
   text-xl
 `);
 
@@ -124,13 +122,13 @@ styles.project = ctl(`
 
   lg:col-span-5
 
-  [&:nth-child(even)]:md:ml-[calc(50%-0.5px)]
-
   [&:nth-child(even):not(:first-child):not(:last-child)]:md:border-l
 
-  [&:nth-child(odd)]:md:-mr-1
+  [&:nth-child(even)]:md:ml-[calc(50%-0.5px)]
 
   [&:nth-child(odd):not(:first-child):not(:last-child)]:md:border-r
+
+  [&:nth-child(odd)]:md:-mr-1
 `);
 
 styles.projects = ctl(`
