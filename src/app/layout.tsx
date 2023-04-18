@@ -1,6 +1,6 @@
 import ctl from '@netlify/classnames-template-literals';
-import { Quicksand, Roboto } from '@next/font/google';
-import localFont from '@next/font/local';
+import { Quicksand, Roboto } from 'next/font/google';
+import localFont from 'next/font/local';
 
 export const metadata = {
   title: 'My Title'
