@@ -15,22 +15,23 @@ styles.dateRange = ctl(`
   font-bold
   text-primary
 
+  lg:pb-3
+  lg:text-lg
+
   after:absolute
   after:-bottom-2
   after:h-4
   after:w-4
   after:rounded-full
-  after:bg-primary
 
-  lg:pb-3
-  lg:text-lg
+  md:after:bg-primary
 
   [:last-child>&]:md:border-l
 
   [:not(:first-child)>&]:border-r
   [:not(:first-child)>&]:md:border-r-0
 
-  [:nth-child(even)>&]:after:-left-2
+  [:nth-child(even)>&]:md:after:-left-2
   [:nth-child(even)>&]:md:pl-4
 
   [:nth-child(odd)>&]:after:-right-2
