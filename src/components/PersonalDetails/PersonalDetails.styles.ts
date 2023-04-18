@@ -74,11 +74,11 @@ styles.tab = (isActive: boolean) =>
 styles.tabList = ctl(`
   relative
 
-  md:col-span-5
+  md:col-span-4
   md:col-start-1
 
-  xl:col-span-4
-  xl:col-start-2
+  lg:col-span-4
+  lg:col-start-2
 `);
 
 styles.title = ctl(`
