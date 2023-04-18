@@ -83,6 +83,32 @@ const homepageQuery = `
           }
         }
       }
+      projects {
+        name
+        title
+        projectsCollection(limit: 50) {
+          items {
+            name
+            company
+            role
+            startDate
+            endDate
+            technologiesCollection(limit: 20) {
+              items {
+                name
+                logo {
+                  url
+                  title
+                }
+                level
+              }
+            }
+            description {
+              json
+            }
+          }
+        }
+      }
     }
   }
 `;
