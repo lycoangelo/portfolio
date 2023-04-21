@@ -1,9 +1,14 @@
 import homepageQuery from '@app/lib/queries/homepage.query';
+import ContactForm from '@app/components/ContactForm/ContactForm';
 import Hero from '@app/components/Hero/Hero';
 import PersonalDetails from '@app/components/PersonalDetails/PersonalDetails';
+import TimelineProjects from '@app/components/TimelineProjects/TimelineProjects';
 import { notFound } from 'next/navigation';
 import { fetchGraphQL } from '@app/lib/helpers/api';
-import TimelineProjects from '@app/components/TimelineProjects/TimelineProjects';
+
+export const metadata = {
+  title: 'Lyco Angelo: Portfolio'
+};
 
 export default async function Home() {
   const response = await fetchGraphQL(homepageQuery);
@@ -12,8 +17,17 @@ export default async function Home() {
   if (errors.length > 0) notFound();
 
   const { homepage = {} } = data || {};
-  const { background, cv, description, headline, personalDetails, projects } =
-    homepage;
+
+  const {
+    background,
+    cv,
+    description,
+    headline,
+    personalDetails,
+    projects,
+    contactForm
+  } = homepage;
+
   const heroData = { background, cv, description, headline };
 
   return (
@@ -21,6 +35,7 @@ export default async function Home() {
       <Hero {...heroData} />
       <PersonalDetails {...personalDetails} />
       <TimelineProjects {...projects} />
+      <ContactForm {...contactForm} />
     </main>
   );
 }

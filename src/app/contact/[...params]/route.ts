@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 interface ParamsProps {
@@ -30,17 +31,13 @@ export async function POST(request: Request, { params }: ParamsProps) {
       text: `
         Name: ${name}
         Email: ${email}
-        Message: ${message}
+        Message: ${message.replaceAll('<question-mark>', '?')}
       `
     };
 
     await transporter.sendMail(mailOptions);
-    return new Response("{ message: 'Email sent successfully' }", {
-      status: 200
-    });
+    return NextResponse.json({ message: 'Email successfully sent!' });
   } catch (error: any) {
-    return new Response(error.message || 'Something went wrong!', {
-      status: 500
-    });
+    return NextResponse.json({ message: 'Something went wrong!' });
   }
 }
