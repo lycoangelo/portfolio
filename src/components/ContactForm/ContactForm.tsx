@@ -129,7 +129,7 @@ export default function ContactForm({
         <form className={styles.form} onSubmit={submitForm}>
           {fields.map(({ label, ref, type }) => (
             <Input
-              className={styles.input}
+              className={styles.input(type === 'textarea')}
               key={label}
               label={label}
               ref={ref}

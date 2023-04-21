@@ -69,9 +69,12 @@ styles.iconWrapper = ctl(`
   w-10
 `);
 
-styles.input = ctl(`
+styles.input = (isTextArea: boolean) =>
+  ctl(`
   w-full
   [&:not(:first-child)]:mt-5
+
+  ${isTextArea && 'h-40'}
 `);
 
 styles.submit = ctl(`
@@ -81,12 +84,6 @@ styles.submit = ctl(`
 styles.submittedMsg = ctl(`
   text-xl
   ${rightColumnsCommonClass}
-`);
-
-styles.textarea = ctl(`
-  h-40
-  w-full
-  [&:not(:first-child)]:mt-5
 `);
 
 export default styles;
