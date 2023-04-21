@@ -1,4 +1,5 @@
+import LoadingEffects from '@app/atoms/Loading/Loading';
+
 export default function Loading() {
-  // You can add any UI inside Loading, including a Skeleton.
-  return <p>LOADING!!!</p>;
+  return <LoadingEffects />;
 }

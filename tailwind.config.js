@@ -1,9 +1,11 @@
 const commonPixelValues = {
   0.25: '1px',
   0.75: '3px',
+  1.25: '5px',
   1.75: '7px',
   2.75: '11px',
   4.5: '18px',
+  5: '20px',
   7.5: '30px'
 };
 
@@ -26,7 +28,9 @@ module.exports = {
       gray: '#3c3c3c',
       inactive: '#707070',
       teal: '#005864',
-      turquoise: '#0193a7'
+      turquoise: '#0193a7',
+      transparent: 'transparent',
+      error: '#ff0000'
     },
     extend: {
       fontFamily: {
@@ -46,7 +50,11 @@ module.exports = {
       maxWidth: {
         'container-max': '1920px'
       },
+      minHeight: {
+        ...commonPixelValues
+      },
       minWidth: {
+        'btn-xx': '60px',
         'btn-xs': '80px',
         'btn-sm': '120px',
         'btn-md': '160px',

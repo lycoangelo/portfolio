@@ -22,12 +22,51 @@ body {
   body {
     @apply min-w-screen-min;
   }
+
+  *:focus {
+    @apply outline-primary;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-text-fill-color: white;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
 }
 
 @layer components {
   .label {
     @apply font-semibold text-sm uppercase text-primary;
     letter-spacing: 0.2em;
+  }
+
+  .wave {
+    animation: wave 1s linear infinite;
+    background: linear-gradient(45deg, #00c9e3, #fff);
+    margin: 10px;
+    height: 100px;
+    width: 5px;
+
+    @apply m-2.5 rounded-lg;
   }
 
   @media (min-width: 768px) {
@@ -65,7 +104,7 @@ body {
   .grid-container {
     @apply grid grid-cols-4 md:grid-cols-12; /* Grid */
     @apply gap-x-5 md:gap-x-3 lg:gap-x-5; /* Columns Gap */
-    @apply px-5 md:px-10 xl:px-20 max:mx-auto; /* Margin & Padding */
+    @apply px-5 md:px-10 mb-10 md:mb-16 lg:mb-20 xl:mb-32 xl:px-20 max:mx-auto; /* Margin & Padding */
     @apply max:max-w-container-max min-w-screen-min; /* Width */
   }
 
