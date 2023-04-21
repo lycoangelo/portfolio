@@ -1,10 +1,7 @@
 import ctl from '@netlify/classnames-template-literals';
-import { Quicksand, Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
-
-export const metadata = {
-  title: 'My Title'
-};
+import { Quicksand, Roboto } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 
 const quicksand = Quicksand({ subsets: ['latin'], variable: '--quicksand' });
 
@@ -48,6 +45,7 @@ export default function RootLayout({
       */}
       <head />
       <body className={fontsVariables}>
+        <Analytics />
         {/* @ts-expect-error Server Component */}
         <Header />
         {children}
