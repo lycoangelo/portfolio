@@ -1,4 +1,10 @@
 import DownloadIcon from '@app/assets/icons/download.svg';
+import EmailIcon from '@app/assets/icons/email.svg';
+import LocationIcon from '@app/assets/icons/location.svg';
+import LinkedInIcon from '@app/assets/icons/linkedin.svg';
+import MobileIcon from '@app/assets/icons/mobile.svg';
+import UpworkIcon from '@app/assets/icons/upwork.svg';
+
 import iconMap from '@app/lib/constants/iconMap';
 import styles from './Icon.styles';
 import Image from 'next/image';
@@ -26,4 +32,12 @@ const SquircleIcon = ({ className = '', icon, image }: SquircleIconProps) => {
   );
 };
 
-export { DownloadIcon, SquircleIcon };
+export {
+  DownloadIcon,
+  EmailIcon,
+  LocationIcon,
+  LinkedInIcon,
+  MobileIcon,
+  UpworkIcon,
+  SquircleIcon
+};
