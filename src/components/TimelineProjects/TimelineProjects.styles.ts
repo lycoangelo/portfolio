@@ -62,7 +62,6 @@ styles.details = ctl(`
   relative
   col-span-4
   border-primary
-  pb-14
   pr-5
   pt-2.5
 
@@ -90,6 +89,8 @@ styles.details = ctl(`
   [:nth-child(even)>&]:md:pr-0
 
   [:nth-child(odd)>&]:md:pr-5
+  [:not(:last-child)>&]:pb-14
+  [:last-child>&]:pb-5
 `);
 
 styles.header = ctl(`
