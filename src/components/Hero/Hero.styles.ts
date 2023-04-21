@@ -58,7 +58,8 @@ styles.content = ctl(`
   md:col-span-9
   md:justify-center
 
-  xl:col-span-6
+  lg:col-span-6
+  lg:col-start-2
 `);
 
 styles.description = ctl(`
