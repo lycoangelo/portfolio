@@ -3,7 +3,6 @@
   "plugins": ["unused-imports"],
   "rules": {
     "unused-imports/no-unused-imports": "error",
-    "no-unused-expressions": "error",
     "no-console": "error",
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "eqeqeq": "error"
