@@ -9,8 +9,10 @@ styles.container = (layout = 'string', className = '') =>
 `);
 
 styles.eyebrow = ctl(`
+  block
   label
   mb-1
+  min-h-5
 `);
 
 styles.title = ctl(`
@@ -20,7 +22,8 @@ styles.title = ctl(`
   border-gray
   pb-5
   font-am-200
-  text-2xl
+  text-4xl
+  typewriter
 
   after:absolute
   after:-bottom-1.75
@@ -30,11 +33,8 @@ styles.title = ctl(`
   after:bg-primary
   after:content-['']
 
-  md:text-3xl
-  md:leading-8
-
-  lg:text-5xl
-  lg:leading-15
+  md:text-5xl
+  md:leading-15
 
   [.text-left>&]:after:left-0
   [.text-right>&]:after:right-0
