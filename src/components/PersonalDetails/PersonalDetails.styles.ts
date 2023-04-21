@@ -12,7 +12,6 @@ styles.animation = ctl(`
 
 styles.container = ctl(`
   grid-container
-  mb-32
   overflow-hidden
 `);
 
@@ -46,16 +45,16 @@ styles.panel = (isActive: boolean) =>
 
 styles.panels = ctl(`
   relative
-  col-span-3
   col-start-2
+  col-end-5
   border-b
   border-b-gray
 
-  md:col-span-5
   md:col-start-7
+  md:col-end-13
 
-  xl:col-span-5
-  xl:col-start-7
+  lg:col-start-7
+  lg:col-end-12
 `);
 
 styles.tab = (isActive: boolean) =>
@@ -74,7 +73,7 @@ styles.tab = (isActive: boolean) =>
 styles.tabList = ctl(`
   relative
 
-  md:col-span-4
+  md:col-span-5
   md:col-start-1
 
   lg:col-span-4

@@ -109,6 +109,17 @@ const homepageQuery = `
           }
         }
       }
+      contactForm {
+        name
+        title
+        contactsCollection(limit: 5) {
+          items {
+            name
+            contact
+            label
+          }
+        }
+      }
     }
   }
 `;
