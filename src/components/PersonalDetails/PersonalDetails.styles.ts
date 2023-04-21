@@ -51,7 +51,7 @@ styles.panels = ctl(`
   border-b
   border-b-gray
 
-  md:col-span-6
+  md:col-span-5
   md:col-start-7
 
   xl:col-span-5
