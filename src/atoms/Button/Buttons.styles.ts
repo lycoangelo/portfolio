@@ -13,6 +13,8 @@ interface ButtonColors {
 
 interface ButtonSizes {
   fit: string;
+  xs: string;
+  sm: string;
   md: string;
   lg: string;
 }
@@ -62,9 +64,12 @@ const colors: ButtonColors = {
     hover:bg-white
     hover:text-black
 
-    focus:border-primary
-    focus:bg-primary
-    focus:text-white
+    focus:bg-white
+    focus:text-black
+
+    active:border-primary
+    active:bg-primary
+    active:text-white
   `,
   transparent: `
     border-0
@@ -76,9 +81,25 @@ const colors: ButtonColors = {
 
 const sizes: ButtonSizes = {
   fit: 'w-fit',
+  xs: ``,
+  sm: `
+    leading-3
+    min-w-btn-xxs
+    px-5
+    py-2
+    text-xs
+
+    md:min-w-btn-xs
+
+    lg:min-w-btn-sm
+    lg:text-sm
+
+    xl:min-w-btn-md
+    xl:text-base
+  `,
   md: `
     leading-4
-    px-2
+    px-6
     py-1
     text-xs
 
@@ -86,7 +107,7 @@ const sizes: ButtonSizes = {
     md:text-sm
 
     lg:min-w-btn-md
-    lg:text-md
+    lg:text-base
 
     xl:min-w-btn-lg
     xl:text-lg
@@ -94,7 +115,7 @@ const sizes: ButtonSizes = {
   lg: `
     leading-5
     min-w-btn-sm
-    px-5
+    px-7
     py-1.5
     text-xs
 
