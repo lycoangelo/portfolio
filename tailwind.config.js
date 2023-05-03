@@ -57,8 +57,9 @@ module.exports = {
         ...commonPixelValues
       },
       minWidth: {
-        'btn-xx': '60px',
-        'btn-xs': '80px',
+        'btn-3xs': '60px',
+        'btn-2xs': '80px',
+        'btn-xs': '100px',
         'btn-sm': '120px',
         'btn-md': '160px',
         'btn-lg': '200px',

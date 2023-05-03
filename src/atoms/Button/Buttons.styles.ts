@@ -1,23 +1,5 @@
 import ctl from '@netlify/classnames-template-literals';
-
-interface ObjectKey {
-  [key: string]: string;
-}
-
-interface ButtonColors {
-  active: string;
-  inactive: string;
-  primary: string;
-  transparent: string;
-}
-
-interface ButtonSizes {
-  fit: string;
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
-}
+import { ButtonColors, ButtonSizes, ObjectKey } from './Button.interface';
 
 const borderEffect: string = `
   after:absolute
@@ -81,10 +63,9 @@ const colors: ButtonColors = {
 
 const sizes: ButtonSizes = {
   fit: 'w-fit',
-  xs: ``,
   sm: `
     leading-3
-    min-w-btn-xxs
+    min-w-btn-2xs
     px-5
     py-2
     text-xs
@@ -133,9 +114,7 @@ const sizes: ButtonSizes = {
 };
 
 const iconColors: ObjectKey = {
-  active: `
-    [&_path]:fill-white
-  `,
+  active: '[&_path]:fill-white',
   primary: `
     [&_path]:fill-white
     [button:hover_&_path]:fill-black
@@ -178,6 +157,7 @@ const styles: {
       uppercase
       transition-colors
       duration-300
+
       ${className}
       ${colors[color]}
       ${sizes[size]}
@@ -187,6 +167,7 @@ const styles: {
     ctl(`
       [&_path]:transition-colors
       [&_path]:duration-300
+
       ${iconColors[color]}
       ${iconSizes[size]}
     `)
