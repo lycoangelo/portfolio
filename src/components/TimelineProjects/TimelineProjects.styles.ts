@@ -18,7 +18,7 @@ styles.dateRange = ctl(`
   uppercase
 
   lg:pb-3
-  lg:text-lg
+  lg:text-base
 
   after:absolute
   after:-bottom-2
@@ -112,20 +112,17 @@ styles.label = ctl(`
   leading-6
   mr-2
   text-sm
-
-  xxl:text-base
 `);
 
 styles.name = ctl(`
-  mb-3
+  mb-2.5
   font-am-500
-  text-xl
+  leading-8
+  text-2xl
 
-  md:text-2xl
+  md:text-3xl
 
-  lg:text-3xl
-
-  xxl:text-4xl
+  lg:text-4xl
 `);
 
 styles.present = ctl(`
@@ -158,8 +155,6 @@ styles.projects = ctl(`
 styles.value = ctl(`
   text-white
   text-sm
-
-  xxl:text-base
 `);
 
 export default styles;
