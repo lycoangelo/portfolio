@@ -7,6 +7,7 @@ export const daysOfWeek = [
   'Friday',
   'Saturday'
 ];
+
 export const monthsOfYear = [
   'January',
   'February',
@@ -20,4 +21,19 @@ export const monthsOfYear = [
   'October',
   'November',
   'December'
+];
+
+export const monthsOfYearShortNames = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
 ];

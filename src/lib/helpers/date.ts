@@ -1,4 +1,8 @@
-import { daysOfWeek, monthsOfYear } from '../constants/dates';
+import {
+  daysOfWeek,
+  monthsOfYear,
+  monthsOfYearShortNames
+} from '../constants/dates';
 
 /**
  * Converts a date string to a JavaScript Date object.
@@ -40,12 +44,20 @@ export const getDayName = (dateString: string): string =>
   daysOfWeek[getDay(dateString)];
 
 /**
- * Gets the month name as a string from a date string.
+ * Gets the full name of the month as a string from a given date string.
  * @param dateString A string representing the date.
- * @returns A string representing the month name.
+ * @returns A string representing the full name of the month.
  */
 export const getMonthName = (dateString: string): string =>
   monthsOfYear[getMonth(dateString)];
+
+/**
+ * Gets the abbreviated name of the month as a string from a given date string.
+ * @param dateString A string representing the date.
+ * @returns A string representing the abbreviated name of the month.
+ */
+export const getMonthShortName = (dateString: string): string =>
+  monthsOfYearShortNames[getMonth(dateString)];
 
 /**
  * Formats a date using Intl.DateTimeFormat.
