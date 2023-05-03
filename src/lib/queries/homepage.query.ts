@@ -74,6 +74,7 @@ const homepageQuery = `
                 items {
                   name
                   icon {
+                    description
                     url
                     title
                   }
