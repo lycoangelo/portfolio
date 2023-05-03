@@ -10,11 +10,16 @@ import styles from './Icon.styles';
 import Image from 'next/image';
 import { SquircleIconProps } from './Icon.interface';
 
-const SquircleIcon = ({ className = '', icon, image }: SquircleIconProps) => {
+const SquircleIcon = ({
+  className = '',
+  color,
+  icon,
+  image
+}: SquircleIconProps) => {
   const Icon = icon && iconMap[icon];
 
   return (
-    <figure className={styles.figure(className)}>
+    <figure className={styles.figure(color, className)}>
       {Icon ? (
         <Icon />
       ) : (

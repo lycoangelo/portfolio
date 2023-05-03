@@ -9,6 +9,10 @@ styles.container = ctl(`
 
 styles.icon = ctl(`
 	mr-5
+
+	[button_&:before]:transition-all
+
+	[button:hover_&:before]:inset-0
 `);
 
 export default styles;
