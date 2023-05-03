@@ -7,13 +7,15 @@ styles.container = ctl(`
 `);
 
 styles.dateRange = ctl(`
-  relative
-  flex
   border-b
   border-primary
+  flex
+  font-medium
   pb-2
-  font-bold
+  relative
+  text-sm
   text-primary
+  uppercase
 
   lg:pb-3
   lg:text-lg
@@ -32,7 +34,7 @@ styles.dateRange = ctl(`
   [:not(:first-child)>&]:md:border-r-0
 
   [:nth-child(even)>&]:md:after:-left-2
-  [:nth-child(even)>&]:md:pl-4
+  [:nth-child(even)>&]:md:pl-5
 
   [:nth-child(odd)>&]:after:-right-2
   [:nth-child(odd)>&]:md:pr-3
@@ -43,19 +45,22 @@ styles.dateSeparator = ctl(`
 `);
 
 styles.detail = ctl(`
-  label
-  mb-3
   flex
   flex-col
+  label
+  mb-3
 
   sm:mb-1
   sm:flex-row
+  sm:items-center
 
   md:mb-3
   md:flex-col
+  md:items-start
 
   xl:mb-1
   xl:flex-row
+  xl:items-center
 `);
 
 styles.details = ctl(`
@@ -104,13 +109,23 @@ styles.header = ctl(`
 `);
 
 styles.label = ctl(`
+  leading-6
   mr-2
+  text-sm
+
+  xxl:text-base
 `);
 
 styles.name = ctl(`
   mb-3
   font-am-500
   text-xl
+
+  md:text-2xl
+
+  lg:text-3xl
+
+  xxl:text-4xl
 `);
 
 styles.present = ctl(`
@@ -142,6 +157,9 @@ styles.projects = ctl(`
 
 styles.value = ctl(`
   text-white
+  text-sm
+
+  xxl:text-base
 `);
 
 export default styles;

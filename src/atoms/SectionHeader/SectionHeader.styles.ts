@@ -36,6 +36,12 @@ styles.title = ctl(`
   md:text-5xl
   md:leading-15
 
+  xl:text-6xl
+  xl:leading-17
+
+  xxl:text-7xl
+  xxl:leading-18
+
   [.text-left>&]:after:left-0
   [.text-right>&]:after:right-0
 `);
