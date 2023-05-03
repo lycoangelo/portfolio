@@ -15,4 +15,29 @@ styles.icon = ctl(`
 	[button:hover_&:before]:inset-0
 `);
 
+styles.tab = (isActive: boolean) =>
+  ctl(`
+		mt-5
+		top-0
+		transition-all
+
+		${
+      isActive
+        ? `
+			visible
+			opacity-1
+			relative
+		`
+        : `
+			invisible
+			opacity-0
+			absolute
+		`
+    }
+	`);
+
+styles.tabs = ctl(`
+	relative
+`);
+
 export default styles;

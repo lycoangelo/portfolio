@@ -73,8 +73,10 @@ const homepageQuery = `
               iconsCollection(limit: 20) {
                 items {
                   name
+                  description {
+                    json
+                  }
                   icon {
-                    description
                     url
                     title
                   }

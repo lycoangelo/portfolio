@@ -1,4 +1,7 @@
 export interface IconProps {
+  description: {
+    json: any;
+  };
   icon: {
     url: string;
     title: string;

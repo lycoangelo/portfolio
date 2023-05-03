@@ -2,14 +2,17 @@ import ctl from '@netlify/classnames-template-literals';
 
 const styles: { [key: string]: any } = {};
 
-styles.essay = ctl(`
-	text-sm
-	leading-7
+styles.essay = (className: string) =>
+  ctl(`
+		text-sm
+		leading-7
 
-	md:text-base
+		md:text-base
 
-	xl:text-lg
-	xl:leading-8
-`);
+		xl:text-lg
+		xl:leading-8
+
+		${className}
+	`);
 
 export default styles;
