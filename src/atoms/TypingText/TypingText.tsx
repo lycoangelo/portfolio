@@ -1,44 +1,56 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useInViewRef } from 'rooks';
 import { TypingTextProps } from './TypingText.interface';
+import styles from './TypingText.styles';
 
 const TypingText = ({ className, layout, text, duration }: TypingTextProps) => {
   const [currentText, setCurrentText] = useState('');
+  const [startAnimation, setStartAnimation] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
+
   const cursorDuration = text.length * duration;
 
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      if (currentText.length < text.length) {
-        setCurrentText(text.slice(0, currentText.length + 1));
-      } else {
-        clearTimeout(timer);
-      }
-    }, duration);
-
-    return () => clearTimeout(timer);
-  }, [currentText, duration, text]);
+  const [typingTextRef] = useInViewRef(
+    (entries) => {
+      !startAnimation && entries[0].isIntersecting && setStartAnimation(true);
+    },
+    { rootMargin: '-30% 0px' }
+  );
 
   useEffect(() => {
-    let cursorTimer = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, duration);
+    if (startAnimation) {
+      let timer = setTimeout(() => {
+        if (currentText.length < text.length) {
+          setCurrentText(text.slice(0, currentText.length + 1));
+        } else {
+          clearTimeout(timer);
+        }
+      }, duration);
 
-    setTimeout(() => {
-      setShowCursor(false);
-      clearInterval(cursorTimer);
-    }, cursorDuration);
+      return () => clearTimeout(timer);
+    }
+  }, [currentText, duration, startAnimation, text]);
 
-    return () => clearInterval(cursorTimer);
-  }, [cursorDuration, duration]);
+  useEffect(() => {
+    if (startAnimation) {
+      let cursorTimer = setInterval(() => {
+        setShowCursor((prev) => !prev);
+      }, duration);
+
+      setTimeout(() => {
+        setShowCursor(false);
+        clearInterval(cursorTimer);
+      }, cursorDuration);
+
+      return () => clearInterval(cursorTimer);
+    }
+  }, [cursorDuration, duration, startAnimation]);
 
   return (
     <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: layout === 'left' ? 'flex-end' : 'flex-start'
-      }}
+      className={styles.container(layout === 'left', className)}
+      ref={typingTextRef}
     >
       <motion.span
         className={className}
