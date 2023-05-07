@@ -15,19 +15,18 @@ export default function TimelineJobs({
       <div className={styles.timelineTabList} role="tablist">
         {timelines.map((timeline, index) => {
           const isActive = index === activeTabIndex;
-          const isFirstChild = index === 0;
 
           return (
             <div
-              className={styles.timelineTabWrapper(isFirstChild, isActive)}
+              className={styles.timelineTabWrapper(index === 0, isActive)}
               key={index}
             >
               <Button
-                className={styles.timelineTab(isFirstChild, isActive)}
+                className={styles.timelineTab(isActive)}
                 color={index === activeTabIndex ? 'active' : 'inactive'}
                 onClick={() => setActiveTabIndex(index)}
                 role="tab"
-                size="md"
+                size="sm"
               >
                 <span className={styles.timelineTabText}>{timeline.title}</span>
               </Button>
