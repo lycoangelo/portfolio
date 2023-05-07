@@ -97,6 +97,7 @@ styles.timelines = ctl(`
 styles.timelineTab = (isActive: boolean) =>
   ctl(`
   relative
+  max-w-full
   ml-5
 
   after:absolute
@@ -104,22 +105,34 @@ styles.timelineTab = (isActive: boolean) =>
   after:h-0.25
   after:bg-primary
   after:transition-all
-  ${isActive ? 'after:w-5' : 'after:w-0'}
 
   before:absolute
-  before:-left-5
-  before:h-0.25
-  before:w-5
   before:bg-inactive
+  before:h-0.25
+  before:-left-5
+  before:w-5
+
   md:before:w-2.5
-  md:after:w-2.5
+  
+  ${
+    isActive
+      ? `
+    after:w-5
+    [:first-child>&]:md:after:w-2.75
+    [*:not(:first-child)>&]:md:after:w-2.5
+  `
+      : `
+    after:w-0
+  `
+  }
 
   [:first-child>&]:md:ml-0
-  [:first-child>&]:md:mr-2.5
+  [:first-child>&]:md:mr-2.25
   [:first-child>&]:md:before:left-unset
-  [:first-child>&]:md:before:-right-2.75
+  [:first-child>&]:md:before:-right-3
   [:first-child>&]:md:after:left-unset
-  [:first-child>&]:md:after:-right-2.75
+  [:first-child>&]:md:after:-right-3
+  [:first-child>&]:md:before:w-2.75
 
   [:not(:first-child)>&]:md:ml-2.5
   [:not(:first-child)>&]:md:before:-left-2.75
@@ -130,7 +143,12 @@ styles.timelineTabList = ctl(`
   job-timeline-grid
   mb-5
 
-  md:mb-7.5
+  md:mb-6.5
+`);
+
+styles.timelineTabText = ctl(`
+  overflow-hidden
+  text-ellipsis
 `);
 
 styles.timelineTabWrapper = (isFirstChild: boolean, isActive: boolean) =>

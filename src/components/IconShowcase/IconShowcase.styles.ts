@@ -1,22 +1,21 @@
 import ctl from '@netlify/classnames-template-literals';
 
-const styles: { [key: string]: any } = {};
+const styles = {
+  container: ctl(`
+		flex
+		flex-wrap
+	`),
 
-styles.container = ctl(`
-	flex
-	flex-wrap
-`);
+  icon: ctl(`
+		mr-5
 
-styles.icon = ctl(`
-	mr-5
+		[button_&:before]:transition-all
 
-	[button_&:before]:transition-all
+		[button:hover_&:before]:inset-0
+	`),
 
-	[button:hover_&:before]:inset-0
-`);
-
-styles.tab = (isActive: boolean) =>
-  ctl(`
+  tab: (isActive: boolean) =>
+    ctl(`
 		mt-5
 		top-0
 		transition-all
@@ -34,10 +33,11 @@ styles.tab = (isActive: boolean) =>
 			absolute
 		`
     }
-	`);
+	`),
 
-styles.tabs = ctl(`
-	relative
-`);
+  tabs: ctl(`
+		relative
+	`)
+};
 
 export default styles;

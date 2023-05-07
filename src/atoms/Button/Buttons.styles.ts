@@ -66,12 +66,13 @@ const sizes: ButtonSizes = {
   sm: `
     leading-3
     min-w-btn-2xs
-    px-5
+    px-4
     py-2
     text-xs
 
     md:min-w-btn-xs
 
+    lg:py-[2px]
     lg:min-w-btn-sm
     lg:text-sm
 
@@ -139,9 +140,7 @@ const iconSizes: ObjectKey = {
   `
 };
 
-const styles: {
-  [key: string]: Function;
-} = {
+const styles = {
   button: (
     color: keyof ButtonColors,
     size: keyof ButtonSizes,
