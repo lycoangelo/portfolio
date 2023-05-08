@@ -7,7 +7,7 @@ export interface Colors {
 
 export interface SquircleIconProps {
   className?: string;
-  color?: keyof Colors;
+  color: keyof Colors;
   icon?: string;
   image?: {
     title: string;

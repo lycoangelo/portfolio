@@ -1,6 +1,13 @@
 import ctl from '@netlify/classnames-template-literals';
 
-const colors: { [key: string]: string } = {
+interface Colors {
+  primary: string;
+  secondary: string;
+  white: string;
+  black: string;
+}
+
+const colors: Colors = {
   primary: `bg-primary border-primary before:left-0 before:top-0`,
   secondary: `bg-secondary`,
   white: `bg-white`,
@@ -8,7 +15,7 @@ const colors: { [key: string]: string } = {
 };
 
 const styles = {
-  figure: (color: string, className: string) =>
+  figure: (color: keyof Colors, className: string) =>
     ctl(`
       border
       h-auto
