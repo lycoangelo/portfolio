@@ -3,11 +3,11 @@ export async function fetchGraphQL(
   preview = false,
   variables = {}
 ) {
-  const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.CF_SPACE_ID}/environments/${process.env.CF_ENVIRONMENT}`;
+  const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CF_SPACE_ID}/environments/${process.env.NEXT_PUBLIC_CF_ENVIRONMENT}`;
 
   const accessToken = preview
-    ? process.env.CF_PREVIEW_ACCESS_TOKEN
-    : process.env.CF_DELIVERY_ACCESS_TOKEN;
+    ? process.env.NEXT_PUBLIC_CF_PREVIEW_ACCESS_TOKEN
+    : process.env.NEXT_PUBLIC_CF_DELIVERY_ACCESS_TOKEN;
 
   return fetch(url, {
     method: 'POST',

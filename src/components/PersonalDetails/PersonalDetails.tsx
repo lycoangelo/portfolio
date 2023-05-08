@@ -1,83 +1,81 @@
-'use client';
-
-import styles from './PersonalDetails.styles';
-import Button from '@app/atoms/Button/Button';
-import Essay from '@app/components/Essay/Essay';
-import SectionHeader from '@app/atoms/SectionHeader/SectionHeader';
-import IconShowcase from '@app/components/IconShowcase/IconShowcase';
-import SkillSetList from '@app/components/SkillSetList/SkillSetList';
-import TimelineJobs from '@app/components/TimelineJobs/TimelineJobs';
-import { useEffect, useRef, useState } from 'react';
-import { useWindowSize } from 'rooks';
+import PersonalDetailsComponent from './PersonalDetailsComponent';
+import iconQuery from '@app/lib/queries/Icon.query';
+import personalDetailsQuery from '@app/lib/queries/PersonalDetails.query';
+import { fetchGraphQL } from '@app/lib/helpers/api';
+import { EssayProps } from '@app/components/Essay/Essay.interface';
+import { IconShowcaseProps } from '@app/components/IconShowcase/IconShowcase.interface';
+import { SkillSetListProps } from '@app/components/SkillSetList/SkillSetList.interface';
+import { TimelineJobsProps } from '@app/components/TimelineJobs/TimelineJobs.interface';
 
 import {
-  PersonalDetailsProps,
-  PersonalDetailsMap
-} from './PersonalDetails.interface';
+  PersonalDetailsItemsType,
+  PersonalDetailsProps
+} from '@app/components/PersonalDetails/PersonalDetails.interface';
 
-const personalDetailsMap: PersonalDetailsMap = {
-  Essay,
-  IconShowcase,
-  SkillSetList,
-  TimelineJobs
+const personalDetailsDataMap: (_props: PersonalDetailsItemsType) => Promise<{
+  [key: string]:
+    | EssayProps
+    | TimelineJobsProps
+    | SkillSetListProps
+    | IconShowcaseProps;
+}> = async (props) => {
+  let iconsData;
+
+  if (props.__typename === 'IconShowcase') {
+    const { iconsCollection } = props as IconShowcaseProps;
+
+    iconsData = await Promise.all(
+      iconsCollection.items.map(({ sys: { id } }: { sys: { id: string } }) =>
+        fetchGraphQL(iconQuery, false, { id })
+      )
+    ).then(async (res) => {
+      const data = await Promise.all(
+        res.map(async (data) => await data.json())
+      ).then((res) => res.map(({ data }) => ({ ...data.icon })));
+
+      return data;
+    });
+  }
+
+  return {
+    Essay: { ...props } as EssayProps,
+    TimelineJobs: { ...props } as TimelineJobsProps,
+    SkillSetList: { ...props } as SkillSetListProps,
+    IconShowcase: {
+      ...props,
+      iconsCollection: { items: iconsData }
+    } as IconShowcaseProps
+  };
 };
 
-export default function PersonalDetails({
-  sectionsCollection
+export async function getPersonalDetailsData({
+  sectionsCollection: sections
 }: PersonalDetailsProps) {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const [minHeight, setMinHeight] = useState<number | string>('unset');
-  const panelsRef = useRef<(HTMLElement | null)[]>([]);
-  const tabs = sectionsCollection.items;
+  const sectionsCollection = {
+    items: await Promise.all(
+      sections.items.map(async (item) => {
+        const itemData = await personalDetailsDataMap(item);
+        return itemData[item.__typename];
+      })
+    )
+  };
 
-  const { innerWidth } = useWindowSize();
+  return { sectionsCollection };
+}
 
-  useEffect(() => {
-    let containerMinHeight = 0;
-    panelsRef.current.forEach((panel) => {
-      const panelHeight = panel?.offsetHeight || 0;
-      if (panelHeight > containerMinHeight) containerMinHeight = panelHeight;
-    });
-    setMinHeight(containerMinHeight);
-  }, [innerWidth]);
+const getPersonalDetails = async (id: string) => {
+  const res = await fetchGraphQL(personalDetailsQuery, false, {
+    id
+  });
+  return await res.json();
+};
 
-  return (
-    <section className={styles.container} style={{ minHeight }}>
-      <div className={styles.tabList} role="tablist">
-        <div className={styles.animation} role="presentation" />
-        {tabs.map((tab, index) => (
-          <Button
-            className={styles.tab(index === activeTabIndex)}
-            color="transparent"
-            key={index}
-            onClick={() => setActiveTabIndex(index)}
-            role="tab"
-            size="fit"
-          >
-            {tab.name}
-          </Button>
-        ))}
-      </div>
-      <div className={styles.panels}>
-        {tabs.map((tab, index) => {
-          const Component = personalDetailsMap[tab.__typename];
+export default async function PersonalDetails({ id }: { id: string }) {
+  const {
+    data: { personalDetails }
+  } = await getPersonalDetails(id);
 
-          return (
-            <div
-              aria-hidden={index !== activeTabIndex}
-              className={styles.panel(index === activeTabIndex)}
-              key={index}
-              ref={(el) => {
-                panelsRef.current[index] = el;
-              }}
-              role="tabpanel"
-            >
-              <SectionHeader layout="right" name={tab.name} title={tab.title} />
-              <Component {...tab} />
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
+  const data = await getPersonalDetailsData({ ...personalDetails });
+
+  return <PersonalDetailsComponent {...data} />;
 }

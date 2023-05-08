@@ -1,4 +1,4 @@
-import homepageQuery from '@app/lib/queries/homepage.query';
+import homepageQuery from '@app/lib/queries/Homepage.query';
 import ContactForm from '@app/components/ContactForm/ContactForm';
 import Hero from '@app/components/Hero/Hero';
 import PersonalDetails from '@app/components/PersonalDetails/PersonalDetails';
@@ -33,7 +33,8 @@ export default async function Home() {
   return (
     <main>
       <Hero {...heroData} />
-      <PersonalDetails {...personalDetails} />
+      {/* @ts-expect-error Server Component */}
+      <PersonalDetails id={personalDetails.sys.id} />
       <TimelineProjects {...projects} />
       <ContactForm {...contactForm} />
     </main>

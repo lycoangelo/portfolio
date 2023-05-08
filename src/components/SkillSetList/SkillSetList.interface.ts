@@ -15,6 +15,9 @@ export interface SkillsProps {
 }
 
 export interface SkillSetListProps {
+  __typename: string;
+  name: string;
+  title: string;
   listCollection: {
     items: SkillsProps[];
   };

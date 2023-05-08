@@ -1,9 +1,17 @@
 import { EssayProps } from '../Essay/Essay.interface';
+import { IconShowcaseProps } from '../IconShowcase/IconShowcase.interface';
+import { SkillSetListProps } from '../SkillSetList/SkillSetList.interface';
 import { TimelineJobsProps } from '../TimelineJobs/TimelineJobs.interface';
+
+export type PersonalDetailsItemsType =
+  | EssayProps
+  | TimelineJobsProps
+  | SkillSetListProps
+  | IconShowcaseProps;
 
 export interface PersonalDetailsProps {
   sectionsCollection: {
-    items: (EssayProps | TimelineJobsProps)[];
+    items: PersonalDetailsItemsType[];
   };
 }
 
