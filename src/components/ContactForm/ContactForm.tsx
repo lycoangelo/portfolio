@@ -76,15 +76,6 @@ export default function ContactForm({
     { label: 'Message', ref: messageRef, type: 'textarea' }
   ];
 
-  <Input
-    //autoComplete="off"
-    className={styles.input}
-    label="Name"
-    name="Name"
-    ref={nameRef}
-    isSubmitted={isSubmitted}
-  />;
-
   return (
     <div className={styles.container}>
       <div className={styles.animation} />
