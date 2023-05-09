@@ -1,4 +1,5 @@
 import ctl from '@netlify/classnames-template-literals';
+import { TypeTypes } from './Input.interface';
 
 const styles = {
   error: ctl(`
@@ -20,7 +21,7 @@ const styles = {
 		checked:bg-transparent
 	`),
 
-  label: (className: string, type: string) =>
+  label: (className: string, type: TypeTypes) =>
     ctl(`
 			bg-transparent
 			border

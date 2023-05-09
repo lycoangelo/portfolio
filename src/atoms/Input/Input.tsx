@@ -16,10 +16,9 @@ type ErrorMessageMap = {
 
 const Input = forwardRef<InputElement, InputProps>(
   (
-    { className, label, isSubmitted, ...props }: InputProps,
+    { className, label, isSubmitted, type, ...props }: InputProps,
     ref: ForwardedRef<InputElement>
   ) => {
-    const { type } = props;
     const [errorType, setErrorType] = useState('');
 
     const errorMessageMap: ErrorMessageMap = {

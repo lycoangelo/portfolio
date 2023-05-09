@@ -1,4 +1,6 @@
-import { InputHTMLAttributes } from 'react';
+import { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react';
+
+export type TypeTypes = HTMLInputTypeAttribute | 'textarea' | undefined;
 
 export interface InputProps
   extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
@@ -6,4 +8,5 @@ export interface InputProps
   error?: string;
   isSubmitted?: boolean;
   label: string;
+  type: TypeTypes;
 }
