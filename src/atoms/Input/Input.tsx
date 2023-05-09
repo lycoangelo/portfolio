@@ -47,7 +47,7 @@ const Input = forwardRef<InputElement, InputProps>(
 
     return (
       <>
-        <label className={styles.label(className)}>
+        <label className={styles.label(className, type)}>
           <span className={styles.labelText}>{label}:</span>
           {type === 'textarea' ? (
             <textarea
