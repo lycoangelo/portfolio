@@ -9,9 +9,7 @@ export default async function Footer() {
     false
   );
 
-  const {
-    data: { globalSettings = {} }
-  } = await response.json();
+  const { data: { globalSettings = {} } = {} } = await response.json();
 
   const { footerText } = globalSettings;
 
