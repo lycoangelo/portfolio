@@ -101,6 +101,11 @@ body {
     @apply px-5 md:px-10 lg:px-20 max:mx-auto; /* Margin & Padding */
   }
 
+  .flex-container {
+    @apply flex max:max-w-container-max;
+    @apply px-5 md:px-10 lg:px-20 max:mx-auto; /* Margin & Padding */
+  }
+
   .grid-container {
     @apply grid grid-cols-4 md:grid-cols-12; /* Grid */
     @apply gap-x-5 md:gap-x-3 lg:gap-x-5; /* Columns Gap */
