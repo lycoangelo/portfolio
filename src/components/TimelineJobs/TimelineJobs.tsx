@@ -42,23 +42,31 @@ export default function TimelineJobs({
             key={index}
             role="tabpanel"
           >
-            {timeline.jobsCollection.items.map((job, index) => {
-              const startYear = getYear(job.startDate);
-              const endYear = getYear(job.endDate);
+            {timeline.jobsCollection.items.map(
+              ({ company, endDate, isPresent, role, startDate }, index) => {
+                const startYear = getYear(startDate);
+                const endYear = getYear(endDate);
 
-              return (
-                <div className={styles.job} key={index}>
-                  <div className={styles.date}>
-                    <time dateTime={startYear.toString()}>{startYear}</time>-
-                    <time dateTime={endYear.toString()}>{endYear}</time>
+                return (
+                  <div className={styles.job} key={index}>
+                    <div className={styles.date}>
+                      <time dateTime={startYear.toString()}>{startYear}</time>
+                      {isPresent ? (
+                        <span>-PRESENT</span>
+                      ) : (
+                        endYear !== startYear && (
+                          <time dateTime={endYear.toString()}>-{endYear}</time>
+                        )
+                      )}
+                    </div>
+                    <div className={styles.details}>
+                      <h3 className={styles.company}>{company}</h3>
+                      <p className={styles.role}>{role}</p>
+                    </div>
                   </div>
-                  <div className={styles.details}>
-                    <h3 className={styles.company}>{job.company}</h3>
-                    <p className={styles.role}>{job.role}</p>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              }
+            )}
           </div>
         ))}
       </div>

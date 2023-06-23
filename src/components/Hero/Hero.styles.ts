@@ -3,19 +3,19 @@ import ctl from '@netlify/classnames-template-literals';
 const styles = {
   background: ctl(`
     absolute
+    grayscale
     inset-0
     max-w-full
-    grayscale
   `),
 
   backgroundImage: ctl(`
+    duration-300
     h-auto
     max-h-[125vh]
     min-h-screen
-    object-cover
     object-[75%_0%]
+    object-cover
     transition-all
-    duration-300
 
     lg:object-right-top
   `),
@@ -23,18 +23,18 @@ const styles = {
   backgroundWrapper: ctl(`
     relative
 
-    after:hero-gradient
     after:absolute
-    after:left-0
     after:bottom-0
     after:h-1/2
+    after:hero-gradient
+    after:left-0
     after:w-full
   `),
 
   container: ctl(`
     grid-container
-    relative
     h-screen
+    relative
     w-screen
   `),
 
@@ -43,8 +43,6 @@ const styles = {
   `),
 
   content: ctl(`
-    relative
-    z-10
     col-span-full
     col-start-1
     flex
@@ -52,7 +50,9 @@ const styles = {
     items-start
     justify-end
     pb-20
+    relative
     uppercase
+    z-10
 
     md:col-span-9
     md:justify-center
@@ -71,18 +71,21 @@ const styles = {
   `),
 
   title: ctl(`
-    leading-30
-    two-color
-    mb-5
     font-am-200
+    h-[120px]
+    leading-30
+    mb-5
     text-6xl
+    two-color
 
-    md:text-7xl
+    md:h-[174px]
     md:leading-23
+    md:text-7xl
 
+    lg:h-[17vw]
+    lg:leading-[8.5vw]
     lg:mb-2
     lg:text-[7.5vw]
-    lg:leading-[8.5vw]
   `)
 };
 

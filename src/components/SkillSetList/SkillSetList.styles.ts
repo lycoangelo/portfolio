@@ -60,6 +60,7 @@ const styles: ObjectKey = {
   skill: (level: string) =>
     ctl(`
 			mr-2
+			mb-4
 			flex
 			items-center
 			rounded-md
@@ -73,9 +74,8 @@ const styles: ObjectKey = {
 
   skills: ctl(`
 		flex
-		w-fit
 		flex-wrap
-		justify-between
+		w-fit
 	`),
 
   skillSet: ctl(`

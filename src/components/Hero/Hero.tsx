@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { HeroProps } from './Hero.interface';
 import TypingText from '@app/atoms/TypingText/TypingText';
+import { HERO } from '@app/lib/constants/selectors';
 
 export default function Hero({
   background,
@@ -17,7 +18,7 @@ export default function Hero({
   const { download } = useDownloader();
 
   return (
-    <section className={styles.container}>
+    <section className={styles.container} id={HERO}>
       <div className={styles.content}>
         <TypingText
           className={styles.title}
@@ -45,11 +46,11 @@ export default function Hero({
           <Image
             alt={background.title}
             className={styles.backgroundImage}
+            height="1080"
             priority
             sizes="100vw"
-            height="1080"
-            width="1920"
             src={background.url}
+            width="1920"
           />
         </figure>
       </div>

@@ -14,6 +14,7 @@ import {
   PersonalDetailsProps,
   PersonalDetailsMap
 } from './PersonalDetails.interface';
+import { PERSONAL_DETAILS } from '@app/lib/constants/selectors';
 
 const personalDetailsMap: PersonalDetailsMap = {
   Essay,
@@ -44,7 +45,11 @@ export default function PersonalDetailsComponent({
   }, [innerWidth]);
 
   return (
-    <section className={styles.container} style={{ minHeight }}>
+    <section
+      className={styles.container}
+      style={{ minHeight }}
+      id={PERSONAL_DETAILS}
+    >
       <div className={styles.tabList} role="tablist">
         <div className={styles.animation} role="presentation" />
         {tabs.map((tab, index) => (

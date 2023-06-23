@@ -4,6 +4,7 @@ import styles from './TimelineProjects.styles';
 import SectionHeader from '@app/atoms/SectionHeader/SectionHeader';
 import { TimelineProjectsProps } from './TimelineProjects.interface';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
+import { TIMELINE_PROJECTS } from '@app/lib/constants/selectors';
 
 export default function TimelineProjects({
   name,
@@ -11,7 +12,7 @@ export default function TimelineProjects({
   projectsCollection
 }: TimelineProjectsProps) {
   return (
-    <section className={styles.container}>
+    <section className={styles.container} id={TIMELINE_PROJECTS}>
       <SectionHeader
         className={styles.header}
         layout="left"
