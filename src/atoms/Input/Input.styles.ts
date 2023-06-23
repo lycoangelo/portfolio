@@ -8,6 +8,7 @@ const styles = {
 	`),
 
   input: ctl(`
+		appearance-none
 		bg-transparent
 		p-3
 		mt-0.25
@@ -24,8 +25,6 @@ const styles = {
   label: (className: string, type: TypeTypes) =>
     ctl(`
 			bg-transparent
-			border
-			border-transparent
 			relative
 			flex
 			items-start
@@ -45,7 +44,6 @@ const styles = {
       }
 
 			[&:has(:focus)]:border-primary
-			[&:has(:focus)]:rounded-md
 		`),
 
   labelText: ctl(`

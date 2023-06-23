@@ -24,7 +24,7 @@ const TypingText = ({
     (entries) => {
       !startAnimation && entries[0].isIntersecting && setStartAnimation(true);
     },
-    { rootMargin: '-30% 0px' }
+    { rootMargin: '-15% 0px' }
   );
 
   useEffect(() => {

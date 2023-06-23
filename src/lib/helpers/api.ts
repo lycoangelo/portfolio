@@ -23,7 +23,8 @@ export async function fetchGraphQL(
     body: JSON.stringify({
       query,
       variables: { ...variables, preview: preview }
-    })
+    }),
+    next: { revalidate: 10 }
   }).then((response) => {
     return response;
   });

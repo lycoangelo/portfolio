@@ -5,6 +5,7 @@ import iconMap, { IconType } from '@app/lib/constants/iconMap';
 import styles from './ContactForm.styles';
 import Button from '@app/atoms/Button/Button';
 import Input from '@app/atoms/Input/Input';
+import { CONTACT_FORM } from '@app/lib/constants/selectors';
 import { useRef, useState } from 'react';
 
 import {
@@ -77,7 +78,7 @@ export default function ContactForm({
   ];
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container} id={CONTACT_FORM}>
       <div className={styles.animation} />
       <SectionHeader
         className={styles.header}
@@ -128,11 +129,15 @@ export default function ContactForm({
               type={type}
             />
           ))}
-          <Button className={styles.submit} onClick={submitForm}>
+          <Button
+            className={styles.submit}
+            hasBorderEffect
+            onClick={submitForm}
+          >
             Submit
           </Button>
         </form>
       )}
-    </div>
+    </section>
   );
 }

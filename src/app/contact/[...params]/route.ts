@@ -8,11 +8,9 @@ interface ParamsProps {
 }
 
 export async function POST(request: Request, { params }: ParamsProps) {
-  // Send the email
   try {
     const [email, subject, name, message] = params.params;
 
-    // Create a nodemailer transporter
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
@@ -23,7 +21,6 @@ export async function POST(request: Request, { params }: ParamsProps) {
       }
     });
 
-    // Configure the email message
     const mailOptions = {
       from: email,
       to: 'lycoangelo28@gmail.com',

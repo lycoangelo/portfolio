@@ -39,6 +39,7 @@ const styles = {
     items-start
 
     md:col-span-6
+    md:mt-12
 
     lg:col-span-5
     lg:col-start-2
@@ -48,7 +49,11 @@ const styles = {
     grid-container
   `),
 
-  form: ctl(rightColumnsCommonClass),
+  form: ctl(`
+    mt-8
+
+    ${rightColumnsCommonClass}
+  `),
 
   header: ctl(rightColumnsCommonClass),
 
