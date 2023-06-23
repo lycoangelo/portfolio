@@ -30,6 +30,7 @@ const homepageQuery = `
             role
             startDate
             endDate
+            isPresent
             technologiesCollection(limit: 20) {
               items {
                 name

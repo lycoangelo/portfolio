@@ -27,7 +27,8 @@ const styles = {
 
     md:after:bg-primary
 
-    [:last-child>&]:md:border-l
+    [:last-child:not(:nth-child(odd))>&]:md:border-l
+    [:last-child:not(:nth-child(even))>&]:md:border-r
 
     [:not(:first-child)>&]:border-r
     [:not(:first-child)>&]:md:border-r-0
