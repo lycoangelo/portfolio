@@ -2,9 +2,18 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useInViewRef } from 'rooks';
 import { TypingTextProps } from './TypingText.interface';
+import parse from 'html-react-parser';
 import styles from './TypingText.styles';
 
-const TypingText = ({ className, layout, text, duration }: TypingTextProps) => {
+const TypingText = ({
+  className,
+  divProps,
+  duration = 300,
+  hideCursor,
+  layout = 'left',
+  text,
+  textProps
+}: TypingTextProps) => {
   const [currentText, setCurrentText] = useState('');
   const [startAnimation, setStartAnimation] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
@@ -30,10 +39,10 @@ const TypingText = ({ className, layout, text, duration }: TypingTextProps) => {
 
       return () => clearTimeout(timer);
     }
-  }, [currentText, duration, startAnimation, text]);
+  }, [currentText, duration, hideCursor, startAnimation, text]);
 
   useEffect(() => {
-    if (startAnimation) {
+    if (startAnimation && !hideCursor) {
       let cursorTimer = setInterval(() => {
         setShowCursor((prev) => !prev);
       }, duration);
@@ -45,22 +54,24 @@ const TypingText = ({ className, layout, text, duration }: TypingTextProps) => {
 
       return () => clearInterval(cursorTimer);
     }
-  }, [cursorDuration, duration, startAnimation]);
+  }, [cursorDuration, duration, hideCursor, startAnimation]);
 
   return (
     <div
-      className={styles.container(layout === 'left', className)}
+      className={styles.container(layout === 'left')}
       ref={typingTextRef}
+      {...divProps}
     >
       <motion.span
         className={className}
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
+        {...textProps}
       >
-        {currentText}
+        {parse(currentText)}
       </motion.span>
-      {showCursor && (
-        <motion.span animate={{ opacity: 0 }} initial={{ opacity: 1 }}>
+      {showCursor && !hideCursor && (
+        <motion.span animate={{ opacity: 1 }} initial={{ opacity: 1 }}>
           _
         </motion.span>
       )}

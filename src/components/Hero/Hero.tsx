@@ -4,8 +4,9 @@ import styles from './Hero.styles';
 import useDownloader from 'react-use-downloader';
 import Button from '../../atoms/Button/Button';
 import Image from 'next/image';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { HeroProps } from './Hero.interface';
+import TypingText from '@app/atoms/TypingText/TypingText';
 
 export default function Hero({
   background,
@@ -18,9 +19,13 @@ export default function Hero({
   return (
     <section className={styles.container}>
       <div className={styles.content}>
-        <h1 className={styles.title}>
-          {documentToReactComponents(headline.json)}
-        </h1>
+        <TypingText
+          className={styles.title}
+          duration={150}
+          hideCursor
+          layout="left"
+          text={documentToHtmlString(headline.json)}
+        />
         <p className={styles.description}>{description}</p>
         {cv && (
           <Button

@@ -1,6 +1,11 @@
+import { AnimationEvent, HTMLAttributes } from 'react';
+
 export interface TypingTextProps {
   className: string;
-  layout?: string;
+  divProps?: HTMLAttributes<HTMLDivElement>;
+  duration?: number;
+  hideCursor?: boolean;
+  layout?: 'left' | 'right';
   text: string;
-  duration: number;
+  textProps?: AnimationEvent<HTMLSpanElement>;
 }
