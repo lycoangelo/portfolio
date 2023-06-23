@@ -7,14 +7,19 @@ const styles = {
 		text-2xl
 		uppercase
 		tracking-[0.2em]
+
 		lg:col-start-2
+	`),
+
+  content: ctl(`
+		content
 	`),
 
   header: (isScrolled: boolean) =>
     ctl(`
 			bg-black
 			fixed
-			flex-container
+			grid-container
 			py-10
 			top-0
 			transition-all
@@ -41,9 +46,14 @@ const styles = {
   nav: ctl(`
 		flex
 		items-center
+		justify-end
 		ml-auto
 		mr-0
 		text-white
+		w-full
+
+		lg:col-start-4
+		lg:col-end-12
 	`)
 };
 
