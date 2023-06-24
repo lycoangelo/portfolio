@@ -7,7 +7,7 @@ import Button from '@app/atoms/Button/Button';
 import Input from '@app/atoms/Input/Input';
 import TimeOdometer from '@app/atoms/TimeOdometer/TimeOdometer';
 import { CONTACT_FORM } from '@app/lib/constants/selectors';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import {
   ContactFormProps,
@@ -22,22 +22,10 @@ export default function ContactForm({
 }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const initializeGradient = async () => {
-      const Gradient = (await import('../../lib/canvas/gradient-background'))
-        .default;
-      const canvasBG = new Gradient();
-      canvasBG.initGradient(canvasRef.current);
-    };
-
-    initializeGradient();
-  }, []);
 
   const validateForm = () => {
     // Add validation logic here
