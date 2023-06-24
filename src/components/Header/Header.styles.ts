@@ -44,7 +44,7 @@ const styles = {
 	`),
 
   nav: ctl(`
-		flex
+		hidden
 		items-center
 		justify-end
 		ml-auto
@@ -54,6 +54,7 @@ const styles = {
 
 		lg:col-start-4
 		lg:col-end-12
+		lg:flex
 	`)
 };
 
