@@ -4,6 +4,9 @@ import {
   monthsOfYearShortNames
 } from '../constants/dates';
 
+// Get the current date
+const today = new Date();
+
 /**
  * Converts a date string to a JavaScript Date object.
  * @param dateString A string representing the date.
@@ -72,3 +75,55 @@ export const formatDate = (
   options?: Intl.DateTimeFormatOptions
 ) =>
   new Intl.DateTimeFormat(locales, options).format(convertToDate(dateString));
+
+/**
+ * Retrieves the current hour of the day.
+ * @returns {number} - The current hour.
+ */
+export const getHoursToday = () => today.getHours();
+
+/**
+ * Retrieves the current minute of the hour.
+ * @returns {number} - The current minute.
+ */
+export const getMinutesToday = () => today.getMinutes();
+
+/**
+ * Retrieves the current second of the minute.
+ * @returns {number} - The current second.
+ */
+export const getSecondsToday = () => today.getSeconds();
+
+/**
+ * Retrieves the current millisecond of the second.
+ * @returns {number} - The current millisecond.
+ */
+export const getMillisecondsToday = () => today.getMilliseconds();
+
+/**
+ * Gets the local time string in the Philippines, including the AM/PM indicator.
+ * @returns {string} - The formatted local time string in the Philippines.
+ */
+export const getLocaleTimeString = () =>
+  new Date().toLocaleTimeString('en-PH', {
+    hour12: true,
+    timeZone: 'Asia/Manila'
+  });
+
+/**
+ * Gets the local time in the Philippines without the AM/PM indicator.
+ * @returns {string} - The formatted local time string without the AM/PM indicator.
+ */
+export const getPHTime = () => getLocaleTimeString().replace(/\s[AP]M$/, '');
+
+/**
+ * Gets the parsed local time in the Philippines as a numeric value.
+ * @returns {number} - The parsed local time without colons.
+ */
+export const getParsePHTime = () => parseInt(getPHTime().replace(/:/g, ''));
+
+/**
+ * Gets the time indicator (AM/PM) of the local time in the Philippines.
+ * @returns {string} - The time indicator (AM/PM) of the local time.
+ */
+export const getTimeIndicator = () => getLocaleTimeString().split(' ')[1];
