@@ -113,6 +113,13 @@ body {
     @apply max:max-w-container-max min-w-screen-min; /* Width */
   }
 
+  .grid-container-no-margin {
+    @apply grid grid-cols-4 md:grid-cols-12; /* Grid */
+    @apply gap-x-5 md:gap-x-3 lg:gap-x-5; /* Columns Gap */
+    @apply px-5 md:px-10 xl:px-20 max:mx-auto; /* Margin & Padding */
+    @apply max:max-w-container-max min-w-screen-min; /* Width */
+  }
+
   .hero-gradient {
     background: linear-gradient(
       180deg,

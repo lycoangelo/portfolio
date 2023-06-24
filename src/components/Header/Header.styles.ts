@@ -19,7 +19,6 @@ const styles = {
     ctl(`
 			bg-black
 			fixed
-			grid-container
 			py-10
 			top-0
 			transition-all
@@ -34,6 +33,10 @@ const styles = {
           : 'drop-shadow-[0_0_0_rgba(255,255,255,0.18)]'
       }
 		`),
+
+  inner: ctl(`
+		grid-container-no-margin
+	`),
 
   link: ctl(`
 		label
