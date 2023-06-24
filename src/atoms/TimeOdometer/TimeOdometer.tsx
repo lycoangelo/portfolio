@@ -1,8 +1,12 @@
-import ReactOdometer from 'react-odometerjs';
+import dynamic from 'next/dynamic';
 import styles from './TimeOdometer.styles';
 import { getParsePHTime, getTimeIndicator } from '@app/lib/helpers/date';
 import { useEffect, useState } from 'react';
 import { TimeOdometerProps } from './TimeOdometer.interface';
+
+const ReactOdometer = dynamic(async () => await import('react-odometerjs'), {
+  ssr: false
+});
 
 const animationDuration = 1500;
 
