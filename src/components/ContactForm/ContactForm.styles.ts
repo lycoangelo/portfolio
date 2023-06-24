@@ -76,11 +76,8 @@ const styles = {
   time: ctl(`
     font-am-200
     mb-5
-    -left-1
     relative
     w-full
-
-    md:left-0
 
     [&_.odometer-digit]:text-4xl
     [&_.odometer-formatting-mark]:text-4xl
@@ -114,8 +111,6 @@ const styles = {
   timeLabel: ctl(`
     label
     text-primary
-
-    md:pl-2
   `),
 
   timeWrapper: ctl(`
