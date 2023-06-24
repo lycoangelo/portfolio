@@ -15,22 +15,14 @@ const styles = {
   `),
 
   title: ctl(`
-    relative
-    mb-8
     border-b
     border-gray
-    pb-5
     font-am-200
+    mb-8
+    pb-5
+    relative
     text-4xl
     typewriter
-
-    after:absolute
-    after:-bottom-1.75
-    after:mt-2.75
-    after:h-1.75
-    after:w-[16.5%]
-    after:bg-primary
-    after:content-['']
 
     md:text-5xl
     md:leading-15
@@ -40,6 +32,14 @@ const styles = {
 
     xxl:text-7xl
     xxl:leading-18
+
+    after:absolute
+    after:-bottom-1.75
+    after:mt-2.75
+    after:h-1.75
+    after:w-[16.5%]
+    after:bg-primary
+    after:content-['']
 
     [.text-left>&]:after:left-0
     [.text-right>&]:after:right-0
