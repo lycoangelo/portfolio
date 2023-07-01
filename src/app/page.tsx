@@ -1,8 +1,8 @@
 import homepageQuery from '@app/lib/queries/Homepage.query';
-import ContactForm from '@app/components/ContactForm/ContactForm';
-import Hero from '@app/components/Hero/Hero';
-import PersonalDetails from '@app/components/PersonalDetails/PersonalDetails';
-import TimelineProjects from '@app/components/TimelineProjects/TimelineProjects';
+import ContactForm from '@app/components/organisms/ContactForm/ContactForm';
+import Hero from '@app/components/organisms/Hero/Hero';
+import PersonalDetails from '@app/components/organisms/PersonalDetails/PersonalDetails';
+import TimelineProjects from '@app/components/organisms/TimelineProjects/TimelineProjects';
 import { notFound } from 'next/navigation';
 import { fetchGraphQL } from '@app/lib/helpers/api';
 

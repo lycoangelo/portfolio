@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useInViewRef } from 'rooks';
 import { TypingTextProps } from './TypingText.interface';
@@ -62,19 +61,10 @@ const TypingText = ({
       ref={typingTextRef}
       {...divProps}
     >
-      <motion.span
-        className={className}
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        {...textProps}
-      >
+      <span className={className} {...textProps}>
         {parse(currentText)}
-      </motion.span>
-      {showCursor && !hideCursor && (
-        <motion.span animate={{ opacity: 1 }} initial={{ opacity: 1 }}>
-          _
-        </motion.span>
-      )}
+      </span>
+      {showCursor && !hideCursor && <span>_</span>}
     </div>
   );
 };

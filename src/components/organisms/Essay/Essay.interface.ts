@@ -1,8 +1,8 @@
 export interface EssayProps {
-  __typename: string;
+  __typename?: string;
   className?: string;
-  name: string;
-  title: string;
+  name?: string;
+  title?: string;
   essay: {
     json: any;
   };

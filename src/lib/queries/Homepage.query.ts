@@ -31,7 +31,27 @@ const homepageQuery = `
             startDate
             endDate
             isPresent
-            technologiesCollection(limit: 20) {
+            frontendTechnologiesCollection(limit: 20) {
+              items {
+                name
+                logo {
+                  url
+                  title
+                }
+                level
+              }
+            }
+            backendTechnologiesCollection(limit: 20) {
+              items {
+                name
+                logo {
+                  url
+                  title
+                }
+                level
+              }
+            }
+            softwareToolsCollection(limit: 20) {
               items {
                 name
                 logo {

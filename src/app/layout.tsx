@@ -29,8 +29,8 @@ const fontsVariables = ctl(`
 `);
 
 import './globals.css';
-import Footer from '@app/components/Footer/Footer';
-import Header from '../components/Header/Header';
+import Footer from '@app/components/organisms/Footer/Footer';
+import Header from '@app/components/organisms/Header/Header';
 
 export default function RootLayout({
   children

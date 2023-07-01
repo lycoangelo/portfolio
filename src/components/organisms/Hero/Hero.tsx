@@ -6,8 +6,11 @@ import Button from '../../atoms/Button/Button';
 import Image from 'next/image';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { HeroProps } from './Hero.interface';
-import TypingText from '@app/atoms/TypingText/TypingText';
+import TypingText from '@app/components/atoms/TypingText/TypingText';
 import { HERO } from '@app/lib/constants/selectors';
+import { motion } from 'framer-motion';
+
+const typeDuration = 150;
 
 export default function Hero({
   background,
@@ -17,17 +20,19 @@ export default function Hero({
 }: HeroProps) {
   const { download } = useDownloader();
 
+  const headlineText = documentToHtmlString(headline.json);
+
   return (
     <section className={styles.container} id={HERO}>
       <div className={styles.content}>
         <TypingText
           className={styles.title}
-          duration={150}
+          duration={typeDuration}
           hideCursor
           layout="left"
-          text={documentToHtmlString(headline.json)}
+          text={headlineText}
         />
-        <p className={styles.description}>{description}</p>
+        <motion.p className={styles.description}>{description}</motion.p>
         {cv && (
           <Button
             className={styles.cv}

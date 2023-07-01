@@ -2,15 +2,15 @@ import PersonalDetailsComponent from './PersonalDetailsComponent';
 import iconQuery from '@app/lib/queries/Icon.query';
 import personalDetailsQuery from '@app/lib/queries/PersonalDetails.query';
 import { fetchGraphQL } from '@app/lib/helpers/api';
-import { EssayProps } from '@app/components/Essay/Essay.interface';
-import { IconShowcaseProps } from '@app/components/IconShowcase/IconShowcase.interface';
-import { SkillSetListProps } from '@app/components/SkillSetList/SkillSetList.interface';
-import { TimelineJobsProps } from '@app/components/TimelineJobs/TimelineJobs.interface';
+import { EssayProps } from '@app/components/organisms/Essay/Essay.interface';
+import { IconShowcaseProps } from '@app/components/organisms/IconShowcase/IconShowcase.interface';
+import { SkillSetListProps } from '@app/components/organisms/SkillSetList/SkillSetList.interface';
+import { TimelineJobsProps } from '@app/components/organisms/TimelineJobs/TimelineJobs.interface';
 
 import {
   PersonalDetailsItemsType,
   PersonalDetailsProps
-} from '@app/components/PersonalDetails/PersonalDetails.interface';
+} from '@app/components/organisms/PersonalDetails/PersonalDetails.interface';
 
 const personalDetailsDataMap: (_props: PersonalDetailsItemsType) => Promise<{
   [key: string]:
@@ -55,7 +55,7 @@ export async function getPersonalDetailsData({
     items: await Promise.all(
       sections.items.map(async (item) => {
         const itemData = await personalDetailsDataMap(item);
-        return itemData[item.__typename];
+        return itemData[item.__typename || ''];
       })
     )
   };
@@ -67,6 +67,7 @@ const getPersonalDetails = async (id: string) => {
   const res = await fetchGraphQL(personalDetailsQuery, false, {
     id
   });
+
   return await res.json();
 };
 
@@ -76,6 +77,5 @@ export default async function PersonalDetails({ id }: { id: string }) {
   } = await getPersonalDetails(id);
 
   const data = await getPersonalDetailsData({ ...personalDetails });
-
   return <PersonalDetailsComponent {...data} />;
 }

@@ -1,12 +1,12 @@
 'use client';
 
 import styles from './PersonalDetails.styles';
-import Button from '@app/atoms/Button/Button';
-import Essay from '@app/components/Essay/Essay';
-import SectionHeader from '@app/atoms/SectionHeader/SectionHeader';
-import IconShowcase from '@app/components/IconShowcase/IconShowcase';
-import SkillSetList from '@app/components/SkillSetList/SkillSetList';
-import TimelineJobs from '@app/components/TimelineJobs/TimelineJobs';
+import Button from '@app/components/atoms/Button/Button';
+import Essay from '@app/components/organisms/Essay/Essay';
+import SectionHeader from '@app/components/atoms/SectionHeader/SectionHeader';
+import IconShowcase from '@app/components/organisms/IconShowcase/IconShowcase';
+import SkillSetList from '@app/components/organisms/SkillSetList/SkillSetList';
+import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
 import { useEffect, useRef, useState } from 'react';
 import { useWindowSize } from 'rooks';
 

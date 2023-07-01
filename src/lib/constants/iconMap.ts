@@ -5,7 +5,7 @@ import {
   LinkedInIcon,
   MobileIcon,
   UpworkIcon
-} from '@app/atoms/Icon/Icon';
+} from '@app/components/atoms/Icon/Icon';
 
 import { SVGProps } from 'react';
 

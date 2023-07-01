@@ -20,7 +20,7 @@ body {
 
 @layer base {
   body {
-    @apply min-w-screen-min;
+    @apply min-w-screen-min text-white;
   }
 
   *:focus {

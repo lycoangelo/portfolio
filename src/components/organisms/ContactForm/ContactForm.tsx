@@ -1,11 +1,11 @@
 'use client';
 
-import SectionHeader from '@app/atoms/SectionHeader/SectionHeader';
+import SectionHeader from '@app/components/atoms/SectionHeader/SectionHeader';
 import iconMap, { IconType } from '@app/lib/constants/iconMap';
 import styles from './ContactForm.styles';
-import Button from '@app/atoms/Button/Button';
-import Input from '@app/atoms/Input/Input';
-import TimeOdometer from '@app/atoms/TimeOdometer/TimeOdometer';
+import Button from '@app/components/atoms/Button/Button';
+import Input from '@app/components/atoms/Input/Input';
+import TimeOdometer from '@app/components/atoms/TimeOdometer/TimeOdometer';
 import { CONTACT_FORM } from '@app/lib/constants/selectors';
 import { useRef, useState } from 'react';
 

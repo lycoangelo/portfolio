@@ -2,9 +2,9 @@ import styles from './IconShowcase.styles';
 import { useState } from 'react';
 import { IconShowcaseComponentProps } from './IconShowcase.interface';
 
-import { SquircleIcon } from '@app/atoms/Icon/Icon';
-import Button from '@app/atoms/Button/Button';
-//import Essay from '../Essay/Essay';
+import { SquircleIcon } from '@app/components/atoms/Icon/Icon';
+import Button from '@app/components/atoms/Button/Button';
+import Essay from '../Essay/Essay';
 
 export default function IconShowcase({
   iconsCollection
@@ -29,13 +29,13 @@ export default function IconShowcase({
       ))}
 
       <div className={styles.tabs}>
-        {/*{iconsCollection.items.map(({ description }, index) => (
+        {iconsCollection.items.map(({ description }, index) => (
           <Essay
             className={styles.tab(isActiveIndex === index)}
             essay={description}
             key={index}
           />
-        ))}*/}
+        ))}
       </div>
     </div>
   );

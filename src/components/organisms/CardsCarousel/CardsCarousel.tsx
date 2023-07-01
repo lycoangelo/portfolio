@@ -1,8 +1,8 @@
 'use client';
 
-import styles from './TimelineProjects.styles';
-import SectionHeader from '@app/atoms/SectionHeader/SectionHeader';
-import { TimelineProjectsProps } from './TimelineProjects.interface';
+import styles from './CardsCarousel.styles';
+import SectionHeader from '@app/components/atoms/SectionHeader/SectionHeader';
+import { TimelineProjectsProps } from './CardsCarousel.interface';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
 import { TIMELINE_PROJECTS } from '@app/lib/constants/selectors';
 

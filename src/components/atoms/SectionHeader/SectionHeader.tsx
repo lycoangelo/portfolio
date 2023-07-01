@@ -1,5 +1,5 @@
 import { SectionHeaderProps } from './SectionHeader.interface';
-import TypingText from '@app/atoms/TypingText/TypingText';
+import TypingText from '@app/components/atoms/TypingText/TypingText';
 import styles from './SectionHeader.styles';
 
 export default function SectionHeader({

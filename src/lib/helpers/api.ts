@@ -25,7 +25,5 @@ export async function fetchGraphQL(
       variables: { ...variables, preview: preview }
     }),
     next: { revalidate: 10 }
-  }).then((response) => {
-    return response;
-  });
+  }).then((response) => response);
 }

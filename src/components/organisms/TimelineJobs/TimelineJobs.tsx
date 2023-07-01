@@ -1,5 +1,5 @@
 import styles from './TimelineJobs.styles';
-import Button from '@app/atoms/Button/Button';
+import Button from '@app/components/atoms/Button/Button';
 import { useState } from 'react';
 import { TimelineJobsProps } from './TimelineJobs.interface';
 import { getYear } from '@app/lib/helpers/date';
