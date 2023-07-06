@@ -26,7 +26,9 @@ export default function TimelineProjects({
             const endMonth = getMonthShortName(endDate);
             const startYear = getYear(startDate);
             const endYear = getYear(endDate);
-            const isNotSameYear = startYear !== endYear;
+
+            const isNotSameDate =
+              startYear !== endYear || startMonth !== endMonth;
 
             return (
               <div className={styles.project} key={index}>
@@ -34,10 +36,10 @@ export default function TimelineProjects({
                   <time dateTime={startYear.toString()}>
                     {startMonth} {startYear}
                   </time>
-                  {isNotSameYear && (
+                  {isNotSameDate && (
                     <span className={styles.dateSeparator}>-</span>
                   )}
-                  {isNotSameYear &&
+                  {isNotSameDate &&
                     (isPresent ? (
                       <span className={styles.present}>Present</span>
                     ) : (
