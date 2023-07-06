@@ -3,11 +3,16 @@ import { IconShowcaseProps } from '../IconShowcase/IconShowcase.interface';
 import { SkillSetListProps } from '../SkillSetList/SkillSetList.interface';
 import { TimelineJobsProps } from '../TimelineJobs/TimelineJobs.interface';
 
-export type PersonalDetailsItemsType =
+export type PersonalDetailsItemsType = (
   | EssayProps
   | TimelineJobsProps
   | SkillSetListProps
-  | IconShowcaseProps;
+  | IconShowcaseProps
+) & {
+  name: string;
+  title: string;
+  __typename: string;
+};
 
 export interface PersonalDetailsProps {
   sectionsCollection: {
