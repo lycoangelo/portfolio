@@ -6,7 +6,7 @@ import Button from '../../atoms/Button/Button';
 import Image from 'next/image';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { HeroProps } from './Hero.interface';
-import TypingText from '@app/components/atoms/TypingText/TypingText';
+import TypingText from '@app/components/molecules/TypingText/TypingText';
 import { HERO } from '@app/lib/constants/selectors';
 import { motion } from 'framer-motion';
 

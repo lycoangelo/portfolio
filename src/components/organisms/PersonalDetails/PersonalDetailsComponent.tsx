@@ -2,8 +2,8 @@
 
 import styles from './PersonalDetails.styles';
 import Button from '@app/components/atoms/Button/Button';
+import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import Essay from '@app/components/organisms/Essay/Essay';
-import SectionHeader from '@app/components/atoms/SectionHeader/SectionHeader';
 import IconShowcase from '@app/components/organisms/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/organisms/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
