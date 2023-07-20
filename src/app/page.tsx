@@ -35,7 +35,7 @@ export default async function Home() {
       <Hero {...heroData} />
       {/* @ts-expect-error Server Component */}
       <PersonalDetails id={personalDetails.sys.id} />
-      {/*<TimelineProjects {...projects} />*/}
+      {/* @ts-expect-error Server Component */}
       <Projects {...projects} />
       <ContactForm {...contactForm} />
     </main>
