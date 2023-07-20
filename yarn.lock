@@ -1005,6 +1005,13 @@
     "@contentful/rich-text-types" "^16.1.0"
     escape-html "^1.0.3"
 
+"@contentful/rich-text-plain-text-renderer@^16.0.5":
+  version "16.0.5"
+  resolved "https://registry.yarnpkg.com/@contentful/rich-text-plain-text-renderer/-/rich-text-plain-text-renderer-16.0.5.tgz#c834ec290af18ebbf7bee40fb012c9e058649641"
+  integrity sha512-Ab7SCLY5H+HSlAiV5Jf3/0Dn4wEZg/P2R5f8OwKLSTT7hrThORSxOHJxfY6hIBK8J3wzthBbNN2Bbz/eIEBCqw==
+  dependencies:
+    "@contentful/rich-text-types" "^16.2.0"
+
 "@contentful/rich-text-react-renderer@^15.16.3":
   version "15.16.3"
   resolved "https://registry.npmjs.org/@contentful/rich-text-react-renderer/-/rich-text-react-renderer-15.16.3.tgz"
@@ -1021,6 +1028,11 @@
   version "16.1.0"
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.1.0.tgz#2eea32439790abf857992167df68e82734934a3a"
   integrity sha512-Pucb68FK0j9cHJ96FAewXv+bvH4XizC4KBbVqyHhPLkDIVfasj0AWU5rI1lnvysdVKu66NQkFe8xZdeFTkaLWQ==
+
+"@contentful/rich-text-types@^16.2.0":
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.2.0.tgz#5a98cb119340f4da46555216913e96d7ce58df70"
+  integrity sha512-4BHC+mfa50JB70epzpnas4EkiuB3mGdBZ5Rp8w7R5wXvswEf8TLg5yGau2FxmZeEjrAkDrt4vzBLVQ8v3Y//Jw==
 
 "@emotion/is-prop-valid@^0.8.2":
   version "0.8.8"
@@ -3393,7 +3405,7 @@ lodash.merge@^4.6.2:
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-lodash@^4.17.15:
+lodash@4.17.21, lodash@^4.17.15:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -4375,6 +4387,13 @@ synckit@^0.8.4:
   dependencies:
     "@pkgr/utils" "^2.3.1"
     tslib "^2.5.0"
+
+tailwindcss-3d@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/tailwindcss-3d/-/tailwindcss-3d-0.2.5.tgz#c7406233dc747e2edb6d92bd41978568b25b5095"
+  integrity sha512-6RWjPZuzoCadlJdnF+yZPgu1tM9X1ELW0yojzMS2O9P8S8YBQ51VlcFUfFwFQAMSsJSX/hZL9xMIYZZc75BhYA==
+  dependencies:
+    lodash "4.17.21"
 
 tailwindcss@^3.2.4:
   version "3.2.7"

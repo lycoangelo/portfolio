@@ -39,6 +39,7 @@ const styles = {
 	`),
 
   link: ctl(`
+		cursor-pointer
 		label
 
 		hover:text-white

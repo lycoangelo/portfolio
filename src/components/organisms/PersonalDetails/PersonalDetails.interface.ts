@@ -3,16 +3,17 @@ import { IconShowcaseProps } from '../IconShowcase/IconShowcase.interface';
 import { SkillSetListProps } from '../SkillSetList/SkillSetList.interface';
 import { TimelineJobsProps } from '../TimelineJobs/TimelineJobs.interface';
 
-export type PersonalDetailsItemsType = (
-  | EssayProps
-  | TimelineJobsProps
-  | SkillSetListProps
-  | IconShowcaseProps
-) & {
+export interface ComponentMapProps {
   name: string;
   title: string;
   __typename: string;
-};
+}
+
+export type PersonalDetailsItemsType =
+  | (EssayProps & ComponentMapProps)
+  | (TimelineJobsProps & ComponentMapProps)
+  | (SkillSetListProps & ComponentMapProps)
+  | (IconShowcaseProps & ComponentMapProps);
 
 export interface PersonalDetailsProps {
   sectionsCollection: {

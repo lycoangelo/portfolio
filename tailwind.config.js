@@ -9,6 +9,25 @@ const commonPixelValues = {
   7.5: '30px'
 };
 
+const plugin = require('tailwindcss/plugin');
+
+const backfaceVisibility = plugin(function ({ addUtilities }) {
+  addUtilities({
+    '.backface-visible': {
+      'backface-visibility': 'visible',
+      '-moz-backface-visibility': 'visible',
+      '-webkit-backface-visibility': 'visible',
+      '-ms-backface-visibility': 'visible'
+    },
+    '.backface-hidden': {
+      'backface-visibility': 'hidden',
+      '-moz-backface-visibility': 'hidden',
+      '-webkit-backface-visibility': 'hidden',
+      '-ms-backface-visibility': 'hidden'
+    }
+  });
+});
+
 module.exports = {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
@@ -100,5 +119,5 @@ module.exports = {
       max: '1920px'
     }
   },
-  plugins: []
+  plugins: [require('tailwindcss-3d'), backfaceVisibility]
 };

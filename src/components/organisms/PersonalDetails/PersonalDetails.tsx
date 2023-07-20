@@ -8,16 +8,13 @@ import { SkillSetListProps } from '@app/components/organisms/SkillSetList/SkillS
 import { TimelineJobsProps } from '@app/components/organisms/TimelineJobs/TimelineJobs.interface';
 
 import {
+  ComponentMapProps,
   PersonalDetailsItemsType,
   PersonalDetailsProps
 } from '@app/components/organisms/PersonalDetails/PersonalDetails.interface';
 
 const personalDetailsDataMap: (_props: PersonalDetailsItemsType) => Promise<{
-  [key: string]:
-    | EssayProps
-    | TimelineJobsProps
-    | SkillSetListProps
-    | IconShowcaseProps;
+  [key: string]: PersonalDetailsItemsType;
 }> = async (props) => {
   let iconsData;
 
@@ -38,9 +35,9 @@ const personalDetailsDataMap: (_props: PersonalDetailsItemsType) => Promise<{
   }
 
   return {
-    Essay: { ...props } as EssayProps,
-    TimelineJobs: { ...props } as TimelineJobsProps,
-    SkillSetList: { ...props } as SkillSetListProps,
+    Essay: { ...props } as EssayProps & ComponentMapProps,
+    TimelineJobs: { ...props } as TimelineJobsProps & ComponentMapProps,
+    SkillSetList: { ...props } as SkillSetListProps & ComponentMapProps,
     IconShowcase: {
       ...props,
       iconsCollection: { items: iconsData }

@@ -1,3 +1,7 @@
+import { RICHTEXT_FRAGMENT } from './fragments/richtext';
+import { SYS_ID_FRAGMENT } from './fragments/sys-id';
+import { TECHNOLOGY_FRAGMENT } from './fragments/technology';
+
 const homepageQuery = `
   query homepageQuery {
     homepage(id: "c1aDCGkzlEn07bZ4UqGER") {
@@ -9,22 +13,21 @@ const homepageQuery = `
       }
       description
       headline {
-        json
+        ${RICHTEXT_FRAGMENT}
       }
       background: heroBackground {
         title
         url
       }
       personalDetails {
-        sys {
-          id
-        }
+        ${SYS_ID_FRAGMENT}
       }
       projects {
         name
         title
         projectsCollection(limit: 50) {
           items {
+            ${SYS_ID_FRAGMENT}
             name
             company
             role
@@ -33,36 +36,18 @@ const homepageQuery = `
             isPresent
             frontendTechnologiesCollection(limit: 20) {
               items {
-                name
-                logo {
-                  url
-                  title
-                }
-                level
+                ${TECHNOLOGY_FRAGMENT}
               }
             }
             backendTechnologiesCollection(limit: 20) {
               items {
-                name
-                logo {
-                  url
-                  title
-                }
-                level
+                ${TECHNOLOGY_FRAGMENT}
               }
             }
             softwareToolsCollection(limit: 20) {
               items {
-                name
-                logo {
-                  url
-                  title
-                }
-                level
+                ${TECHNOLOGY_FRAGMENT}
               }
-            }
-            description {
-              json
             }
           }
         }

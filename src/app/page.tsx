@@ -2,9 +2,9 @@ import homepageQuery from '@app/lib/queries/Homepage.query';
 import ContactForm from '@app/components/organisms/ContactForm/ContactForm';
 import Hero from '@app/components/organisms/Hero/Hero';
 import PersonalDetails from '@app/components/organisms/PersonalDetails/PersonalDetails';
-import TimelineProjects from '@app/components/organisms/TimelineProjects/TimelineProjects';
 import { notFound } from 'next/navigation';
 import { fetchGraphQL } from '@app/lib/helpers/api';
+import Projects from '@app/components/organisms/Projects/Projects';
 
 export const metadata = {
   title: 'Lyco Angelo: Portfolio'
@@ -35,7 +35,8 @@ export default async function Home() {
       <Hero {...heroData} />
       {/* @ts-expect-error Server Component */}
       <PersonalDetails id={personalDetails.sys.id} />
-      <TimelineProjects {...projects} />
+      {/*<TimelineProjects {...projects} />*/}
+      <Projects {...projects} />
       <ContactForm {...contactForm} />
     </main>
   );

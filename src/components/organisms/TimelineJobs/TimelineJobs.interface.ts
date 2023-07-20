@@ -14,8 +14,6 @@ export interface JobsCollectionProps {
 }
 
 export interface TimelineJobsProps {
-  __typename: string;
-  name: string;
   title: string;
   timelinesCollection: {
     items: JobsCollectionProps[];
