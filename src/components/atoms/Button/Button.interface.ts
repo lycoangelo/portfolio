@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import iconMap from '@app/lib/constants/iconMap';
 
 export interface ObjectKey {
@@ -19,12 +19,14 @@ export interface ButtonSizes {
   lg: string;
 }
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  children: any;
-  color?: keyof ButtonColors;
-  icon?: keyof typeof iconMap;
-  hasBorderEffect?: boolean;
-  size?: keyof ButtonSizes;
-  type?: 'button' | 'submit' | 'reset' | undefined;
-}
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    children: any;
+    color?: keyof ButtonColors;
+    hasBorderEffect?: boolean;
+    href?: string;
+    icon?: keyof typeof iconMap;
+    iconClassName?: string;
+    size?: keyof ButtonSizes;
+    type?: 'button' | 'submit' | 'reset' | undefined;
+  };

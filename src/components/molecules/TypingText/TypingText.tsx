@@ -61,7 +61,7 @@ const TypingText = ({
       ref={typingTextRef}
       {...divProps}
     >
-      <span className={className} {...textProps}>
+      <span aria-label={text} className={className} {...textProps}>
         {parse(currentText)}
       </span>
       {showCursor && !hideCursor && <span>_</span>}

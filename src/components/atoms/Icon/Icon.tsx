@@ -1,3 +1,6 @@
+import ArrowDownIcon from '@app/assets/icons/arrow-down.svg';
+//import ArrowLeftIcon from '@app/assets/icons/arrow-left.svg';
+//import ArrowRightIcon from '@app/assets/icons/arrow-right.svg';
 import DownloadIcon from '@app/assets/icons/download.svg';
 import EmailIcon from '@app/assets/icons/email.svg';
 import LocationIcon from '@app/assets/icons/location.svg';
@@ -38,6 +41,9 @@ const SquircleIcon = ({
 };
 
 export {
+  ArrowDownIcon,
+  //ArrowLeftIcon,
+  //ArrowRightIcon,
   DownloadIcon,
   EmailIcon,
   LocationIcon,

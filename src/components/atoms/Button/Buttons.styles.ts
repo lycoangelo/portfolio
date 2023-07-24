@@ -162,13 +162,14 @@ const styles = {
       ${sizes[size]}
       ${hasBorderEffect && borderEffect}
     `),
-  icon: (color: string, size: string) =>
+  icon: (color: string, size: string, iconClassName: string) =>
     ctl(`
       [&_path]:transition-colors
       [&_path]:duration-300
 
       ${iconColors[color]}
       ${iconSizes[size]}
+      ${iconClassName}
     `)
 };
 

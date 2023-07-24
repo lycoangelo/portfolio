@@ -8,10 +8,10 @@ interface Colors {
 }
 
 const colors: Colors = {
-  primary: `bg-primary border-primary before:left-0 before:top-0`,
-  secondary: `bg-secondary`,
-  white: `bg-white`,
-  black: `bg-black border-primary`
+  primary: 'bg-primary border-primary before:left-0 before:top-0',
+  secondary: 'bg-secondary',
+  white: 'bg-white',
+  black: 'bg-black border-primary'
 };
 
 const styles = {

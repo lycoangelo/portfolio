@@ -31,7 +31,7 @@ export default async function Home() {
   const heroData = { background, cv, description, headline };
 
   return (
-    <main>
+    <main className="overflow-hidden">
       <Hero {...heroData} />
       {/* @ts-expect-error Server Component */}
       <PersonalDetails id={personalDetails.sys.id} />

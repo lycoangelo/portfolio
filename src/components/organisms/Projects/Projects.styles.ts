@@ -1,5 +1,12 @@
 import ctl from '@netlify/classnames-template-literals';
 
+const buttonStyles = ctl(`
+  mb-0
+  ml-auto
+  mr-0
+  mt-auto
+`);
+
 const styles = {
   back: ctl(`
     absolute
@@ -7,6 +14,8 @@ const styles = {
     border-primary
     backface-hidden
     bg-teal
+    flex
+    flex-col
     h-full
     overflow-hidden
     p-8
@@ -16,8 +25,11 @@ const styles = {
     w-full
   `),
 
+  backButton: buttonStyles,
+
   container: ctl(`
     grid-container
+    overflow-visible
   `),
 
   dateRange: ctl(`
@@ -50,8 +62,9 @@ const styles = {
   `),
 
   details: ctl(`
-    relative
     border-primary
+    mb-auto
+    relative
   `),
 
   front: ctl(`
@@ -60,6 +73,8 @@ const styles = {
     bg-dark
     border
     border-primary
+    flex
+    flex-col
     h-full
     left-0
     overflow-hidden
@@ -80,7 +95,7 @@ const styles = {
   `),
 
   inner: ctl(`
-    duration-1000
+    duration-700
     h-full
     relative
     transition-all
@@ -105,6 +120,17 @@ const styles = {
     lg:text-4xl
   `),
 
+  nav: ctl(`
+    col-span-full
+    flex
+    h-fit
+    justify-between
+    w-full
+
+    lg:col-start-7
+    lg:col-end-12
+  `),
+
   present: ctl(`
     text-white
   `),
@@ -116,22 +142,19 @@ const styles = {
     perspective-1000
     text-left
 
-    sm:min-w-[calc(50%-10px)]
-
-    xl:min-w-[calc(33.333337%-20px)]
+    md:min-w-[calc(50%-10px)]
 
     [&:not(:first-child)]:ml-5
-
-    focus:outline-none
   `),
 
   projects: ctl(`
     col-span-full
-    flex
 
     lg:col-span-10
     lg:col-start-2
   `),
+
+  readMore: buttonStyles,
 
   value: ctl(`
     text-white

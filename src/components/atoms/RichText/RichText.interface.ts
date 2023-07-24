@@ -26,10 +26,7 @@ export interface ContentBody {
   };
 }
 export interface RichTextProps {
-  alignment?: 'Left' | 'Center';
-  background?: 'White' | 'Black';
+  className?: string;
   contentBody: ContentBody;
-  isDark?: boolean;
-  isFull?: boolean;
   options?: (_args: ContentBody) => Options;
 }

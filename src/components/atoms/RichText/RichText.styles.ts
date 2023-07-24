@@ -1,21 +1,13 @@
 import ctl from '@netlify/classnames-template-literals';
 
 const styles = {
-  container: (isWhiteBg: boolean) =>
+  richtext: (className: string) =>
     ctl(`
-      container
+      break-words
+      hyphens-auto
 
-      ${isWhiteBg ? 'bg-white text-black' : 'bg-black text-white'}
+      ${className}
     `),
-  content: (isLeftAligned: boolean) =>
-    ctl(`
-      ${
-        isLeftAligned
-          ? 'block-container text-left'
-          : 'flex-container flex-col items-center text-center'
-      }
-    `),
-  global: 'hyphens-auto break-words',
   a: 'text-dp-purple font-semibold hover:underline',
   figure: 'relative w-full',
   image: 'w-full h-auto',

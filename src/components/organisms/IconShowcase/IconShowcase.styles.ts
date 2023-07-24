@@ -16,6 +16,7 @@ const styles = {
 
   tab: (isActive: boolean) =>
     ctl(`
+		duration-300
 		mt-5
 		top-0
 		transition-all

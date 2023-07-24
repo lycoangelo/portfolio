@@ -1,6 +1,4 @@
-import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Document } from '@contentful/rich-text-types';
 import { MARKS, BLOCKS, INLINES, Node } from '@contentful/rich-text-types';
 import Image from 'next/image';
 import React, { ReactNode } from 'react';
@@ -122,15 +120,16 @@ const richTextOptions = (content: ContentBody) => {
   };
 };
 
-export const isRichTextString = (document: Document) =>
-  !!documentToPlainTextString(document).trim();
-
-const RichText = ({ contentBody, options }: RichTextProps) => {
+const RichText = ({ className = '', contentBody, options }: RichTextProps) => {
   const renderOptions = options
     ? options(contentBody)
     : richTextOptions(contentBody);
 
-  return <>{documentToReactComponents(contentBody?.json, renderOptions)}</>;
+  return (
+    <div className={styles.richtext(className)}>
+      {documentToReactComponents(contentBody?.json, renderOptions)}
+    </div>
+  );
 };
 
 export default RichText;

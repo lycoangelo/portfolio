@@ -5,18 +5,37 @@ import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader
 import { ProjectsProps } from './Projects.interface';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
 import { TIMELINE_PROJECTS } from '@app/lib/constants/selectors';
-import { MouseEvent } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 import RichText from '@app/components/atoms/RichText/RichText';
+import Carousel from '@app/components/molecules/Carousel/Carousel';
+import Button from '@app/components/atoms/Button/Button';
+import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
 
 export default function Projects({
   name,
   title,
   projectsCollection
 }: ProjectsProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [totalIndexes, setTotalIndexes] = useState(0);
+
+  const carouselNavNextRef = useRef<HTMLButtonElement>(null);
+  const carouselNavPrevRef = useRef<HTMLButtonElement>(null);
+  const projectsRef = useRef<(HTMLDivElement | null)[]>([]);
+
   const handleProjectClick = (e: MouseEvent) => {
-    e.currentTarget?.querySelector('div')?.classList.toggle('rotate-x-180');
-    e.currentTarget?.querySelector('div')?.classList.toggle('rotate-z-180');
+    e.currentTarget?.parentElement?.parentElement?.classList.toggle(
+      'rotate-x-180'
+    );
+
+    e.currentTarget?.parentElement?.parentElement?.classList.toggle(
+      'rotate-z-180'
+    );
   };
+
+  useEffect(() => {
+    setTotalIndexes(projectsRef.current.length - 1);
+  }, []);
 
   return (
     <section className={styles.container} id={TIMELINE_PROJECTS}>
@@ -26,7 +45,22 @@ export default function Projects({
         name={name}
         title={title}
       />
-      <div className={styles.projects}>
+      <CarouselNav
+        activeIndex={activeIndex}
+        className={styles.nav}
+        navNextRef={carouselNavNextRef}
+        navPrevRef={carouselNavPrevRef}
+        setActiveIndex={setActiveIndex}
+        totalIndexes={totalIndexes}
+      />
+      <Carousel
+        activeIndex={activeIndex}
+        className={styles.projects}
+        childrenRef={projectsRef}
+        navNext={carouselNavNextRef.current}
+        navPrev={carouselNavPrevRef.current}
+        setActiveIndex={setActiveIndex}
+      >
         {projectsCollection.items.map(
           (
             { company, description, endDate, isPresent, name, role, startDate },
@@ -41,10 +75,10 @@ export default function Projects({
               startYear !== endYear || startMonth !== endMonth;
 
             return (
-              <button
+              <div
                 className={styles.project}
                 key={index}
-                onClick={handleProjectClick}
+                ref={(el) => (projectsRef.current[index] = el)}
               >
                 <div className={styles.inner}>
                   <div className={styles.front}>
@@ -75,17 +109,32 @@ export default function Projects({
                         <span className={styles.value}>{role}</span>
                       </p>
                     </div>
+
+                    {description && (
+                      <Button
+                        className={styles.readMore}
+                        onClick={handleProjectClick}
+                      >
+                        Read More
+                      </Button>
+                    )}
                   </div>
 
                   <div className={styles.back}>
                     <RichText contentBody={description} />
+                    <Button
+                      className={styles.backButton}
+                      onClick={handleProjectClick}
+                    >
+                      Back
+                    </Button>
                   </div>
                 </div>
-              </button>
+              </div>
             );
           }
         )}
-      </div>
+      </Carousel>
     </section>
   );
 }
