@@ -1,34 +1,142 @@
-import { fetchGraphQL } from '@app/lib/helpers/api';
-import projectDescriptionQuery from '@app/lib/queries/Projects.query';
+'use client';
+
+import styles from './Projects.styles';
+import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import { ProjectsProps } from './Projects.interface';
-import ProjectsComponent from './Projects.client';
+import { getMonthShortName, getYear } from '@app/lib/helpers/date';
+import { TIMELINE_PROJECTS } from '@app/lib/constants/selectors';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
+import RichText from '@app/components/atoms/RichText/RichText';
+import Carousel from '@app/components/molecules/Carousel/Carousel';
+import Button from '@app/components/atoms/Button/Button';
+import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
 
-const getProjects = (ids: string[]) =>
-  Promise.all(
-    ids.map((id) =>
-      fetchGraphQL(projectDescriptionQuery, false, {
-        id
-      })
-        .then((res) => res.json())
-        .then(({ data }) => ({ ...data.project }))
-        .catch(() => null)
-    )
-  );
+export default function Projects({
+  name,
+  title,
+  projectsCollection
+}: ProjectsProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [totalIndexes, setTotalIndexes] = useState(0);
 
-export default async function Projects(props: ProjectsProps) {
-  const descriptions = await getProjects(
-    props.projectsCollection.items.map((item) => item.sys.id)
-  );
+  const carouselNavNextRef = useRef<HTMLButtonElement>(null);
+  const carouselNavPrevRef = useRef<HTMLButtonElement>(null);
+  const projectsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const data = {
-    ...props,
-    projectsCollection: {
-      items: props.projectsCollection.items.map((project, index) => ({
-        ...project,
-        description: descriptions[index].description
-      }))
-    }
+  const handleProjectClick = (e: MouseEvent) => {
+    e.currentTarget?.parentElement?.parentElement?.classList.toggle(
+      'rotate-x-180'
+    );
+
+    e.currentTarget?.parentElement?.parentElement?.classList.toggle(
+      'rotate-z-180'
+    );
   };
 
-  return <ProjectsComponent {...data} />;
+  useEffect(() => {
+    setTotalIndexes(projectsRef.current.length - 1);
+  }, []);
+
+  return (
+    <section className={styles.container} id={TIMELINE_PROJECTS}>
+      <SectionHeader
+        className={styles.header}
+        layout="left"
+        name={name}
+        title={title}
+      />
+      <div className={styles.nav}>
+        <CarouselNav
+          activeIndex={activeIndex}
+          className={styles.carouselNav}
+          navNextRef={carouselNavNextRef}
+          navPrevRef={carouselNavPrevRef}
+          setActiveIndex={setActiveIndex}
+          totalIndexes={totalIndexes + 1}
+        />
+      </div>
+      <Carousel
+        activeIndex={activeIndex}
+        className={styles.projects}
+        childrenRef={projectsRef}
+        navNext={carouselNavNextRef.current}
+        navPrev={carouselNavPrevRef.current}
+        setActiveIndex={setActiveIndex}
+      >
+        {projectsCollection.items.map(
+          (
+            { company, description, endDate, isPresent, name, role, startDate },
+            index
+          ) => {
+            const startMonth = getMonthShortName(startDate);
+            const endMonth = getMonthShortName(endDate);
+            const startYear = getYear(startDate);
+            const endYear = getYear(endDate);
+
+            const isNotSameDate =
+              startYear !== endYear || startMonth !== endMonth;
+
+            return (
+              <div
+                className={styles.project}
+                key={index}
+                ref={(el) => (projectsRef.current[index] = el)}
+              >
+                <div className={styles.inner}>
+                  <div className={styles.front}>
+                    <div className={styles.dateRange}>
+                      <time dateTime={startYear.toString()}>
+                        {startMonth} {startYear}
+                      </time>
+                      {isNotSameDate && (
+                        <span className={styles.dateSeparator}>-</span>
+                      )}
+                      {isNotSameDate &&
+                        (isPresent ? (
+                          <span className={styles.present}>Present</span>
+                        ) : (
+                          <time dateTime={endYear.toString()}>
+                            {endMonth} {endYear}
+                          </time>
+                        ))}
+                    </div>
+                    <div className={styles.details}>
+                      <h3 className={styles.name}>{name}</h3>
+                      <p className={styles.detail}>
+                        <span className={styles.label}>Company: </span>
+                        <span className={styles.value}>{company}</span>
+                      </p>
+                      <p className={styles.detail}>
+                        <span className={styles.label}>Role: </span>
+                        <span className={styles.value}>{role}</span>
+                      </p>
+                    </div>
+
+                    {description && (
+                      <Button
+                        className={styles.readMore}
+                        onClick={handleProjectClick}
+                      >
+                        Read More
+                      </Button>
+                    )}
+                  </div>
+
+                  <div className={styles.back}>
+                    <RichText contentBody={description} />
+                    <Button
+                      className={styles.backButton}
+                      onClick={handleProjectClick}
+                    >
+                      Back
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+        )}
+      </Carousel>
+    </section>
+  );
 }

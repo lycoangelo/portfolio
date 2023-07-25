@@ -1,4 +1,4 @@
-import PersonalDetails from '@app/components/organisms/PersonalDetails/PersonalDetails';
+import PersonalDetails from '@app/components/organisms/PersonalDetails/PersonalDetails.server';
 
 // Define the component map object
 const componentMap = {
