@@ -1,4 +1,4 @@
-import PersonalDetailsComponent from './PersonalDetailsComponent';
+import PersonalDetailsComponent from './PersonalDetails.client';
 import iconQuery from '@app/lib/queries/Icon.query';
 import personalDetailsQuery from '@app/lib/queries/PersonalDetails.query';
 import { fetchGraphQL } from '@app/lib/helpers/api';

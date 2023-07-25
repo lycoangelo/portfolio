@@ -1,7 +1,7 @@
 import { fetchGraphQL } from '@app/lib/helpers/api';
 import projectDescriptionQuery from '@app/lib/queries/Projects.query';
 import { ProjectsProps } from './Projects.interface';
-import ProjectsComponent from './ProjectsComponent';
+import ProjectsComponent from './Projects.client';
 
 const getProjects = (ids: string[]) =>
   Promise.all(
