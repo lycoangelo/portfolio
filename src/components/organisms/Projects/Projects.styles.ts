@@ -27,6 +27,14 @@ const styles = {
 
   backButton: buttonStyles,
 
+  carouselNav: ctl(`
+    flex
+    h-fit
+    items-center
+    justify-between
+    w-full
+  `),
+
   container: ctl(`
     grid-container
     overflow-visible
@@ -49,13 +57,10 @@ const styles = {
     lg:text-base
   `),
 
-  dateSeparator: ctl(`
-    mx-1
-  `),
+  dateSeparator: 'mx-1',
 
   detail: ctl(`
     label
-
     mb-3
 
     sm:mb-1
@@ -123,8 +128,9 @@ const styles = {
   nav: ctl(`
     col-span-full
     flex
-    h-fit
-    justify-between
+    h-full
+    items-center
+    pb-8
     w-full
 
     lg:col-start-7

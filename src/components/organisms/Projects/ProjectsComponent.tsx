@@ -45,14 +45,16 @@ export default function Projects({
         name={name}
         title={title}
       />
-      <CarouselNav
-        activeIndex={activeIndex}
-        className={styles.nav}
-        navNextRef={carouselNavNextRef}
-        navPrevRef={carouselNavPrevRef}
-        setActiveIndex={setActiveIndex}
-        totalIndexes={totalIndexes}
-      />
+      <div className={styles.nav}>
+        <CarouselNav
+          activeIndex={activeIndex}
+          className={styles.carouselNav}
+          navNextRef={carouselNavNextRef}
+          navPrevRef={carouselNavPrevRef}
+          setActiveIndex={setActiveIndex}
+          totalIndexes={totalIndexes + 1}
+        />
+      </div>
       <Carousel
         activeIndex={activeIndex}
         className={styles.projects}

@@ -2,9 +2,12 @@ import ctl from '@netlify/classnames-template-literals';
 
 const styles = {
   arrow: ctl(`
-    h-10
+    h-5
     pointer-events-none
-    w-10
+    w-5
+
+    lg:h-8
+    lg:w-8
   `),
 
   button: (isPrevBtn: boolean) =>
@@ -25,6 +28,7 @@ const styles = {
   range: ctl(`
     h-auto
     relative
+    mx-3
     w-full
   `),
 
