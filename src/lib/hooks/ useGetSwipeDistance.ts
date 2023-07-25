@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 interface Props {
+  allowMouseLeave?: boolean;
   element: HTMLElement | null;
   endCallbackSensitivity?: number;
   swipeEndCallback?: (_e: MouseEvent) => void;
@@ -17,6 +18,7 @@ interface Props {
  * @returns {boolean} - true if the URL is an external link, false if it is an internal link.
  */
 export const useGetSwipeDistance = ({
+  allowMouseLeave,
   element,
   endCallbackSensitivity = 50,
   swipeEndCallback,
@@ -50,16 +52,23 @@ export const useGetSwipeDistance = ({
 
   const swipeEndEvent = useCallback(
     (e: MouseEvent) => {
-      setIsSwiping(false);
-      if (swipeDistance > endCallbackSensitivity && swipeLeftCallback)
-        swipeLeftCallback(e);
-      if (swipeDistance < -endCallbackSensitivity && swipeRightCallback)
-        swipeRightCallback(e);
-      setSwipeDistance(0);
-      swipeEndCallback && swipeEndCallback(e);
+      if (isSwiping) {
+        if (swipeDistance > endCallbackSensitivity && swipeLeftCallback) {
+          swipeLeftCallback(e);
+        }
+
+        if (swipeDistance < -endCallbackSensitivity && swipeRightCallback) {
+          swipeRightCallback(e);
+        }
+
+        setSwipeDistance(0);
+        swipeEndCallback && swipeEndCallback(e);
+        setIsSwiping(false);
+      }
     },
     [
       endCallbackSensitivity,
+      isSwiping,
       swipeDistance,
       swipeEndCallback,
       swipeLeftCallback,
@@ -71,15 +80,33 @@ export const useGetSwipeDistance = ({
     if (!element) return;
 
     element.addEventListener('mousedown', swipeStartEvent);
-    document.addEventListener('mousemove', swipeMoveEvent);
-    document.addEventListener('mouseup', swipeEndEvent);
+
+    if (allowMouseLeave) {
+      document.addEventListener('mousemove', swipeMoveEvent);
+      document.addEventListener('mouseup', swipeEndEvent);
+    } else {
+      element.addEventListener('mousemove', swipeMoveEvent);
+      element.addEventListener('mouseup', swipeEndEvent);
+    }
 
     return () => {
       element.removeEventListener('mousedown', swipeStartEvent);
-      document.removeEventListener('mousemove', swipeMoveEvent);
-      document.removeEventListener('mouseup', swipeEndEvent);
+
+      if (allowMouseLeave) {
+        document.removeEventListener('mousemove', swipeMoveEvent);
+        document.removeEventListener('mouseup', swipeEndEvent);
+      } else {
+        element.removeEventListener('mousemove', swipeMoveEvent);
+        element.removeEventListener('mouseup', swipeEndEvent);
+      }
     };
-  }, [element, swipeEndEvent, swipeMoveEvent, swipeStartEvent]);
+  }, [
+    allowMouseLeave,
+    element,
+    swipeEndEvent,
+    swipeMoveEvent,
+    swipeStartEvent
+  ]);
 
   return { isSwiping, swipeDistance };
 };

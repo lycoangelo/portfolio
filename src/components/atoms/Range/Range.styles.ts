@@ -24,7 +24,7 @@ const styles = {
     absolute
     bg-primary
     cursor-pointer
-    h-1
+    h-2
     rounded-xl
     top-1/2
     transition-all
