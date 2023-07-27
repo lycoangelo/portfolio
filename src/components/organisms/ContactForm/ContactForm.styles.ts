@@ -47,6 +47,8 @@ const styles = {
   icon: ctl(`
     mr-4
     h-3.5
+
+    [&_path]:fill-primary
   `),
 
   iconWrapper: ctl(`

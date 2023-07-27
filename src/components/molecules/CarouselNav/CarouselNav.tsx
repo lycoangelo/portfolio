@@ -12,7 +12,7 @@ export default function CarouselNav({
   setActiveIndex,
   totalIndexes
 }: CarouselNavProps) {
-  return navNextRef && navPrevRef ? (
+  return navNextRef || navPrevRef ? (
     <div className={styles.container(className)}>
       {navPrevRef && (
         <Button

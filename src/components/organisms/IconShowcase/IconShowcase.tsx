@@ -9,7 +9,7 @@ import Essay from '../Essay/Essay';
 export default function IconShowcase({
   iconsCollection
 }: IconShowcaseComponentProps) {
-  const [isActiveIndex, setIsActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div className={styles.container}>
@@ -18,11 +18,11 @@ export default function IconShowcase({
           size="fit"
           color="transparent"
           key={index}
-          onClick={() => setIsActiveIndex(index)}
+          onClick={() => setActiveIndex(index)}
         >
           <SquircleIcon
             className={styles.icon}
-            color={isActiveIndex === index ? 'primary' : 'black'}
+            color={activeIndex === index ? 'primary' : 'black'}
             image={icon}
           />
         </Button>
@@ -31,7 +31,7 @@ export default function IconShowcase({
       <div className={styles.tabs}>
         {iconsCollection.items.map(({ description }, index) => (
           <Essay
-            className={styles.tab(isActiveIndex === index)}
+            className={styles.tab(activeIndex === index)}
             essay={description}
             key={index}
           />

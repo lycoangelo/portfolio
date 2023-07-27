@@ -20,7 +20,6 @@ const Carousel = forwardRef(
     const carouselRef = useRef<HTMLDivElement>(null);
 
     const slides = childrenRef.current;
-
     const totalSlides = slides.length;
 
     const handleMoveToNextSlide = useCallback(() => {

@@ -57,7 +57,7 @@ const colors: ButtonColors = {
     border-0
     text-white
     hover:text-secondary
-    focus:text-primary
+    focus:text-secondary
   `
 };
 
@@ -154,7 +154,7 @@ const styles = {
       justify-center
       text-center
       uppercase
-      transition-colors
+      transition-all
       duration-300
 
       ${className}

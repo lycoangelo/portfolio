@@ -13,13 +13,6 @@ export interface ProjectProps {
   };
 }
 
-export interface ProjectsCollectionProps {
-  title: string;
-  projectsCollection: {
-    items: ProjectProps[];
-  };
-}
-
 export interface ProjectsProps {
   name: string;
   projectsCollection: {

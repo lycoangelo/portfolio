@@ -3,38 +3,46 @@
 import styles from './Projects.styles';
 import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import { ProjectsProps } from './Projects.interface';
-import { getMonthShortName, getYear } from '@app/lib/helpers/date';
 import { TIMELINE_PROJECTS } from '@app/lib/constants/selectors';
-import { MouseEvent, useEffect, useRef, useState } from 'react';
-import RichText from '@app/components/atoms/RichText/RichText';
+import { useEffect, useRef, useState } from 'react';
 import Carousel from '@app/components/molecules/Carousel/Carousel';
-import Button from '@app/components/atoms/Button/Button';
 import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
+import ProjectCard from '@app/components/molecules/ProjectCard/ProjectCard';
+import Button from '@app/components/atoms/Button/Button';
 
 export default function Projects({
   name,
   title,
   projectsCollection
 }: ProjectsProps) {
+  const { items: projects } = projectsCollection;
+
   const [activeIndex, setActiveIndex] = useState(0);
-  const [totalIndexes, setTotalIndexes] = useState(0);
+  const [carouselNavNext, setCarouselNavNext] =
+    useState<HTMLButtonElement | null>(null);
+  const [carouselPrevNext, setCarouselPrevNext] =
+    useState<HTMLButtonElement | null>(null);
+  const [cardsFlipState, setCardsFlipState] = useState(
+    projects.map(() => false)
+  );
 
   const carouselNavNextRef = useRef<HTMLButtonElement>(null);
   const carouselNavPrevRef = useRef<HTMLButtonElement>(null);
   const projectsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const handleProjectClick = (e: MouseEvent) => {
-    e.currentTarget?.parentElement?.parentElement?.classList.toggle(
-      'rotate-x-180'
-    );
+  const updateCardsFlipState = (index: number) => {
+    const newState = [...cardsFlipState];
+    newState[index] = projects[index].description && !newState[index];
+    setCardsFlipState(newState);
+  };
 
-    e.currentTarget?.parentElement?.parentElement?.classList.toggle(
-      'rotate-z-180'
-    );
+  const handleBulletClick = (index: number) => {
+    activeIndex === index ? updateCardsFlipState(index) : setActiveIndex(index);
   };
 
   useEffect(() => {
-    setTotalIndexes(projectsRef.current.length - 1);
+    setCarouselNavNext(carouselNavNextRef.current);
+    setCarouselPrevNext(carouselNavPrevRef.current);
   }, []);
 
   return (
@@ -45,98 +53,49 @@ export default function Projects({
         name={name}
         title={title}
       />
+      <Carousel
+        activeIndex={activeIndex}
+        className={styles.projects}
+        childrenRef={projectsRef}
+        navNext={carouselNavNext}
+        navPrev={carouselPrevNext}
+        setActiveIndex={setActiveIndex}
+      >
+        {projects.map((card, index) => (
+          <ProjectCard
+            {...card}
+            key={index}
+            index={index}
+            projectsRef={projectsRef}
+            isFlipped={cardsFlipState[index]}
+            setIsFlipped={() => updateCardsFlipState(index)}
+          />
+        ))}
+      </Carousel>
       <div className={styles.nav}>
+        <div className={styles.bullets}>
+          {projects.map(({ name }, index) => (
+            <Button
+              className={styles.bullet(cardsFlipState[index])}
+              color={activeIndex === index ? 'primary' : 'inactive'}
+              key={index}
+              onClick={() => handleBulletClick(index)}
+              size="fit"
+              style={{ width: `calc(${100 / projects.length}%)` }}
+            >
+              {name.charAt(0)}
+            </Button>
+          ))}
+        </div>
         <CarouselNav
           activeIndex={activeIndex}
           className={styles.carouselNav}
           navNextRef={carouselNavNextRef}
           navPrevRef={carouselNavPrevRef}
           setActiveIndex={setActiveIndex}
-          totalIndexes={totalIndexes + 1}
+          totalIndexes={projects.length - 1}
         />
       </div>
-      <Carousel
-        activeIndex={activeIndex}
-        className={styles.projects}
-        childrenRef={projectsRef}
-        navNext={carouselNavNextRef.current}
-        navPrev={carouselNavPrevRef.current}
-        setActiveIndex={setActiveIndex}
-      >
-        {projectsCollection.items.map(
-          (
-            { company, description, endDate, isPresent, name, role, startDate },
-            index
-          ) => {
-            const startMonth = getMonthShortName(startDate);
-            const endMonth = getMonthShortName(endDate);
-            const startYear = getYear(startDate);
-            const endYear = getYear(endDate);
-
-            const isNotSameDate =
-              startYear !== endYear || startMonth !== endMonth;
-
-            return (
-              <div
-                className={styles.project}
-                key={index}
-                ref={(el) => (projectsRef.current[index] = el)}
-              >
-                <div className={styles.inner}>
-                  <div className={styles.front}>
-                    <div className={styles.dateRange}>
-                      <time dateTime={startYear.toString()}>
-                        {startMonth} {startYear}
-                      </time>
-                      {isNotSameDate && (
-                        <span className={styles.dateSeparator}>-</span>
-                      )}
-                      {isNotSameDate &&
-                        (isPresent ? (
-                          <span className={styles.present}>Present</span>
-                        ) : (
-                          <time dateTime={endYear.toString()}>
-                            {endMonth} {endYear}
-                          </time>
-                        ))}
-                    </div>
-                    <div className={styles.details}>
-                      <h3 className={styles.name}>{name}</h3>
-                      <p className={styles.detail}>
-                        <span className={styles.label}>Company: </span>
-                        <span className={styles.value}>{company}</span>
-                      </p>
-                      <p className={styles.detail}>
-                        <span className={styles.label}>Role: </span>
-                        <span className={styles.value}>{role}</span>
-                      </p>
-                    </div>
-
-                    {description && (
-                      <Button
-                        className={styles.readMore}
-                        onClick={handleProjectClick}
-                      >
-                        Read More
-                      </Button>
-                    )}
-                  </div>
-
-                  <div className={styles.back}>
-                    <RichText contentBody={description} />
-                    <Button
-                      className={styles.backButton}
-                      onClick={handleProjectClick}
-                    >
-                      Back
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            );
-          }
-        )}
-      </Carousel>
     </section>
   );
 }

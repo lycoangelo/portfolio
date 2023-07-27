@@ -16,3 +16,6 @@ export const getLeftPosition = (button: HTMLElement | null): number => {
 
   return 0; // Default value if button or parent is null
 };
+
+export const getPageX = (e: MouseEvent | TouchEvent) =>
+  (e as MouseEvent).pageX || (e as TouchEvent).touches[0].pageX;

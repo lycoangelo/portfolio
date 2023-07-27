@@ -1,14 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
+import { getPageX } from '../helpers/dom';
 
 interface Props {
   allowMouseLeave?: boolean;
   element: HTMLElement | null;
   endCallbackSensitivity?: number;
-  swipeEndCallback?: (_e: MouseEvent) => void;
-  swipeLeftCallback?: (_e: MouseEvent) => void;
-  swipeMoveCallback?: (_e: MouseEvent) => void;
-  swipeRightCallback?: (_e: MouseEvent) => void;
-  swipeStartCallback?: (_e: MouseEvent) => void;
+  swipeEndCallback?: (_e: MouseEvent | TouchEvent) => void;
+  swipeLeftCallback?: (_e: MouseEvent | TouchEvent) => void;
+  swipeMoveCallback?: (_e: MouseEvent | TouchEvent) => void;
+  swipeRightCallback?: (_e: MouseEvent | TouchEvent) => void;
+  swipeStartCallback?: (_e: MouseEvent | TouchEvent) => void;
 }
 
 /**
@@ -32,18 +33,18 @@ export const useGetSwipeDistance = ({
   const [startSwipePos, setStartSwipePos] = useState(0);
 
   const swipeStartEvent = useCallback(
-    (e: MouseEvent) => {
+    (e: MouseEvent | TouchEvent) => {
       setIsSwiping(true);
-      setStartSwipePos(e.pageX);
+      setStartSwipePos(getPageX(e));
       swipeStartCallback && swipeStartCallback(e);
     },
     [swipeStartCallback]
   );
 
   const swipeMoveEvent = useCallback(
-    (e: MouseEvent) => {
+    (e: MouseEvent | TouchEvent) => {
       if (isSwiping) {
-        setSwipeDistance(startSwipePos - e.pageX);
+        setSwipeDistance(startSwipePos - getPageX(e));
         swipeMoveCallback && swipeMoveCallback(e);
       }
     },
@@ -51,7 +52,7 @@ export const useGetSwipeDistance = ({
   );
 
   const swipeEndEvent = useCallback(
-    (e: MouseEvent) => {
+    (e: MouseEvent | TouchEvent) => {
       if (isSwiping) {
         if (swipeDistance > endCallbackSensitivity && swipeLeftCallback) {
           swipeLeftCallback(e);
@@ -80,24 +81,34 @@ export const useGetSwipeDistance = ({
     if (!element) return;
 
     element.addEventListener('mousedown', swipeStartEvent);
+    element.addEventListener('touchstart', swipeStartEvent);
 
     if (allowMouseLeave) {
       document.addEventListener('mousemove', swipeMoveEvent);
       document.addEventListener('mouseup', swipeEndEvent);
+      document.addEventListener('touchmove', swipeMoveEvent);
+      document.addEventListener('touchend', swipeEndEvent);
     } else {
       element.addEventListener('mousemove', swipeMoveEvent);
       element.addEventListener('mouseup', swipeEndEvent);
+      element.addEventListener('touchmove', swipeMoveEvent);
+      element.addEventListener('touchend', swipeEndEvent);
     }
 
     return () => {
       element.removeEventListener('mousedown', swipeStartEvent);
+      element.removeEventListener('touchstart', swipeStartEvent);
 
       if (allowMouseLeave) {
         document.removeEventListener('mousemove', swipeMoveEvent);
         document.removeEventListener('mouseup', swipeEndEvent);
+        document.removeEventListener('touchmove', swipeMoveEvent);
+        document.removeEventListener('touchend', swipeEndEvent);
       } else {
         element.removeEventListener('mousemove', swipeMoveEvent);
         element.removeEventListener('mouseup', swipeEndEvent);
+        element.removeEventListener('touchmove', swipeMoveEvent);
+        element.removeEventListener('touchend', swipeEndEvent);
       }
     };
   }, [
