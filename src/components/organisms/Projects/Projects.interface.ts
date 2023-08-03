@@ -1,7 +1,9 @@
 import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
+import { ImageProps } from 'next/image';
 
 export interface ProjectProps {
   description: ContentBody;
+  logo: ImageProps;
   name: string;
   company: string;
   role: string;

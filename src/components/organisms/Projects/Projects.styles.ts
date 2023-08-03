@@ -3,24 +3,29 @@ import ctl from '@netlify/classnames-template-literals';
 const styles = {
   bullet: (isFlipped: boolean) =>
     ctl(`
-      aspect-square
       duration-500
-      mr-[10px]
+      mr-2
+      p-4
       relative
-      rounded-sm
-      text-xs
+      rounded-md
+      text-sm
 
-      sm:rounded-md
-      sm:text-sm
+      sm:mr-3
+      sm:p-5
+      sm:text-base
 
-      md:text-base
-      md:rounded-lg
+      md:mr-4
+      md:p-6
+      md:text-lg
 
-      xl:mr-3
-      xl:text-xl
+      lg:mr-5
+      lg:p-7
+      lg:text-xl
 
-      xxl:mr-5
-      xxl:text-2xl
+      xl:mr-6
+      xl:text-2xl
+
+      xxl:text-3xl
 
       hover:duration-300
 
@@ -64,6 +69,21 @@ const styles = {
 
     lg:col-span-5
     lg:col-start-2
+  `),
+
+  logo: ctl(`
+    grayscale
+    object-contain
+  `),
+
+  marquee: ctl(`
+    col-start-4
+    mb-8
+    relative
+
+    md:col-start-7
+    md:col-end-13
+    md:w-[calc(100%+((100vw-100%)/2))]
   `),
 
   nav: ctl(`

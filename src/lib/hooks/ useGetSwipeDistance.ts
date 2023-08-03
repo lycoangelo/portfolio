@@ -80,19 +80,19 @@ export const useGetSwipeDistance = ({
   useEffect(() => {
     if (!element) return;
 
-    element.addEventListener('mousedown', swipeStartEvent);
-    element.addEventListener('touchstart', swipeStartEvent);
+    element.addEventListener('mousedown', swipeStartEvent, { passive: true });
+    element.addEventListener('touchstart', swipeStartEvent, { passive: true });
 
     if (allowMouseLeave) {
-      document.addEventListener('mousemove', swipeMoveEvent);
-      document.addEventListener('mouseup', swipeEndEvent);
-      document.addEventListener('touchmove', swipeMoveEvent);
-      document.addEventListener('touchend', swipeEndEvent);
+      document.addEventListener('mousemove', swipeMoveEvent, { passive: true });
+      document.addEventListener('mouseup', swipeEndEvent, { passive: true });
+      document.addEventListener('touchmove', swipeMoveEvent, { passive: true });
+      document.addEventListener('touchend', swipeEndEvent, { passive: true });
     } else {
-      element.addEventListener('mousemove', swipeMoveEvent);
-      element.addEventListener('mouseup', swipeEndEvent);
-      element.addEventListener('touchmove', swipeMoveEvent);
-      element.addEventListener('touchend', swipeEndEvent);
+      element.addEventListener('mousemove', swipeMoveEvent, { passive: true });
+      element.addEventListener('mouseup', swipeEndEvent, { passive: true });
+      element.addEventListener('touchmove', swipeMoveEvent, { passive: true });
+      element.addEventListener('touchend', swipeEndEvent, { passive: true });
     }
 
     return () => {

@@ -52,11 +52,24 @@ module.exports = {
       error: '#ff0000'
     },
     extend: {
+      animation: {
+        ticker: 'ticker linear infinite'
+      },
       fontFamily: {
         'am-200': 'var(--apek-mk3-200)',
         'am-500': 'var(--apek-mk3-500)',
         roboto: 'var(--roboto)',
         quicksand: 'var(--quicksand)'
+      },
+      keyframes: {
+        ticker: {
+          '0%': {
+            transform: 'translateX(0)'
+          },
+          '100%': {
+            transform: 'translateX(-100%)'
+          }
+        }
       },
       lineHeight: {
         11: '44px',

@@ -13,6 +13,7 @@ export interface ButtonColors {
 }
 
 export interface ButtonSizes {
+  auto: string;
   fit: string;
   sm: string;
   md: string;

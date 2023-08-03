@@ -62,6 +62,7 @@ const colors: ButtonColors = {
 };
 
 const sizes: ButtonSizes = {
+  auto: 'w-auto',
   fit: 'w-fit',
   sm: `
     leading-3

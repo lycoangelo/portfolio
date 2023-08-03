@@ -1,8 +1,7 @@
+import { ImageProps } from 'next/image';
+
 export interface HeroProps {
-  background: {
-    title: string;
-    url: string;
-  };
+  background: ImageProps;
   cv?: {
     title: string;
     url: string;

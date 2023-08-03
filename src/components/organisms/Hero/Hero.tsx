@@ -49,12 +49,12 @@ export default function Hero({
       <div className={styles.background}>
         <figure className={styles.backgroundWrapper}>
           <Image
-            alt={background.title}
+            alt={background.alt}
             className={styles.backgroundImage}
             height="1080"
             priority
             sizes="100vw"
-            src={background.url}
+            src={background.src}
             width="1920"
           />
         </figure>

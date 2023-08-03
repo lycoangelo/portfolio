@@ -9,6 +9,7 @@ import Carousel from '@app/components/molecules/Carousel/Carousel';
 import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
 import ProjectCard from '@app/components/molecules/ProjectCard/ProjectCard';
 import Button from '@app/components/atoms/Button/Button';
+import Marquee from '@app/components/molecules/Marquee/Marquee';
 
 export default function Projects({
   name,
@@ -53,6 +54,22 @@ export default function Projects({
         name={name}
         title={title}
       />
+      <Marquee className={styles.marquee} duration={20000}>
+        {projects.map(({ name }, index) => (
+          <Button
+            aria-hidden
+            className={styles.bullet(cardsFlipState[index])}
+            color={activeIndex === index ? 'primary' : 'inactive'}
+            key={index}
+            onClick={() => handleBulletClick(index)}
+            size="auto"
+            tabIndex={-1}
+          >
+            {name.charAt(0)}
+          </Button>
+        ))}
+      </Marquee>
+
       <Carousel
         activeIndex={activeIndex}
         className={styles.projects}
@@ -73,7 +90,7 @@ export default function Projects({
         ))}
       </Carousel>
       <div className={styles.nav}>
-        <div className={styles.bullets}>
+        {/*<div className={styles.bullets}>
           {projects.map(({ name }, index) => (
             <Button
               className={styles.bullet(cardsFlipState[index])}
@@ -86,7 +103,7 @@ export default function Projects({
               {name.charAt(0)}
             </Button>
           ))}
-        </div>
+        </div>*/}
         <CarouselNav
           activeIndex={activeIndex}
           className={styles.carouselNav}
