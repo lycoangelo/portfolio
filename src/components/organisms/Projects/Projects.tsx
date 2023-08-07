@@ -54,7 +54,7 @@ export default function Projects({
         name={name}
         title={title}
       />
-      <Marquee className={styles.marquee} duration={20000}>
+      <Marquee className={styles.marquee} duration={20000} pauseOnHover>
         {projects.map(({ name }, index) => (
           <Button
             aria-hidden

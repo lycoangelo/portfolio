@@ -5,7 +5,8 @@ import styles from './Marquee.styles';
 export default function Marquee({
   className = '',
   children,
-  duration = 1000
+  duration = 1000,
+  pauseOnHover = false
 }: MarqueeProps) {
   const [loopsCount, setLoopsCount] = useState(1);
 
@@ -37,14 +38,14 @@ export default function Marquee({
   return (
     <div className={styles.container(className)} role="presentation">
       <div
-        className={styles.children}
+        className={styles.children(pauseOnHover)}
         ref={childrenRef}
         style={{ animationDuration: `${duration}ms` }}
       >
         {Array.from({ length: loopsCount }, () => children)}
       </div>
       <div
-        className={styles.children}
+        className={styles.children(pauseOnHover)}
         ref={childrenRef}
         style={{ animationDuration: `${duration}ms` }}
       >

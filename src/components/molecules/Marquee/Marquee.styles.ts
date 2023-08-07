@@ -1,13 +1,16 @@
 import ctl from '@netlify/classnames-template-literals';
 
 const styles = {
-  children: ctl(`
-    animate-ticker
-    flex
-    items-center
-    min-w-fit
-    w-fit
-  `),
+  children: (pauseOnHover: boolean) =>
+    ctl(`
+      animate-ticker
+      flex
+      items-center
+      min-w-fit
+      w-fit
+
+      ${pauseOnHover && '[:has(button:hover)>&]:animation-pause'}
+    `),
   container: (className: string) =>
     ctl(`
       flex

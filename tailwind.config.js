@@ -24,6 +24,9 @@ const backfaceVisibility = plugin(function ({ addUtilities }) {
       '-moz-backface-visibility': 'hidden',
       '-webkit-backface-visibility': 'hidden',
       '-ms-backface-visibility': 'hidden'
+    },
+    '.animation-pause': {
+      'animation-play-state': 'paused'
     }
   });
 });
