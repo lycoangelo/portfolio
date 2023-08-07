@@ -14,7 +14,7 @@ import styles from './Header.styles';
 
 const links = [
   { label: 'Home', href: HERO },
-  { label: 'About Me', href: PERSONAL_DETAILS },
+  { label: 'Profile', href: PERSONAL_DETAILS },
   { label: 'Projects', href: TIMELINE_PROJECTS },
   { label: 'Contact', href: CONTACT_FORM }
 ];
