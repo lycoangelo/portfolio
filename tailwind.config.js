@@ -1,17 +1,6 @@
-const commonPixelValues = {
-  0.25: '1px',
-  0.75: '3px',
-  1.25: '5px',
-  1.75: '7px',
-  2.75: '11px',
-  4.5: '18px',
-  5: '20px',
-  7.5: '30px'
-};
-
 const plugin = require('tailwindcss/plugin');
 
-const backfaceVisibility = plugin(function ({ addUtilities }) {
+const additionalUtilities = plugin(function ({ addUtilities }) {
   addUtilities({
     '.backface-visible': {
       'backface-visibility': 'visible',
@@ -27,6 +16,15 @@ const backfaceVisibility = plugin(function ({ addUtilities }) {
     },
     '.animation-pause': {
       'animation-play-state': 'paused'
+    },
+    '.horizontal-tb': {
+      writingMode: 'horizontal-tb'
+    },
+    '.vertical-rl': {
+      writingMode: 'vertical-rl'
+    },
+    '.vertical-lr': {
+      writingMode: 'vertical-lr'
     }
   });
 });
@@ -65,6 +63,14 @@ module.exports = {
         quicksand: 'var(--quicksand)'
       },
       keyframes: {
+        drop: {
+          '0%': {
+            top: '-50%'
+          },
+          '100%': {
+            top: '110%'
+          }
+        },
         ticker: {
           '0%': {
             transform: 'translateX(0)'
@@ -74,22 +80,8 @@ module.exports = {
           }
         }
       },
-      lineHeight: {
-        11: '44px',
-        12: '48px',
-        13: '52px',
-        14: '56px',
-        15: '60px',
-        16: '64px',
-        17: '68px',
-        18: '72px',
-        23: '92px'
-      },
       maxWidth: {
         'container-max': '1920px'
-      },
-      minHeight: {
-        ...commonPixelValues
       },
       minWidth: {
         'btn-3xs': '60px',
@@ -99,20 +91,10 @@ module.exports = {
         'btn-md': '160px',
         'btn-lg': '200px',
         'btn-xl': '240px',
-        'screen-min': '375px'
+        'screen-min': '320px'
       },
       spacing: {
-        unset: 'unset',
-        ...commonPixelValues
-      },
-      height: {
-        ...commonPixelValues
-      },
-      width: {
-        ...commonPixelValues
-      },
-      zIndex: {
-        1: '1'
+        unset: 'unset'
       },
       letterSpacing: {
         broad: '0.2em'
@@ -135,5 +117,5 @@ module.exports = {
       max: '1920px'
     }
   },
-  plugins: [require('tailwindcss-3d'), backfaceVisibility]
+  plugins: [require('tailwindcss-3d'), additionalUtilities]
 };
