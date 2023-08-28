@@ -34,7 +34,7 @@ const styles = {
       ${
         isFlipped
           ? `
-        !bg-teal
+        !bg-secondary
         !text-white
         rotate-x-180
         rotate-z-180

@@ -9,7 +9,7 @@ interface Colors {
 
 const colors: Colors = {
   primary: 'bg-primary border-primary before:left-0 before:top-0',
-  secondary: 'bg-secondary',
+  secondary: 'bg-silver',
   white: 'bg-white',
   black: 'bg-black border-primary'
 };
@@ -27,7 +27,7 @@ const styles = {
       before:absolute
       before:left-1
       before:top-1
-      before:-z-1
+      before:-z-10
       before:h-full
       before:w-full
       before:bg-primary

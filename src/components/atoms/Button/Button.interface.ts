@@ -15,6 +15,7 @@ export interface ButtonColors {
 export interface ButtonSizes {
   auto: string;
   fit: string;
+  full: string;
   sm: string;
   md: string;
   lg: string;
@@ -22,7 +23,7 @@ export interface ButtonSizes {
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   AnchorHTMLAttributes<HTMLAnchorElement> & {
-    children: any;
+    children?: any;
     color?: keyof ButtonColors;
     hasBorderEffect?: boolean;
     href?: string;

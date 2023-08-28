@@ -5,14 +5,14 @@ interface ObjectKey {
 }
 
 const levelsBG: ObjectKey = {
-  novice: 'before:bg-teal',
-  intermediate: 'before:bg-turquoise',
+  novice: 'before:bg-tertiary',
+  intermediate: 'before:bg-secondary',
   advanced: 'before:bg-primary'
 };
 
 const skillsBg: ObjectKey = {
-  novice: 'bg-teal text-secondary',
-  intermediate: 'bg-turquoise text-white',
+  novice: 'bg-tertiary text-silver',
+  intermediate: 'bg-secondary text-white',
   advanced: 'bg-primary text-black'
 };
 

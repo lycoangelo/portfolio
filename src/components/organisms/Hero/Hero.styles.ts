@@ -72,14 +72,14 @@ const styles = {
 
   title: ctl(`
     font-am-200
-    h-[120px]
-    leading-[120px]
+    h-[180px]
     mb-5
     text-6xl
     two-color
 
+    xs:h-[120px]
+
     md:h-[174px]
-    md:leading-23
     md:text-7xl
 
     lg:h-[17vw]

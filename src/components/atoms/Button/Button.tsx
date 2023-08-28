@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './Buttons.styles';
-import iconMap, { IconType } from '@app/lib/constants/iconMap';
+import iconMap from '@app/lib/constants/iconMap';
 import { ButtonProps } from './Button.interface';
 import Link from 'next/link';
 import { useIsExternalLink } from '@app/lib/hooks/useIsExternalLink';
@@ -22,7 +22,7 @@ const Button = forwardRef(
     }: ButtonProps,
     ref
   ) => {
-    const Icon = iconMap[icon] as IconType;
+    const Icon = iconMap[icon];
 
     const buttonClasses = styles.button(
       color,

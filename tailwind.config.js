@@ -70,17 +70,45 @@ module.exports = {
   ],
   theme: {
     colors: {
-      primary: '#00c9e3',
-      secondary: '#cccccc',
+      primary: 'var(--primary-color)',
+      secondary: 'var(--secondary-color)',
+      tertiary: 'var(--tertiary-color)',
+      silver: '#cccccc',
       dark: '#030303',
       black: '#000000',
       white: '#ffffff',
       gray: '#3c3c3c',
       inactive: '#707070',
-      teal: '#005864',
-      turquoise: '#0193a7',
       transparent: 'transparent',
-      error: '#ff0000'
+      error: '#ff0000',
+
+      'teal-primary': '#00c9e3',
+      'teal-secondary': '#0193a7',
+      'teal-tertiary': '#005864',
+
+      'orange-primary': '#ff6e00',
+      'orange-secondary': '#b36500',
+      'orange-tertiary': '#783f13',
+
+      'green-primary': '#01ff01',
+      'green-secondary': '#03835f',
+      'green-tertiary': '#015d43',
+
+      'blue-primary': '#2a86f6',
+      'blue-secondary': '#0357bd',
+      'blue-tertiary': '#013a81',
+
+      'red-primary': '#f82f2f',
+      'red-secondary': '#c00808',
+      'red-tertiary': '#6e0101',
+
+      'yellow-primary': '#fff200',
+      'yellow-secondary': '#82700b',
+      'yellow-tertiary': '#413e01',
+
+      'purple-primary': '#c900fb',
+      'purple-secondary': '#a113ac',
+      'purple-tertiary': '#62027a'
     },
     extend: {
       animation: {

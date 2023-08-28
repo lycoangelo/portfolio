@@ -33,6 +33,7 @@
     "eslint-plugin-storybook": "^0.6.11",
     "eslint-plugin-tailwindcss": "^3.10.3",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "focus-trap-react": "^10.2.1",
     "framer-motion": "^10.12.4",
     "html-react-parser": "^3.0.16",
     "next": "^13.4.1",

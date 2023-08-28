@@ -65,7 +65,7 @@ styles.role = ctl(`
   mt-1
   text-sm
   font-medium
-  text-secondary
+  text-silver
 `);
 
 styles.timelinePanel = (isActive: boolean) =>
@@ -96,9 +96,10 @@ styles.timelines = ctl(`
 
 styles.timelineTab = (isActive: boolean) =>
   ctl(`
-  relative
   max-w-full
   ml-5
+  relative
+  text-black
 
   after:absolute
   after:-left-5
@@ -118,7 +119,9 @@ styles.timelineTab = (isActive: boolean) =>
     isActive
       ? `
     after:w-5
+
     [:first-child>&]:md:after:w-[11px]
+
     [*:not(:first-child)>&]:md:after:w-2.5
   `
       : `

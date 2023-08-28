@@ -32,7 +32,7 @@ const colors: ButtonColors = {
     text-inactive
 
     hover:bg-gray
-    hover:text-secondary
+    hover:text-silver
 
     focus:bg-primary
     focus:text-white
@@ -56,14 +56,15 @@ const colors: ButtonColors = {
   transparent: `
     border-0
     text-white
-    hover:text-secondary
-    focus:text-secondary
+    hover:text-silver
+    focus:text-silver
   `
 };
 
 const sizes: ButtonSizes = {
   auto: 'w-auto',
   fit: 'w-fit',
+  full: 'w-full',
   sm: `
     leading-3
     min-w-btn-2xs

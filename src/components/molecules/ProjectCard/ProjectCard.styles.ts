@@ -11,9 +11,9 @@ const styles = {
   back: ctl(`
     absolute
     border
-    border-primary
+    border-white
     backface-hidden
-    bg-teal
+    bg-secondary
     flex
     flex-col
     h-full
@@ -29,7 +29,7 @@ const styles = {
 
   dateRange: ctl(`
     border-b
-    border-primary
+    border-gray
     flex
     font-bold
     mb-6
@@ -64,7 +64,7 @@ const styles = {
     backface-hidden
     bg-dark
     border
-    border-primary
+    border-inactive
     flex
     flex-col
     h-full
