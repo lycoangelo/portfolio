@@ -2,19 +2,27 @@ import ctl from '@netlify/classnames-template-literals';
 
 const styles = {
   background: ctl(`
-      absolute
-      bg-white
-      h-[2px]
-      rounded-xl
-      transition-all
-      w-full
+    flex
+    items-center
+    h-2
+    overflow-hidden
+    relative
+    rounded-xl
+    transition-all
+    w-full
 
-      [:has(input:focus)>&]:outline
-      [:has(input:focus)>&]:outline-primary
-      [:has(input:focus)>&]:outline-offset-2
-    `),
+    [:has(input:focus)>&]:outline
+    [:has(input:focus)>&]:outline-primary
+    [:has(input:focus)>&]:outline-offset-2
+
+    before:absolute
+    before:bg-white
+    before:h-[1px]
+    before:w-full
+  `),
 
   range: ctl(`
+    absolute
     h-full
     opacity-0
     pointer-events-none

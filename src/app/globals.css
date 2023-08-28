@@ -130,12 +130,12 @@ body {
 
   .two-color {
     @apply text-white;
-    @apply [&_b,&_strong]:font-normal [&_b,&_strong]:text-primary;
+    @apply [&_b]:font-normal [&_strong]:font-normal [&_b]:text-primary [&_strong]:text-primary;
   }
 
   .two-color-bold {
-    @apply font-bold text-white;
-    @apply [&_b,&_strong]:font-bold [&_b,&_strong]:text-primary;
+    @apply font-bold two-color;
+    @apply [&_b]:font-bold [&_strong]:font-bold;
   }
 
   .odometer.odometer-auto-theme .odometer-digit,
@@ -229,15 +229,5 @@ body {
   .odometer > * > * {
     align-items: flex-start;
     display: flex;
-  }
-
-  /* BACKGROUND */
-  .animated-gradient {
-    --gradient-color-1: #0193a7;
-    --gradient-color-2: #00c9e3;
-    --gradient-color-3: #000;
-    --gradient-color-4: #000;
-    -webkit-transition: opacity 1s;
-    transition: opacity 1s;
   }
 }

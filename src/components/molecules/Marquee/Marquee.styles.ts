@@ -7,15 +7,19 @@ const styles = {
       flex
       items-center
       min-w-fit
-      w-fit
+      w-full
 
-      ${pauseOnHover && '[:has(button:hover)>&]:animation-pause'}
+      ${pauseOnHover && '[div:hover>&]:animation-pause'}
+
+      last:absolute
+      last:h-full
     `),
+
   container: (className: string) =>
     ctl(`
       flex
-      min-w-full
       overflow-hidden
+      relative
       w-full
 
       ${className}

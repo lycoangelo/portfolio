@@ -33,6 +33,7 @@ export async function POST(request: Request, { params }: ParamsProps) {
     };
 
     await transporter.sendMail(mailOptions);
+
     return NextResponse.json({ message: 'Email successfully sent!' });
   } catch (error: any) {
     return NextResponse.json({ message: 'Something went wrong!' });

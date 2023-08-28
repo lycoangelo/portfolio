@@ -1,11 +1,10 @@
-import { getLeftPosition } from '@app/lib/helpers/dom';
-import { useGetSwipeDistance } from '@app/lib/hooks/ useGetSwipeDistance';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useDebounce } from 'rooks';
+import { getElementPosition } from '@app/lib/helpers/dom';
+import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { CarouselProps } from './Carousel.interface';
 import styles from './Carousel.styles';
 
-const Carousel = ({
+const Carousel: FC<CarouselProps> = ({
   activeIndex,
   className,
   children,
@@ -13,20 +12,23 @@ const Carousel = ({
   navNext,
   navPrev,
   setActiveIndex
-}: CarouselProps) => {
+}) => {
   const [slidesGrid, setSlidesGrid] = useState<number[]>([]);
 
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const slides = childrenRef.current;
-  const totalSlides = slides.length;
+  const totalSlides = childrenRef.current.length;
 
   const handleMoveToNextSlide = useCallback(() => {
-    totalSlides - 1 > activeIndex && setActiveIndex(activeIndex + 1);
+    if (totalSlides - 1 > activeIndex) {
+      setActiveIndex(activeIndex + 1);
+    }
   }, [activeIndex, setActiveIndex, totalSlides]);
 
   const handleMoveToPrevSlide = useCallback(() => {
-    activeIndex > 0 && setActiveIndex(activeIndex - 1);
+    if (activeIndex > 0) {
+      setActiveIndex(activeIndex - 1);
+    }
   }, [activeIndex, setActiveIndex]);
 
   const { isSwiping, swipeDistance } = useGetSwipeDistance({
@@ -35,14 +37,22 @@ const Carousel = ({
     swipeRightCallback: handleMoveToPrevSlide
   });
 
-  const updateSlidesGrid = useDebounce(() => {
-    setSlidesGrid(slides.map((slide) => (slide ? getLeftPosition(slide) : 0)));
-  }, 500);
+  const updateSlidesGrid = useCallback(() => {
+    const firstSlideLeft = getElementPosition(childrenRef.current[0]).left;
+
+    setSlidesGrid(
+      childrenRef.current.map((slide) =>
+        slide ? getElementPosition(slide).left - firstSlideLeft : 0
+      )
+    );
+  }, [childrenRef]);
 
   useEffect(() => {
     window.addEventListener('resize', updateSlidesGrid);
 
-    return () => window.removeEventListener('resize', updateSlidesGrid);
+    return () => {
+      window.removeEventListener('resize', updateSlidesGrid);
+    };
   }, [updateSlidesGrid]);
 
   useEffect(() => {
@@ -50,14 +60,24 @@ const Carousel = ({
   }, [updateSlidesGrid]);
 
   useEffect(() => {
-    navNext?.addEventListener('click', handleMoveToNextSlide);
-    navPrev?.addEventListener('click', handleMoveToPrevSlide);
+    if (navNext) {
+      navNext.addEventListener('click', handleMoveToNextSlide);
 
-    return () => {
-      navNext?.removeEventListener('click', handleMoveToNextSlide);
-      navPrev?.removeEventListener('click', handleMoveToPrevSlide);
-    };
-  }, [handleMoveToNextSlide, handleMoveToPrevSlide, navNext, navPrev]);
+      return () => {
+        navNext.removeEventListener('click', handleMoveToNextSlide);
+      };
+    }
+  }, [handleMoveToNextSlide, navNext]);
+
+  useEffect(() => {
+    if (navPrev) {
+      navPrev.addEventListener('click', handleMoveToPrevSlide);
+
+      return () => {
+        navPrev.removeEventListener('click', handleMoveToPrevSlide);
+      };
+    }
+  }, [handleMoveToPrevSlide, navPrev]);
 
   return (
     <div

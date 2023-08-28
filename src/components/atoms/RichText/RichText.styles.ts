@@ -3,9 +3,6 @@ import ctl from '@netlify/classnames-template-literals';
 const styles = {
   richtext: (className: string) =>
     ctl(`
-      break-words
-      hyphens-auto
-
       ${className}
     `),
   a: 'text-dp-purple font-semibold hover:underline',
@@ -31,10 +28,11 @@ const styles = {
   tr: '',
   blockquote: ctl(`
     flex
-    items-start
     font-normal
+    items-start
     mb-5
     relative
+
     [&_p]:text-xl
 
     [&_*:not(:first-child)]:text-xs
@@ -42,7 +40,7 @@ const styles = {
     [&_:empty]:block
     [&_:empty]:!mb-5
 
-    lg:[&_p]:text-24px
+    lg:[&_p]:text-[24px]
     lg:[&_p:not(:first-child)]:font-semibold
     lg:[&_*:not(:first-child)]:text-base
   `),
@@ -50,19 +48,19 @@ const styles = {
     block
   `),
   leftQuote: ctl(`
-    min-h-14px
-    min-w-14px
-    h-14px
-    w-14px
+    h-[14px]
+    min-h-[14px]
+    min-w-[14px]
     mr-4
     relative
-    top-7px
+    top-[7px]
+    w-[14px]
     
-    lg:h-18px
-    lg:w-18px
-    lg:min-h-18px
-    lg:min-w-18px
-    lg:top-5px
+    lg:h-[18px]
+    lg:min-h-[18px]
+    lg:min-w-[18px]
+    lg:top-[5px]
+    lg:w-[18px]
   `)
 };
 

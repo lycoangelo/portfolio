@@ -1,4 +1,4 @@
-import { useGetSwipeDistance } from '@app/lib/hooks/ useGetSwipeDistance';
+import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDebounce } from 'rooks';
 import { RangeProps } from './Range.interface';

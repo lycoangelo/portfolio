@@ -11,7 +11,7 @@ const styles = {
 		appearance-none
 		bg-transparent
 		p-3
-		mt-0.25
+		mt-[1px]
 		resize-none
 		h-full
 		w-full

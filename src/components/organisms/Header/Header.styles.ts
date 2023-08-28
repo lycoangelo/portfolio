@@ -11,10 +11,6 @@ const styles = {
 		lg:col-start-2
 	`),
 
-  content: ctl(`
-		content
-	`),
-
   header: (isScrolled: boolean) =>
     ctl(`
 			bg-black
@@ -25,7 +21,7 @@ const styles = {
 			w-full
 			z-50
 
-			lg:py-15
+			lg:py-[60px]
 
 			${
         isScrolled

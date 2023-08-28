@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import { getPageX } from '../helpers/dom';
+import { useCallback, useLayoutEffect, useState } from 'react';
+import { getEventPosition } from '../helpers/dom';
 
 interface Props {
   allowMouseLeave?: boolean;
@@ -35,8 +35,8 @@ export const useGetSwipeDistance = ({
   const swipeStartEvent = useCallback(
     (e: MouseEvent | TouchEvent) => {
       setIsSwiping(true);
-      setStartSwipePos(getPageX(e));
-      swipeStartCallback && swipeStartCallback(e);
+      setStartSwipePos(getEventPosition(e).x);
+      swipeStartCallback?.(e);
     },
     [swipeStartCallback]
   );
@@ -44,8 +44,8 @@ export const useGetSwipeDistance = ({
   const swipeMoveEvent = useCallback(
     (e: MouseEvent | TouchEvent) => {
       if (isSwiping) {
-        setSwipeDistance(startSwipePos - getPageX(e));
-        swipeMoveCallback && swipeMoveCallback(e);
+        setSwipeDistance(startSwipePos - getEventPosition(e).x);
+        swipeMoveCallback?.(e);
       }
     },
     [isSwiping, startSwipePos, swipeMoveCallback]
@@ -63,8 +63,8 @@ export const useGetSwipeDistance = ({
         }
 
         setSwipeDistance(0);
-        swipeEndCallback && swipeEndCallback(e);
         setIsSwiping(false);
+        swipeEndCallback?.(e);
       }
     },
     [
@@ -77,7 +77,7 @@ export const useGetSwipeDistance = ({
     ]
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!element) return;
 
     element.addEventListener('mousedown', swipeStartEvent, { passive: true });
@@ -96,6 +96,8 @@ export const useGetSwipeDistance = ({
     }
 
     return () => {
+      if (!element) return;
+
       element.removeEventListener('mousedown', swipeStartEvent);
       element.removeEventListener('touchstart', swipeStartEvent);
 

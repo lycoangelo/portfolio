@@ -10,7 +10,7 @@ const styles = {
 		py-5
 		text-sm
 
-		lg:py-7.5
+		lg:py-[30px]
 		lg:text-xl
 
 		[&>p]:two-color

@@ -67,7 +67,7 @@ const styles = {
   `),
 
   submit: ctl(`
-    mt-7.5
+    mt-[30px]
   `),
 
   submittedMsg: ctl(`

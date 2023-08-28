@@ -26,7 +26,7 @@ export default function CarouselNav({
         </Button>
       )}
 
-      {totalIndexes && (
+      {totalIndexes > 0 && (
         <div className={styles.range}>
           <Range
             max={totalIndexes}

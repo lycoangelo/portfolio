@@ -52,6 +52,7 @@ export async function getPersonalDetailsData({
     items: await Promise.all(
       sections.items.map(async (item) => {
         const itemData = await personalDetailsDataMap(item);
+
         return itemData[item.__typename || ''];
       })
     )
@@ -74,5 +75,6 @@ export default async function PersonalDetails({ id }: { id: string }) {
   } = await getPersonalDetails(id);
 
   const data = await getPersonalDetailsData({ ...personalDetails });
+
   return <PersonalDetailsComponent {...data} />;
 }

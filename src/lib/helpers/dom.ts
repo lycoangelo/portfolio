@@ -1,21 +1,38 @@
 /**
- * Calculates and returns the left position of a button relative to its parent element.
+ * Calculates and returns the position of an element relative to its parent element.
  *
- * @param button The button element for which to calculate the left position.
- * @returns The left position relative to its parent.
+ * @param element The element for which to calculate the position.
+ * @returns An object containing the left, top, right, and bottom positions relative to its parent.
  */
-export const getLeftPosition = (button: HTMLElement | null): number => {
-  if (button) {
-    const buttonRect = button.getBoundingClientRect();
-    const parentRect = button.parentElement?.getBoundingClientRect();
+export const getElementPosition = (element: HTMLElement | null) => {
+  if (element) {
+    const rect = element.getBoundingClientRect();
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollLeft = document.documentElement.scrollLeft;
 
-    if (parentRect) {
-      return buttonRect.left - parentRect.left;
-    }
+    return {
+      top: rect.top + scrollTop,
+      bottom: rect.bottom + scrollTop,
+      left: rect.left + scrollLeft,
+      right: rect.right + scrollLeft
+    };
   }
 
-  return 0; // Default value if button or parent is null
+  return {
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0
+  }; // Default values if element or parent is null
 };
 
-export const getPageX = (e: MouseEvent | TouchEvent) =>
-  (e as MouseEvent).pageX || (e as TouchEvent).touches[0].pageX;
+/**
+ * Retrieves the page coordinates (X and Y) from a MouseEvent or TouchEvent.
+ *
+ * @param e The MouseEvent or TouchEvent from which to extract the coordinates.
+ * @returns An object containing the horizontal (X) and vertical (Y) page coordinates of the event.
+ */
+export const getEventPosition = (e: MouseEvent | TouchEvent) => ({
+  x: (e instanceof MouseEvent ? e.pageX : e.touches[0].pageX) || 0,
+  y: (e instanceof MouseEvent ? e.pageY : e.touches[0].pageY) || 0
+});

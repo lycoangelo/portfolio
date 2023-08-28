@@ -1,8 +1,9 @@
 import ArrowDownIcon from '@app/assets/icons/arrow-down.svg';
-//import ArrowLeftIcon from '@app/assets/icons/arrow-left.svg';
-//import ArrowRightIcon from '@app/assets/icons/arrow-right.svg';
+import ArrowLeftIcon from '@app/assets/icons/arrow-left.svg';
+import ArrowRightIcon from '@app/assets/icons/arrow-right.svg';
 import DownloadIcon from '@app/assets/icons/download.svg';
 import EmailIcon from '@app/assets/icons/email.svg';
+import FlipIcon from '@app/assets/icons/flip.svg';
 import LocationIcon from '@app/assets/icons/location.svg';
 import LinkedInIcon from '@app/assets/icons/linkedin.svg';
 import MobileIcon from '@app/assets/icons/mobile.svg';
@@ -42,10 +43,11 @@ const SquircleIcon = ({
 
 export {
   ArrowDownIcon,
-  //ArrowLeftIcon,
-  //ArrowRightIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
   DownloadIcon,
   EmailIcon,
+  FlipIcon,
   LocationIcon,
   LinkedInIcon,
   MobileIcon,

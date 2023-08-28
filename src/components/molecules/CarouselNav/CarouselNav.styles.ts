@@ -15,6 +15,8 @@ const styles = {
       h-full
       w-fit
 
+      disabled:opacity-30
+
       ${isPrevBtn ? 'rotate-90' : '-rotate-90'}
     `),
 

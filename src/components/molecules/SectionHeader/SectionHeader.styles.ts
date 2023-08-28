@@ -11,7 +11,7 @@ const styles = {
     block
     label
     mb-1
-    min-h-5
+    min-h-[20px]
   `),
 
   title: ctl(`
@@ -34,9 +34,9 @@ const styles = {
     xxl:leading-18
 
     after:absolute
-    after:-bottom-1.75
-    after:mt-2.75
-    after:h-1.75
+    after:bottom-[-7px]
+    after:mt-[11px]
+    after:h-[7px]
     after:w-[16.5%]
     after:bg-primary
     after:content-['']

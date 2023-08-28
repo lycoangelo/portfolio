@@ -33,8 +33,8 @@ styles.details = ctl(`
   md:after:absolute
   md:after:bottom-[-5.5px]
   md:after:left-[-5.5px]
-  md:after:h-2.75
-  md:after:w-2.75
+  md:after:h-[11px]
+  md:after:w-[11px]
   md:after:rounded-full
   md:after:bg-primary
 `);
@@ -50,8 +50,8 @@ styles.job = ctl(`
   after:absolute
   after:bottom-[-5.5px]
   after:left-[-5.5px]
-  after:h-2.75
-  after:w-2.75
+  after:h-[11px]
+  after:w-[11px]
   after:rounded-full
   after:bg-primary
 
@@ -102,13 +102,13 @@ styles.timelineTab = (isActive: boolean) =>
 
   after:absolute
   after:-left-5
-  after:h-0.25
+  after:h-[1px]
   after:bg-primary
   after:transition-all
 
   before:absolute
   before:bg-inactive
-  before:h-0.25
+  before:h-[1px]
   before:-left-5
   before:w-5
 
@@ -118,7 +118,7 @@ styles.timelineTab = (isActive: boolean) =>
     isActive
       ? `
     after:w-5
-    [:first-child>&]:md:after:w-2.75
+    [:first-child>&]:md:after:w-[11px]
     [*:not(:first-child)>&]:md:after:w-2.5
   `
       : `
@@ -127,23 +127,23 @@ styles.timelineTab = (isActive: boolean) =>
   }
 
   [:first-child>&]:md:ml-0
-  [:first-child>&]:md:mr-2.25
+  [:first-child>&]:md:mr-[9px]
   [:first-child>&]:md:before:left-unset
   [:first-child>&]:md:before:-right-3
   [:first-child>&]:md:after:left-unset
   [:first-child>&]:md:after:-right-3
-  [:first-child>&]:md:before:w-2.75
+  [:first-child>&]:md:before:w-[11px]
 
   [:not(:first-child)>&]:md:ml-2.5
-  [:not(:first-child)>&]:md:before:-left-2.75
-  [:not(:first-child)>&]:md:after:-left-2.75
+  [:not(:first-child)>&]:md:before:left-[-11px]
+  [:not(:first-child)>&]:md:after:left-[-11px]
 `);
 
 styles.timelineTabList = ctl(`
   job-timeline-grid
   mb-5
 
-  md:mb-6.5
+  md:mb-[26px]
 `);
 
 styles.timelineTabText = ctl(`
@@ -160,14 +160,14 @@ styles.timelineTabWrapper = (isFirstChild: boolean, isActive: boolean) =>
   before:top-1/2
   before:z-10
   before:h-[calc(100%+50%)]
-  before:w-0.25
+  before:w-[1px]
   before:bg-inactive
 
   after:absolute
   after:top-1/2
   after:z-20
   after:h-[calc(100%+50%)]
-  after:w-0.25
+  after:w-[1px]
   after:transition-all
   after:duration-300
 
@@ -175,23 +175,23 @@ styles.timelineTabWrapper = (isFirstChild: boolean, isActive: boolean) =>
   md:after:bg-primary
 
   ${
+    isFirstChild && !isActive
+      ? `
+    after:h-[calc(100%+50%)]
+    after:bg-inactive
+  `
+      : `
+    after:bg-primary
+  `
+  }
+
+  ${
     isFirstChild
       ? `
-    after:md:-right-0.25
+    after:md:right-[-1px]
     after:md:top-1/2
 
-    ${
-      !isActive
-        ? `
-      after:h-[calc(100%+50%)]
-      after:bg-inactive
-    `
-        : `
-      after:bg-primary
-    `
-    }
-
-    before:md:-right-0.25
+    before:md:right-[-1px]
     before:md:top-1/2
   `
       : `

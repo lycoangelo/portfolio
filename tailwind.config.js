@@ -25,6 +25,36 @@ const additionalUtilities = plugin(function ({ addUtilities }) {
     },
     '.vertical-lr': {
       writingMode: 'vertical-lr'
+    },
+    '.animation-delay-1': {
+      animationDelay: '1000ms'
+    },
+    '.animation-delay-2': {
+      animationDelay: '2000ms'
+    },
+    '.animation-delay-3': {
+      animationDelay: '3000ms'
+    },
+    '.animation-delay-4': {
+      animationDelay: '4000ms'
+    },
+    '.animation-delay-5': {
+      animationDelay: '5000ms'
+    },
+    '.animation-delay-6': {
+      animationDelay: '6000ms'
+    },
+    '.animation-delay-7': {
+      animationDelay: '7000ms'
+    },
+    '.animation-delay-8': {
+      animationDelay: '8000ms'
+    },
+    '.animation-delay-9': {
+      animationDelay: '9000ms'
+    },
+    '.animation-delay-10': {
+      animationDelay: '10000ms'
     }
   });
 });
@@ -54,6 +84,7 @@ module.exports = {
     },
     extend: {
       animation: {
+        drop: 'drop linear 5s infinite',
         ticker: 'ticker linear infinite'
       },
       fontFamily: {

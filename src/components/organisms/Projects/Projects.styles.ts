@@ -29,14 +29,21 @@ const styles = {
 
       hover:duration-300
 
+      [&_path]:transition-all
+
       ${
-        isFlipped &&
-        `
+        isFlipped
+          ? `
         !bg-teal
         !text-white
         rotate-x-180
         rotate-z-180
-        text-secondary
+
+        [&_svg]:bottom-auto
+        [&_svg]:top-1
+      `
+          : `
+        [&:focus_path]:fill-black
       `
       }
     `),
@@ -59,6 +66,14 @@ const styles = {
   container: ctl(`
     grid-container
     overflow-visible
+  `),
+
+  flip: ctl(`
+    absolute
+    bottom-1
+    right-1
+    transition-all
+    w-3
   `),
 
   header: ctl(`
@@ -103,6 +118,7 @@ const styles = {
 
   projects: ctl(`
     col-span-full
+    relative
 
     lg:col-span-10
     lg:col-start-2

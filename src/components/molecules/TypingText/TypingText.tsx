@@ -28,7 +28,7 @@ const TypingText = ({
 
   useEffect(() => {
     if (startAnimation) {
-      let timer = setTimeout(() => {
+      const timer = setTimeout(() => {
         if (currentText.length < text.length) {
           setCurrentText(text.slice(0, currentText.length + 1));
         } else {
@@ -42,7 +42,7 @@ const TypingText = ({
 
   useEffect(() => {
     if (startAnimation && !hideCursor) {
-      let cursorTimer = setInterval(() => {
+      const cursorTimer = setInterval(() => {
         setShowCursor((prev) => !prev);
       }, duration);
 

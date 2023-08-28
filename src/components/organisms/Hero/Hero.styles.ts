@@ -73,7 +73,7 @@ const styles = {
   title: ctl(`
     font-am-200
     h-[120px]
-    leading-30
+    leading-[120px]
     mb-5
     text-6xl
     two-color

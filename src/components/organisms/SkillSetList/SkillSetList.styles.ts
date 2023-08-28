@@ -35,7 +35,7 @@ const styles: ObjectKey = {
 
   container: ctl(`
 		relative
-		mt-7.5
+		mt-[30px]
 	`),
 
   legends: ctl(`

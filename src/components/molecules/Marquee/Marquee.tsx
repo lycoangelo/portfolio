@@ -10,11 +10,11 @@ export default function Marquee({
 }: MarqueeProps) {
   const [loopsCount, setLoopsCount] = useState(1);
 
-  const childrenRef = useRef<HTMLDivElement>(null);
+  const childrenRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const childElements = Array.from(
-      childrenRef.current?.childNodes || []
+      childrenRef.current[0]?.childNodes ?? []
     ) as HTMLElement[];
 
     const sumOffsetWidth = childElements.reduce((accumulator, child) => {
@@ -29,24 +29,30 @@ export default function Marquee({
     }, 0);
 
     const loopsCount = Math.ceil(
-      (childrenRef.current?.offsetWidth || 0) / sumOffsetWidth
+      (childrenRef.current[0]?.offsetWidth ?? 0) / sumOffsetWidth
     );
 
     setLoopsCount(loopsCount);
   }, []);
 
+  useEffect(() => {
+    if (childrenRef.current?.[1]) {
+      childrenRef.current[1].style.left = `${childrenRef.current[0]?.clientWidth}px`;
+    }
+  }, [loopsCount]);
+
   return (
     <div className={styles.container(className)} role="presentation">
       <div
         className={styles.children(pauseOnHover)}
-        ref={childrenRef}
+        ref={(el) => (childrenRef.current[0] = el)}
         style={{ animationDuration: `${duration}ms` }}
       >
         {Array.from({ length: loopsCount }, () => children)}
       </div>
       <div
         className={styles.children(pauseOnHover)}
-        ref={childrenRef}
+        ref={(el) => (childrenRef.current[1] = el)}
         style={{ animationDuration: `${duration}ms` }}
       >
         {Array.from({ length: loopsCount }, () => children)}

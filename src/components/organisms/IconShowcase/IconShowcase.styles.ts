@@ -25,7 +25,7 @@ const styles = {
       isActive
         ? `
 			visible
-			opacity-1
+			opacity-100
 			relative
 		`
         : `

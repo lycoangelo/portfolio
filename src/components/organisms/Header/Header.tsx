@@ -6,6 +6,7 @@ import {
   TIMELINE_PROJECTS,
   HERO
 } from '@app/lib/constants/selectors';
+import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 
 import Link from 'next/link';
 import { useRef } from 'react';
@@ -22,18 +23,20 @@ const links = [
 export default function Header() {
   const { scrollY } = useWindowScrollPosition();
 
+  const isMounted = useIsMounted();
+
   const headerRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (href: string) =>
     window.scrollTo({
       behavior: 'smooth',
       top:
-        (document.getElementById(href)?.offsetTop || 0) -
-        (headerRef.current?.offsetHeight || 0) -
+        (document.getElementById(href)?.offsetTop ?? 0) -
+        (headerRef.current?.offsetHeight ?? 0) -
         20
     });
 
-  return (
+  return isMounted ? (
     <header className={styles.header(scrollY > 0)} ref={headerRef}>
       <div className={styles.inner}>
         <Link className={styles.branding} href="/" title="Go to Homepage">
@@ -52,5 +55,5 @@ export default function Header() {
         </nav>
       </div>
     </header>
-  );
+  ) : null;
 }
