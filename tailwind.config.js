@@ -27,34 +27,34 @@ const additionalUtilities = plugin(function ({ addUtilities }) {
       writingMode: 'vertical-lr'
     },
     '.animation-delay-1': {
-      animationDelay: '1000ms'
-    },
-    '.animation-delay-2': {
-      animationDelay: '2000ms'
-    },
-    '.animation-delay-3': {
       animationDelay: '3000ms'
     },
-    '.animation-delay-4': {
-      animationDelay: '4000ms'
-    },
-    '.animation-delay-5': {
-      animationDelay: '5000ms'
-    },
-    '.animation-delay-6': {
+    '.animation-delay-2': {
       animationDelay: '6000ms'
     },
-    '.animation-delay-7': {
-      animationDelay: '7000ms'
-    },
-    '.animation-delay-8': {
-      animationDelay: '8000ms'
-    },
-    '.animation-delay-9': {
+    '.animation-delay-3': {
       animationDelay: '9000ms'
     },
+    '.animation-delay-4': {
+      animationDelay: '12000ms'
+    },
+    '.animation-delay-5': {
+      animationDelay: '15000ms'
+    },
+    '.animation-delay-6': {
+      animationDelay: '18000ms'
+    },
+    '.animation-delay-7': {
+      animationDelay: '21000ms'
+    },
+    '.animation-delay-8': {
+      animationDelay: '24000ms'
+    },
+    '.animation-delay-9': {
+      animationDelay: '27000ms'
+    },
     '.animation-delay-10': {
-      animationDelay: '10000ms'
+      animationDelay: '30000ms'
     }
   });
 });
@@ -84,7 +84,7 @@ module.exports = {
     },
     extend: {
       animation: {
-        drop: 'drop linear 5s infinite',
+        drop: 'drop linear 5.5s infinite',
         ticker: 'ticker linear infinite'
       },
       fontFamily: {

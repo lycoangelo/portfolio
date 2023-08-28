@@ -5,7 +5,8 @@ import PersonalDetails from '@app/components/organisms/PersonalDetails/PersonalD
 import { notFound } from 'next/navigation';
 import { fetchGraphQL } from '@app/lib/helpers/api';
 import Projects from '@app/components/organisms/Projects/Projects.server';
-import DropMotion from '@app/components/molecules/DropMotion/DropMotion';
+import DropMotion from '@app/components/organisms/DropMotion/DropMotion';
+import ThemePicker from '@app/components/organisms/ThemePicker/ThemePicker';
 
 export const metadata = {
   title: 'Lyco Angelo: Portfolio'
@@ -39,7 +40,7 @@ export default async function Home() {
       {/* @ts-expect-error Server Component */}
       <Projects {...projects} />
       <ContactForm {...contactForm} />
-
+      <ThemePicker />
       <DropMotion />
     </main>
   );
