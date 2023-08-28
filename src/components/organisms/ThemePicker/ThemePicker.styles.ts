@@ -42,7 +42,7 @@ const styles = {
     relative
     rounded-full
 
-    ${isToggle ? 'w-5' : 'mb-3 w-full'}
+    ${isToggle ? 'w-5' : 'mb-3 last:mb-4 w-full'}
   `),
 
   list: ctl(`

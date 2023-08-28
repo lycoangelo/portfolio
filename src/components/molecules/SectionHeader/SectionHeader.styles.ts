@@ -25,21 +25,22 @@ const styles = {
     typewriter
 
     md:text-5xl
-    md:leading-15
+    md:leading-[60px]
 
     xl:text-6xl
-    xl:leading-17
+    xl:leading-[68px]
 
     xxl:text-7xl
-    xxl:leading-18
 
     after:absolute
-    after:bottom-[-7px]
-    after:mt-[11px]
-    after:h-[7px]
-    after:w-[16.5%]
     after:bg-primary
+    after:bottom-[-7px]
     after:content-['']
+    after:duration-500
+    after:h-[7px]
+    after:mt-[11px]
+    after:transition-colors
+    after:w-[16.5%]
 
     [.text-left>&]:after:left-0
     [.text-right>&]:after:right-0

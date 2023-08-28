@@ -2,21 +2,30 @@
 
 import Button from '@app/components/atoms/Button/Button';
 import { PrimaryColors, primaryColors } from '@app/lib/constants/theme';
+import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import FocusTrap from 'focus-trap-react';
 import { useEffect, useRef, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import styles from './ThemePicker.styles';
 
+const themeCookieName = 'theme';
+
 export default function ThemePicker() {
-  const [activeColor, setIsActiveColor] = useState(primaryColors[0]);
   const [isActive, setIsActive] = useState(false);
   const [listHeight, setListHeight] = useState(0);
+
+  const isMounted = useIsMounted();
+
+  const [cookies, setCookie] = useCookies([themeCookieName]);
+
+  const activeColor = cookies.theme || 'teal';
 
   const listRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (color: PrimaryColors) => {
     if (isActive) {
-      setIsActiveColor(color);
+      setCookie(themeCookieName, color);
       setIsActive(false);
     } else {
       setIsActive(true);
@@ -34,9 +43,9 @@ export default function ThemePicker() {
 
   useEffect(() => {
     document.body.setAttribute('theme', activeColor);
-  }, [activeColor]);
+  }, [activeColor, setCookie]);
 
-  return (
+  return isMounted ? (
     <FocusTrap active={isActive}>
       <aside className={styles.aside} style={{ height: listHeight }}>
         <ul className={styles.list} ref={listRef}>
@@ -63,5 +72,5 @@ export default function ThemePicker() {
         </div>
       </aside>
     </FocusTrap>
-  );
+  ) : null;
 }
