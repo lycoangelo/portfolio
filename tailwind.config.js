@@ -90,7 +90,7 @@ module.exports = {
       'orange-secondary': '#b36500',
       'orange-tertiary': '#783f13',
 
-      'green-primary': '#01ff01',
+      'green-primary': '#00ff66',
       'green-secondary': '#03835f',
       'green-tertiary': '#015d43',
 
@@ -108,7 +108,11 @@ module.exports = {
 
       'purple-primary': '#c900fb',
       'purple-secondary': '#a113ac',
-      'purple-tertiary': '#62027a'
+      'purple-tertiary': '#62027a',
+
+      'gray-primary': '#cdcdcd',
+      'gray-secondary': '#8b8a8a',
+      'gray-tertiary': '#3a3a3a'
     },
     extend: {
       animation: {
@@ -120,6 +124,9 @@ module.exports = {
         'am-500': 'var(--apek-mk3-500)',
         roboto: 'var(--roboto)',
         quicksand: 'var(--quicksand)'
+      },
+      gridColumnEnd: {
+        13: '13'
       },
       keyframes: {
         drop: {
@@ -157,8 +164,8 @@ module.exports = {
       spacing: {
         unset: 'unset'
       },
-      letterSpacing: {
-        broad: '0.2em'
+      transitionDuration: {
+        0: '0ms'
       }
     },
     screens: {
