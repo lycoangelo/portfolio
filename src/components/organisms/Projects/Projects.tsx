@@ -5,12 +5,12 @@ import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader
 import { ProjectsProps } from './Projects.interface';
 import { PROJECTS } from '@app/lib/constants/selectors';
 import { useEffect, useRef, useState } from 'react';
+import Marquee from 'react-fast-marquee';
+import Button from '@app/components/atoms/Button/Button';
+import { FlipIcon } from '@app/components/atoms/Icon/Icon';
 import Carousel from '@app/components/molecules/Carousel/Carousel';
 import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
 import ProjectCard from '@app/components/molecules/ProjectCard/ProjectCard';
-import Button from '@app/components/atoms/Button/Button';
-import Marquee from '@app/components/molecules/Marquee/Marquee';
-import { FlipIcon } from '@app/components/atoms/Icon/Icon';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 
 export default function Projects({
@@ -57,7 +57,7 @@ export default function Projects({
         name={name}
         title={title}
       />
-      <Marquee className={styles.marquee} duration={20000} pauseOnHover>
+      <Marquee className={styles.marquee} pauseOnHover speed={100}>
         {projects.map(({ description, name }, index) => (
           <Button
             aria-hidden
