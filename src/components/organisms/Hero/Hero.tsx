@@ -9,6 +9,7 @@ import { HeroProps } from './Hero.interface';
 import TypingText from '@app/components/molecules/TypingText/TypingText';
 import { HERO } from '@app/lib/constants/selectors';
 import { motion } from 'framer-motion';
+import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 
 const typeDuration = 150;
 
@@ -22,8 +23,10 @@ export default function Hero({
 
   const headlineText = documentToHtmlString(headline.json);
 
+  const sectionRef = useToggleClassInView(HERO);
+
   return (
-    <section className={styles.container} id={HERO}>
+    <section className={styles.container} id={HERO} ref={sectionRef}>
       <div className={styles.content}>
         <TypingText
           className={styles.title}

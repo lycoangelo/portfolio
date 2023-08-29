@@ -3,7 +3,7 @@
 import {
   PERSONAL_DETAILS,
   CONTACT_FORM,
-  TIMELINE_PROJECTS,
+  PROJECTS,
   HERO
 } from '@app/lib/constants/selectors';
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
@@ -16,7 +16,7 @@ import styles from './Header.styles';
 const links = [
   { label: 'Home', href: HERO },
   { label: 'Profile', href: PERSONAL_DETAILS },
-  { label: 'Projects', href: TIMELINE_PROJECTS },
+  { label: 'Projects', href: PROJECTS },
   { label: 'Contact', href: CONTACT_FORM }
 ];
 
@@ -46,8 +46,9 @@ export default function Header() {
           {links.map(({ href, label }, index) => (
             <a
               className={styles.link}
-              onClick={() => scrollToSection(href)}
+              data-target={href}
               key={index}
+              onClick={() => scrollToSection(href)}
             >
               {label}
             </a>

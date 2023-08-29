@@ -24,6 +24,7 @@ import {
   PersonalDetailsProps,
   PersonalDetailsMap
 } from './PersonalDetails.interface';
+import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 
 const personalDetailsMap: PersonalDetailsMap = {
   Essay,
@@ -43,6 +44,8 @@ export default function PersonalDetailsComponent({
 
   const { innerWidth } = useWindowSize();
 
+  const sectionRef = useToggleClassInView(PERSONAL_DETAILS);
+
   const tabs = sectionsCollection.items;
 
   useEffect(() => {
@@ -59,8 +62,9 @@ export default function PersonalDetailsComponent({
   return (
     <section
       className={styles.container}
-      style={{ minHeight }}
       id={PERSONAL_DETAILS}
+      ref={sectionRef}
+      style={{ minHeight }}
     >
       <div className={styles.tabList} role="tablist">
         <p className={styles.animation} ref={animationRef} role="presentation">

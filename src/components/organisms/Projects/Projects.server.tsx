@@ -25,7 +25,7 @@ export default async function Projects(props: ProjectsProps) {
     projectsCollection: {
       items: props.projectsCollection.items.map((project, index) => ({
         ...project,
-        description: descriptions[index].description
+        description: descriptions[index]?.description
       }))
     }
   };

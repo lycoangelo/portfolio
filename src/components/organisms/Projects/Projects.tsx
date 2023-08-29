@@ -3,7 +3,7 @@
 import styles from './Projects.styles';
 import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import { ProjectsProps } from './Projects.interface';
-import { TIMELINE_PROJECTS } from '@app/lib/constants/selectors';
+import { PROJECTS } from '@app/lib/constants/selectors';
 import { useEffect, useRef, useState } from 'react';
 import Carousel from '@app/components/molecules/Carousel/Carousel';
 import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
@@ -11,6 +11,7 @@ import ProjectCard from '@app/components/molecules/ProjectCard/ProjectCard';
 import Button from '@app/components/atoms/Button/Button';
 import Marquee from '@app/components/molecules/Marquee/Marquee';
 import { FlipIcon } from '@app/components/atoms/Icon/Icon';
+import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 
 export default function Projects({
   name,
@@ -31,6 +32,8 @@ export default function Projects({
   const carouselNavNextRef = useRef<HTMLButtonElement>(null);
   const carouselNavPrevRef = useRef<HTMLButtonElement>(null);
 
+  const sectionRef = useToggleClassInView(PROJECTS);
+
   const updateCardsFlipState = (index: number) => {
     const newState = [...cardsFlipState];
     newState[index] = projects[index].description && !newState[index];
@@ -47,7 +50,7 @@ export default function Projects({
   }, []);
 
   return (
-    <section className={styles.container} id={TIMELINE_PROJECTS}>
+    <section className={styles.container} id={PROJECTS} ref={sectionRef}>
       <SectionHeader
         className={styles.header}
         layout="left"

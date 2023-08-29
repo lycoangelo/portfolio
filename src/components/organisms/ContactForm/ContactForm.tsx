@@ -14,6 +14,7 @@ import {
   ContactRequest,
   ContactResponse
 } from './ContactForm.interface';
+import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 
 export default function ContactForm({
   name,
@@ -26,6 +27,8 @@ export default function ContactForm({
   const messageRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
+
+  const sectionRef = useToggleClassInView(CONTACT_FORM);
 
   const validateForm = () => {
     // Add validation logic here
@@ -80,7 +83,7 @@ export default function ContactForm({
   ];
 
   return (
-    <section className={styles.container} id={CONTACT_FORM}>
+    <section className={styles.container} id={CONTACT_FORM} ref={sectionRef}>
       <div className={styles.timeWrapper}>
         <span className={styles.timeLabel}>My Local Time:</span>
         <TimeOdometer className={styles.time} />
