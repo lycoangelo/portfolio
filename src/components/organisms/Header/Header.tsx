@@ -6,11 +6,12 @@ import {
   PROJECTS,
   HERO
 } from '@app/lib/constants/selectors';
+import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 
 import Link from 'next/link';
-import { useRef } from 'react';
-import { useWindowScrollPosition } from 'rooks';
+import { useEffect, useRef, useState } from 'react';
+import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
 import styles from './Header.styles';
 
 const links = [
@@ -21,13 +22,19 @@ const links = [
 ];
 
 export default function Header() {
+  const [isActive, setIsActive] = useState(false);
+
+  const headerRef = useRef<HTMLDivElement>(null);
+
   const { scrollY } = useWindowScrollPosition();
 
   const isMounted = useIsMounted();
 
-  const headerRef = useRef<HTMLDivElement>(null);
+  const { isBelowSm } = useBreakpoint();
 
-  const scrollToSection = (href: string) =>
+  useLockBodyScroll(isActive);
+
+  const scrollToSection = (href: string) => {
     window.scrollTo({
       behavior: 'smooth',
       top:
@@ -36,13 +43,31 @@ export default function Header() {
         20
     });
 
+    setIsActive(false);
+  };
+
+  useEffect(() => {
+    setIsActive(false);
+  }, [isBelowSm]);
+
   return isMounted ? (
     <header className={styles.header(scrollY > 0)} ref={headerRef}>
       <div className={styles.inner}>
         <Link className={styles.branding} href="/" title="Go to Homepage">
           <b>L</b>A
         </Link>
-        <nav className={styles.nav}>
+        <button
+          aria-expanded={isActive}
+          aria-label={`${isActive ? 'Close' : 'Open'} main menu`}
+          className={styles.toggle}
+          data-toggle
+          onClick={() => setIsActive(!isActive)}
+        >
+          <span className={styles.hamburgerTop(isActive)} />
+          <span className={styles.hamburgerCenter(isActive)} />
+          <span className={styles.hamburgerBottom(isActive)} />
+        </button>
+        <nav className={styles.nav(isActive)}>
           {links.map(({ href, label }, index) => (
             <a
               className={styles.link}
