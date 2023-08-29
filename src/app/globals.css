@@ -34,7 +34,7 @@
   }
 
   [theme='green'] {
-    --primary-color: #01ff01;
+    --primary-color: #00ff66;
     --secondary-color: #03835f;
     --tertiary-color: #015d43;
   }
@@ -61,6 +61,12 @@
     --primary-color: #c900fb;
     --secondary-color: #a113ac;
     --tertiary-color: #62027a;
+  }
+
+  [theme='gray'] {
+    --primary-color: #cdcdcd;
+    --secondary-color: #8b8a8a;
+    --tertiary-color: #3a3a3a;
   }
 
   *:focus {
@@ -95,13 +101,14 @@
 
 @layer components {
   .label {
-    @apply font-semibold text-sm uppercase text-primary;
     letter-spacing: 0.2em;
+
+    @apply font-semibold text-sm uppercase text-primary;
   }
 
   .wave {
     animation: wave 1s linear infinite;
-    background: linear-gradient(45deg, #00c9e3, #fff);
+    background: linear-gradient(45deg, #333, #fff);
     margin: 10px;
     height: 100px;
     width: 5px;
@@ -111,15 +118,17 @@
 
   @media (min-width: 768px) {
     .job-timeline-grid {
-      @apply grid;
       grid-template-columns: 141.5px 1fr;
+
+      @apply grid;
     }
   }
 
   @media (min-width: 1024px) {
     .job-timeline-grid {
-      @apply grid;
       grid-template-columns: 157.5px 1fr;
+
+      @apply grid;
     }
   }
 
@@ -133,6 +142,7 @@
 @layer utilities {
   body {
     background-color: #000;
+
     @apply font-quicksand;
   }
 
