@@ -1,12 +1,14 @@
-import React, {
+import {
   ForwardedRef,
   forwardRef,
   RefObject,
   useEffect,
   useState
 } from 'react';
+
 import styles from './Input.styles';
 import { InputProps } from './Input.interface';
+import { validateEmail } from '@app/lib/helpers/validation';
 
 type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
@@ -22,14 +24,20 @@ const Input = forwardRef<InputElement, InputProps>(
     const [errorType, setErrorType] = useState('');
 
     const errorMessageMap: ErrorMessageMap = {
-      required: `Please enter your ${label}`
+      required: `Please enter your ${label}`,
+      'invalid-email': 'Please enter a valid email address'
     };
 
     const handleOnChange = (e: any) => {
       if (!isSubmitted) return;
+      const { value } = e.target;
 
-      if (e.target.value) {
-        setErrorType('');
+      if (value) {
+        if (type === 'email' && !validateEmail(value)) {
+          setErrorType('invalid-email');
+        } else {
+          setErrorType('');
+        }
       } else {
         setErrorType('required');
       }
@@ -61,6 +69,7 @@ const Input = forwardRef<InputElement, InputProps>(
               className={styles.input}
               onChange={handleOnChange}
               ref={ref as RefObject<HTMLInputElement>}
+              type={type}
             />
           )}
         </label>

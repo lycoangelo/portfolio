@@ -15,6 +15,7 @@ import {
   ContactResponse
 } from './ContactForm.interface';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
+import { validateEmail } from '@app/lib/helpers/validation';
 
 export default function ContactForm({
   name,
@@ -22,6 +23,7 @@ export default function ContactForm({
   contactsCollection
 }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLInputElement>(null);
@@ -31,7 +33,21 @@ export default function ContactForm({
   const sectionRef = useToggleClassInView(CONTACT_FORM);
 
   const validateForm = () => {
-    // Add validation logic here
+    const email = emailRef.current?.value;
+
+    const payload: ContactRequest = {
+      name: nameRef.current?.value,
+      email,
+      subject: subjectRef.current?.value,
+      message: messageRef.current?.value
+    };
+
+    const isValid =
+      !Object.values(payload).some(
+        (value) => value === null || value === undefined || value === ''
+      ) && validateEmail(email);
+
+    return { isValid, payload };
   };
 
   const sendContactRequest = async (
@@ -57,27 +73,24 @@ export default function ContactForm({
   };
 
   const submitForm = async () => {
-    validateForm();
+    const { isValid, payload } = validateForm();
 
-    try {
-      const request: ContactRequest = {
-        name: nameRef.current?.value,
-        email: emailRef.current?.value,
-        subject: subjectRef.current?.value,
-        message: messageRef.current?.value
-      };
-
-      await sendContactRequest(request);
-      !isSubmitted && setIsSubmitted(true);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
+    if (isValid) {
+      try {
+        await sendContactRequest(payload);
+        setIsSuccess(true);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
     }
+
+    !isSubmitted && setIsSubmitted(true);
   };
 
   const fields = [
     { label: 'Name', ref: nameRef },
-    { label: 'Email', ref: emailRef },
+    { label: 'Email', ref: emailRef, type: 'email' },
     { label: 'Subject', ref: subjectRef },
     { label: 'Message', ref: messageRef, type: 'textarea' }
   ];
@@ -123,7 +136,7 @@ export default function ContactForm({
         })}
       </div>
 
-      {isSubmitted ? (
+      {isSuccess ? (
         <h3 className={styles.submittedMsg}>Thanks for swinging by!</h3>
       ) : (
         <form className={styles.form} onSubmit={submitForm}>
