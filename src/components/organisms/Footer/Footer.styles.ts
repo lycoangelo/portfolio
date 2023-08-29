@@ -7,8 +7,10 @@ const styles = {
 		z-10
 		w-full
 		border-t
-		py-5
+		py-10
 		text-sm
+
+		sm:py-5
 
 		lg:py-[30px]
 		lg:text-xl
