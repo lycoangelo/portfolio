@@ -151,14 +151,14 @@ const styles = {
     hasBorderEffect?: boolean
   ) =>
     ctl(`
-      relative
+      duration-150
       flex
       items-center
       justify-center
+      relative
       text-center
-      uppercase
       transition-all
-      duration-300
+      uppercase
 
       ${className}
       ${colors[color]}
