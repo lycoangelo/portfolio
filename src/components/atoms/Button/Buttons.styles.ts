@@ -51,7 +51,7 @@ const colors: ButtonColors = {
 
     active:border-primary
     active:bg-primary
-    active:text-white
+    active:text-black
   `,
   transparent: `
     border-0
@@ -120,7 +120,7 @@ const iconColors: ObjectKey = {
   active: '[&_path]:fill-white',
   primary: `
     [&_path]:fill-white
-    [button:active_&_path]:fill-white
+    [button:active_&_path]:fill-black
     [button:hover:not(:active)_&_path]:fill-black
     [button:focus:not(:active)_&_path]:fill-black
   `
