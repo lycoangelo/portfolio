@@ -13,7 +13,7 @@ const colorsMap: { [key: PrimaryColors]: string } = {
 
 const styles = {
   aside: ctl(`
-    bg-[rgba(0,0,0,1)]
+    bg-[rgba(0,0,0,0.75)]
     bottom-5
     duration-150
     fixed
@@ -42,7 +42,7 @@ const styles = {
     relative
     rounded-full
 
-    ${isToggle ? 'w-5' : 'mb-3 last:mb-4 w-full'}
+    ${isToggle ? 'w-5' : 'mb-3 first:mt-1 last:mb-4 w-full'}
   `),
 
   list: ctl(`
