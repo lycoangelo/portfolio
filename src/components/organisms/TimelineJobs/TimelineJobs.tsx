@@ -23,7 +23,7 @@ export default function TimelineJobs({
             >
               <Button
                 className={styles.timelineTab(isActive)}
-                color={index === activeTabIndex ? 'active' : 'inactive'}
+                color={index === activeTabIndex ? 'active' : 'primary'}
                 onClick={() => setActiveTabIndex(index)}
                 role="tab"
                 size="sm"

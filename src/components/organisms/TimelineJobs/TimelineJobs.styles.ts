@@ -151,6 +151,7 @@ styles.timelineTabList = ctl(`
 `);
 
 styles.timelineTabText = ctl(`
+  duration-0
   overflow-hidden
   text-ellipsis
 `);
