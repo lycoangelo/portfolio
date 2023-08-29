@@ -1,6 +1,7 @@
 import ArrowDownIcon from '@app/assets/icons/arrow-down.svg';
 import ArrowLeftIcon from '@app/assets/icons/arrow-left.svg';
 import ArrowRightIcon from '@app/assets/icons/arrow-right.svg';
+import CloseIcon from '@app/assets/icons/close.svg';
 import DownloadIcon from '@app/assets/icons/download.svg';
 import EmailIcon from '@app/assets/icons/email.svg';
 import FlipIcon from '@app/assets/icons/flip.svg';
@@ -45,6 +46,7 @@ export {
   ArrowDownIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
+  CloseIcon,
   DownloadIcon,
   EmailIcon,
   FlipIcon,
