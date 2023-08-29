@@ -1,11 +1,12 @@
-export const primaryColors = [
+export const themeColors = [
   'teal',
   'orange',
   'blue',
   'green',
   'red',
   'yellow',
-  'purple'
+  'purple',
+  'gray'
 ];
 
-export type PrimaryColors = (typeof primaryColors)[number];
+export type ThemeColors = (typeof themeColors)[number];

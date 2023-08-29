@@ -1,14 +1,15 @@
-import { PrimaryColors } from '@app/lib/constants/theme';
+import { ThemeColors } from '@app/lib/constants/theme';
 import ctl from '@netlify/classnames-template-literals';
 
-const colorsMap: { [key: PrimaryColors]: string } = {
+const colorsMap: { [key: ThemeColors]: string } = {
   blue: 'bg-blue-primary',
   green: 'bg-green-primary',
   orange: 'bg-orange-primary',
   purple: 'bg-purple-primary',
   red: 'bg-red-primary',
   teal: 'bg-teal-primary',
-  yellow: 'bg-yellow-primary'
+  yellow: 'bg-yellow-primary',
+  gray: 'bg-gray-primary'
 };
 
 const styles = {
@@ -54,7 +55,7 @@ const styles = {
     w-5
   `),
 
-  toggle: (color: PrimaryColors) =>
+  toggle: (color: ThemeColors) =>
     ctl(`
     duration-500
     h-full
