@@ -42,6 +42,7 @@
     "react": "18.2.0",
     "react-cookie": "^6.1.0",
     "react-dom": "18.2.0",
+    "react-fast-marquee": "^1.6.0",
     "react-odometerjs": "^3.1.0",
     "react-use-downloader": "^1.2.4",
     "rooks": "^7.11.1",
