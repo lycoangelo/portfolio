@@ -1,7 +1,8 @@
 'use client';
 
 import Button from '@app/components/atoms/Button/Button';
-import { PrimaryColors, primaryColors } from '@app/lib/constants/theme';
+import { themeColors, ThemeColors } from '@app/lib/constants/theme';
+import useClickOutside from '@app/lib/hooks/useClickOutside';
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import FocusTrap from 'focus-trap-react';
 import { useEffect, useRef, useState } from 'react';
@@ -18,12 +19,15 @@ export default function ThemePicker() {
 
   const [cookies, setCookie] = useCookies([themeCookieName]);
 
-  const activeColor = cookies.theme || 'teal';
-
+  const asideRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = (color: PrimaryColors) => {
+  useClickOutside(() => setIsActive(false), [asideRef]);
+
+  const activeColor = cookies.theme || 'teal';
+
+  const handleClick = (color: ThemeColors) => {
     if (isActive) {
       setCookie(themeCookieName, color);
       setIsActive(false);
@@ -46,10 +50,14 @@ export default function ThemePicker() {
   }, [activeColor, setCookie]);
 
   return isMounted ? (
-    <FocusTrap active={isActive}>
-      <aside className={styles.aside} style={{ height: listHeight }}>
+    <FocusTrap active={isActive} focusTrapOptions={{ allowOutsideClick: true }}>
+      <aside
+        className={styles.aside}
+        style={{ height: listHeight }}
+        ref={asideRef}
+      >
         <ul className={styles.list} ref={listRef}>
-          {primaryColors
+          {themeColors
             .filter((color) => color !== activeColor)
             .map((color, index) => (
               <li className={styles.item(false)} key={index}>
