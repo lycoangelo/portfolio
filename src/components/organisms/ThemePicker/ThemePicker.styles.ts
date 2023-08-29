@@ -48,7 +48,6 @@ const styles = {
   list: ctl(`
     absolute
     bottom-5
-    duration-500
     h-auto
     overflow-hidden
     transition-all

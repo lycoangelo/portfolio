@@ -9,11 +9,9 @@ export default function ProjectCard({
   company,
   description,
   endDate,
-  index,
   isFlipped,
   isPresent,
   name,
-  projectsRef,
   role,
   setIsFlipped,
   startDate
@@ -30,10 +28,7 @@ export default function ProjectCard({
   };
 
   return (
-    <div
-      className={styles.project(className)}
-      ref={(el) => (projectsRef.current[index] = el)}
-    >
+    <div className={styles.project(className)}>
       <div className={styles.inner(isFlipped)}>
         <div className={styles.front}>
           <div className={styles.dateRange}>

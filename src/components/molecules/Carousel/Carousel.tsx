@@ -8,16 +8,17 @@ const Carousel: FC<CarouselProps> = ({
   activeIndex,
   className,
   children,
-  childrenRef,
   navNext,
   navPrev,
   setActiveIndex
 }) => {
+  const [slides, setSlides] = useState<HTMLElement[]>([]);
   const [slidesGrid, setSlidesGrid] = useState<number[]>([]);
 
   const carouselRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
-  const totalSlides = childrenRef.current.length;
+  const totalSlides = slides.length;
 
   const handleMoveToNextSlide = useCallback(() => {
     if (totalSlides - 1 > activeIndex) {
@@ -38,14 +39,20 @@ const Carousel: FC<CarouselProps> = ({
   });
 
   const updateSlidesGrid = useCallback(() => {
-    const firstSlideLeft = getElementPosition(childrenRef.current[0]).left;
+    const firstSlideLeft = getElementPosition(slides[0]).left;
 
     setSlidesGrid(
-      childrenRef.current.map((slide) =>
+      slides?.map((slide) =>
         slide ? getElementPosition(slide).left - firstSlideLeft : 0
       )
     );
-  }, [childrenRef]);
+  }, [slides]);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      setSlides([...sliderRef.current.children] as unknown as HTMLElement[]);
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener('resize', updateSlidesGrid);
@@ -87,6 +94,7 @@ const Carousel: FC<CarouselProps> = ({
     >
       <div
         className={styles.slider}
+        ref={sliderRef}
         style={{
           right: slidesGrid[activeIndex] + (isSwiping ? swipeDistance : 0) || 0,
           transitionDuration: isSwiping ? '0ms' : undefined

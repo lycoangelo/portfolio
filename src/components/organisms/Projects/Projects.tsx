@@ -30,7 +30,6 @@ export default function Projects({
 
   const carouselNavNextRef = useRef<HTMLButtonElement>(null);
   const carouselNavPrevRef = useRef<HTMLButtonElement>(null);
-  const projectsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const updateCardsFlipState = (index: number) => {
     const newState = [...cardsFlipState];
@@ -75,7 +74,6 @@ export default function Projects({
       <Carousel
         activeIndex={activeIndex}
         className={styles.projects}
-        childrenRef={projectsRef}
         navNext={carouselNavNext}
         navPrev={carouselPrevNext}
         setActiveIndex={setActiveIndex}
@@ -84,8 +82,6 @@ export default function Projects({
           <ProjectCard
             {...card}
             key={index}
-            index={index}
-            projectsRef={projectsRef}
             isFlipped={cardsFlipState[index]}
             setIsFlipped={() => updateCardsFlipState(index)}
           />
