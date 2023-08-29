@@ -30,6 +30,7 @@ const styles = {
   dateRange: ctl(`
     border-b
     border-gray
+    duration-100
     flex
     font-bold
     mb-6
@@ -37,6 +38,7 @@ const styles = {
     relative
     text-sm
     text-primary
+    transition-colors
     whitespace-nowrap
     uppercase
 
@@ -47,8 +49,10 @@ const styles = {
   dateSeparator: 'mx-1',
 
   detail: ctl(`
+    duration-100
     label
     mb-3
+    transition-colors
 
     sm:mb-1
   `),
@@ -88,9 +92,9 @@ const styles = {
       ${
         isFlipped &&
         `
-          rotate-x-180
-          rotate-z-180
-        `
+        rotate-x-180
+        rotate-z-180
+      `
       }
     `),
 

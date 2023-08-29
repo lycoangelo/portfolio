@@ -120,8 +120,9 @@ const iconColors: ObjectKey = {
   active: '[&_path]:fill-white',
   primary: `
     [&_path]:fill-white
-    [button:hover_&_path]:fill-black
-    [button:focus_&_path]:!fill-white
+    [button:active_&_path]:fill-white
+    [button:hover:not(:active)_&_path]:fill-black
+    [button:focus:not(:active)_&_path]:fill-black
   `
 };
 
@@ -166,9 +167,6 @@ const styles = {
     `),
   icon: (color: string, size: string, iconClassName: string) =>
     ctl(`
-      [&_path]:transition-colors
-      [&_path]:duration-300
-
       ${iconColors[color]}
       ${iconSizes[size]}
       ${iconClassName}

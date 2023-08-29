@@ -12,6 +12,7 @@ styles.company = ctl(`
 `);
 
 styles.date = ctl(`
+  duration-100
   w-full
   pr-5
   text-sm
@@ -118,15 +119,15 @@ styles.timelineTab = (isActive: boolean) =>
   ${
     isActive
       ? `
-    after:w-5
+        after:w-5
 
-    [:first-child>&]:md:after:w-[11px]
+        [:first-child>&]:md:after:w-[11px]
 
-    [*:not(:first-child)>&]:md:after:w-2.5
-  `
+        [*:not(:first-child)>&]:md:after:w-2.5
+      `
       : `
-    after:w-0
-  `
+        after:w-0
+      `
   }
 
   [:first-child>&]:md:ml-0

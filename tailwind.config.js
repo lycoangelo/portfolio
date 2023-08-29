@@ -98,7 +98,7 @@ module.exports = {
       'blue-secondary': '#0357bd',
       'blue-tertiary': '#013a81',
 
-      'red-primary': '#f82f2f',
+      'red-primary': '#ff0000',
       'red-secondary': '#c00808',
       'red-tertiary': '#6e0101',
 
@@ -124,9 +124,11 @@ module.exports = {
       keyframes: {
         drop: {
           '0%': {
+            opacity: 0.5,
             top: '-50%'
           },
           '100%': {
+            opacity: 0.8,
             top: '110%'
           }
         },

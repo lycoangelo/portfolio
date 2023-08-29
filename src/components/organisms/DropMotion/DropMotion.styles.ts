@@ -13,15 +13,16 @@ const styles = {
 
     after:absolute
     after:animate-drop
+    after:bg-gradient-to-b
     after:block
     after:content-['']
-    after:h-[15vh]
-    after:w-full
-    after:left-0
-    after:bg-gradient-to-b
     after:from-transparent
-    after:via-white
+    after:h-[15vh]
+    after:left-0
     after:to-white
+    after:-top-1/2
+    after:via-white
+    after:w-full
 
     ${order === 0 && 'after:animation-delay-10 ml-[100%]'}
     ${order === 1 && 'after:animation-delay-1 ml-[40%]'}

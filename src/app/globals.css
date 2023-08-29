@@ -7,7 +7,7 @@
   padding: 0;
   margin: 0;
 
-  @apply duration-500 transition-colors;
+  @apply duration-300 transition-colors;
 }
 
 body {
@@ -38,7 +38,7 @@ body {
   }
 
   &[theme='red'] {
-    --primary-color: #f82f2f;
+    --primary-color: #ff0000;
     --secondary-color: #c00808;
     --tertiary-color: #6e0101;
   }
