@@ -30,7 +30,7 @@ const styles = {
     rounded-full
     transition-all
     w-6
-    z-50
+    z-40
   `),
 
   item: (isToggle: boolean) =>
