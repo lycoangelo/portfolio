@@ -52,7 +52,9 @@ export default function TimelineJobs({
                     <div className={styles.date}>
                       <time dateTime={startYear.toString()}>{startYear}</time>
                       {isPresent ? (
-                        <span>-PRESENT</span>
+                        <span>
+                          -<span className={styles.present}>PRESENT</span>
+                        </span>
                       ) : (
                         endYear !== startYear && (
                           <time dateTime={endYear.toString()}>-{endYear}</time>
