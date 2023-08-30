@@ -1,14 +1,14 @@
 import ctl from '@netlify/classnames-template-literals';
 
 const styles = {
+  button: 'mr-5',
+
   container: ctl(`
 		flex
 		flex-wrap
 	`),
 
   icon: ctl(`
-		mr-5
-
 		[button_&:before]:transition-all
 
 		[button:hover_&:before]:inset-0

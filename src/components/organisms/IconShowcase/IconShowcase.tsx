@@ -15,6 +15,7 @@ export default function IconShowcase({
     <div className={styles.container}>
       {iconsCollection.items.map(({ icon }, index) => (
         <Button
+          className={styles.button}
           size="fit"
           color="transparent"
           key={index}
