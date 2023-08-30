@@ -99,29 +99,46 @@ const styles = (isActive: boolean, isScrolled: boolean) => ({
 		grid-container-no-margin
 	`),
 
+  item: ctl(`
+		mb-8
+
+		sm:mb-0
+
+		[&:not(:last-child)]:mr-10
+	`),
+
   link: ctl(`
 		cursor-pointer
 		label
-		mb-8
 		text-2xl
 		z-10
 
-		sm:mb-0
 		sm:opacity-100
 		sm:text-sm
 
 		hover:text-white
+	`),
 
-		[&:not(:last-child)]:mr-10
+  list: ctl(`
+		flex
+		flex-col
+		h-auto
+		justify-center
+		w-auto
+
+		sm:flex-row
+		sm:items-center
+		sm:h-full
+		sm:justify-end
+		sm:w-full
 	`),
 
   nav: ctl(`
 		bg-black
 		duration-300
 		flex
-		flex-col
+		items-center
 		h-full
-		justify-center
 		ml-auto
 		mr-0
 		pl-10
@@ -131,9 +148,7 @@ const styles = (isActive: boolean, isScrolled: boolean) => ({
 		w-screen
 		
 		sm:bg-transparent
-		sm:flex-row
-		sm:items-center
-		sm:justify-end
+		sm:block
 		sm:translate-x-0
 		sm:pl-0
 		sm:pt-0
@@ -145,6 +160,7 @@ const styles = (isActive: boolean, isScrolled: boolean) => ({
   toggle: ctl(`
 		absolute
 		h-4
+		pointer-events-auto
 		right-5
 		top-12
 		w-5
@@ -171,7 +187,7 @@ const styles = (isActive: boolean, isScrolled: boolean) => ({
 
 		lg:col-end-12
 
-		${isActive ? 'bg-[rgba(0,0,0,0.8)]' : 'bg-transparent'}
+		${isActive ? 'bg-[rgba(0,0,0,0.8)]' : 'bg-transparent pointer-events-none'}
 	`)
 });
 

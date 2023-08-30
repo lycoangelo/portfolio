@@ -1,15 +1,15 @@
 'use client';
 
 import styles from './Hero.styles';
-import useDownloader from 'react-use-downloader';
 import Button from '../../atoms/Button/Button';
 import Image from 'next/image';
+import TypingText from '@app/components/molecules/TypingText/TypingText';
+import useDownloader from 'react-use-downloader';
+import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { HeroProps } from './Hero.interface';
-import TypingText from '@app/components/molecules/TypingText/TypingText';
 import { HERO } from '@app/lib/constants/selectors';
 import { motion } from 'framer-motion';
-import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 
 const typeDuration = 150;
 
@@ -33,6 +33,7 @@ export default function Hero({
           duration={typeDuration}
           hideCursor
           layout="left"
+          tag="h1"
           text={headlineText}
         />
         <motion.p className={styles.description}>{description}</motion.p>
@@ -49,7 +50,7 @@ export default function Hero({
           </Button>
         )}
       </div>
-      <div className={styles.background}>
+      <div className={styles.background} aria-hidden>
         <figure className={styles.backgroundWrapper}>
           <Image
             alt={background.alt}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
+import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import { useEffect, useRef, useState } from 'react';
 import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
@@ -25,7 +26,9 @@ const links = [
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
 
+  const closeRef = useRef(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const { scrollY } = useWindowScrollPosition();
 
@@ -34,6 +37,8 @@ export default function Header() {
   const { isBelowSm } = useBreakpoint();
 
   useLockBodyScroll(isActive);
+
+  useHideOtherElements(isActive, wrapperRef.current);
 
   const scrollToSection = (href: string) => {
     window.scrollTo({
@@ -60,30 +65,34 @@ export default function Header() {
           <b>L</b>A
         </Link>
         <FocusTrap active={isActive}>
-          <div className={classes.wrapper}>
+          <div className={classes.wrapper} ref={wrapperRef}>
             <button
               aria-expanded={isActive}
               aria-label={`${isActive ? 'Close' : 'Open'} main menu`}
               className={classes.toggle}
               data-toggle
               onClick={() => setIsActive(!isActive)}
+              ref={closeRef}
             >
               <span className={classes.hamburgerTop} />
               <span className={classes.hamburgerCenter} />
               <span className={classes.hamburgerBottom} />
             </button>
             <nav aria-hidden={!isActive && isBelowSm} className={classes.nav}>
-              {links.map(({ href, label }, index) => (
-                <a
-                  className={classes.link}
-                  data-target={href}
-                  key={index}
-                  onClick={() => scrollToSection(href)}
-                  tabIndex={isActive ? 0 : -1}
-                >
-                  {label}
-                </a>
-              ))}
+              <ul className={classes.list}>
+                {links.map(({ href, label }, index) => (
+                  <li className={classes.item} key={index}>
+                    <a
+                      className={classes.link}
+                      data-target={href}
+                      onClick={() => scrollToSection(href)}
+                      tabIndex={isActive ? 0 : -1}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </nav>
           </div>
         </FocusTrap>

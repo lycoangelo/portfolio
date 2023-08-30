@@ -1,4 +1,19 @@
 /**
+ * Retrieves and returns a list of ancestor elements for a given HTML element.
+ *
+ * @param el The HTML element for which to retrieve ancestors.
+ * @returns A NodeList containing all ancestor elements in the order from closest to furthest.
+ */
+export const getAncestors = (el: Element | ParentNode | null) => {
+  let ancestors = [];
+  while (el) {
+    ancestors.unshift(el);
+    el = el.parentNode;
+  }
+  return ancestors;
+};
+
+/**
  * Calculates and returns the position of an element relative to its parent element.
  *
  * @param element The element for which to calculate the position.
