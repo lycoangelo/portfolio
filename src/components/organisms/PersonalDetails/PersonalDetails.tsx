@@ -37,7 +37,7 @@ export default function PersonalDetailsComponent({
   sectionsCollection
 }: PersonalDetailsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const [minHeight, setMinHeight] = useState<number | string>('unset');
+  const [height, setHeight] = useState<number | string>('unset');
 
   const animationRef = useRef<HTMLDivElement | null>(null);
   const panelsRef = useRef<(HTMLElement | null)[]>([]);
@@ -49,14 +49,14 @@ export default function PersonalDetailsComponent({
   const tabs = sectionsCollection.items;
 
   useEffect(() => {
-    let containerMinHeight = 0;
+    let containerheight = 0;
 
     panelsRef.current.forEach((panel) => {
       const panelHeight = panel?.offsetHeight || 0;
-      if (panelHeight > containerMinHeight) containerMinHeight = panelHeight;
+      if (panelHeight > containerheight) containerheight = panelHeight;
     });
 
-    setMinHeight(containerMinHeight);
+    setHeight(containerheight);
   }, [innerWidth]);
 
   return (
@@ -64,10 +64,10 @@ export default function PersonalDetailsComponent({
       className={styles.container}
       id={PERSONAL_DETAILS}
       ref={sectionRef}
-      style={{ minHeight }}
+      style={{ height }}
     >
       <div className={styles.tabList} role="tablist">
-        <p className={styles.animation} ref={animationRef} role="presentation">
+        <p aria-hidden className={styles.animation(false)} ref={animationRef}>
           <span className={styles.animationText}>I am</span>
           <strong className={styles.strong}>
             <ScrambleText
@@ -79,36 +79,58 @@ export default function PersonalDetailsComponent({
             />
           </strong>
         </p>
-        {tabs.map((tab, index) => (
-          <Button
-            className={styles.tab(index === activeTabIndex)}
-            color="transparent"
-            key={index}
-            onClick={() => setActiveTabIndex(index)}
-            role="tab"
-            size="fit"
-          >
-            {tab.name}
-          </Button>
-        ))}
-      </div>
-      <div className={styles.panels}>
         {tabs.map((tab, index) => {
           const Component = personalDetailsMap[tab.__typename];
 
           return (
-            <div
-              aria-hidden={index !== activeTabIndex}
-              className={styles.panel(index === activeTabIndex)}
-              key={index}
-              ref={(el) => {
-                panelsRef.current[index] = el;
-              }}
-              role="tabpanel"
-            >
-              <SectionHeader layout="right" name={tab.name} title={tab.title} />
-              <Component {...tab} />
-            </div>
+            <>
+              <div className={styles.tabWrapper}>
+                <Button
+                  className={styles.tab(index === activeTabIndex)}
+                  color="transparent"
+                  key={index}
+                  onClick={() => setActiveTabIndex(index)}
+                  role="tab"
+                  size="fit"
+                >
+                  {tab.name}
+                </Button>
+                {index === tabs.length - 1 && (
+                  <p
+                    aria-hidden
+                    className={styles.animation(true)}
+                    ref={animationRef}
+                  >
+                    <span className={styles.animationText}>I am</span>
+                    <strong className={styles.strong}>
+                      <ScrambleText
+                        className={styles.scramble}
+                        letterSpeed={100}
+                        nextLetterSpeed={200}
+                        pauseTime={3000}
+                        texts={scrambleTexts[activeTabIndex]}
+                      />
+                    </strong>
+                  </p>
+                )}
+              </div>
+              <div
+                aria-hidden={index !== activeTabIndex}
+                className={styles.panel(index === activeTabIndex)}
+                key={index}
+                ref={(el) => {
+                  panelsRef.current[index] = el;
+                }}
+                role="tabpanel"
+              >
+                <SectionHeader
+                  layout="right"
+                  name={tab.name}
+                  title={tab.title}
+                />
+                <Component {...tab} />
+              </div>
+            </>
           );
         })}
       </div>

@@ -1,11 +1,12 @@
 import ctl from '@netlify/classnames-template-literals';
 
 const styles = {
-  animation: ctl(`
+  animation: (isMobile: boolean) =>
+    ctl(`
     border-t
     border-t-gray
     h-auto
-    mt-5
+    mt-10
     order-10
     pt-10
     relative
@@ -15,7 +16,12 @@ const styles = {
     md:border-t-0
     md:pt-0
     md:mt-0
+    md:ml-0
+    md:mr-auto
     md:-order-1
+    md:w-[41.18%]
+
+    ${isMobile ? 'block md:hidden' : 'hidden md:block'}
   `),
 
   animationText: ctl(`
@@ -30,7 +36,7 @@ const styles = {
   `),
 
   container: ctl(`
-    grid-container
+    block-container
   `),
 
   eyebrow: ctl(`
@@ -40,22 +46,23 @@ const styles = {
 
   panel: (isActive: boolean) =>
     ctl(`
+      absolute
       top-0
       ml-auto
       mr-0
-      w-full
+      w-[72.93%]
       pb-5
+
+      md:w-[49.12%]
 
       ${
         isActive
           ? `
         visible
-        relative
         opacity-100
       `
           : `
         invisible
-        absolute
         opacity-0
       `
       }
@@ -64,15 +71,7 @@ const styles = {
   panels: ctl(`
     border-b
     border-b-gray
-    col-end-5
-    col-start-2
     relative
-
-    md:col-start-7
-    md:col-end-13
-
-    lg:col-start-7
-    lg:col-end-12
   `),
 
   scramble: ctl(`
@@ -83,13 +82,9 @@ const styles = {
     text-primary
     text-right
 
-    sm:text-5xl
-
-    md:h-[160px]
     md:leading-[60px]
     md:mb-8
     md:pb-5
-    md:text-6xl
 
     xl:leading-[68px]
     xl:text-6xl
@@ -107,9 +102,9 @@ const styles = {
 
   tab: (isActive: boolean) =>
     ctl(`
-      label
       ml-auto
       mr-0
+      label
       mb-5
       text-right
       text-xs
@@ -121,15 +116,21 @@ const styles = {
   tabList: ctl(`
     flex
     flex-col
+    items-end
     pt-20
     relative
 
-    md:col-span-5
-    md:col-start-1
     md:pt-0
+  `),
 
-    lg:col-span-4
-    lg:col-start-2
+  tabWrapper: ctl(`
+    ml-0
+    mr-auto
+    w-[20.18%]
+
+    md:w-[41.18%]
+
+    md:first:mt-[100px]
   `),
 
   title: ctl(`
