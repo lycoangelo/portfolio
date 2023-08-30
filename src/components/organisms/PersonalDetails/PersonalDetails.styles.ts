@@ -85,6 +85,7 @@ const styles = {
     md:leading-[60px]
     md:mb-8
     md:pb-5
+    md:text-5xl
 
     xl:leading-[68px]
     xl:text-6xl
