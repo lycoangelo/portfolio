@@ -1,18 +1,19 @@
 'use client';
 
+import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
+import { useIsMounted } from '@app/lib/hooks/useIsMounted';
+import { useEffect, useRef, useState } from 'react';
+import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
+import Link from 'next/link';
+import FocusTrap from 'focus-trap-react';
+import styles from './Header.styles';
+
 import {
   PERSONAL_DETAILS,
   CONTACT_FORM,
   PROJECTS,
   HERO
 } from '@app/lib/constants/selectors';
-import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
-import { useIsMounted } from '@app/lib/hooks/useIsMounted';
-
-import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
-import styles from './Header.styles';
 
 const links = [
   { label: 'Home', href: HERO },
@@ -50,35 +51,42 @@ export default function Header() {
     setIsActive(false);
   }, [isBelowSm]);
 
+  const classes = styles(isActive, scrollY > 0);
+
   return isMounted ? (
-    <header className={styles.header(scrollY > 0)} ref={headerRef}>
-      <div className={styles.inner}>
-        <Link className={styles.branding} href="/" title="Go to Homepage">
+    <header className={classes.header} ref={headerRef}>
+      <div className={classes.inner}>
+        <Link className={classes.branding} href="/" title="Go to Homepage">
           <b>L</b>A
         </Link>
-        <button
-          aria-expanded={isActive}
-          aria-label={`${isActive ? 'Close' : 'Open'} main menu`}
-          className={styles.toggle}
-          data-toggle
-          onClick={() => setIsActive(!isActive)}
-        >
-          <span className={styles.hamburgerTop(isActive)} />
-          <span className={styles.hamburgerCenter(isActive)} />
-          <span className={styles.hamburgerBottom(isActive)} />
-        </button>
-        <nav className={styles.nav(isActive)}>
-          {links.map(({ href, label }, index) => (
-            <a
-              className={styles.link}
-              data-target={href}
-              key={index}
-              onClick={() => scrollToSection(href)}
+        <FocusTrap active={isActive}>
+          <div className={classes.wrapper}>
+            <button
+              aria-expanded={isActive}
+              aria-label={`${isActive ? 'Close' : 'Open'} main menu`}
+              className={classes.toggle}
+              data-toggle
+              onClick={() => setIsActive(!isActive)}
             >
-              {label}
-            </a>
-          ))}
-        </nav>
+              <span className={classes.hamburgerTop} />
+              <span className={classes.hamburgerCenter} />
+              <span className={classes.hamburgerBottom} />
+            </button>
+            <nav aria-hidden={!isActive && isBelowSm} className={classes.nav}>
+              {links.map(({ href, label }, index) => (
+                <a
+                  className={classes.link}
+                  data-target={href}
+                  key={index}
+                  onClick={() => scrollToSection(href)}
+                  tabIndex={isActive ? 0 : -1}
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </FocusTrap>
       </div>
     </header>
   ) : null;

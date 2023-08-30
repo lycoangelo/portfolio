@@ -10,7 +10,7 @@ const hamburgerCommonClass = `
   w-full
 `;
 
-const styles = {
+const styles = (isActive: boolean, isScrolled: boolean) => ({
   branding: ctl(`
 		two-color-bold
 		font-roboto
@@ -26,27 +26,25 @@ const styles = {
 		w-5
 	`),
 
-  header: (isScrolled: boolean) =>
-    ctl(`
-			bg-black
-			fixed
-			py-10
-			top-0
-			transition-all
-			w-full
-			z-50
+  header: ctl(`
+		bg-black
+		fixed
+		py-10
+		top-0
+		transition-all
+		w-full
+		z-50
 
-			lg:py-[60px]
+		lg:py-[60px]
 
-			${
-        isScrolled
-          ? 'drop-shadow-[0px_2px_15px_rgba(255,255,255,0.18)]'
-          : 'drop-shadow-[0_0_0_rgba(255,255,255,0.18)]'
-      }
-		`),
+		${
+      isScrolled
+        ? 'drop-shadow-[0px_2px_15px_rgba(255,255,255,0.18)]'
+        : 'drop-shadow-[0_0_0_rgba(255,255,255,0.18)]'
+    }
+	`),
 
-  hamburgerTop: (isActive: boolean) =>
-    ctl(`
+  hamburgerTop: ctl(`
     ${hamburgerCommonClass}
 
     ${
@@ -60,44 +58,42 @@ const styles = {
         top-0
       `
     }
-    `),
+	`),
 
-  hamburgerCenter: (isActive: boolean) =>
-    ctl(`
+  hamburgerCenter: ctl(`
       top-1/2
-      -translate-y-1/2
+		-translate-y-1/2
 
-      ${hamburgerCommonClass}
+		${hamburgerCommonClass}
 
-      ${
-        isActive
-          ? `
-          opacity-0
-          rotate-180
-        `
-          : `
-          opacity-100
-          rotate-0
-        `
-      }
-    `),
+		${
+      isActive
+        ? `
+				opacity-0
+				rotate-180
+			`
+        : `
+				opacity-100
+				rotate-0
+			`
+    }
+	`),
 
-  hamburgerBottom: (isActive: boolean) =>
-    ctl(`
-      ${hamburgerCommonClass}
+  hamburgerBottom: ctl(`
+		${hamburgerCommonClass}
 
-      ${
-        isActive
-          ? `
-          bottom-[7px]
-          rotate-[315deg]
-        `
-          : `
-          bottom-0
-          rotate-0
-        `
-      }
-    `),
+		${
+      isActive
+        ? `
+				bottom-[7px]
+				rotate-[315deg]
+			`
+        : `
+				bottom-0
+				rotate-0
+			`
+    }
+	`),
 
   inner: ctl(`
 		grid-container-no-margin
@@ -119,14 +115,12 @@ const styles = {
 		[&:not(:last-child)]:mr-10
 	`),
 
-  nav: (isActive: boolean) =>
-    ctl(`
+  nav: ctl(`
 		bg-black
 		duration-300
 		flex
 		flex-col
-	  fixed
-		h-screen
+		h-full
 		justify-center
 		ml-auto
 		mr-0
@@ -135,40 +129,17 @@ const styles = {
 		transition-all
 		top-0
 		w-screen
-
-		${isActive ? 'translate-x-1/3' : 'translate-x-full'}
 		
 		sm:bg-transparent
-		sm:col-start-4
-		sm:col-end-13
 		sm:flex-row
-		sm:h-auto
 		sm:items-center
 		sm:justify-end
 		sm:translate-x-0
 		sm:pl-0
 		sm:pt-0
-		sm:relative
 		sm:w-full
 
-		lg:col-end-12
-
-		before:duration-300
-		before:fixed
-		before:bg-black
-		before:content-['']
-		before:left-0
-		before:h-screen
-		before:opacity-50
-		before:top-0
-		before:transition-opacity
-		before:w-screen
-
-		${
-      isActive
-        ? 'before:opacity-80 before:-translate-x-full'
-        : 'before:opacity-0 before:translate-x-full'
-    }
+		${isActive ? 'translate-x-1/3' : 'translate-x-full'}
 	`),
 
   toggle: ctl(`
@@ -180,7 +151,28 @@ const styles = {
 		z-50
 
 		sm:hidden
+	`),
+
+  wrapper: ctl(`
+		fixed
+		flex
+		h-screen
+		items-center
+		left-0
+		transition-colors
+		top-0
+		w-screen
+
+		sm:col-start-4
+		sm:col-end-13
+		sm:h-auto
+		sm:relative
+		sm:w-full
+
+		lg:col-end-12
+
+		${isActive ? 'bg-[rgba(0,0,0,0.8)]' : 'bg-transparent'}
 	`)
-};
+});
 
 export default styles;
