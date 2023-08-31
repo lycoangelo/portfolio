@@ -56,22 +56,25 @@ export default function ThemePicker() {
         style={{ height: listHeight }}
         ref={asideRef}
       >
-        <ul className={styles.list} ref={listRef}>
+        <ul aria-hidden={!isActive} className={styles.list} ref={listRef}>
           {themeColors
             .filter((color) => color !== activeColor)
             .map((color, index) => (
               <li className={styles.item(false)} key={index}>
                 <Button
+                  aria-label={`Select ${color} Color`}
                   className={styles.toggle(color)}
                   color="transparent"
                   onClick={() => handleClick(color)}
                   size="full"
+                  tabIndex={isActive ? 0 : -1}
                 />
               </li>
             ))}
         </ul>
         <div className={styles.item(true)} ref={toggleRef}>
           <Button
+            aria-label="Select Theme Color"
             className={styles.toggle(activeColor)}
             color="transparent"
             onClick={() => setIsActive(!isActive)}

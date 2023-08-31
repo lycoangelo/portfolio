@@ -94,6 +94,7 @@ export default function Projects({
         <CarouselNav
           activeIndex={activeIndex}
           className={styles.carouselNav}
+          name="Projects"
           navNextRef={carouselNavNextRef}
           navPrevRef={carouselNavPrevRef}
           setActiveIndex={setActiveIndex}

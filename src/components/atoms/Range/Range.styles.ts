@@ -40,7 +40,8 @@ const styles = {
     -translate-y-1/2
   `),
 
-  wrapper: ctl(`
+  wrapper: (className: string) =>
+    ctl(`
     flex
     items-center
     h-full
@@ -48,6 +49,8 @@ const styles = {
     relative
     top-0
     w-full
+
+    ${className}
   `)
 };
 

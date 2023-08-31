@@ -5,16 +5,20 @@ import { RangeProps } from './Range.interface';
 import styles from './Range.styles';
 
 export default function Range({
+  className = '',
   max = 10,
   min = 0,
+  name,
   setValue,
-  value
+  value,
+  ...props
 }: RangeProps) {
   const [rangeGrid, setRangeGrid] = useState<number[]>([]);
   const [thumbWidth, setThumbWidth] = useState(0);
   const [wrapperWidth, setWrapperWidth] = useState(0);
 
   const firstRangeGrid = rangeGrid[0];
+  const id = name.replaceAll(' ', '-');
 
   const sliderRange = wrapperWidth - thumbWidth;
   const gridsGap = firstRangeGrid - rangeGrid[1];
@@ -92,14 +96,16 @@ export default function Range({
   const thumbPosition = rangeGrid[value] + (isSwiping ? swipeDistance : 0) || 0;
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef}>
+    <div className={styles.wrapper(className)} ref={wrapperRef}>
       <input
         className={styles.range}
+        id={id}
         max={max}
         min={min}
         onChange={(e) => setValue(parseInt(e.target.value))}
         type="range"
         value={value}
+        {...props}
       />
       {
         <div className={styles.background}>

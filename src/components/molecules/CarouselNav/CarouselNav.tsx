@@ -7,6 +7,7 @@ import styles from './CarouselNav.styles';
 export default function CarouselNav({
   activeIndex,
   className = '',
+  name,
   navNextRef,
   navPrevRef,
   setActiveIndex,
@@ -16,6 +17,7 @@ export default function CarouselNav({
     <div className={styles.container(className)}>
       {navPrevRef && (
         <Button
+          aria-label="Go to Previous Slide"
           className={styles.button(true)}
           color="transparent"
           disabled={activeIndex <= 0}
@@ -29,6 +31,8 @@ export default function CarouselNav({
       {totalIndexes > 0 && (
         <div className={styles.range}>
           <Range
+            aria-label="test"
+            name={name}
             max={totalIndexes}
             setValue={setActiveIndex}
             value={activeIndex}
@@ -38,6 +42,7 @@ export default function CarouselNav({
 
       {navNextRef && (
         <Button
+          aria-label="Go to Next Slide"
           className={styles.button(false)}
           color="transparent"
           disabled={activeIndex >= totalIndexes}

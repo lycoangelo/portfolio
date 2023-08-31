@@ -3,15 +3,15 @@
 import styles from './PersonalDetails.styles';
 import Button from '@app/components/atoms/Button/Button';
 import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
+import ScrambleText from '@app/components/molecules/ScrambleText/ScrambleText';
 import Essay from '@app/components/organisms/Essay/Essay';
 import IconShowcase from '@app/components/organisms/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/organisms/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
+import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
+import { useWindowSize } from 'rooks';
 import { PERSONAL_DETAILS } from '@app/lib/constants/selectors';
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { useWindowSize } from 'rooks';
-
-import ScrambleText from '@app/components/molecules/ScrambleText/ScrambleText';
 
 const scrambleTexts = [
   ['A Filipino', 'A Husband', 'A Daddy', 'A Dog Dad'],
@@ -21,10 +21,10 @@ const scrambleTexts = [
 ];
 
 import {
+  PersonalDetailsAnimationProps,
   PersonalDetailsProps,
   PersonalDetailsMap
 } from './PersonalDetails.interface';
-import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 
 const personalDetailsMap: PersonalDetailsMap = {
   Essay,
@@ -32,6 +32,30 @@ const personalDetailsMap: PersonalDetailsMap = {
   SkillSetList,
   TimelineJobs
 };
+
+const Animation = ({
+  activeTabIndex,
+  animationRef,
+  isMobile = false
+}: PersonalDetailsAnimationProps) => (
+  <p
+    aria-hidden
+    className={styles.animation(isMobile)}
+    ref={animationRef}
+    role="presentation"
+  >
+    <span className={styles.animationText}>I am</span>
+    <strong className={styles.strong}>
+      <ScrambleText
+        className={styles.scramble}
+        letterSpeed={100}
+        nextLetterSpeed={200}
+        pauseTime={3000}
+        texts={scrambleTexts[activeTabIndex]}
+      />
+    </strong>
+  </p>
+);
 
 export default function PersonalDetailsComponent({
   sectionsCollection
@@ -66,52 +90,30 @@ export default function PersonalDetailsComponent({
       ref={sectionRef}
       style={{ height }}
     >
-      <div className={styles.tabList} role="tablist">
-        <p aria-hidden className={styles.animation(false)} ref={animationRef}>
-          <span className={styles.animationText}>I am</span>
-          <strong className={styles.strong}>
-            <ScrambleText
-              className={styles.scramble}
-              letterSpeed={100}
-              nextLetterSpeed={200}
-              pauseTime={3000}
-              texts={scrambleTexts[activeTabIndex]}
-            />
-          </strong>
-        </p>
+      <div className={styles.tabList}>
+        <Animation
+          activeTabIndex={activeTabIndex}
+          animationRef={animationRef}
+        />
         {tabs.map((tab, index) => {
           const Component = personalDetailsMap[tab.__typename];
 
+          const id = tab.name.replaceAll(' ', '-');
+          const isSelected = index === activeTabIndex;
+
           return (
-            <Fragment key={tab.name}>
+            <Fragment key={id}>
               <div className={styles.tabWrapper}>
                 <Button
-                  className={styles.tab(index === activeTabIndex)}
+                  aria-label={`See ${tab.name}`}
+                  aria-expanded={isSelected}
+                  className={styles.tab(isSelected)}
                   color="transparent"
                   onClick={() => setActiveTabIndex(index)}
-                  role="tab"
                   size="fit"
                 >
                   {tab.name}
                 </Button>
-                {index === tabs.length - 1 && (
-                  <p
-                    aria-hidden
-                    className={styles.animation(true)}
-                    ref={animationRef}
-                  >
-                    <span className={styles.animationText}>I am</span>
-                    <strong className={styles.strong}>
-                      <ScrambleText
-                        className={styles.scramble}
-                        letterSpeed={100}
-                        nextLetterSpeed={200}
-                        pauseTime={3000}
-                        texts={scrambleTexts[activeTabIndex]}
-                      />
-                    </strong>
-                  </p>
-                )}
               </div>
               <div
                 aria-hidden={index !== activeTabIndex}
@@ -119,7 +121,6 @@ export default function PersonalDetailsComponent({
                 ref={(el) => {
                   panelsRef.current[index] = el;
                 }}
-                role="tabpanel"
               >
                 <SectionHeader
                   layout="right"

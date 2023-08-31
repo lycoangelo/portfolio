@@ -64,6 +64,8 @@ const styles = {
           : `
         invisible
         opacity-0
+
+        [&_[href]]:invisible
       `
       }
     `),

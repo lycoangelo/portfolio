@@ -11,7 +11,7 @@ const TypingText = ({
   duration = 300,
   hideCursor,
   layout = 'left',
-  tag = 'span',
+  tag = 'p',
   text,
   textProps
 }: TypingTextProps) => {
@@ -65,12 +65,9 @@ const TypingText = ({
       ref={typingTextRef}
       {...divProps}
     >
-      <Tag
-        aria-label={sanitizeString(text)}
-        className={className}
-        {...textProps}
-      >
+      <Tag className={className} {...textProps}>
         <span aria-hidden>{parse(currentText)}</span>
+        <span className={styles.srOnly}>{sanitizeString(text)}</span>
       </Tag>
       {showCursor && !hideCursor && <span>_</span>}
     </div>

@@ -1,3 +1,4 @@
+import { Ref } from 'react';
 import { EssayProps } from '../Essay/Essay.interface';
 import { IconShowcaseProps } from '../IconShowcase/IconShowcase.interface';
 import { SkillSetListProps } from '../SkillSetList/SkillSetList.interface';
@@ -14,6 +15,12 @@ export type PersonalDetailsItemsType =
   | (TimelineJobsProps & ComponentMapProps)
   | (SkillSetListProps & ComponentMapProps)
   | (IconShowcaseProps & ComponentMapProps);
+
+export interface PersonalDetailsAnimationProps {
+  activeTabIndex: number;
+  animationRef: Ref<HTMLParagraphElement>;
+  isMobile?: boolean;
+}
 
 export interface PersonalDetailsProps {
   sectionsCollection: {

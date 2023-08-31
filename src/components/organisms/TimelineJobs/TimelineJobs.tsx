@@ -12,33 +12,37 @@ export default function TimelineJobs({
 
   return (
     <div className={styles.timelines}>
-      <div className={styles.timelineTabList} role="tablist">
+      <ul className={styles.timelineTabList} role="tablist">
         {timelines.map((timeline, index) => {
           const isActive = index === activeTabIndex;
+          const { title } = timeline;
 
           return (
-            <div
+            <li
               className={styles.timelineTabWrapper(index === 0, isActive)}
               key={index}
             >
               <Button
+                aria-controls={title}
+                aria-selected={isActive}
                 className={styles.timelineTab(isActive)}
                 color={index === activeTabIndex ? 'active' : 'primary'}
                 onClick={() => setActiveTabIndex(index)}
                 role="tab"
                 size="sm"
               >
-                <span className={styles.timelineTabText}>{timeline.title}</span>
+                <span className={styles.timelineTabText}>{title}</span>
               </Button>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
       <div className={styles.timelinePanels}>
         {timelines.map((timeline, index) => (
           <div
             aria-hidden={index !== activeTabIndex}
             className={styles.timelinePanel(index === activeTabIndex)}
+            id={timeline.title}
             key={index}
             role="tabpanel"
           >

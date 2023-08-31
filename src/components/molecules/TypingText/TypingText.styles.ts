@@ -7,7 +7,12 @@ const styles = {
 			items-center
 
 			${isLeftAligned ? 'justify-end' : 'justify-start'}
-		`)
+		`),
+
+  srOnly: ctl(`
+		left-0
+		sr-only
+	`)
 };
 
 export default styles;
