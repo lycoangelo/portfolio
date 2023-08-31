@@ -36,6 +36,8 @@ const styles = {
     h-screen
     relative
     w-screen
+
+    lg:min-h-[840px]
   `),
 
   cv: ctl(`
