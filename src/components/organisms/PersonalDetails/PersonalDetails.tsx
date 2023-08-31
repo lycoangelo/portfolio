@@ -11,7 +11,13 @@ import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { useWindowSize } from 'rooks';
 import { PERSONAL_DETAILS } from '@app/lib/constants/selectors';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import {
+  Fragment,
+  KeyboardEventHandler,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 
 const scrambleTexts = [
   ['A Filipino', 'A Husband', 'A Daddy', 'A Dog Dad'],
@@ -64,13 +70,49 @@ export default function PersonalDetailsComponent({
   const [height, setHeight] = useState<number | string>('unset');
 
   const animationRef = useRef<HTMLDivElement | null>(null);
+  const buttonsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const panelsRef = useRef<(HTMLElement | null)[]>([]);
 
   const { innerWidth } = useWindowSize();
 
   const sectionRef = useToggleClassInView(PERSONAL_DETAILS);
 
+  const buttonsLength = buttonsRef.current.length;
   const tabs = sectionsCollection.items;
+
+  const handleArrowKeys: KeyboardEventHandler<
+    HTMLButtonElement | HTMLAnchorElement
+  > = (e) => {
+    const { key, currentTarget } = e;
+    const currentTargetParent = currentTarget.parentElement;
+    const previousTabPanel = currentTargetParent?.previousElementSibling;
+    const currentTabPanel = currentTargetParent?.nextElementSibling;
+
+    const previousTabButton = previousTabPanel?.previousElementSibling
+      ?.childNodes[0] as HTMLButtonElement;
+    const nextTabButton = currentTabPanel?.nextElementSibling
+      ?.childNodes[0] as HTMLButtonElement;
+
+    if (['ArrowLeft', 'ArrowUp'].includes(key)) {
+      e.preventDefault();
+
+      if (previousTabButton) {
+        previousTabButton.focus();
+      } else {
+        buttonsRef.current[buttonsLength - 1]?.focus();
+      }
+    }
+
+    if (['ArrowRight', 'ArrowDown'].includes(key)) {
+      e.preventDefault();
+
+      if (nextTabButton) {
+        nextTabButton.focus();
+      } else {
+        buttonsRef.current[0]?.focus();
+      }
+    }
+  };
 
   useEffect(() => {
     let containerheight = 0;
@@ -110,6 +152,10 @@ export default function PersonalDetailsComponent({
                   className={styles.tab(isSelected)}
                   color="transparent"
                   onClick={() => setActiveTabIndex(index)}
+                  onKeyDown={handleArrowKeys}
+                  ref={(el) =>
+                    (buttonsRef.current[index] = el as HTMLButtonElement)
+                  }
                   size="fit"
                 >
                   {tab.name}
