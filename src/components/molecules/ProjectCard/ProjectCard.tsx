@@ -61,25 +61,31 @@ export default function ProjectCard({
             <Button
               className={styles.readMore}
               color="transparent"
+              data-custom-tabindex={isFlipped}
               onClick={handleProjectClick}
               size="fit"
+              tabIndex={isFlipped ? -1 : 0}
             >
               Read More
             </Button>
           )}
         </div>
 
-        <div className={styles.back}>
-          <RichText contentBody={description} />
-          <Button
-            className={styles.backButton}
-            color="transparent"
-            onClick={handleProjectClick}
-            size="fit"
-          >
-            Back
-          </Button>
-        </div>
+        {description && (
+          <div className={styles.back}>
+            <RichText contentBody={description} />
+            <Button
+              className={styles.backButton}
+              color="transparent"
+              data-custom-tabindex={!isFlipped}
+              onClick={handleProjectClick}
+              size="fit"
+              tabIndex={isFlipped ? 0 : -1}
+            >
+              Back
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

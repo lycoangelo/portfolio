@@ -8,7 +8,7 @@ import IconShowcase from '@app/components/organisms/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/organisms/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
 import { PERSONAL_DETAILS } from '@app/lib/constants/selectors';
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { useWindowSize } from 'rooks';
 
 import ScrambleText from '@app/components/molecules/ScrambleText/ScrambleText';
@@ -83,12 +83,11 @@ export default function PersonalDetailsComponent({
           const Component = personalDetailsMap[tab.__typename];
 
           return (
-            <>
+            <Fragment key={tab.name}>
               <div className={styles.tabWrapper}>
                 <Button
                   className={styles.tab(index === activeTabIndex)}
                   color="transparent"
-                  key={index}
                   onClick={() => setActiveTabIndex(index)}
                   role="tab"
                   size="fit"
@@ -117,7 +116,6 @@ export default function PersonalDetailsComponent({
               <div
                 aria-hidden={index !== activeTabIndex}
                 className={styles.panel(index === activeTabIndex)}
-                key={index}
                 ref={(el) => {
                   panelsRef.current[index] = el;
                 }}
@@ -130,7 +128,7 @@ export default function PersonalDetailsComponent({
                 />
                 <Component {...tab} />
               </div>
-            </>
+            </Fragment>
           );
         })}
       </div>

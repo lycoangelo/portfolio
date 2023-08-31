@@ -1,4 +1,4 @@
-import { getElementPosition } from '@app/lib/helpers/dom';
+import { getElementPosition, updateTabIndex } from '@app/lib/helpers/dom';
 import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { CarouselProps } from './Carousel.interface';
@@ -46,13 +46,41 @@ const Carousel: FC<CarouselProps> = ({
         slide ? getElementPosition(slide).left - firstSlideLeft : 0
       )
     );
-  }, [slides]);
+
+    const fullSlidesIndexes: number[] = [];
+    let fullSlidesWidth = 0;
+
+    for (let index = activeIndex; index < slides.length; index++) {
+      if (fullSlidesWidth >= (carouselRef.current?.offsetWidth ?? 0)) {
+        break;
+      }
+
+      const slide = slides[index];
+      const slideStyles = getComputedStyle(slide);
+
+      fullSlidesWidth =
+        fullSlidesWidth +
+        slide.offsetWidth +
+        parseInt(slideStyles.marginLeft) +
+        parseInt(slideStyles.marginRight);
+
+      fullSlidesIndexes.push(index);
+    }
+
+    slides.forEach((slide, index) => {
+      const isActive = fullSlidesIndexes.includes(index);
+      slide.setAttribute('aria-hidden', (!isActive).toString());
+      updateTabIndex(slide, isActive);
+    });
+  }, [activeIndex, slides]);
 
   useEffect(() => {
     if (sliderRef.current) {
       setSlides([...sliderRef.current.children] as unknown as HTMLElement[]);
     }
   }, []);
+
+  useEffect(() => {}, [activeIndex, slides, slidesGrid]);
 
   useEffect(() => {
     window.addEventListener('resize', updateSlidesGrid);
@@ -86,6 +114,9 @@ const Carousel: FC<CarouselProps> = ({
     }
   }, [handleMoveToPrevSlide, navPrev]);
 
+  const slideRightPos =
+    slidesGrid[activeIndex] + (isSwiping ? swipeDistance : 0) || 0;
+
   return (
     <div
       className={styles.container(className)}
@@ -96,7 +127,7 @@ const Carousel: FC<CarouselProps> = ({
         className={styles.slider}
         ref={sliderRef}
         style={{
-          right: slidesGrid[activeIndex] + (isSwiping ? swipeDistance : 0) || 0,
+          right: slideRightPos,
           transitionDuration: isSwiping ? '0ms' : undefined
         }}
       >
