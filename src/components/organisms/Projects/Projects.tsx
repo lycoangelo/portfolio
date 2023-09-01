@@ -66,7 +66,6 @@ export default function Projects({
             color={activeIndex === index ? 'primary' : 'inactive'}
             key={index}
             onClick={() => handleBulletClick(index)}
-            size="auto"
             tabIndex={-1}
           >
             {logo ? (

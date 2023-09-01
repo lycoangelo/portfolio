@@ -95,9 +95,9 @@ const styles = {
   logo: ctl(`
     brightness-[100]
     grayscale
-    h-auto
+    h-full
     object-contain
-    w-auto
+    w-full
   `),
 
   marquee: ctl(`
