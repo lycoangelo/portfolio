@@ -30,7 +30,6 @@ const fontsVariables = ctl(`
 
 import './globals.css';
 import Footer from '@app/components/organisms/Footer/Footer';
-import Header from '@app/components/organisms/Header/Header';
 
 export default function RootLayout({
   children
@@ -42,7 +41,6 @@ export default function RootLayout({
       <head />
       <body className={fontsVariables}>
         <Analytics />
-        <Header />
         {children}
         {/* @ts-expect-error Server Component */}
         <Footer />
