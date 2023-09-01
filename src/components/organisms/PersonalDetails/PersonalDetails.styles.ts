@@ -40,7 +40,7 @@ const styles = {
   `),
 
   eyebrow: ctl(`
-    label
+  label
     mb-1
   `),
 
