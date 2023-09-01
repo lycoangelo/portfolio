@@ -34,7 +34,7 @@
   }
 
   [theme='green'] {
-    --primary-color: #00ff66;
+    --primary-color: #00c64f;
     --secondary-color: #03835f;
     --tertiary-color: #015d43;
   }
@@ -52,7 +52,7 @@
   }
 
   [theme='yellow'] {
-    --primary-color: #fff200;
+    --primary-color: #e5d202;
     --secondary-color: #82700b;
     --tertiary-color: #413e01;
   }
@@ -64,8 +64,8 @@
   }
 
   [theme='gray'] {
-    --primary-color: #cdcdcd;
-    --secondary-color: #8b8a8a;
+    --primary-color: #818181;
+    --secondary-color: #545454;
     --tertiary-color: #3a3a3a;
   }
 
