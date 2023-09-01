@@ -3,6 +3,7 @@ import Button from '@app/components/atoms/Button/Button';
 import { useState } from 'react';
 import { TimelineJobsProps } from './TimelineJobs.interface';
 import { getYear } from '@app/lib/helpers/date';
+import { stringToKebabCase } from '@app/lib/helpers/string';
 
 export default function TimelineJobs({
   timelinesCollection
@@ -23,7 +24,7 @@ export default function TimelineJobs({
               key={index}
             >
               <Button
-                aria-controls={title.toLowerCase().replaceAll(' ', '-')}
+                aria-controls={stringToKebabCase(title)}
                 aria-selected={isActive}
                 className={styles.timelineTab(isActive)}
                 color={index === activeTabIndex ? 'active' : 'primary'}
@@ -44,7 +45,7 @@ export default function TimelineJobs({
             aria-hidden={index !== activeTabIndex}
             aria-labelledby={`tab-${index}`}
             className={styles.timelinePanel(index === activeTabIndex)}
-            id={timeline.title.toLowerCase().replaceAll(' ', '-')}
+            id={stringToKebabCase(timeline.title)}
             key={index}
             role="tabpanel"
           >
