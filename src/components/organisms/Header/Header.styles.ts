@@ -10,7 +10,11 @@ const hamburgerCommonClass = `
   w-full
 `;
 
-const styles = (isActive: boolean, isScrolled: boolean) => ({
+const styles = (
+  isActive: boolean,
+  isScrolled: boolean,
+  isHomepage: boolean
+) => ({
   branding: ctl(`
 		two-color-bold
 		font-roboto
@@ -141,6 +145,7 @@ const styles = (isActive: boolean, isScrolled: boolean) => ({
 		ml-auto
 		mr-0
 		pl-10
+		pointer-events-auto
 		text-white
 		transition-all
 		top-0
@@ -187,6 +192,7 @@ const styles = (isActive: boolean, isScrolled: boolean) => ({
 		lg:col-end-12
 
 		${isActive ? 'bg-[rgba(0,0,0,0.8)]' : 'bg-transparent pointer-events-none'}
+		${!isHomepage && 'hidden'}
 	`)
 });
 
