@@ -51,7 +51,7 @@ const styles = {
     flex-col
     items-start
     justify-end
-    pb-20
+    pb-32
     relative
     uppercase
     z-10
@@ -78,6 +78,7 @@ const styles = {
     text-6xl
     two-color
 
+    md:h-[144px]
     md:text-7xl
 
     lg:h-[17vw]
