@@ -13,21 +13,30 @@ export default function IconShowcase({
 
   return (
     <div className={styles.container}>
-      {iconsCollection.items.map(({ icon }, index) => (
-        <Button
-          className={styles.button}
-          size="fit"
-          color="transparent"
-          key={index}
-          onClick={() => setActiveIndex(index)}
-        >
-          <SquircleIcon
-            className={styles.icon}
-            color={activeIndex === index ? 'primary' : 'black'}
-            image={icon}
-          />
-        </Button>
-      ))}
+      <div className={styles.tablist} role="tablist">
+        {iconsCollection.items.map(({ icon }, index) => {
+          const isActive = index === activeIndex;
+
+          return (
+            <Button
+              aria-controls={`tab-${index}`}
+              aria-selected={isActive}
+              className={styles.button}
+              size="fit"
+              color="transparent"
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              role="tab"
+            >
+              <SquircleIcon
+                className={styles.icon}
+                color={isActive ? 'primary' : 'black'}
+                image={icon}
+              />
+            </Button>
+          );
+        })}
+      </div>
 
       <div className={styles.tabs}>
         {iconsCollection.items.map(({ description }, index) => (
@@ -35,6 +44,7 @@ export default function IconShowcase({
             className={styles.tab(activeIndex === index)}
             essay={description}
             key={index}
+            role="tabpanel"
           />
         ))}
       </div>

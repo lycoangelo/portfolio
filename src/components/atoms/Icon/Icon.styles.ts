@@ -19,10 +19,14 @@ const styles = {
     ctl(`
       border
       h-auto
-      p-5
+      p-2
       relative
       transition-colors
       w-fit
+
+      md:p-3
+
+      lg:p-4
 
       before:absolute
       before:left-1
@@ -37,8 +41,14 @@ const styles = {
     `),
 
   image: ctl(`
-    h-auto
-    w-auto
+    h-5
+    w-5
+
+    md:h-6
+    md:w-6
+
+    lg:h-7
+    lg:w-7
   `)
 };
 

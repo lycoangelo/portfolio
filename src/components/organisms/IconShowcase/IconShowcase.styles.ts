@@ -1,7 +1,13 @@
 import ctl from '@netlify/classnames-template-literals';
 
 const styles = {
-  button: 'mr-5',
+  button: ctl(`
+		mr-3
+
+		md:mr-4
+
+		lg:mr-5
+	`),
 
   container: ctl(`
 		flex
@@ -34,6 +40,12 @@ const styles = {
 			absolute
 		`
     }
+	`),
+
+  tablist: ctl(`
+		flex
+		flex-wrap
+		w-full
 	`),
 
   tabs: ctl(`
