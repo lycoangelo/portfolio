@@ -35,7 +35,7 @@
 
   [theme='green'] {
     --primary-color: #00c64f;
-    --secondary-color: #03835f;
+    --secondary-color: #019b70;
     --tertiary-color: #015d43;
   }
 
@@ -52,9 +52,9 @@
   }
 
   [theme='yellow'] {
-    --primary-color: #e5d202;
-    --secondary-color: #82700b;
-    --tertiary-color: #413e01;
+    --primary-color: #cdbb00;
+    --secondary-color: #aa9002;
+    --tertiary-color: #575201;
   }
 
   [theme='purple'] {
