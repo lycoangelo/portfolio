@@ -13,6 +13,10 @@ export default function CarouselNav({
   setActiveIndex,
   totalIndexes
 }: CarouselNavProps) {
+  const rangeAriaLabel = `Slide ${activeIndex + 1} of ${
+    totalIndexes + 1
+  } of ${name}`;
+
   return navNextRef || navPrevRef ? (
     <div className={styles.container(className)}>
       {navPrevRef && (
@@ -31,7 +35,7 @@ export default function CarouselNav({
       {totalIndexes > 0 && (
         <div className={styles.range}>
           <Range
-            aria-label="test"
+            aria-label={rangeAriaLabel}
             name={name}
             max={totalIndexes}
             setValue={setActiveIndex}
