@@ -160,6 +160,13 @@ export default function PersonalDetailsComponent({
                 >
                   {tab.name}
                 </Button>
+                {index === tabs.length - 1 && (
+                  <Animation
+                    activeTabIndex={activeTabIndex}
+                    animationRef={animationRef}
+                    isMobile
+                  />
+                )}
               </div>
               <div
                 aria-hidden={index !== activeTabIndex}
