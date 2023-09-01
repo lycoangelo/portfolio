@@ -30,6 +30,9 @@ const homepageQuery = `
             ${SYS_ID_FRAGMENT}
             name
             company
+            logo {
+              ${IMAGE_FRAGMENT}
+            }
             role
             startDate
             endDate
