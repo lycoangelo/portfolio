@@ -4,25 +4,31 @@ const styles = {
   bullet: (isFlipped: boolean) =>
     ctl(`
       duration-500
-      mr-2
+      mr-3
       p-4
       relative
       rounded-md
       text-sm
+      h-[70px]
+      w-[100px]
 
-      sm:mr-3
       sm:p-5
       sm:text-base
+      sm:h-[80px]
+      sm:w-[110px]
 
-      md:mr-4
       md:p-6
       md:text-lg
+      md:h-[80px]
+      md:w-[120px]
 
-      lg:mr-5
+      lg:mr-4
       lg:p-7
       lg:text-xl
+      lg:h-[100px]
+      lg:w-[140px]
 
-      xl:mr-6
+      xl:mr-5
       xl:text-2xl
 
       xxl:text-3xl
@@ -87,18 +93,21 @@ const styles = {
   `),
 
   logo: ctl(`
+    brightness-[100]
     grayscale
+    h-auto
     object-contain
+    w-auto
   `),
 
   marquee: ctl(`
     col-start-4
     mb-8
     relative
+    !w-[calc(100%+(100%/2))]
 
     md:col-start-7
     md:col-end-13
-    md:w-[calc(100%+((100vw-100%)/2))]
   `),
 
   nav: ctl(`

@@ -12,6 +12,7 @@ import Carousel from '@app/components/molecules/Carousel/Carousel';
 import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
 import ProjectCard from '@app/components/molecules/ProjectCard/ProjectCard';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
+import Image from 'next/image';
 
 export default function Projects({
   name,
@@ -57,8 +58,8 @@ export default function Projects({
         name={name}
         title={title}
       />
-      <Marquee className={styles.marquee} pauseOnHover speed={100}>
-        {projects.map(({ description, name }, index) => (
+      <Marquee className={styles.marquee} pauseOnHover speed={60} autoFill>
+        {projects.map(({ description, logo, name }, index) => (
           <Button
             aria-hidden
             className={styles.bullet(cardsFlipState[index])}
@@ -68,7 +69,17 @@ export default function Projects({
             size="auto"
             tabIndex={-1}
           >
-            {name.charAt(0)}
+            {logo ? (
+              <Image
+                className={styles.logo}
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+              />
+            ) : (
+              name.charAt(0)
+            )}
             {description && <FlipIcon className={styles.flip} />}
           </Button>
         ))}
