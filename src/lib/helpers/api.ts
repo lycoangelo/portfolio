@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export async function fetchGraphQL(
   query: string,
   preview = false,
@@ -25,5 +26,10 @@ export async function fetchGraphQL(
       variables: { ...variables, preview: preview }
     }),
     next: { revalidate: 10 }
-  }).then((response) => response);
+  })
+    .then((response) => response)
+    .catch((error) => {
+      console.error(error);
+      return error;
+    });
 }
