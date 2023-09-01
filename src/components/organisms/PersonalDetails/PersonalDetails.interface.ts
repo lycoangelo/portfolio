@@ -17,12 +17,13 @@ export type PersonalDetailsItemsType =
   | (IconShowcaseProps & ComponentMapProps);
 
 export interface PersonalDetailsAnimationProps {
-  activeTabIndex: number;
   animationRef: Ref<HTMLParagraphElement>;
   isMobile?: boolean;
+  scrambleTexts: string[];
 }
 
 export interface PersonalDetailsProps {
+  scrambleTexts: string[];
   sectionsCollection: {
     items: PersonalDetailsItemsType[];
   };

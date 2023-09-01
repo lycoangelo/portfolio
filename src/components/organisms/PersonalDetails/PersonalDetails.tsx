@@ -19,13 +19,6 @@ import {
   useState
 } from 'react';
 
-const scrambleTexts = [
-  ['A Filipino', 'A Husband', 'A Daddy', 'A Dog Dad'],
-  ['Batman', 'Superman'],
-  ['A Poop Enthusiast', 'A Poop Collector'],
-  ['A Gamer', 'A Photographer']
-];
-
 import {
   PersonalDetailsAnimationProps,
   PersonalDetailsProps,
@@ -40,9 +33,9 @@ const personalDetailsMap: PersonalDetailsMap = {
 };
 
 const Animation = ({
-  activeTabIndex,
   animationRef,
-  isMobile = false
+  isMobile = false,
+  scrambleTexts
 }: PersonalDetailsAnimationProps) => (
   <p
     aria-hidden
@@ -57,14 +50,15 @@ const Animation = ({
         letterSpeed={100}
         nextLetterSpeed={200}
         pauseTime={3000}
-        texts={scrambleTexts[activeTabIndex]}
+        texts={scrambleTexts ?? []}
       />
     </strong>
   </p>
 );
 
 export default function PersonalDetailsComponent({
-  sectionsCollection
+  sectionsCollection,
+  scrambleTexts
 }: PersonalDetailsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [height, setHeight] = useState<number | string>('unset');
@@ -133,10 +127,7 @@ export default function PersonalDetailsComponent({
       style={{ height }}
     >
       <div className={styles.tabList}>
-        <Animation
-          activeTabIndex={activeTabIndex}
-          animationRef={animationRef}
-        />
+        <Animation animationRef={animationRef} scrambleTexts={scrambleTexts} />
         {tabs.map((tab, index) => {
           const Component = personalDetailsMap[tab.__typename];
 
@@ -162,9 +153,9 @@ export default function PersonalDetailsComponent({
                 </Button>
                 {index === tabs.length - 1 && (
                   <Animation
-                    activeTabIndex={activeTabIndex}
                     animationRef={animationRef}
                     isMobile
+                    scrambleTexts={scrambleTexts}
                   />
                 )}
               </div>

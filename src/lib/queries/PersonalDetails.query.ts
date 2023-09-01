@@ -1,6 +1,7 @@
 const personalDetailsQuery = `
   query personalDetailsQuery($id: String!) {
     personalDetails(id: $id) {
+      scrambleTexts
       sectionsCollection(limit: 4) {
         items {
           ... on Essay {

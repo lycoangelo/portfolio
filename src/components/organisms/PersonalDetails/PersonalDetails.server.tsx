@@ -46,7 +46,8 @@ const personalDetailsDataMap: (_props: PersonalDetailsItemsType) => Promise<{
 };
 
 export async function getPersonalDetailsData({
-  sectionsCollection: sections
+  sectionsCollection: sections,
+  scrambleTexts
 }: PersonalDetailsProps) {
   const sectionsCollection = {
     items: await Promise.all(
@@ -58,7 +59,7 @@ export async function getPersonalDetailsData({
     )
   };
 
-  return { sectionsCollection };
+  return { sectionsCollection, scrambleTexts };
 }
 
 const getPersonalDetails = async (id: string) => {

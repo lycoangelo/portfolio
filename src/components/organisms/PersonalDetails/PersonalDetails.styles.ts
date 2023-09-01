@@ -55,6 +55,9 @@ const styles = {
 
       md:w-[49.12%]
 
+      lg:left-[50.31%]
+      lg:w-[41%]
+
       ${
         isActive
           ? `
@@ -84,10 +87,7 @@ const styles = {
     text-primary
     text-right
 
-    md:leading-[60px]
-    md:mb-8
-    md:pb-5
-    md:text-5xl
+    md:mb-14
 
     xl:leading-[68px]
     xl:text-6xl

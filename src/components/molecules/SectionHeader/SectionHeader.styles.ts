@@ -24,9 +24,6 @@ const styles = {
     text-4xl
     typewriter
 
-    md:text-5xl
-    md:leading-[60px]
-
     xl:text-6xl
     xl:leading-[68px]
 
