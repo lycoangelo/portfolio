@@ -189,14 +189,6 @@
     @apply grid-container-styles;
   }
 
-  .hero-gradient {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 100%
-    );
-  }
-
   .two-color {
     @apply text-white;
     @apply [&_b]:font-normal [&_strong]:font-normal [&_b]:text-primary [&_strong]:text-primary;

@@ -35,7 +35,10 @@ const styles = {
     ${order === 8 && 'after:animation-delay-6 ml-[30%]'}
     ${order === 9 && 'after:animation-delay-9 ml-[-40%]'}
   `),
+
   lines: ctl(`
+    animate-background
+    background
     fixed
     h-full
     inset-x-0
@@ -44,7 +47,7 @@ const styles = {
     pointer-events-none
     top-0
     w-screen
-    z-0
+    z-40
   `)
 };
 

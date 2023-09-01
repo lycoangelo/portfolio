@@ -55,6 +55,16 @@ const additionalUtilities = plugin(function ({ addUtilities }) {
     },
     '.animation-delay-10': {
       animationDelay: '30000ms'
+    },
+    '.background': {
+      background: 'linear-gradient(-45deg, #000000, #505050, #000000)',
+      backgroundPosition: '0% 50%',
+      backgroundSize: '400%',
+      height: '100vh'
+    },
+    '.hero-gradient': {
+      background:
+        'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
     }
   });
 });
@@ -116,6 +126,7 @@ module.exports = {
     },
     extend: {
       animation: {
+        background: 'background linear 30s infinite 10s',
         drop: 'drop linear 5.5s infinite',
         ticker: 'ticker linear infinite'
       },
@@ -129,6 +140,17 @@ module.exports = {
         13: '13'
       },
       keyframes: {
+        background: {
+          '0%': {
+            backgroundPosition: '0% 50%'
+          },
+          '50%': {
+            backgroundPosition: '100% 50%'
+          },
+          '100%': {
+            backgroundPosition: '0% 50%'
+          }
+        },
         drop: {
           '0%': {
             opacity: 0.5,
