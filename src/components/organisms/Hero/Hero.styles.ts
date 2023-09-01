@@ -74,14 +74,10 @@ const styles = {
 
   title: ctl(`
     font-am-200
-    h-[180px]
     mb-5
     text-6xl
     two-color
 
-    xs:h-[120px]
-
-    md:h-[174px]
     md:text-7xl
 
     lg:h-[17vw]
