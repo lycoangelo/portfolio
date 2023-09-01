@@ -57,8 +57,8 @@ const additionalUtilities = plugin(function ({ addUtilities }) {
       animationDelay: '30000ms'
     },
     '.background': {
-      background: 'linear-gradient(-45deg, #000000, #505050, #000000)',
-      backgroundPosition: '100% 50%',
+      background: 'linear-gradient(-45deg, #000000, #333333, #000000)',
+      backgroundPosition: '200% 50%',
       backgroundSize: '400%',
       height: '100vh'
     },
@@ -126,7 +126,7 @@ module.exports = {
     },
     extend: {
       animation: {
-        background: 'background linear 120s infinite 15s',
+        background: 'background linear 240s infinite 15s',
         drop: 'drop linear 5.5s infinite',
         ticker: 'ticker linear infinite'
       },
@@ -142,16 +142,16 @@ module.exports = {
       keyframes: {
         background: {
           '0%': {
-            backgroundPosition: '100% 50%'
+            backgroundPosition: '200% 50%'
           },
-          '33.33%': {
-            backgroundPosition: '-100% 50%'
+          '12%': {
+            backgroundPosition: '-200% 50%'
           },
-          '66.66%': {
-            backgroundPosition: '-100% 50%'
+          '88%': {
+            backgroundPosition: '-200% 50%'
           },
           '100%': {
-            backgroundPosition: '100% 50%'
+            backgroundPosition: '200% 50%'
           }
         },
         drop: {
