@@ -92,12 +92,26 @@ const styles = {
     lg:col-start-2
   `),
 
-  logo: ctl(`
+  logo: (isFlipped: boolean, isActive: boolean) =>
+    ctl(`
     brightness-[100]
     grayscale
     h-full
     object-contain
+    transition-all
     w-full
+
+    ${
+      isFlipped
+        ? `
+        [:hover>&]:brightness-[100]
+        [:focus>&]:brightness-[100]
+      `
+        : `
+        [:focus>&]:brightness-0
+        ${isActive && '[:hover>&]:brightness-0'}
+      `
+    }
   `),
 
   marquee: ctl(`

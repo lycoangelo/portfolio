@@ -59,29 +59,34 @@ export default function Projects({
         title={title}
       />
       <Marquee className={styles.marquee} pauseOnHover speed={60} autoFill>
-        {projects.map(({ description, logo, name }, index) => (
-          <Button
-            aria-hidden
-            className={styles.bullet(cardsFlipState[index])}
-            color={activeIndex === index ? 'primary' : 'inactive'}
-            key={index}
-            onClick={() => handleBulletClick(index)}
-            tabIndex={-1}
-          >
-            {logo ? (
-              <Image
-                className={styles.logo}
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.width}
-                height={logo.height}
-              />
-            ) : (
-              name.charAt(0)
-            )}
-            {description && <FlipIcon className={styles.flip} />}
-          </Button>
-        ))}
+        {projects.map(({ description, logo, name }, index) => {
+          const isActive = activeIndex === index;
+          const isFlipped = cardsFlipState[index];
+
+          return (
+            <Button
+              aria-hidden
+              className={styles.bullet(isFlipped)}
+              color={activeIndex === index ? 'primary' : 'inactive'}
+              key={index}
+              onClick={() => handleBulletClick(index)}
+              tabIndex={-1}
+            >
+              {logo ? (
+                <Image
+                  className={styles.logo(isFlipped, isActive)}
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
+                />
+              ) : (
+                name.charAt(0)
+              )}
+              {description && <FlipIcon className={styles.flip} />}
+            </Button>
+          );
+        })}
       </Marquee>
 
       <Carousel
