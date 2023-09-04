@@ -25,7 +25,7 @@ const styles = {
 		duration-300
 		mt-5
 		top-0
-		transition-all
+		w-full
 
 		${
       isActive
