@@ -12,6 +12,8 @@ const styles = {
 			xl:leading-8
 
 			${className}
+
+			[&_p]:mb-5
 		`)
 };
 
