@@ -52,8 +52,8 @@ const styles = {
       top-0
       ml-auto
       mr-0
-      w-[72.93%]
       pb-5
+      w-[72.93%]
 
       md:w-[49.12%]
 

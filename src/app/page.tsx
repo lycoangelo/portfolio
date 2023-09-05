@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
-import homepageQuery from '@app/lib/queries/Homepage.query';
 import ContactForm from '@app/components/organisms/ContactForm/ContactForm';
+import DropMotion from '@app/components/organisms/DropMotion/DropMotion';
+import Header from '@app/components/organisms/Header/Header';
 import Hero from '@app/components/organisms/Hero/Hero';
 import PersonalDetails from '@app/components/organisms/PersonalDetails/PersonalDetails.server';
-import { fetchGraphQL } from '@app/lib/helpers/api';
 import Projects from '@app/components/organisms/Projects/Projects.server';
-import DropMotion from '@app/components/organisms/DropMotion/DropMotion';
 import ThemePicker from '@app/components/organisms/ThemePicker/ThemePicker';
+import homepageQuery from '@app/lib/queries/Homepage.query';
+import { fetchGraphQL } from '@app/lib/helpers/api';
 import { logColors } from '@app/lib/helpers/log';
-import Header from '@app/components/organisms/Header/Header';
 
 export const metadata = {
   title: 'Lyco Angelo: Portfolio'
