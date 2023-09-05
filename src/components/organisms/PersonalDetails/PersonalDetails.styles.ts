@@ -37,6 +37,8 @@ const styles = {
 
   container: ctl(`
     block-container
+    h-auto
+    overflow-hidden
   `),
 
   eyebrow: ctl(`
@@ -67,6 +69,7 @@ const styles = {
           : `
         invisible
         opacity-0
+        pointer-events-none
 
         [&_[href]]:invisible
       `
