@@ -88,26 +88,19 @@ const styles = {
     [&_.odometer-formatting-mark]:leading-10
     [&_.odometer-time-indicator]:leading-10
 
-    md:[&_.odometer-digit]:text-5xl
-    md:[&_.odometer-formatting-mark]:text-5xl
-    md:[&_.odometer-time-indicator]:text-5xl
-    md:[&_.odometer-digit]:leading-15
-    md:[&_.odometer-formatting-mark]:leading-15
-    md:[&_.odometer-time-indicator]:leading-15
-
     xl:[&_.odometer-digit]:text-6xl
     xl:[&_.odometer-formatting-mark]:text-6xl
     xl:[&_.odometer-time-indicator]:text-6xl
-    xl:[&_.odometer-digit]:leading-17
-    xl:[&_.odometer-formatting-mark]:leading-17
-    xl:[&_.odometer-time-indicator]:leading-17
+    xl:[&_.odometer-digit]:leading-[64px]
+    xl:[&_.odometer-formatting-mark]:leading-[64px]
+    xl:[&_.odometer-time-indicator]:leading-[64px]
 
     xxl:[&_.odometer-digit]:text-7xl
     xxl:[&_.odometer-formatting-mark]:text-7xl
     xxl:[&_.odometer-time-indicator]:text-7xl
-    xxl:[&_.odometer-digit]:leading-18
-    xxl:[&_.odometer-formatting-mark]:leading-18
-    xxl:[&_.odometer-time-indicator]:leading-18
+    xxl:[&_.odometer-digit]:leading-[72px]
+    xxl:[&_.odometer-formatting-mark]:leading-[72px]
+    xxl:[&_.odometer-time-indicator]:leading-[72px]
   `),
 
   timeLabel: ctl(`
