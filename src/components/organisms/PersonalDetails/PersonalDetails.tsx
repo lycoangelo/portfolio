@@ -11,6 +11,7 @@ import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { useWindowSize } from 'rooks';
 import { PERSONAL_DETAILS } from '@app/lib/constants/selectors';
+
 import {
   Fragment,
   KeyboardEventHandler,

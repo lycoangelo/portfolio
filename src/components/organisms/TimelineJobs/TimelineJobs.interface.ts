@@ -15,7 +15,7 @@ export interface JobsCollectionProps {
 
 export interface TimelineJobsProps {
   title: string;
-  timelinesCollection: {
+  jobsCollection: {
     items: JobsCollectionProps[];
   };
 }

@@ -5,11 +5,9 @@ import { TimelineJobsProps } from './TimelineJobs.interface';
 import { getYear } from '@app/lib/helpers/date';
 import { stringToKebabCase } from '@app/lib/helpers/string';
 
-export default function TimelineJobs({
-  timelinesCollection
-}: TimelineJobsProps) {
+export default function TimelineJobs({ jobsCollection }: TimelineJobsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const timelines = timelinesCollection.items;
+  const timelines = jobsCollection.items;
 
   return (
     <div className={styles.timelines}>

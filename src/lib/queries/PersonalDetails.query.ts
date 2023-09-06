@@ -1,3 +1,5 @@
+import { RICHTEXT_FRAGMENT } from './fragments/richtext';
+
 const personalDetailsQuery = `
   query personalDetailsQuery($id: String!) {
     personalDetails(id: $id) {
@@ -9,14 +11,14 @@ const personalDetailsQuery = `
             name
             title
             essay {
-              json
+              ${RICHTEXT_FRAGMENT}
             }
           }
           ... on TimelineJobs {
             __typename
             name
             title
-            timelinesCollection(limit: 2) {
+            jobsCollection(limit: 2) {
               items {
                 title
                 jobsCollection(limit: 20) {
