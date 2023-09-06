@@ -5,7 +5,7 @@
  * @returns A NodeList containing all ancestor elements in the order from closest to furthest.
  */
 export const getAncestors = (el: Element | ParentNode | null) => {
-  let ancestors = [];
+  const ancestors = [];
   while (el) {
     ancestors.unshift(el);
     el = el.parentNode;

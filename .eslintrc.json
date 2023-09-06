@@ -1,12 +1,19 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:tailwindcss/recommended"
+  ],
   "plugins": ["unused-imports"],
   "rules": {
-    "unused-imports/no-unused-imports": "error",
+    "eqeqeq": "error",
     "no-console": "error",
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "eqeqeq": "error",
-    "tailwindcss/classnames-order": 0
+    "react/react-in-jsx-scope": "off",
+    "tailwindcss/classnames-order": 0,
+    "unused-imports/no-unused-imports": "error"
   },
   "settings": {
     "tailwindcss": {
