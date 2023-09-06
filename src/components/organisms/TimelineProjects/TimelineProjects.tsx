@@ -1,10 +1,11 @@
 'use client';
 
-import styles from './TimelineProjects.styles';
 import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
-import { TimelineProjectsProps } from './TimelineProjects.interface';
-import { getMonthShortName, getYear } from '@app/lib/helpers/date';
 import { PROJECTS } from '@app/lib/constants/selectors';
+import { getMonthShortName, getYear } from '@app/lib/helpers/date';
+
+import { TimelineProjectsProps } from './TimelineProjects.interface';
+import styles from './TimelineProjects.styles';
 
 export default function TimelineProjects({
   name,

@@ -1,6 +1,7 @@
 import Button from '@app/components/atoms/Button/Button';
 import { ArrowDownIcon } from '@app/components/atoms/Icon/Icon';
 import Range from '@app/components/atoms/Range/Range';
+
 import { CarouselNavProps } from './CarouselNav.interface';
 import styles from './CarouselNav.styles';
 

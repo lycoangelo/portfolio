@@ -1,5 +1,6 @@
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import React, { useState, useEffect } from 'react';
+
 import { TextScrambleProps } from './ScrambleText.interface';
 import { randomItem, nextItem } from './ScrambleText.utils';
 
@@ -33,11 +34,11 @@ const TextScramble = ({
     });
   };
 
-  let bakeLetterInterval: any = 0;
-  let bakeTextInterval: any = 0;
+  let bakeLetterInterval = 0;
+  let bakeTextInterval = 0;
 
   const bakeLetter = () => {
-    bakeLetterInterval = setInterval(() => {
+    bakeLetterInterval = window.setInterval(() => {
       if (!paused) {
         const updatedText: string[] = [];
 
@@ -61,7 +62,7 @@ const TextScramble = ({
     defaultLeftIndexes();
     bakeLetter();
 
-    bakeTextInterval = setInterval(() => {
+    bakeTextInterval = window.setInterval(() => {
       if (!paused) {
         if (leftIndexes.length === 0) {
           clearInterval(bakeLetterInterval);

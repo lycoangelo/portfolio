@@ -1,13 +1,6 @@
 'use client';
 
-import { HeaderProps } from './Header.interface';
-import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
-import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
-import { useEffect, useRef, useState } from 'react';
-import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
 import Link from 'next/link';
-import FocusTrap from 'focus-trap-react';
-import styles from './Header.styles';
 
 import {
   PERSONAL_DETAILS,
@@ -15,6 +8,14 @@ import {
   PROJECTS,
   HERO
 } from '@app/lib/constants/selectors';
+import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
+import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
+import FocusTrap from 'focus-trap-react';
+import { useEffect, useRef, useState } from 'react';
+import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
+
+import { HeaderProps } from './Header.interface';
+import styles from './Header.styles';
 
 const links = [
   { label: 'Home', href: HERO },

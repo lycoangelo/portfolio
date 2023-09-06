@@ -6,7 +6,6 @@ import {
   MobileIcon,
   UpworkIcon
 } from '@app/components/atoms/Icon/Icon';
-
 import { SVGProps } from 'react';
 
 export type IconType = (_props: SVGProps<SVGSVGElement>) => JSX.Element;

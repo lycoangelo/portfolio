@@ -1,12 +1,13 @@
 'use client';
 
-import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
-import iconMap, { IconType } from '@app/lib/constants/iconMap';
-import styles from './ContactForm.styles';
 import Button from '@app/components/atoms/Button/Button';
 import Input from '@app/components/atoms/Input/Input';
+import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import TimeOdometer from '@app/components/molecules/TimeOdometer/TimeOdometer';
+import iconMap, { IconType } from '@app/lib/constants/iconMap';
 import { CONTACT_FORM } from '@app/lib/constants/selectors';
+import { validateEmail } from '@app/lib/helpers/validation';
+import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { useRef, useState } from 'react';
 
 import {
@@ -14,8 +15,7 @@ import {
   ContactRequest,
   ContactResponse
 } from './ContactForm.interface';
-import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import { validateEmail } from '@app/lib/helpers/validation';
+import styles from './ContactForm.styles';
 
 export default function ContactForm({
   name,

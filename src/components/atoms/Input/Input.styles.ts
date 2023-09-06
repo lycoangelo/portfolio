@@ -1,4 +1,5 @@
 import ctl from '@netlify/classnames-template-literals';
+
 import { TypeTypes } from './Input.interface';
 
 const styles = {

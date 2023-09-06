@@ -7,6 +7,7 @@ import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import FocusTrap from 'focus-trap-react';
 import { useEffect, useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
+
 import styles from './ThemePicker.styles';
 
 const themeCookieName = 'theme';

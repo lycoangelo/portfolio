@@ -1,6 +1,7 @@
 import { getElementPosition, updateTabIndex } from '@app/lib/helpers/dom';
 import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
+
 import { CarouselProps } from './Carousel.interface';
 import styles from './Carousel.styles';
 

@@ -1,7 +1,7 @@
+import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
+
 export interface IconProps {
-  description: {
-    json: any;
-  };
+  description: ContentBody;
   icon: {
     url: string;
     title: string;

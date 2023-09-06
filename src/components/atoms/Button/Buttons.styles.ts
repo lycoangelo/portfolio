@@ -1,4 +1,5 @@
 import ctl from '@netlify/classnames-template-literals';
+
 import { ButtonColors, ButtonSizes, ObjectKey } from './Button.interface';
 
 const borderEffect: string = `

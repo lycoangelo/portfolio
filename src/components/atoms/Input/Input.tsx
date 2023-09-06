@@ -1,4 +1,6 @@
+import { validateEmail } from '@app/lib/helpers/validation';
 import {
+  ChangeEvent,
   ForwardedRef,
   forwardRef,
   RefObject,
@@ -6,9 +8,8 @@ import {
   useState
 } from 'react';
 
-import styles from './Input.styles';
 import { InputProps } from './Input.interface';
-import { validateEmail } from '@app/lib/helpers/validation';
+import styles from './Input.styles';
 
 type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
@@ -28,7 +29,9 @@ const Input = forwardRef<InputElement, InputProps>(
       'invalid-email': 'Please enter a valid email address'
     };
 
-    const handleOnChange = (e: any) => {
+    const handleOnChange = (
+      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
       if (!isSubmitted) return;
       const { value } = e.target;
 

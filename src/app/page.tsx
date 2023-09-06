@@ -6,9 +6,9 @@ import Hero from '@app/components/organisms/Hero/Hero';
 import PersonalDetails from '@app/components/organisms/PersonalDetails/PersonalDetails.server';
 import Projects from '@app/components/organisms/Projects/Projects.server';
 import ThemePicker from '@app/components/organisms/ThemePicker/ThemePicker';
-import homepageQuery from '@app/lib/queries/Homepage.query';
 import { fetchGraphQL } from '@app/lib/helpers/api';
 import { logColors } from '@app/lib/helpers/log';
+import homepageQuery from '@app/lib/queries/Homepage.query';
 
 export const metadata = {
   title: 'Lyco Angelo: Portfolio'

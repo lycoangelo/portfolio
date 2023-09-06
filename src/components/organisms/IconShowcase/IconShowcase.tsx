@@ -1,10 +1,10 @@
-import styles from './IconShowcase.styles';
-import { useState } from 'react';
-import { IconShowcaseComponentProps } from './IconShowcase.interface';
-
-import { SquircleIcon } from '@app/components/atoms/Icon/Icon';
 import Button from '@app/components/atoms/Button/Button';
+import { SquircleIcon } from '@app/components/atoms/Icon/Icon';
+import { useState } from 'react';
+
 import Essay from '../Essay/Essay';
+import { IconShowcaseComponentProps } from './IconShowcase.interface';
+import styles from './IconShowcase.styles';
 
 export default function IconShowcase({
   iconsCollection

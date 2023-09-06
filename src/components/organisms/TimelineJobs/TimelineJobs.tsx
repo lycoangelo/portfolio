@@ -1,9 +1,10 @@
-import styles from './TimelineJobs.styles';
 import Button from '@app/components/atoms/Button/Button';
-import { useState } from 'react';
-import { TimelineJobsProps } from './TimelineJobs.interface';
 import { getYear } from '@app/lib/helpers/date';
 import { stringToKebabCase } from '@app/lib/helpers/string';
+import { useState } from 'react';
+
+import { TimelineJobsProps } from './TimelineJobs.interface';
+import styles from './TimelineJobs.styles';
 
 export default function TimelineJobs({ jobsCollection }: TimelineJobsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);

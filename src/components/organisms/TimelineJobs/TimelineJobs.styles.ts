@@ -1,5 +1,6 @@
 import ctl from '@netlify/classnames-template-literals';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: { [key: string]: any } = {
   company: ctl(`
     mt-1

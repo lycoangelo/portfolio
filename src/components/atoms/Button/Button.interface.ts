@@ -1,5 +1,5 @@
-import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import iconMap from '@app/lib/constants/iconMap';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 
 export interface ObjectKey {
   [key: string]: string;
@@ -23,12 +23,12 @@ export interface ButtonSizes {
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   AnchorHTMLAttributes<HTMLAnchorElement> & {
-    children?: any;
+    children?: ReactNode;
     color?: keyof ButtonColors;
     hasBorderEffect?: boolean;
     href?: string;
     icon?: keyof typeof iconMap;
     iconClassName?: string;
     size?: keyof ButtonSizes;
-    type?: 'button' | 'submit' | 'reset' | undefined;
+    type?: 'button' | 'submit' | 'reset';
   };

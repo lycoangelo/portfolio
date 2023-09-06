@@ -1,6 +1,7 @@
+import Image from 'next/image';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { MARKS, BLOCKS, INLINES, Node } from '@contentful/rich-text-types';
-import Image from 'next/image';
 import React, { ReactNode } from 'react';
 
 import { ContentBody, RichTextProps } from './RichText.interface';

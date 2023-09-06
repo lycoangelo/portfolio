@@ -1,7 +1,11 @@
-import ctl from '@netlify/classnames-template-literals';
-import localFont from 'next/font/local';
 import { Quicksand, Roboto } from 'next/font/google';
+import localFont from 'next/font/local';
+
+import Footer from '@app/components/organisms/Footer/Footer';
+import ctl from '@netlify/classnames-template-literals';
 import { Analytics } from '@vercel/analytics/react';
+
+import './globals.css';
 
 const quicksand = Quicksand({ subsets: ['latin'], variable: '--quicksand' });
 
@@ -27,9 +31,6 @@ const fontsVariables = ctl(`
   ${quicksand.variable}
   ${roboto.variable}
 `);
-
-import './globals.css';
-import Footer from '@app/components/organisms/Footer/Footer';
 
 export default function RootLayout({
   children

@@ -1,17 +1,17 @@
-import PersonalDetailsComponent from './PersonalDetails';
-import iconQuery from '@app/lib/queries/Icon.query';
-import personalDetailsQuery from '@app/lib/queries/PersonalDetails.query';
-import { fetchGraphQL } from '@app/lib/helpers/api';
 import { EssayProps } from '@app/components/organisms/Essay/Essay.interface';
 import { IconShowcaseProps } from '@app/components/organisms/IconShowcase/IconShowcase.interface';
-import { SkillSetListProps } from '@app/components/organisms/SkillSetList/SkillSetList.interface';
-import { TimelineJobsProps } from '@app/components/organisms/TimelineJobs/TimelineJobs.interface';
-
 import {
   ComponentMapProps,
   PersonalDetailsItemsType,
   PersonalDetailsProps
 } from '@app/components/organisms/PersonalDetails/PersonalDetails.interface';
+import { SkillSetListProps } from '@app/components/organisms/SkillSetList/SkillSetList.interface';
+import { TimelineJobsProps } from '@app/components/organisms/TimelineJobs/TimelineJobs.interface';
+import { fetchGraphQL } from '@app/lib/helpers/api';
+import iconQuery from '@app/lib/queries/Icon.query';
+import personalDetailsQuery from '@app/lib/queries/PersonalDetails.query';
+
+import PersonalDetailsComponent from './PersonalDetails';
 
 const personalDetailsDataMap: (_props: PersonalDetailsItemsType) => Promise<{
   [key: string]: PersonalDetailsItemsType;

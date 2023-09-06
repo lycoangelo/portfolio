@@ -1,4 +1,5 @@
 import { useCallback, useLayoutEffect, useState } from 'react';
+
 import { getEventPosition } from '../helpers/dom';
 
 interface Props {

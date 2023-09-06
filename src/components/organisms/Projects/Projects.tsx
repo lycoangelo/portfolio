@@ -1,18 +1,20 @@
 'use client';
 
-import styles from './Projects.styles';
-import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
-import { ProjectsProps } from './Projects.interface';
-import { PROJECTS } from '@app/lib/constants/selectors';
-import { useEffect, useRef, useState } from 'react';
-import Marquee from 'react-fast-marquee';
+import Image from 'next/image';
+
 import Button from '@app/components/atoms/Button/Button';
 import { FlipIcon } from '@app/components/atoms/Icon/Icon';
 import Carousel from '@app/components/molecules/Carousel/Carousel';
 import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
 import ProjectCard from '@app/components/molecules/ProjectCard/ProjectCard';
+import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
+import { PROJECTS } from '@app/lib/constants/selectors';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import Marquee from 'react-fast-marquee';
+
+import { ProjectsProps } from './Projects.interface';
+import styles from './Projects.styles';
 
 export default function Projects({
   name,

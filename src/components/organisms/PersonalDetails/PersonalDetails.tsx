@@ -1,17 +1,14 @@
 'use client';
 
-import styles from './PersonalDetails.styles';
 import Button from '@app/components/atoms/Button/Button';
-import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import ScrambleText from '@app/components/molecules/ScrambleText/ScrambleText';
+import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import Essay from '@app/components/organisms/Essay/Essay';
 import IconShowcase from '@app/components/organisms/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/organisms/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
-import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import { useWindowSize } from 'rooks';
 import { PERSONAL_DETAILS } from '@app/lib/constants/selectors';
-
+import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import {
   Fragment,
   KeyboardEventHandler,
@@ -19,12 +16,14 @@ import {
   useRef,
   useState
 } from 'react';
+import { useWindowSize } from 'rooks';
 
 import {
   PersonalDetailsAnimationProps,
   PersonalDetailsProps,
   PersonalDetailsMap
 } from './PersonalDetails.interface';
+import styles from './PersonalDetails.styles';
 
 const personalDetailsMap: PersonalDetailsMap = {
   Essay,

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useInViewRef } from 'rooks';
-import { TypingTextProps } from './TypingText.interface';
 import { sanitizeString } from '@app/lib/helpers/string';
 import parse from 'html-react-parser';
+import { useState, useEffect } from 'react';
+import { useInViewRef } from 'rooks';
+
+import { TypingTextProps } from './TypingText.interface';
 import styles from './TypingText.styles';
 
 const TypingText = ({

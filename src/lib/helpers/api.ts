@@ -30,6 +30,7 @@ export async function fetchGraphQL(
     .then((response) => response)
     .catch((error) => {
       console.error(error);
+
       return error;
     });
 }

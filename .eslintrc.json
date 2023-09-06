@@ -6,14 +6,41 @@
     "plugin:react/recommended",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["unused-imports"],
+  "plugins": ["unused-imports", "eslint-plugin-import-helpers"],
   "rules": {
     "eqeqeq": "error",
+    "import-helpers/order-imports": [
+      2,
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^next/",
+          "module",
+          "/src/app/",
+          "/src/components/",
+          "/src/lib/",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ],
+    "newline-before-return": 2,
     "no-console": "error",
+    "no-eval": "error",
+    "no-lonely-if": "error",
+    "no-self-compare": "error",
+    "no-unneeded-ternary": "error",
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-useless-return": "error",
+    "prefer-const": "error",
+    "react-hooks/rules-of-hooks": 2,
     "react/react-in-jsx-scope": "off",
     "tailwindcss/classnames-order": 0,
-    "unused-imports/no-unused-imports": "error"
+    "unused-imports/no-unused-imports": "error",
+    "yoda": ["error", "never"]
   },
   "settings": {
     "tailwindcss": {

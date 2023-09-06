@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import { useInView } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 const useToggleClassInView = (id: string) => {
   const ref = useRef<HTMLElement>(null);

@@ -1,8 +1,9 @@
-import RichText from '@app/components/atoms/RichText/RichText';
 import Button from '@app/components/atoms/Button/Button';
-import styles from './ProjectCard.styles';
-import { ProjectCardProps } from './ProjectCard.interface';
+import RichText from '@app/components/atoms/RichText/RichText';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
+
+import { ProjectCardProps } from './ProjectCard.interface';
+import styles from './ProjectCard.styles';
 
 export default function ProjectCard({
   className = '',

@@ -10,6 +10,7 @@ export const getAncestors = (el: Element | ParentNode | null) => {
     ancestors.unshift(el);
     el = el.parentNode;
   }
+
   return ancestors;
 };
 

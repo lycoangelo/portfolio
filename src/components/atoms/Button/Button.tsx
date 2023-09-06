@@ -1,11 +1,13 @@
 'use client';
 
-import styles from './Buttons.styles';
-import iconMap from '@app/lib/constants/iconMap';
-import { ButtonProps } from './Button.interface';
 import Link from 'next/link';
+
+import iconMap from '@app/lib/constants/iconMap';
 import { useIsExternalLink } from '@app/lib/hooks/useIsExternalLink';
 import { forwardRef, LegacyRef, Ref } from 'react';
+
+import { ButtonProps } from './Button.interface';
+import styles from './Buttons.styles';
 
 const Button = forwardRef(
   (

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import nodemailer from 'nodemailer';
 
 interface ParamsProps {
@@ -35,7 +36,7 @@ export async function POST(request: Request, { params }: ParamsProps) {
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ message: 'Email successfully sent!' });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json({ message: 'Something went wrong!' });
   }
 }

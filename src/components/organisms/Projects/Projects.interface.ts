@@ -1,5 +1,6 @@
-import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
 import { ImageProps } from 'next/image';
+
+import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
 
 export interface ProjectProps {
   description: ContentBody;

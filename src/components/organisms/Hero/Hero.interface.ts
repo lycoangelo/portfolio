@@ -1,5 +1,7 @@
 import { ImageProps } from 'next/image';
 
+import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
+
 export interface HeroProps {
   background: ImageProps;
   cv?: {
@@ -7,5 +9,5 @@ export interface HeroProps {
     url: string;
   };
   description: string;
-  headline: any;
+  headline: ContentBody;
 }
