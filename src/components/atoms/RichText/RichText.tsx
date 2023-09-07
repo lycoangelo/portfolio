@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { MARKS, BLOCKS, INLINES, Node } from '@contentful/rich-text-types';
-import React, { ReactNode } from 'react';
+import React, { forwardRef, LegacyRef, ReactNode } from 'react';
 
 import { ContentBody, RichTextProps } from './RichText.interface';
 import styles from './RichText.styles';
@@ -121,16 +121,23 @@ const richTextOptions = (content: ContentBody) => {
   };
 };
 
-const RichText = ({ className = '', contentBody, options }: RichTextProps) => {
-  const renderOptions = options
-    ? options(contentBody)
-    : richTextOptions(contentBody);
+const RichText = forwardRef(
+  ({ className = '', contentBody, options }: RichTextProps, ref) => {
+    const renderOptions = options
+      ? options(contentBody)
+      : richTextOptions(contentBody);
 
-  return (
-    <div className={styles.richtext(className)}>
-      {documentToReactComponents(contentBody?.json, renderOptions)}
-    </div>
-  );
-};
+    return (
+      <div
+        className={styles.richtext(className)}
+        ref={ref as LegacyRef<HTMLDivElement>}
+      >
+        {documentToReactComponents(contentBody?.json, renderOptions)}
+      </div>
+    );
+  }
+);
+
+RichText.displayName = 'RichText';
 
 export default RichText;

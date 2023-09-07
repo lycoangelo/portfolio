@@ -1,13 +1,6 @@
 import ctl from '@netlify/classnames-template-literals';
 
-const buttonStyles = ctl(`
-  mb-0
-  ml-auto
-  mr-0
-  mt-auto
-`);
-
-const styles = {
+const styles = (className: string, isFlipped: boolean) => ({
   back: ctl(`
     absolute
     border
@@ -25,7 +18,10 @@ const styles = {
     w-full
   `),
 
-  backButton: buttonStyles,
+  backWrapper: ctl(`
+    max-h-[calc(100%-56px)]
+    overflow-auto
+  `),
 
   dateRange: ctl(`
     border-b
@@ -53,8 +49,11 @@ const styles = {
     label
     mb-3
     transition-colors
+    text-xs
 
     sm:mb-1
+
+    md:text-sm
   `),
 
   details: ctl(`
@@ -80,23 +79,22 @@ const styles = {
     w-full
   `),
 
-  inner: (isFlipped: boolean) =>
-    ctl(`
-      duration-500
-      h-full
-      relative
-      transition-all
-      transform-style-3d
-      w-full
+  inner: ctl(`
+    duration-500
+    h-full
+    relative
+    transition-all
+    transform-style-3d
+    w-full
 
-      ${
-        isFlipped &&
-        `
-        rotate-x-180
-        rotate-z-180
+    ${
+      isFlipped &&
       `
-      }
-    `),
+      rotate-x-180
+      rotate-z-180
+    `
+    }
+  `),
 
   label: ctl(`
     leading-6
@@ -119,27 +117,46 @@ const styles = {
     text-white
   `),
 
-  project: (className: string) =>
-    ctl(`
-      bg-transparent
-      min-h-[300px]
-      min-w-full
-      perspective-1000
-      text-left
+  project: ctl(`
+    bg-transparent
+    min-h-[300px]
+    min-w-full
+    perspective-1000
+    text-left
 
-      md:min-w-[calc(50%-10px)]
+    md:min-w-[calc(50%-10px)]
 
-      [&:not(:first-child)]:ml-5
+    [&:not(:first-child)]:ml-5
 
-      ${className}
-    `),
+    ${className}
+  `),
 
-  readMore: buttonStyles,
+  toggle: ctl(`
+    !absolute
+    bottom-8
+    right-8
+    text-sm
+
+    focus:text-white
+    focus:underline
+
+    lg:text-base
+
+    ${
+      isFlipped &&
+      `
+      rotate-x-180
+      rotate-z-180
+    `
+    }
+  `),
 
   value: ctl(`
     text-white
-    text-sm
+    text-xs
+
+    md:text-sm
   `)
-};
+});
 
 export default styles;

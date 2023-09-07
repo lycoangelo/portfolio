@@ -1,6 +1,7 @@
 import Button from '@app/components/atoms/Button/Button';
 import RichText from '@app/components/atoms/RichText/RichText';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
+import { useRef } from 'react';
 
 import { ProjectCardProps } from './ProjectCard.interface';
 import styles from './ProjectCard.styles';
@@ -17,6 +18,8 @@ export default function ProjectCard({
   setIsFlipped,
   startDate
 }: ProjectCardProps) {
+  const descriptionRef = useRef(null);
+
   const startMonth = getMonthShortName(startDate);
   const endMonth = getMonthShortName(endDate);
   const startYear = getYear(startDate);
@@ -28,64 +31,56 @@ export default function ProjectCard({
     setIsFlipped();
   };
 
+  const classes = styles(className, isFlipped);
+
   return (
-    <div className={styles.project(className)}>
-      <div className={styles.inner(isFlipped)}>
-        <div className={styles.front}>
-          <div className={styles.dateRange}>
+    <div className={classes.project}>
+      <div className={classes.inner}>
+        <div className={classes.front} aria-hidden={isFlipped}>
+          <div className={classes.dateRange}>
             <time dateTime={startYear.toString()}>
               {startMonth} {startYear}
             </time>
-            {isNotSameDate && <span className={styles.dateSeparator}>-</span>}
+            {isNotSameDate && <span className={classes.dateSeparator}>-</span>}
             {isNotSameDate &&
               (isPresent ? (
-                <span className={styles.present}>Present</span>
+                <span className={classes.present}>Present</span>
               ) : (
                 <time dateTime={endYear.toString()}>
                   {endMonth} {endYear}
                 </time>
               ))}
           </div>
-          <div className={styles.details}>
-            <h3 className={styles.name}>{name}</h3>
-            <p className={styles.detail}>
-              <span className={styles.label}>Company: </span>
-              <span className={styles.value}>{company}</span>
+          <div className={classes.details}>
+            <h3 className={classes.name}>{name}</h3>
+            <p className={classes.detail}>
+              <span className={classes.label}>Company:</span>
+              <span className={classes.value}>{company}</span>
             </p>
-            <p className={styles.detail}>
-              <span className={styles.label}>Role: </span>
-              <span className={styles.value}>{role}</span>
+            <p className={classes.detail}>
+              <span className={classes.label}>Role:</span>
+              <span className={classes.value}>{role}</span>
             </p>
           </div>
-
-          {description && (
-            <Button
-              className={styles.readMore}
-              color="transparent"
-              data-custom-tabindex={isFlipped}
-              onClick={handleProjectClick}
-              size="fit"
-              tabIndex={isFlipped ? -1 : 0}
-            >
-              Read More
-            </Button>
-          )}
         </div>
 
         {description && (
-          <div className={styles.back}>
-            <RichText contentBody={description} />
-            <Button
-              className={styles.backButton}
-              color="transparent"
-              data-custom-tabindex={!isFlipped}
-              onClick={handleProjectClick}
-              size="fit"
-              tabIndex={isFlipped ? 0 : -1}
-            >
-              Back
-            </Button>
+          <div className={classes.back} aria-hidden={!isFlipped}>
+            <div className={classes.backWrapper}>
+              <RichText contentBody={description} ref={descriptionRef} />
+            </div>
           </div>
+        )}
+        {description && (
+          <Button
+            className={classes.toggle}
+            color="transparent"
+            data-custom-tabindex={isFlipped}
+            onClick={handleProjectClick}
+            size="fit"
+          >
+            {isFlipped ? 'Back' : 'Read More'}
+          </Button>
         )}
       </div>
     </div>

@@ -60,7 +60,7 @@ export default function Projects({
         name={name}
         title={title}
       />
-      <Marquee className={styles.marquee} pauseOnHover speed={60} autoFill>
+      <Marquee autoFill className={styles.marquee} pauseOnHover speed={60}>
         {projects.map(({ description, logo, name }, index) => {
           const isActive = activeIndex === index;
           const isFlipped = cardsFlipState[index];

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const plugin = require('tailwindcss/plugin');
 
 const additionalUtilities = plugin(function ({ addUtilities }) {
@@ -13,6 +14,9 @@ const additionalUtilities = plugin(function ({ addUtilities }) {
       '-moz-backface-visibility': 'hidden',
       '-webkit-backface-visibility': 'hidden',
       '-ms-backface-visibility': 'hidden'
+    },
+    '.transform-3d-0': {
+      transform3d: 'transform3d(0, 0, 0)'
     },
     '.animation-pause': {
       'animation-play-state': 'paused'
