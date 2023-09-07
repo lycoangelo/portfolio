@@ -12,10 +12,12 @@ const styles = (className: string, isFlipped: boolean) => ({
     h-full
     overflow-hidden
     p-8
+    pt-20
     rounded-3xl
     rotate-x-180
     rotate-z-180
     w-full
+    z-0
   `),
 
   backWrapper: ctl(`
@@ -131,11 +133,11 @@ const styles = (className: string, isFlipped: boolean) => ({
     ${className}
   `),
 
-  toggle: ctl(`
-    !absolute
-    bottom-8
-    right-8
-    text-sm
+  toggle: (isHidden: boolean) =>
+    ctl(`
+    absolute
+    transform-style-3d
+    z-50
 
     focus:text-white
     focus:underline
@@ -143,11 +145,27 @@ const styles = (className: string, isFlipped: boolean) => ({
     lg:text-base
 
     ${
-      isFlipped &&
+      isFlipped
+        ? `
+        left-8
+        top-8
       `
-      rotate-x-180
-      rotate-z-180
-    `
+        : `
+        bottom-8
+        right-8
+      `
+    }
+
+    ${
+      isHidden
+        ? `
+        invisible
+        opacity-0
+      `
+        : `
+        opacity-100
+        visible
+      `
     }
   `),
 

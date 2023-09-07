@@ -1,6 +1,6 @@
-import Button from '@app/components/atoms/Button/Button';
 import RichText from '@app/components/atoms/RichText/RichText';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
+import { useEffect, useRef, useState } from 'react';
 
 import { ProjectCardProps } from './ProjectCard.interface';
 import styles from './ProjectCard.styles';
@@ -17,6 +17,11 @@ export default function ProjectCard({
   setIsFlipped,
   startDate
 }: ProjectCardProps) {
+  const [hasReadMore, setHasReadMore] = useState(false);
+
+  const backButtonRef = useRef<HTMLButtonElement>(null);
+  const readMoreButtonRef = useRef<HTMLButtonElement>(null);
+
   const startMonth = getMonthShortName(startDate);
   const endMonth = getMonthShortName(endDate);
   const startYear = getYear(startDate);
@@ -26,9 +31,20 @@ export default function ProjectCard({
 
   const handleProjectClick = () => {
     setIsFlipped();
+    !hasReadMore && setHasReadMore(true);
   };
 
   const classes = styles(className, isFlipped);
+
+  useEffect(() => {
+    if (hasReadMore) {
+      if (isFlipped) {
+        backButtonRef.current?.focus();
+      } else {
+        readMoreButtonRef.current?.focus();
+      }
+    }
+  }, [isFlipped, hasReadMore]);
 
   return (
     <div className={classes.project}>
@@ -62,22 +78,32 @@ export default function ProjectCard({
         </div>
 
         {description && (
-          <div className={classes.back} aria-hidden={!isFlipped}>
-            <div className={classes.backWrapper}>
-              <RichText contentBody={description} />
+          <>
+            <div className={classes.back} aria-hidden={!isFlipped}>
+              <button
+                className={classes.toggle(!isFlipped)}
+                data-custom-tabindex={isFlipped}
+                onClick={handleProjectClick}
+                ref={backButtonRef}
+                tabIndex={isFlipped ? 0 : -1}
+              >
+                Back
+              </button>
+              <div className={classes.backWrapper}>
+                <RichText contentBody={description} />
+              </div>
             </div>
-          </div>
-        )}
-        {description && (
-          <Button
-            className={classes.toggle}
-            color="transparent"
-            data-custom-tabindex={isFlipped}
-            onClick={handleProjectClick}
-            size="fit"
-          >
-            {isFlipped ? 'Back' : 'Read More'}
-          </Button>
+            <button
+              aria-hidden={isFlipped}
+              className={classes.toggle(isFlipped)}
+              data-custom-tabindex={isFlipped}
+              onClick={handleProjectClick}
+              ref={readMoreButtonRef}
+              tabIndex={isFlipped ? -1 : 0}
+            >
+              Read More
+            </button>
+          </>
         )}
       </div>
     </div>
