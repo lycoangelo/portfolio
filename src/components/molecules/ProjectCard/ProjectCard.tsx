@@ -1,3 +1,5 @@
+import Button from '@app/components/atoms/Button/Button';
+import { ArrowRightIcon } from '@app/components/atoms/Icon/Icon';
 import RichText from '@app/components/atoms/RichText/RichText';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
 import { useEffect, useRef, useState } from 'react';
@@ -12,6 +14,7 @@ export default function ProjectCard({
   endDate,
   isFlipped,
   isPresent,
+  link,
   name,
   role,
   setIsFlipped,
@@ -33,6 +36,10 @@ export default function ProjectCard({
     setIsFlipped();
     !hasReadMore && setHasReadMore(true);
   };
+
+  //const viewMoreDetails = () => {
+  //  // Add view more details logic here
+  //};
 
   const classes = styles(className, isFlipped);
 
@@ -65,7 +72,15 @@ export default function ProjectCard({
               ))}
           </div>
           <div className={classes.details}>
-            <h3 className={classes.name}>{name}</h3>
+            <h3 className={classes.name}>
+              {link ? (
+                <Button color="transparent" href={link} size="fit">
+                  {name} <ArrowRightIcon className={classes.arrow} />
+                </Button>
+              ) : (
+                name
+              )}
+            </h3>
             <p className={classes.detail}>
               <span className={classes.label}>Company:</span>
               <span className={classes.value}>{company}</span>
@@ -89,9 +104,18 @@ export default function ProjectCard({
               >
                 Back
               </button>
-              <div className={classes.backWrapper}>
-                <RichText contentBody={description} />
-              </div>
+              <RichText
+                className={classes.description}
+                contentBody={description}
+              />
+              {/*<button
+                className={classes.toggle(!isFlipped, true)}
+                data-custom-tabindex={isFlipped}
+                onClick={viewMoreDetails}
+                tabIndex={isFlipped ? 0 : -1}
+              >
+                More Details
+              </button>*/}
             </div>
             <button
               aria-hidden={isFlipped}

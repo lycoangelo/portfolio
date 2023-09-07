@@ -28,6 +28,7 @@ const homepageQuery = `
           items {
             ${SYS_ID_FRAGMENT}
             name
+            link
             company
             logo {
               ${IMAGE_FRAGMENT}

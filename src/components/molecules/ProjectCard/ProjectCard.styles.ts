@@ -1,12 +1,23 @@
 import ctl from '@netlify/classnames-template-literals';
 
 const styles = (className: string, isFlipped: boolean) => ({
+  arrow: ctl(`
+    h-8
+    ml-3
+    -rotate-45
+    w-8
+
+    [a_&_path:last-child]:origin-right
+    [a_&_path:last-child]:transition-all
+    [a:hover_&_path:last-child]:scale-0
+    [a:hover_&_path:first-child]:fill-silver
+  `),
   back: ctl(`
     absolute
-    border
-    border-white
     backface-hidden
     bg-secondary
+    border
+    border-white
     flex
     flex-col
     h-full
@@ -18,11 +29,6 @@ const styles = (className: string, isFlipped: boolean) => ({
     rotate-z-180
     w-full
     z-0
-  `),
-
-  backWrapper: ctl(`
-    max-h-[calc(100%-56px)]
-    overflow-auto
   `),
 
   dateRange: ctl(`
@@ -45,6 +51,11 @@ const styles = (className: string, isFlipped: boolean) => ({
   `),
 
   dateSeparator: 'mx-1',
+
+  description: ctl(`
+    hyphens-auto
+    line-clamp-8
+  `),
 
   detail: ctl(`
     duration-100
@@ -121,11 +132,14 @@ const styles = (className: string, isFlipped: boolean) => ({
 
   project: ctl(`
     bg-transparent
-    min-h-[300px]
+    min-h-[400px]
     min-w-full
     perspective-1000
     text-left
 
+    sm:min-h-[300px]
+
+    md:min-h-[360px]
     md:min-w-[calc(50%-10px)]
 
     [&:not(:first-child)]:ml-5
@@ -133,7 +147,7 @@ const styles = (className: string, isFlipped: boolean) => ({
     ${className}
   `),
 
-  toggle: (isHidden: boolean) =>
+  toggle: (isHidden: boolean, isViewMore?: boolean) =>
     ctl(`
     absolute
     transform-style-3d
@@ -147,8 +161,17 @@ const styles = (className: string, isFlipped: boolean) => ({
     ${
       isFlipped
         ? `
-        left-8
-        top-8
+        ${
+          isViewMore
+            ? `
+          bottom-8
+          right-8
+        `
+            : `
+          left-8
+          top-8 
+        `
+        }
       `
         : `
         bottom-8

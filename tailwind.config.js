@@ -16,7 +16,7 @@ const additionalUtilities = plugin(function ({ addUtilities }) {
       '-ms-backface-visibility': 'hidden'
     },
     '.transform-3d-0': {
-      transform3d: 'transform3d(0, 0, 0)'
+      transform: 'translate3d(0, 0, 0)'
     },
     '.animation-pause': {
       'animation-play-state': 'paused'
@@ -176,6 +176,17 @@ module.exports = {
             transform: 'translateX(-100%)'
           }
         }
+      },
+      lineClamp: {
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+        6: '6',
+        7: '7',
+        8: '8',
+        9: '9',
       },
       maxWidth: {
         'container-max': '1920px'

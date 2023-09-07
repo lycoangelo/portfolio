@@ -6,6 +6,7 @@ export interface ProjectProps {
   description: ContentBody;
   logo: ImageProps;
   name: string;
+  link: string;
   company: string;
   role: string;
   isPresent: boolean;
