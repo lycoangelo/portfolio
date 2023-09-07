@@ -7,10 +7,12 @@ const styles = {
     `),
 
   slider: ctl(`
+    backface-hidden
     duration-300
     flex
     relative
     transition-all
+    transform-3d-0
     w-auto
   `)
 };
