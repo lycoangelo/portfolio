@@ -1,7 +1,7 @@
 import { sanitizeString } from '@app/lib/helpers/string';
+import { useInView } from 'framer-motion';
 import parse from 'html-react-parser';
-import { useState, useEffect } from 'react';
-import { useInViewRef } from 'rooks';
+import { useState, useEffect, useRef } from 'react';
 
 import { TypingTextProps } from './TypingText.interface';
 import styles from './TypingText.styles';
@@ -17,19 +17,18 @@ const TypingText = ({
   textProps
 }: TypingTextProps) => {
   const [currentText, setCurrentText] = useState('');
-  const [startAnimation, setStartAnimation] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
+
+  const typingTextRef = useRef(null);
 
   const Tag: keyof JSX.IntrinsicElements = tag;
 
   const cursorDuration = text.length * duration;
 
-  const [typingTextRef] = useInViewRef(
-    (entries) => {
-      !startAnimation && entries[0].isIntersecting && setStartAnimation(true);
-    },
-    { rootMargin: '-15% 0px' }
-  );
+  const startAnimation = useInView(typingTextRef, {
+    once: true,
+    margin: '-20% 0px'
+  });
 
   useEffect(() => {
     if (startAnimation) {
