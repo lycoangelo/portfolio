@@ -1,4 +1,4 @@
-export interface SkillProps {
+interface SkillProps {
   logo: {
     title: string;
     url: string;
@@ -7,7 +7,7 @@ export interface SkillProps {
   name: string;
 }
 
-export interface SkillsProps {
+interface SkillsListProps {
   name: string;
   skillsCollection: {
     items: SkillProps[];
@@ -15,10 +15,9 @@ export interface SkillsProps {
 }
 
 export interface SkillSetListProps {
-  __typename: string;
   name: string;
   title: string;
   listCollection: {
-    items: SkillsProps[];
+    items: SkillsListProps[];
   };
 }
