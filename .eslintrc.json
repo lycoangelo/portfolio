@@ -37,12 +37,15 @@
     "prefer-const": "error",
     "react-hooks/rules-of-hooks": 2,
     "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": "error",
     "tailwindcss/classnames-order": 0,
     "unused-imports/no-unused-imports": "error",
     "yoda": ["error", "never"]
   },
   "settings": {
     "tailwindcss": {
+      "config": "tailwind.config.js",
+      "removeDuplicates": true,
       "whitelist": ["typewriter", "odometer-time-indicator"]
     }
   }
