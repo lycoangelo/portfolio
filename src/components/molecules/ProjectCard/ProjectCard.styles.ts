@@ -2,15 +2,23 @@ import ctl from '@netlify/classnames-template-literals';
 
 const styles = (className: string, isFlipped: boolean) => ({
   arrow: ctl(`
-    h-8
-    ml-3
+    h-5
+    ml-2
     -rotate-45
-    w-8
+    w-5
+
+    sm:h-6
+    sm:w-6
+
+    lg:h-8
+    lg:ml-3
+    lg:w-8
+
+    [&_path]:fill-primary
 
     [a_&_path:last-child]:origin-right
     [a_&_path:last-child]:transition-all
     [a:hover_&_path:last-child]:scale-0
-    [a:hover_&_path:first-child]:fill-silver
   `),
   back: ctl(`
     absolute
