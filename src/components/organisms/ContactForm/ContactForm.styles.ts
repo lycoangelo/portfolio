@@ -17,8 +17,6 @@ const styles = {
     items-center
     mb-4
     text-sm
-
-    lg:w-1/2
   `),
 
   contacts: ctl(`
@@ -47,14 +45,13 @@ const styles = {
   icon: ctl(`
     mr-4
     h-3.5
-
-    [&_path]:fill-primary
   `),
 
   iconWrapper: ctl(`
     flex
     justify-center
     items-center
+    text-primary
     w-10
   `),
 

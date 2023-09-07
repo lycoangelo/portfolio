@@ -7,6 +7,7 @@ import CloseIcon from '@app/assets/icons/close.svg';
 import DownloadIcon from '@app/assets/icons/download.svg';
 import EmailIcon from '@app/assets/icons/email.svg';
 import FlipIcon from '@app/assets/icons/flip.svg';
+import GithubIcon from '@app/assets/icons/github.svg';
 import LinkedInIcon from '@app/assets/icons/linkedin.svg';
 import LocationIcon from '@app/assets/icons/location.svg';
 import MobileIcon from '@app/assets/icons/mobile.svg';
@@ -51,6 +52,7 @@ export {
   DownloadIcon,
   EmailIcon,
   FlipIcon,
+  GithubIcon,
   LocationIcon,
   LinkedInIcon,
   MobileIcon,

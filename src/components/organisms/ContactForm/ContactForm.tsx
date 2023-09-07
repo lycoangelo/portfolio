@@ -113,10 +113,11 @@ export default function ContactForm({
 
           const hrefMap: { [key: string]: string } = {
             email: `mailto:${contact.contact}`,
-            mobile: `tel:${contact.contact}`,
+            github: contact.contact,
+            linkedin: contact.contact,
             location: contact.contact,
-            upwork: contact.contact,
-            linkedin: contact.contact
+            mobile: `tel:${contact.contact}`,
+            upwork: contact.contact
           };
 
           const Icon = iconMap[contactKey] as IconType;
@@ -126,6 +127,8 @@ export default function ContactForm({
               className={styles.contact}
               href={hrefMap[contactKey]}
               key={index}
+              rel="noreferrer"
+              target="_blank"
             >
               <span className={styles.iconWrapper}>
                 {Icon && <Icon className={styles.icon} />}
