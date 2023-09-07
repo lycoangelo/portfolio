@@ -47,7 +47,7 @@ const styles = {
     pointer-events-none
     top-0
     w-screen
-    z-40
+    z-10
   `)
 };
 

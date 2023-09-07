@@ -55,6 +55,7 @@ const styles = (startAnimation: boolean) => ({
     h-screen
     relative
     w-screen
+    !z-0
 
     lg:min-h-[840px]
   `),
