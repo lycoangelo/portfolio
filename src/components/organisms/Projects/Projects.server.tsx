@@ -17,7 +17,7 @@ const getProjects = (ids: string[]) =>
   );
 
 export default async function Projects(props: ProjectsProps) {
-  const descriptions = await getProjects(
+  const responses = await getProjects(
     props.projectsCollection.items.map((item) => item.sys.id)
   );
 
@@ -26,7 +26,8 @@ export default async function Projects(props: ProjectsProps) {
     projectsCollection: {
       items: props.projectsCollection.items.map((project, index) => ({
         ...project,
-        description: descriptions[index]?.description
+        description: responses[index]?.description,
+        technologies: responses[index]?.technologies
       }))
     }
   };

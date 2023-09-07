@@ -1,7 +1,6 @@
 import Button from '@app/components/atoms/Button/Button';
 import RichText from '@app/components/atoms/RichText/RichText';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
-import { useRef } from 'react';
 
 import { ProjectCardProps } from './ProjectCard.interface';
 import styles from './ProjectCard.styles';
@@ -18,8 +17,6 @@ export default function ProjectCard({
   setIsFlipped,
   startDate
 }: ProjectCardProps) {
-  const descriptionRef = useRef(null);
-
   const startMonth = getMonthShortName(startDate);
   const endMonth = getMonthShortName(endDate);
   const startYear = getYear(startDate);
@@ -67,7 +64,7 @@ export default function ProjectCard({
         {description && (
           <div className={classes.back} aria-hidden={!isFlipped}>
             <div className={classes.backWrapper}>
-              <RichText contentBody={description} ref={descriptionRef} />
+              <RichText contentBody={description} />
             </div>
           </div>
         )}
