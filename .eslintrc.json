@@ -5,7 +5,7 @@
     "plugin:react/recommended",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["unused-imports", "eslint-plugin-import-helpers"],
+  "plugins": ["unused-imports", "eslint-plugin-import-helpers", "tailwindcss"],
   "rules": {
     "eqeqeq": "error",
     "import-helpers/order-imports": [
@@ -46,7 +46,7 @@
     "tailwindcss": {
       "config": "tailwind.config.js",
       "removeDuplicates": true,
-      "whitelist": ["typewriter", "odometer-time-indicator"]
+      "whitelist": ["hyphens-auto", "odometer-time-indicator", "typewriter"]
     }
   }
 }
