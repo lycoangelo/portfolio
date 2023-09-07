@@ -30,7 +30,7 @@ export default function ContactForm({
   const nameRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
 
-  const sectionRef = useToggleClassInView(CONTACT_FORM);
+  const sectionRef = useToggleClassInView(CONTACT_FORM, 'text-white');
 
   const validateForm = () => {
     const email = emailRef.current?.value;

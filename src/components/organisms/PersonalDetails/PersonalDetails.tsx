@@ -69,7 +69,7 @@ export default function PersonalDetailsComponent({
 
   const { innerWidth } = useWindowSize();
 
-  const sectionRef = useToggleClassInView(PERSONAL_DETAILS);
+  const sectionRef = useToggleClassInView(PERSONAL_DETAILS, 'text-white');
 
   const buttonsLength = buttonsRef.current.length;
   const tabs = sectionsCollection.items;

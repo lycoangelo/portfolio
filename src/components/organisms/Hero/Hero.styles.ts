@@ -1,6 +1,25 @@
 import ctl from '@netlify/classnames-template-literals';
 
-const styles = {
+const initAnimation = (startAnimation: boolean) =>
+  ctl(`
+  duration-300
+  transition-all
+
+  ${
+    startAnimation
+      ? `
+      translate-y-0
+      opacity-100
+      visible
+    `
+      : `
+      translate-y-1/2
+      opacity-0
+      invisible
+    `
+  }`);
+
+const styles = (startAnimation: boolean) => ({
   background: ctl(`
     absolute
     grayscale
@@ -40,6 +59,8 @@ const styles = {
     lg:min-h-[840px]
   `),
 
+  cta: ctl(initAnimation(startAnimation)),
+
   cv: ctl(`
     whitespace-nowrap
   `),
@@ -70,6 +91,8 @@ const styles = {
     md:text-xl
 
     lg:mb-6
+
+    ${initAnimation(startAnimation)}
   `),
 
   title: ctl(`
@@ -86,6 +109,6 @@ const styles = {
     lg:mb-2
     lg:text-[7.5vw]
   `)
-};
+});
 
 export default styles;

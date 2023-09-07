@@ -35,7 +35,7 @@ export default function Projects({
   const carouselNavNextRef = useRef<HTMLButtonElement>(null);
   const carouselNavPrevRef = useRef<HTMLButtonElement>(null);
 
-  const sectionRef = useToggleClassInView(PROJECTS);
+  const sectionRef = useToggleClassInView(PROJECTS, 'text-white');
 
   const updateCardsFlipState = (index: number) => {
     const newState = [...cardsFlipState];

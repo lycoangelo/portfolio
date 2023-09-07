@@ -1,7 +1,7 @@
 import { useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
-const useToggleClassInView = (id: string) => {
+const useToggleClassInView = (id: string, className: string) => {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { margin: '-50% 0px' });
 
@@ -11,15 +11,15 @@ const useToggleClassInView = (id: string) => {
     );
 
     if (personalDetailsElement) {
-      personalDetailsElement.classList.toggle('text-white', isInView);
+      personalDetailsElement.classList.toggle(className, isInView);
     }
 
     return () => {
       if (personalDetailsElement) {
-        personalDetailsElement.classList.remove('text-white');
+        personalDetailsElement.classList.remove(className);
       }
     };
-  }, [isInView, id]);
+  }, [isInView, id, className]);
 
   return ref;
 };
