@@ -44,14 +44,14 @@ const colors: ButtonColors = {
     border-white
     text-white
 
-    hover:bg-white
+    hover:bg-primary
     hover:text-black
 
     focus:bg-white
     focus:text-black
 
     active:border-primary
-    active:bg-primary
+    active:bg-white
     active:text-black
   `,
   transparent: `

@@ -69,7 +69,7 @@ export default function Projects({
             <Button
               aria-hidden
               className={styles.bullet(isFlipped)}
-              color={activeIndex === index ? 'primary' : 'inactive'}
+              color={activeIndex === index ? 'active' : 'primary'}
               key={index}
               onClick={() => handleBulletClick(index)}
               tabIndex={-1}

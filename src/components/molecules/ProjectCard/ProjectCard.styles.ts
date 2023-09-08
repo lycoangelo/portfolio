@@ -63,6 +63,7 @@ const styles = (className: string, isFlipped: boolean) => ({
   description: ctl(`
     hyphens-auto
     line-clamp-8
+    text-black
   `),
 
   detail: ctl(`
@@ -159,16 +160,18 @@ const styles = (className: string, isFlipped: boolean) => ({
     ctl(`
     absolute
     transform-style-3d
+    underline
     z-50
 
-    focus:text-white
-    focus:underline
+    hover:!opacity-70
 
     lg:text-base
 
     ${
       isFlipped
         ? `
+        text-black
+
         ${
           isViewMore
             ? `
