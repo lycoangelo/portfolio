@@ -18,17 +18,11 @@ export const metadata: Metadata = {
     'The website portfolio of Lyco Angelo Ty, a website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!',
   applicationName: 'Lyco Angelo: Portfolio',
   referrer: 'origin-when-cross-origin',
-  keywords: ['Next.js', 'React', 'JavaScript'],
+  keywords: ['Next.js', 'React', 'JavaScript', 'Lyco Angelo Ty'],
   authors: [{ name: 'Lyco Angelo Ty' }],
   colorScheme: 'dark',
-  creator: 'Lyco Angelo Ty',
-  publisher: 'Lyco Angelo Ty',
   openGraph: {
     images: '/og-image.png'
-  },
-  icons: {
-    apple: '/favicon.ico',
-    icon: '/favicon.ico'
   }
 };
 
