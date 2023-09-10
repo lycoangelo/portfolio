@@ -80,9 +80,12 @@ const styles = (startAnimation: boolean) => ({
 
     md:col-span-9
     md:justify-center
+    md:pb-0
 
     lg:col-span-6
     lg:col-start-2
+
+    xl:pt-16
   `),
 
   description: ctl(`
