@@ -122,7 +122,7 @@ const richTextOptions = (content: ContentBody) => {
 };
 
 const RichText = forwardRef(
-  ({ className = '', contentBody, options }: RichTextProps, ref) => {
+  ({ className = '', contentBody, options, ...props }: RichTextProps, ref) => {
     const renderOptions = options
       ? options(contentBody)
       : richTextOptions(contentBody);
@@ -131,6 +131,7 @@ const RichText = forwardRef(
       <div
         className={styles.richtext(className)}
         ref={ref as LegacyRef<HTMLDivElement>}
+        {...props}
       >
         {documentToReactComponents(contentBody?.json, renderOptions)}
       </div>

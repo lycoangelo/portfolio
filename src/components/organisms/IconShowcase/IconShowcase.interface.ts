@@ -6,6 +6,7 @@ export interface IconProps {
     url: string;
     title: string;
   };
+  name: string;
 }
 
 interface IconItemProps {
@@ -24,7 +25,9 @@ export interface IconShowcaseProps {
 }
 
 export interface IconShowcaseComponentProps {
+  name: string;
   iconsCollection: {
     items: IconProps[];
   };
+  title: string;
 }
