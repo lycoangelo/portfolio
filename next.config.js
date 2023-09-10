@@ -6,15 +6,6 @@ const nextConfig = {
   images: {
     domains: ['images.ctfassets.net']
   },
-  async redirects() {
-    return [
-      {
-        source: '/:slug',
-        destination: '/',
-        permanent: true
-      }
-    ];
-  },
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
