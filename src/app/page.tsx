@@ -13,7 +13,7 @@ import homepageQuery from '@app/lib/queries/Homepage.query';
 export const metadata = {
   title: 'Lyco Angelo: Portfolio',
   description:
-    'Explore the website portfolio of Lyco Angelo Ty, a skilled website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!',
+    'The website ortfolio of Lyco Angelo Ty, a website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!',
   applicationName: 'Lyco Angelo: Portfolio',
   referrer: 'origin-when-cross-origin',
   keywords: ['Next.js', 'React', 'JavaScript'],
@@ -22,7 +22,7 @@ export const metadata = {
   creator: 'Lyco Angelo Ty',
   publisher: 'Lyco Angelo Ty',
   openGraph: {
-    images: '@app/assets/images/og-image.png'
+    images: '/assets/images/og-image.png'
   }
 };
 
