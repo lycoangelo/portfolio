@@ -63,7 +63,6 @@ const styles = (className: string, isFlipped: boolean) => ({
   description: ctl(`
     hyphens-auto
     line-clamp-8
-    text-black
   `),
 
   detail: ctl(`
@@ -169,25 +168,19 @@ const styles = (className: string, isFlipped: boolean) => ({
 
     ${
       isFlipped
-        ? `
-        text-black
-
-        ${
-          isViewMore
-            ? `
-          bottom-8
-          right-8
-        `
-            : `
-          left-8
-          top-8 
-        `
-        }
-      `
-        : `
+        ? isViewMore
+          ? `
         bottom-8
         right-8
       `
+          : `
+        left-8
+        top-8 
+      `
+        : `
+      bottom-8
+      right-8
+    `
     }
 
     ${
