@@ -11,7 +11,16 @@ import { logColors } from '@app/lib/helpers/log';
 import homepageQuery from '@app/lib/queries/Homepage.query';
 
 export const metadata = {
-  title: 'Lyco Angelo: Portfolio'
+  title: 'Lyco Angelo: Portfolio',
+  description:
+    'Explore the website portfolio of Lyco Angelo Ty, a skilled website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!',
+  applicationName: 'Lyco Angelo: Portfolio',
+  referrer: 'origin-when-cross-origin',
+  keywords: ['Next.js', 'React', 'JavaScript'],
+  authors: [{ name: 'Lyco Angelo Ty' }],
+  colorScheme: 'dark',
+  creator: 'Lyco Angelo Ty',
+  publisher: 'Lyco Angelo Ty'
 };
 
 export default async function Home() {
