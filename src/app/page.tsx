@@ -20,7 +20,10 @@ export const metadata = {
   authors: [{ name: 'Lyco Angelo Ty' }],
   colorScheme: 'dark',
   creator: 'Lyco Angelo Ty',
-  publisher: 'Lyco Angelo Ty'
+  publisher: 'Lyco Angelo Ty',
+  openGraph: {
+    images: '@app/assets/images/og-image.png'
+  }
 };
 
 export default async function Home() {
