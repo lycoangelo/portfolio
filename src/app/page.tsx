@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Lyco Angelo Ty' }],
   colorScheme: 'dark',
   openGraph: {
-    images: '/og-image.png'
+    images: '/cover.jpg'
   },
   icons: {
     apple: '/favicon.ico',
