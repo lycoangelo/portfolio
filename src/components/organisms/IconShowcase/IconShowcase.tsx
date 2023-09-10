@@ -71,6 +71,7 @@ export default function IconShowcase({
 
           return (
             <Button
+              aria-live="polite"
               aria-label={iconName}
               aria-controls={`tabpanel-${name + index}`}
               aria-selected={isActive}
