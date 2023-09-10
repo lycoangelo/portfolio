@@ -22,7 +22,7 @@ export const metadata = {
   creator: 'Lyco Angelo Ty',
   publisher: 'Lyco Angelo Ty',
   openGraph: {
-    images: '/assets/images/og-image.png'
+    images: '/og-image.png'
   }
 };
 
