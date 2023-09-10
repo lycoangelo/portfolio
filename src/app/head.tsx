@@ -16,7 +16,7 @@ export default function Head() {
         property="og:description"
         content="The website portfolio of Lyco Angelo Ty, a website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!"
       />
-      <meta property="og:image" content="/cover.jpg" />
+      <meta property="og:image" content="/cover.png" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content="lycoangelo.vercel.app/" />
@@ -26,7 +26,7 @@ export default function Head() {
         name="twitter:description"
         content="The website portfolio of Lyco Angelo Ty, a website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!"
       />
-      <meta name="twitter:image" content="/cover.jpg" />
+      <meta name="twitter:image" content="/cover.head" />
     </>
   );
 }
