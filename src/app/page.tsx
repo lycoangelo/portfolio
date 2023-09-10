@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   colorScheme: 'dark',
   openGraph: {
     images: '/og-image.png'
+  },
+  icons: {
+    apple: '/favicon.ico',
+    icon: '/favicon.ico'
   }
 };
 
