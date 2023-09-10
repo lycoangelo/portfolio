@@ -1,4 +1,7 @@
-import { getElementPosition, updateTabIndex } from '@app/lib/helpers/dom';
+import {
+  getElementPosition,
+  updateElementChildrenTabIndex
+} from '@app/lib/helpers/dom';
 import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
@@ -71,7 +74,7 @@ const Carousel: FC<CarouselProps> = ({
     slides.forEach((slide, index) => {
       const isActive = fullSlidesIndexes.includes(index);
       slide.setAttribute('aria-hidden', (!isActive).toString());
-      updateTabIndex(slide, isActive);
+      updateElementChildrenTabIndex(slide, isActive);
     });
   }, [activeIndex, slides]);
 
