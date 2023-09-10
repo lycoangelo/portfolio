@@ -74,7 +74,12 @@ export default function ProjectCard({
           <div className={classes.details}>
             <h3 className={classes.name}>
               {link ? (
-                <Button color="transparent" href={link} size="fit">
+                <Button
+                  color="transparent"
+                  href={link}
+                  size="fit"
+                  tabIndex={isFlipped ? -1 : 0}
+                >
                   {name} <ArrowRightIcon className={classes.arrow} />
                 </Button>
               ) : (
