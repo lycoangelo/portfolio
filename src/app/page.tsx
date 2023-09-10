@@ -13,7 +13,7 @@ import homepageQuery from '@app/lib/queries/Homepage.query';
 export const metadata = {
   title: 'Lyco Angelo: Portfolio',
   description:
-    'The website ortfolio of Lyco Angelo Ty, a website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!',
+    'The website portfolio of Lyco Angelo Ty, a website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!',
   applicationName: 'Lyco Angelo: Portfolio',
   referrer: 'origin-when-cross-origin',
   keywords: ['Next.js', 'React', 'JavaScript'],

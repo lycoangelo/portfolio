@@ -7,7 +7,8 @@ export default function Head() {
         name="description"
         content="The website ortfolio of Lyco Angelo Ty, a website developer with experience in a variety of web design and development technologies. Learn more about his skills and experience today!"
       />
-      <link rel="icon" href="/favicon.ico" />
+      <meta name="og:image" content="/public/og-image.png" />
+      <link rel="icon" href="/public/favicon.ico" />
     </>
   );
 }
