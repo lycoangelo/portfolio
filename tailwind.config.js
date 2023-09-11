@@ -186,7 +186,7 @@ module.exports = {
         6: '6',
         7: '7',
         8: '8',
-        9: '9',
+        9: '9'
       },
       maxWidth: {
         'container-max': '1920px'
@@ -209,18 +209,11 @@ module.exports = {
       }
     },
     screens: {
+      xs: '375px',
       sm: '640px',
-      // => @media (min-width: 640px) { ... }
-
       md: '768px',
-      // => @media (min-width: 768px) { ... }
-
       lg: '1024px',
-      // => @media (min-width: 1024px) { ... }
-
       xl: '1280px',
-      // => @media (min-width: 1280px) { ... }
-
       xxl: '1440px',
       max: '1920px'
     }
