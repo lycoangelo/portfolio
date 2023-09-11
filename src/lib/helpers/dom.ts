@@ -83,3 +83,22 @@ export const updateElementChildrenTabIndex = (
     }
   });
 };
+
+/**
+ * Scrolls to a specified element on the page with a smooth animation.
+ *
+ * @param {HTMLElement} element - The element to scroll to.
+ * @param {string} href - The ID or anchor reference of the target section.
+ */
+export const scrollToElement = (element: HTMLElement | null, href: string) => {
+  // Calculate the scroll position based on the target section's offset and element's height
+  const targetOffset = document.getElementById(href)?.offsetTop ?? 0;
+  const elementHeight = element?.offsetHeight ?? 0;
+  const scrollPosition = targetOffset - elementHeight - 20;
+
+  // Scroll to the element with a smooth animation
+  window.scrollTo({
+    behavior: 'smooth',
+    top: scrollPosition
+  });
+};
