@@ -8,6 +8,7 @@ import {
   PROJECTS,
   HERO
 } from '@app/lib/constants/selectors';
+import { scrollToElement } from '@app/lib/helpers/dom';
 import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
 import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
@@ -43,14 +44,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
   useHideOtherElements(isActive, wrapperRef.current);
 
   const scrollToSection = (href: string) => {
-    window.scrollTo({
-      behavior: 'smooth',
-      top:
-        (document.getElementById(href)?.offsetTop ?? 0) -
-        (headerRef.current?.offsetHeight ?? 0) -
-        20
-    });
-
+    scrollToElement(headerRef.current, href);
     setIsActive(false);
   };
 
