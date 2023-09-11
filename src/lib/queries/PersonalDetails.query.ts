@@ -4,7 +4,7 @@ const personalDetailsQuery = `
   query personalDetailsQuery($id: String!) {
     personalDetails(id: $id) {
       scrambleTexts
-      sectionsCollection(limit: 4) {
+      sectionsCollection(limit: 10) {
         items {
           ... on Essay {
             __typename
