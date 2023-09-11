@@ -22,8 +22,9 @@ const styles = {
 
   tab: (isActive: boolean) =>
     ctl(`
+		absolute
 		duration-300
-		mt-10
+		mt-20
 		top-0
 		w-full
 
@@ -32,24 +33,28 @@ const styles = {
         ? `
 			visible
 			opacity-100
-			relative
 		`
         : `
 			invisible
 			opacity-0
-			absolute
 		`
     }
 	`),
 
-  tablist: ctl(`
+  tabList: ctl(`
 		flex
 		flex-wrap
+		items-start
+		relative
 		w-full
 	`),
 
   tabs: ctl(`
 		relative
+	`),
+
+  wrapper: ctl(`
+		w-full
 	`)
 };
 

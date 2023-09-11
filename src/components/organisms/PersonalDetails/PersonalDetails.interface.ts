@@ -32,5 +32,5 @@ export interface PersonalDetailsProps {
 
 export interface PersonalDetailsMap {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: (_props: any) => JSX.Element;
+  [key: string]: (_props: any) => JSX.Element | null;
 }

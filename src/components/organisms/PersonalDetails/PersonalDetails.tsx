@@ -8,15 +8,9 @@ import IconShowcase from '@app/components/organisms/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/organisms/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
 import { PERSONAL_DETAILS } from '@app/lib/constants/selectors';
+import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import {
-  Fragment,
-  KeyboardEventHandler,
-  useEffect,
-  useRef,
-  useState
-} from 'react';
-import { useWindowSize } from 'rooks';
+import { Fragment, KeyboardEventHandler, useRef, useState } from 'react';
 
 import {
   PersonalDetailsAnimationProps,
@@ -61,18 +55,17 @@ export default function PersonalDetailsComponent({
   scrambleTexts
 }: PersonalDetailsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const [height, setHeight] = useState<number | string>('unset');
 
   const animationRef = useRef<HTMLDivElement | null>(null);
   const buttonsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const panelsRef = useRef<(HTMLElement | null)[]>([]);
 
-  const { innerWidth } = useWindowSize();
-
   const sectionRef = useToggleClassInView(PERSONAL_DETAILS, 'text-white');
 
   const buttonsLength = buttonsRef.current.length;
   const tabs = sectionsCollection.items;
+
+  const height = useGetHighestHeight(panelsRef.current);
 
   const handleArrowKeys: KeyboardEventHandler<
     HTMLButtonElement | HTMLAnchorElement
@@ -107,17 +100,6 @@ export default function PersonalDetailsComponent({
       }
     }
   };
-
-  useEffect(() => {
-    let containerheight = 0;
-
-    panelsRef.current.forEach((panel) => {
-      const panelHeight = panel?.offsetHeight || 0;
-      if (panelHeight > containerheight) containerheight = panelHeight;
-    });
-
-    setHeight(containerheight);
-  }, [innerWidth]);
 
   return (
     <section

@@ -42,39 +42,39 @@ const styles = {
   `),
 
   eyebrow: ctl(`
-  label
+    label
     mb-1
   `),
 
   panel: (isActive: boolean) =>
     ctl(`
-      absolute
-      top-0
-      ml-auto
-      mr-0
-      pb-5
-      w-[72.93%]
+    absolute
+    top-0
+    ml-auto
+    mr-0
+    pb-5
+    w-[72.93%]
 
-      md:w-[49.12%]
+    md:w-[49.12%]
 
-      lg:left-[50.31%]
-      lg:w-[41%]
+    lg:left-[50.31%]
+    lg:w-[41%]
 
-      ${
-        isActive
-          ? `
-        visible
-        opacity-100
-      `
-          : `
-        invisible
-        opacity-0
-        pointer-events-none
+    ${
+      isActive
+        ? `
+      visible
+      opacity-100
+    `
+        : `
+      invisible
+      opacity-0
+      pointer-events-none
 
-        [&_[href]]:invisible
-      `
-      }
-    `),
+      [&_[href]]:invisible
+    `
+    }
+  `),
 
   panels: ctl(`
     border-b
@@ -108,16 +108,19 @@ const styles = {
 
   tab: (isActive: boolean) =>
     ctl(`
-      ml-auto
-      mr-0
-      label
-      mb-5
-      text-right
-      text-xs
-      ${isActive && '!text-primary'}
+    ml-auto
+    mr-0
+    label
+    mb-5
+    text-right
+    text-[10px]
 
-      md:text-sm
-    `),
+    xs:text-xs
+
+    ${isActive && '!text-primary'}
+
+    md:text-sm
+  `),
 
   tabList: ctl(`
     flex
