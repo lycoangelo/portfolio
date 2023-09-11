@@ -60,19 +60,24 @@ export const getEventPosition = (e: MouseEvent | TouchEvent) => ({
  * @param {boolean} isFocusable A boolean indicating whether the elements should be made focusable or not.
  *                              If true, elements' tabindex will be set. If false, tabindex will be removed.
  */
+const customTabIndexAttr = 'data-custom-tabindex';
+
 export const updateElementChildrenTabIndex = (
   element: Element,
   isFocusable: boolean
 ) => {
   // Get all focusable elements
   const focusableElements = element.querySelectorAll(
-    'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
   );
 
   // Loop through each focusable element
   focusableElements.forEach((focusableElement) => {
     // Check if the focusableElement has the 'data-custom-tabindex' attribute
-    if (focusableElement.getAttribute('data-custom-tabindex') === 'false') {
+    if (
+      !focusableElement.hasAttribute(customTabIndexAttr) ||
+      focusableElement.getAttribute(customTabIndexAttr) === 'false'
+    ) {
       // Update tabindex only if it doesn't have the 'data-custom-tabindex' attribute
       focusableElement.setAttribute('tabindex', isFocusable ? '0' : '-1');
     }
