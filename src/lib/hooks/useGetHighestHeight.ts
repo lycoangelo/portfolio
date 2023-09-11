@@ -11,7 +11,17 @@ export const useGetHighestHeight = (elements: (HTMLElement | null)[]) => {
 
     elements.forEach((element) => {
       const elementHeight = element?.offsetHeight || 0;
-      if (elementHeight > containerheight) containerheight = elementHeight;
+      const elementStyles = element && getComputedStyle(element);
+
+      const elementVerticalMargin =
+        parseInt(elementStyles?.marginTop || '0') +
+        parseInt(elementStyles?.marginBottom || '0');
+
+      const computedHeight = elementHeight + elementVerticalMargin;
+
+      if (computedHeight > containerheight) {
+        containerheight = computedHeight;
+      }
     });
 
     setHeight(containerheight);
