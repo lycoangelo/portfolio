@@ -10,6 +10,7 @@ import {
 } from '@app/lib/constants/selectors';
 import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
 import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
+import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import FocusTrap from 'focus-trap-react';
 import { useEffect, useRef, useState } from 'react';
 import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
@@ -30,6 +31,8 @@ export default function Header({ isHomepage = false }: HeaderProps) {
   const closeRef = useRef(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const isMounted = useIsMounted();
 
   const { scrollY } = useWindowScrollPosition();
 
@@ -55,7 +58,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
     setIsActive(false);
   }, [isBelowSm]);
 
-  const classes = styles(isActive, scrollY > 0, isHomepage);
+  const classes = styles(isActive, isMounted && scrollY > 0, isHomepage);
 
   return (
     <header className={classes.header} ref={headerRef}>
