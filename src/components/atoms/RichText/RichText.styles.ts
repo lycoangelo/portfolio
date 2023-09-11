@@ -18,7 +18,7 @@ const styles = {
   h5: 'text-base lg:text-2xl',
   h6: 'text-base lg:text-xl',
   ol: 'list-decimal pl-5 text-left w-fit',
-  p: 'text-sm leading-7 white-space-normal',
+  p: 'text-sm leading-7 white-space-normal [li>&]:mb-0',
   strong: 'font-bold',
   sub: 'align-sub',
   sup: 'align-super',
