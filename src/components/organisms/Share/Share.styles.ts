@@ -11,6 +11,8 @@ const styles = (className: string, isVertical: boolean) => ({
     rounded-full
     w-5
 
+    [&_svg]:overflow-hidden
+    [&_svg]:rounded-full
     [&_path]:!fill-primary
     [&_rect]:!fill-white
   `),
@@ -21,7 +23,6 @@ const styles = (className: string, isVertical: boolean) => ({
     flex-col
     h-auto
     min-h-[28px]
-    overflow-hidden
     rounded-full
     transition-all
 
@@ -50,7 +51,6 @@ const styles = (className: string, isVertical: boolean) => ({
 		flex
 		flex-col
 		items-center
-    overflow-hidden
     relative
     rounded-full
 
