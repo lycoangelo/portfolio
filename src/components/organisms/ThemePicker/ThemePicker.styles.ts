@@ -13,11 +13,9 @@ const colorsMap: { [key: ThemeColors]: string } = {
 };
 
 const styles = {
-  aside: ctl(`
-    bg-[rgba(0,0,0,0.75)]
-    bottom-5
+  container: ctl(`
+    bg-[rgba(25,25,25,0.75)]
     duration-150
-    fixed
     flex
     flex-col
     h-auto
@@ -26,11 +24,10 @@ const styles = {
     min-h-[28px]
     overflow-hidden
     p-1
-    right-5
+    relative
     rounded-full
     transition-all
-    w-6
-    z-40
+    w-7
   `),
 
   item: (isToggle: boolean) =>
@@ -65,7 +62,7 @@ const styles = {
     hover:opacity-75
 
     ${colorsMap[color]}
-`)
+  `)
 };
 
 export default styles;

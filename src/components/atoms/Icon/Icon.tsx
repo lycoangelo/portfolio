@@ -11,6 +11,7 @@ import GithubIcon from '@app/assets/icons/github.svg';
 import LinkedInIcon from '@app/assets/icons/linkedin.svg';
 import LocationIcon from '@app/assets/icons/location.svg';
 import MobileIcon from '@app/assets/icons/mobile.svg';
+import TwitterXIcon from '@app/assets/icons/twitter-x.svg';
 import UpworkIcon from '@app/assets/icons/upwork.svg';
 import iconMap from '@app/lib/constants/iconMap';
 
@@ -57,5 +58,6 @@ export {
   LinkedInIcon,
   MobileIcon,
   UpworkIcon,
-  SquircleIcon
+  SquircleIcon,
+  TwitterXIcon
 };

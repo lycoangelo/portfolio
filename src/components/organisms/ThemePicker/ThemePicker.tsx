@@ -20,11 +20,11 @@ export default function ThemePicker() {
 
   const [cookies, setCookie] = useCookies([themeCookieName]);
 
-  const asideRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLDivElement>(null);
 
-  useClickOutside(() => setIsActive(false), [asideRef]);
+  useClickOutside(() => setIsActive(false), [containerRef]);
 
   const activeColor = cookies.theme || 'teal';
 
@@ -52,10 +52,10 @@ export default function ThemePicker() {
 
   return isMounted ? (
     <FocusTrap active={isActive} focusTrapOptions={{ allowOutsideClick: true }}>
-      <aside
-        className={styles.aside}
+      <div
+        className={styles.container}
         style={{ height: listHeight }}
-        ref={asideRef}
+        ref={containerRef}
       >
         <ul aria-hidden={!isActive} className={styles.list} ref={listRef}>
           {themeColors
@@ -82,7 +82,7 @@ export default function ThemePicker() {
             size="full"
           />
         </div>
-      </aside>
+      </div>
     </FocusTrap>
   ) : null;
 }
