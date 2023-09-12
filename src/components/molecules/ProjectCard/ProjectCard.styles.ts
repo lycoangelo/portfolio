@@ -123,6 +123,8 @@ const styles = (className: string, isFlipped: boolean) => ({
     text-sm
   `),
 
+  link: '!text-left',
+
   name: ctl(`
     mb-2.5
     font-am-500

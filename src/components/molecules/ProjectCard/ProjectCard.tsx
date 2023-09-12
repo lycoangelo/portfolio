@@ -37,10 +37,6 @@ export default function ProjectCard({
     !hasReadMore && setHasReadMore(true);
   };
 
-  //const viewMoreDetails = () => {
-  //  // Add view more details logic here
-  //};
-
   const classes = styles(className, isFlipped);
 
   useEffect(() => {
@@ -75,6 +71,7 @@ export default function ProjectCard({
             <h3 className={classes.name}>
               {link ? (
                 <Button
+                  className={classes.link}
                   color="transparent"
                   href={link}
                   size="fit"
@@ -113,14 +110,6 @@ export default function ProjectCard({
                 className={classes.description}
                 contentBody={description}
               />
-              {/*<button
-                className={classes.toggle(!isFlipped, true)}
-                data-custom-tabindex={isFlipped}
-                onClick={viewMoreDetails}
-                tabIndex={isFlipped ? 0 : -1}
-              >
-                More Details
-              </button>*/}
             </div>
             <button
               aria-hidden={isFlipped}
