@@ -14,15 +14,15 @@ export default function Range({
   value,
   ...props
 }: RangeProps) {
-  const [rangeGrid, setRangeGrid] = useState<number[]>([]);
+  const [rangeGrids, setRangeGrids] = useState<number[]>([]);
   const [thumbWidth, setThumbWidth] = useState(0);
   const [wrapperWidth, setWrapperWidth] = useState(0);
 
-  const firstRangeGrid = rangeGrid[0];
+  const firstRangeGrid = rangeGrids[0];
   const id = name.replaceAll(' ', '-');
 
   const sliderRange = wrapperWidth - thumbWidth;
-  const gridsGap = firstRangeGrid - rangeGrid[1];
+  const gridsGap = firstRangeGrid - rangeGrids[1];
   const endCallbackSensitivity = gridsGap / 2;
 
   const thumbRef = useRef<HTMLSpanElement>(null);
@@ -38,8 +38,8 @@ export default function Range({
           setValue(value - 1);
         } else {
           setValue(
-            rangeGrid.findIndex(
-              (grid) => rangeGrid[value] + swipeDistance >= grid
+            rangeGrids.findIndex(
+              (grid) => rangeGrids[value] + swipeDistance >= grid
             )
           );
         }
@@ -50,18 +50,18 @@ export default function Range({
         if (gridsGap >= Math.abs(swipeDistance)) {
           setValue(value + 1);
         } else {
-          const nextIndex = rangeGrid.findIndex(
-            (grid) => rangeGrid[value] + swipeDistance >= grid
+          const nextIndex = rangeGrids.findIndex(
+            (grid) => rangeGrids[value] + swipeDistance >= grid
           );
 
-          setValue(nextIndex !== -1 ? nextIndex : rangeGrid.length - 1);
+          setValue(nextIndex !== -1 ? nextIndex : rangeGrids.length - 1);
         }
       }
     }
   });
 
   const updateRangeGrid = useDebounce(() => {
-    setRangeGrid(
+    setRangeGrids(
       Array.from(
         { length: max + 1 },
         (_, index) => sliderRange - (thumbWidth - thumbWidth / max) * index
@@ -70,9 +70,9 @@ export default function Range({
   }, 500);
 
   const updateElementsWidth = useCallback(() => {
-    const wrapperWidth = wrapperRef.current?.offsetWidth || 0;
+    const wrapperWidth = wrapperRef.current?.offsetWidth ?? 0;
     setThumbWidth(wrapperWidth / max);
-    setWrapperWidth(wrapperRef.current?.offsetWidth || 0);
+    setWrapperWidth(wrapperWidth);
   }, [max]);
 
   const handleResize = useCallback(() => {
@@ -92,9 +92,10 @@ export default function Range({
 
   useEffect(() => {
     updateRangeGrid();
-  }, [updateRangeGrid]);
+  }, [thumbWidth, updateRangeGrid, wrapperWidth]);
 
-  const thumbPosition = rangeGrid[value] + (isSwiping ? swipeDistance : 0) || 0;
+  const thumbPosition =
+    rangeGrids[value] + (isSwiping ? swipeDistance : 0) || 0;
 
   return (
     <div className={styles.wrapper(className)} ref={wrapperRef}>
@@ -112,7 +113,7 @@ export default function Range({
         <div className={styles.background}>
           <span
             aria-hidden
-            className={styles.thumb}
+            className={styles.thumb(rangeGrids[0] > 0)}
             ref={thumbRef}
             style={{
               right:

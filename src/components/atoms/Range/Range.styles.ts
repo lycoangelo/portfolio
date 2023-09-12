@@ -29,7 +29,8 @@ const styles = {
     w-full
   `),
 
-  thumb: ctl(`
+  thumb: (isShow: boolean) =>
+    ctl(`
     absolute
     bg-primary
     cursor-pointer
@@ -38,6 +39,8 @@ const styles = {
     top-1/2
     transition-all
     -translate-y-1/2
+
+    ${isShow ? 'opacity-100' : 'opacity-0'}
   `),
 
   wrapper: (className: string) =>
