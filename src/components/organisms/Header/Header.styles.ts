@@ -16,11 +16,13 @@ const styles = (
   isHomepage: boolean
 ) => ({
   branding: ctl(`
-		two-color-bold
+		flex
+		items-center
 		font-roboto
 		text-2xl
-		uppercase
 		tracking-[0.2em]
+		two-color-bold
+		uppercase
 
 		lg:col-start-2
 	`),
@@ -140,7 +142,8 @@ const styles = (
 		bg-black
 		duration-300
 		flex
-		items-center
+		flex-col
+		justify-center
 		h-full
 		ml-auto
 		mr-0
@@ -159,6 +162,14 @@ const styles = (
 		sm:w-full
 
 		${isActive ? 'translate-x-1/3' : 'translate-x-full'}
+	`),
+
+  share: ctl(`
+		sm:hidden
+	`),
+
+  themePicker: ctl(`
+		md:hidden
 	`),
 
   toggle: ctl(`

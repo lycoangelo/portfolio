@@ -16,6 +16,7 @@ import FocusTrap from 'focus-trap-react';
 import { useEffect, useRef, useState } from 'react';
 import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
 
+import Share from '../Share/Share';
 import { HeaderProps } from './Header.interface';
 import styles from './Header.styles';
 
@@ -89,6 +90,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
                   </li>
                 ))}
               </ul>
+              <Share className={classes.share} />
             </nav>
           </div>
         </FocusTrap>

@@ -3,6 +3,8 @@
 import { TwitterXIcon } from '@app/components/atoms/Icon/Icon';
 import { useEffect, useState } from 'react';
 import {
+  EmailIcon,
+  EmailShareButton,
   FacebookIcon,
   FacebookShareButton,
   LinkedinIcon,
@@ -10,43 +12,60 @@ import {
   TwitterShareButton
 } from 'react-share';
 
+import { ShareProps } from './Share.interface';
 import styles from './Share.styles';
 
-const socialButtonsMap = (url: string): Record<string, () => JSX.Element> => ({
+const socials = ['email', 'facebook', 'linkedin', 'twitter'];
+
+const socialButtonsMap = (
+  classes: { button: string; icon: string },
+  url: string
+): Record<string, () => JSX.Element> => ({
+  email: () => (
+    <EmailShareButton className={classes.button} url={url}>
+      <EmailIcon size={20} />
+    </EmailShareButton>
+  ),
   facebook: () => (
-    <FacebookShareButton className={styles.button} url={url}>
+    <FacebookShareButton className={classes.button} url={url}>
       <FacebookIcon size={20} />
     </FacebookShareButton>
   ),
   linkedin: () => (
-    <LinkedinShareButton className={styles.button} url={url}>
+    <LinkedinShareButton className={classes.button} url={url}>
       <LinkedinIcon size={20} />
     </LinkedinShareButton>
   ),
   twitter: () => (
-    <TwitterShareButton className={styles.button} url={url}>
-      <TwitterXIcon className={styles.icon} />
+    <TwitterShareButton className={classes.button} url={url}>
+      <TwitterXIcon className={classes.icon} />
     </TwitterShareButton>
   )
 });
 
-export default function Share() {
+export default function Share({
+  className = '',
+  isVertical = false
+}: ShareProps) {
   const [url, setUrl] = useState('');
-
-  const socials = ['facebook', 'linkedin', 'twitter'];
 
   useEffect(() => {
     setUrl(window.location.href);
   }, []);
 
+  const classes = styles(className, isVertical);
+
   return (
-    <div className={styles.container}>
-      <ul className={styles.list}>
+    <div className={classes.container}>
+      <ul className={classes.list}>
         {socials.map((social, index) => {
-          const SocialButton = socialButtonsMap(url)[social];
+          const SocialButton = socialButtonsMap(
+            { button: classes.button, icon: classes.icon },
+            url
+          )[social];
 
           return SocialButton ? (
-            <li className={styles.item} key={index}>
+            <li className={classes.item} key={index}>
               <SocialButton />
             </li>
           ) : null;

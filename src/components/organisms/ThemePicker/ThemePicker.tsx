@@ -3,20 +3,18 @@
 import Button from '@app/components/atoms/Button/Button';
 import { themeColors, ThemeColors } from '@app/lib/constants/theme';
 import useClickOutside from '@app/lib/hooks/useClickOutside';
-import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import FocusTrap from 'focus-trap-react';
 import { useEffect, useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
+import { ThemePickerProps } from './ThemePicker.interface';
 import styles from './ThemePicker.styles';
 
 const themeCookieName = 'theme';
 
-export default function ThemePicker() {
+export default function ThemePicker({ className = '' }: ThemePickerProps) {
   const [isActive, setIsActive] = useState(false);
   const [listHeight, setListHeight] = useState(0);
-
-  const isMounted = useIsMounted();
 
   const [cookies, setCookie] = useCookies([themeCookieName]);
 
@@ -50,10 +48,10 @@ export default function ThemePicker() {
     document.body.setAttribute('theme', activeColor);
   }, [activeColor, setCookie]);
 
-  return isMounted ? (
+  return (
     <FocusTrap active={isActive} focusTrapOptions={{ allowOutsideClick: true }}>
       <div
-        className={styles.container}
+        className={styles.container(className)}
         style={{ height: listHeight }}
         ref={containerRef}
       >
@@ -84,5 +82,5 @@ export default function ThemePicker() {
         </div>
       </div>
     </FocusTrap>
-  ) : null;
+  );
 }

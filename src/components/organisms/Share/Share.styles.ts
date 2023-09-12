@@ -1,6 +1,6 @@
 import ctl from '@netlify/classnames-template-literals';
 
-const styles = {
+const styles = (className: string, isVertical: boolean) => ({
   button: ctl(`
     !bg-white
     h-5
@@ -20,13 +20,23 @@ const styles = {
     flex
     flex-col
     h-auto
-    items-center
-    justify-end
     min-h-[28px]
     overflow-hidden
     rounded-full
     transition-all
-    w-7
+
+    ${
+      isVertical
+        ? `
+        items-center
+        justify-end
+        w-7
+      `
+        : `
+        w-auto
+      `
+    }
+    ${className}
   `),
 
   icon: ctl(`
@@ -40,17 +50,18 @@ const styles = {
 		flex
 		flex-col
 		items-center
-    mb-3
     overflow-hidden
     relative
     rounded-full
+
+    ${isVertical ? 'mb-3' : 'mr-3'}
   `),
 
   list: ctl(`
-    bottom-5
 		flex
-		flex-col
-		items-center
+    items-center
+
+    ${isVertical && 'flex-col'}
   `),
 
   toggle: ctl(`
@@ -61,6 +72,6 @@ const styles = {
 
     hover:opacity-75
   `)
-};
+});
 
 export default styles;

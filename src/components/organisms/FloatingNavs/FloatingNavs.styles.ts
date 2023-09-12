@@ -6,6 +6,12 @@ const styles = {
     fixed
     right-5
     z-40
+  `),
+
+  share: ctl(`
+    hidden
+
+    sm:block
   `)
 };
 

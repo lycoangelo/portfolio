@@ -13,7 +13,8 @@ const colorsMap: { [key: ThemeColors]: string } = {
 };
 
 const styles = {
-  container: ctl(`
+  container: (className: string) =>
+    ctl(`
     bg-[rgba(25,25,25,0.75)]
     duration-150
     flex
@@ -28,6 +29,8 @@ const styles = {
     rounded-full
     transition-all
     w-7
+
+    ${className}
   `),
 
   item: (isToggle: boolean) =>
@@ -40,7 +43,15 @@ const styles = {
     relative
     rounded-full
 
-    ${isToggle ? 'w-5' : 'mb-3 first:mt-1 last:mb-4 w-full'}
+    ${
+      isToggle
+        ? 'w-5'
+        : `
+        first:mt-1
+        last:mb-4 w-full
+        mb-3
+      `
+    }
   `),
 
   list: ctl(`
