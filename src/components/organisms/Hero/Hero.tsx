@@ -86,11 +86,6 @@ export default function Hero({
         className={classes.background}
         initial={{ opacity: 0 }}
         animate={{ opacity: startAnimation ? 1 : 0 }}
-        transition={{
-          type: 'spring',
-          stiffness: 260,
-          damping: 20
-        }}
       >
         <figure className={classes.backgroundWrapper}>
           <Image
