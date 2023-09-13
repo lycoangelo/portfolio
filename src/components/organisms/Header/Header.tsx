@@ -58,7 +58,12 @@ export default function Header({ isHomepage = false }: HeaderProps) {
   return (
     <header className={classes.header} ref={headerRef}>
       <div className={classes.inner}>
-        <Link className={classes.branding} href="/" title="Go to Homepage">
+        <Link
+          aria-hidden={isActive}
+          className={classes.branding}
+          href="/"
+          title="Go to Homepage"
+        >
           <b>L</b>A
         </Link>
         <FocusTrap active={isActive}>
