@@ -54,6 +54,22 @@ const colors: ButtonColors = {
     active:bg-white
     active:text-black
   `,
+  secondary: `
+    bg-white
+    border
+    border-black
+    text-black
+
+    hover:bg-primary
+    hover:text-white
+
+    focus:bg-primary
+    focus:text-white
+
+    active:border-primary
+    active:bg-black
+    active:text-white
+  `,
   transparent: `
     border-0
     text-white
@@ -161,10 +177,10 @@ const styles = {
       transition-all
       uppercase
 
-      ${className}
       ${colors[color]}
       ${sizes[size]}
       ${hasBorderEffect && borderEffect}
+      ${className}
     `),
   icon: (color: string, size: string, iconClassName: string) =>
     ctl(`

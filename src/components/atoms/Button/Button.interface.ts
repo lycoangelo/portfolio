@@ -9,6 +9,7 @@ export interface ButtonColors {
   active: string;
   inactive: string;
   primary: string;
+  secondary: string;
   transparent: string;
 }
 
