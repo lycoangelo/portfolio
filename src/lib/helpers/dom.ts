@@ -1,3 +1,5 @@
+import { HEADER_ID } from '../constants/selectors';
+
 /**
  * Retrieves and returns a list of ancestor elements for a given HTML element.
  *
@@ -90,10 +92,10 @@ export const updateElementChildrenTabIndex = (
  * @param {HTMLElement} element - The element to scroll to.
  * @param {string} href - The ID or anchor reference of the target section.
  */
-export const scrollToElement = (element: HTMLElement | null, href: string) => {
+export const scrollToElement = (href: string) => {
   // Calculate the scroll position based on the target section's offset and element's height
   const targetOffset = document.getElementById(href)?.offsetTop ?? 0;
-  const elementHeight = element?.offsetHeight ?? 0;
+  const elementHeight = document.getElementById(HEADER_ID)?.offsetHeight ?? 0;
   const scrollPosition = targetOffset - elementHeight - 20;
 
   // Scroll to the element with a smooth animation

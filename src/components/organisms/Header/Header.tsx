@@ -3,10 +3,11 @@
 import Link from 'next/link';
 
 import {
-  PERSONAL_DETAILS,
-  CONTACT_FORM,
-  PROJECTS,
-  HERO
+  PERSONAL_DETAILS_ID,
+  CONTACT_FORM_ID,
+  PROJECTS_ID,
+  HERO_ID,
+  HEADER_ID
 } from '@app/lib/constants/selectors';
 import { scrollToElement } from '@app/lib/helpers/dom';
 import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
@@ -21,10 +22,10 @@ import { HeaderProps } from './Header.interface';
 import styles from './Header.styles';
 
 const links = [
-  { label: 'Home', href: HERO },
-  { label: 'Profile', href: PERSONAL_DETAILS },
-  { label: 'Projects', href: PROJECTS },
-  { label: 'Contact', href: CONTACT_FORM }
+  { label: 'Home', href: HERO_ID },
+  { label: 'Profile', href: PERSONAL_DETAILS_ID },
+  { label: 'Projects', href: PROJECTS_ID },
+  { label: 'Contact', href: CONTACT_FORM_ID }
 ];
 
 export default function Header({ isHomepage = false }: HeaderProps) {
@@ -45,7 +46,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
   useHideOtherElements(isActive, wrapperRef.current);
 
   const scrollToSection = (href: string) => {
-    scrollToElement(headerRef.current, href);
+    scrollToElement(href);
     setIsActive(false);
   };
 
@@ -56,7 +57,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
   const classes = styles(isActive, isMounted && scrollY > 0, isHomepage);
 
   return (
-    <header className={classes.header} ref={headerRef}>
+    <header className={classes.header} ref={headerRef} id={HEADER_ID}>
       <div className={classes.inner}>
         <Link
           aria-hidden={isActive}

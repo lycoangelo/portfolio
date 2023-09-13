@@ -5,7 +5,7 @@ import Input from '@app/components/atoms/Input/Input';
 import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import TimeOdometer from '@app/components/molecules/TimeOdometer/TimeOdometer';
 import iconMap, { IconType } from '@app/lib/constants/iconMap';
-import { CONTACT_FORM } from '@app/lib/constants/selectors';
+import { CONTACT_FORM_ID } from '@app/lib/constants/selectors';
 import { validateEmail } from '@app/lib/helpers/validation';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { useRef, useState } from 'react';
@@ -30,7 +30,7 @@ export default function ContactForm({
   const nameRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
 
-  const sectionRef = useToggleClassInView(CONTACT_FORM, 'text-white');
+  const sectionRef = useToggleClassInView(CONTACT_FORM_ID, 'text-white');
 
   const validateForm = () => {
     const email = emailRef.current?.value;
@@ -96,7 +96,7 @@ export default function ContactForm({
   ];
 
   return (
-    <section className={styles.container} id={CONTACT_FORM} ref={sectionRef}>
+    <section className={styles.container} id={CONTACT_FORM_ID} ref={sectionRef}>
       <div className={styles.timeWrapper}>
         <span className={styles.timeLabel}>My Local Time:</span>
         <TimeOdometer className={styles.time} />

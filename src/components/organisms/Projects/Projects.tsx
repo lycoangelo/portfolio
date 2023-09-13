@@ -8,7 +8,7 @@ import Carousel from '@app/components/molecules/Carousel/Carousel';
 import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
 import ProjectCard from '@app/components/molecules/ProjectCard/ProjectCard';
 import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
-import { PROJECTS } from '@app/lib/constants/selectors';
+import { PROJECTS_ID } from '@app/lib/constants/selectors';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { useEffect, useRef, useState } from 'react';
 import Marquee from 'react-fast-marquee';
@@ -35,7 +35,7 @@ export default function Projects({
   const carouselNavNextRef = useRef<HTMLButtonElement>(null);
   const carouselNavPrevRef = useRef<HTMLButtonElement>(null);
 
-  const sectionRef = useToggleClassInView(PROJECTS, 'text-white');
+  const sectionRef = useToggleClassInView(PROJECTS_ID, 'text-white');
 
   const updateCardsFlipState = (index: number) => {
     const newState = [...cardsFlipState];
@@ -53,7 +53,7 @@ export default function Projects({
   }, []);
 
   return (
-    <section className={styles.container} id={PROJECTS} ref={sectionRef}>
+    <section className={styles.container} id={PROJECTS_ID} ref={sectionRef}>
       <SectionHeader
         className={styles.header}
         layout="left"

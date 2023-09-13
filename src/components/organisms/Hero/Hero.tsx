@@ -3,7 +3,8 @@
 import Image from 'next/image';
 
 import TypingText from '@app/components/molecules/TypingText/TypingText';
-import { HERO } from '@app/lib/constants/selectors';
+import { CONTACT_FORM_ID, HERO_ID } from '@app/lib/constants/selectors';
+import { scrollToElement } from '@app/lib/helpers/dom';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { motion, useInView } from 'framer-motion';
@@ -28,7 +29,7 @@ export default function Hero({
 
   const descriptionRef = useRef(null);
 
-  const sectionRef = useToggleClassInView(HERO, 'text-white');
+  const sectionRef = useToggleClassInView(HERO_ID, 'text-white');
 
   const startAnimation = useInView(descriptionRef, {
     once: true,
@@ -46,7 +47,7 @@ export default function Hero({
   });
 
   return (
-    <section className={classes.container} id={HERO} ref={sectionRef}>
+    <section className={classes.container} id={HERO_ID} ref={sectionRef}>
       <div className={classes.content}>
         <TypingText
           className={classes.title}
@@ -65,11 +66,11 @@ export default function Hero({
         </p>
         {cv && (
           <div
-            className={classes.cta}
+            className={classes.ctaWrapper}
             style={getTransitionDelay(transitionOffset * 1.2)}
           >
             <Button
-              className={classes.cv}
+              className={classes.cta}
               color="primary"
               hasBorderEffect
               icon="download"
@@ -77,6 +78,15 @@ export default function Hero({
               size="lg"
             >
               Download CV
+            </Button>
+            <Button
+              className={classes.cta}
+              color="secondary"
+              hasBorderEffect
+              onClick={() => scrollToElement(CONTACT_FORM_ID)}
+              size="lg"
+            >
+              Contact
             </Button>
           </div>
         )}

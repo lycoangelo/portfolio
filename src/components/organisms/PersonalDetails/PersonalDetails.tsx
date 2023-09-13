@@ -7,7 +7,7 @@ import Essay from '@app/components/organisms/Essay/Essay';
 import IconShowcase from '@app/components/organisms/IconShowcase/IconShowcase';
 import SkillSetList from '@app/components/organisms/SkillSetList/SkillSetList';
 import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
-import { PERSONAL_DETAILS } from '@app/lib/constants/selectors';
+import { PERSONAL_DETAILS_ID } from '@app/lib/constants/selectors';
 import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { Fragment, KeyboardEventHandler, useRef, useState } from 'react';
@@ -60,7 +60,7 @@ export default function PersonalDetailsComponent({
   const buttonsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const panelsRef = useRef<(HTMLElement | null)[]>([]);
 
-  const sectionRef = useToggleClassInView(PERSONAL_DETAILS, 'text-white');
+  const sectionRef = useToggleClassInView(PERSONAL_DETAILS_ID, 'text-white');
 
   const buttonsLength = buttonsRef.current.length;
   const tabs = sectionsCollection.items;
@@ -104,7 +104,7 @@ export default function PersonalDetailsComponent({
   return (
     <section
       className={styles.container}
-      id={PERSONAL_DETAILS}
+      id={PERSONAL_DETAILS_ID}
       ref={sectionRef}
       style={{ height }}
     >

@@ -1,7 +1,7 @@
 'use client';
 
 import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
-import { PROJECTS } from '@app/lib/constants/selectors';
+import { PROJECTS_ID } from '@app/lib/constants/selectors';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
 
 import { TimelineProjectsProps } from './TimelineProjects.interface';
@@ -13,7 +13,7 @@ export default function TimelineProjects({
   projectsCollection
 }: TimelineProjectsProps) {
   return (
-    <section className={styles.container} id={PROJECTS}>
+    <section className={styles.container} id={PROJECTS_ID}>
       <SectionHeader
         className={styles.header}
         layout="left"

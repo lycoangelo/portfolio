@@ -60,10 +60,20 @@ const styles = (startAnimation: boolean) => ({
     lg:min-h-[840px]
   `),
 
-  cta: ctl(initAnimation(startAnimation)),
-
-  cv: ctl(`
+  cta: ctl(`
     whitespace-nowrap
+
+    last:mt-5
+
+    md:last:mt-0
+    md:last:ml-5
+  `),
+
+  ctaWrapper: ctl(`
+    md:flex
+    md:items-center
+
+    ${initAnimation(startAnimation)}
   `),
 
   content: ctl(`
