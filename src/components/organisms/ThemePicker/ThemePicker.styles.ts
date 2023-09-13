@@ -13,7 +13,7 @@ const colorsMap: { [key: ThemeColors]: string } = {
 };
 
 const styles = {
-  container: (className: string) =>
+  container: (className: string, isActive: boolean) =>
     ctl(`
     bg-[rgba(25,25,25,0.75)]
     duration-150
@@ -31,6 +31,25 @@ const styles = {
     w-7
 
     ${className}
+
+    before:bg-[rgba(0,0,0,0.5)]
+    before:fixed
+    before:h-screen
+    before:inset-0
+    before:transition-all
+    before:w-screen
+
+    ${
+      isActive
+        ? `
+      before:opacity-100
+      before:visible
+      `
+        : `
+      before:opacity-0
+      before:invisible
+    `
+    }
   `),
 
   item: (isToggle: boolean) =>

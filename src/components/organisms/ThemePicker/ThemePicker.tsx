@@ -2,10 +2,11 @@
 
 import Button from '@app/components/atoms/Button/Button';
 import { themeColors, ThemeColors } from '@app/lib/constants/theme';
-import useClickOutside from '@app/lib/hooks/useClickOutside';
+import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
 import FocusTrap from 'focus-trap-react';
 import { useEffect, useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import { useLockBodyScroll } from 'rooks';
 
 import { ThemePickerProps } from './ThemePicker.interface';
 import styles from './ThemePicker.styles';
@@ -18,11 +19,13 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
 
   const [cookies, setCookie] = useCookies([themeCookieName]);
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonsRef = useRef<HTMLButtonElement[]>([]);
   const listRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLDivElement>(null);
 
-  useClickOutside(() => setIsActive(false), [containerRef]);
+  useLockBodyScroll(isActive);
+
+  useHideOtherElements(isActive, listRef.current);
 
   const activeColor = cookies.theme || 'teal';
 
@@ -33,6 +36,10 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
     } else {
       setIsActive(true);
     }
+  };
+
+  const toggleActiveState = () => {
+    setIsActive(!isActive);
   };
 
   useEffect(() => {
@@ -49,11 +56,10 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
   }, [activeColor, setCookie]);
 
   return (
-    <FocusTrap active={isActive} focusTrapOptions={{ allowOutsideClick: true }}>
+    <FocusTrap active={isActive}>
       <div
-        className={styles.container(className)}
+        className={styles.container(className, isActive)}
         style={{ height: listHeight }}
-        ref={containerRef}
       >
         <ul aria-hidden={!isActive} className={styles.list} ref={listRef}>
           {themeColors
@@ -65,6 +71,9 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
                   className={styles.toggle(color)}
                   color="transparent"
                   onClick={() => handleClick(color)}
+                  ref={(el) =>
+                    (buttonsRef.current[index] = el as HTMLButtonElement)
+                  }
                   size="full"
                   tabIndex={isActive ? 0 : -1}
                 />
@@ -73,10 +82,11 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
         </ul>
         <div className={styles.item(true)} ref={toggleRef}>
           <Button
-            aria-label="Select Theme Color"
+            aria-label="Theme Colors Options Toggle"
+            aria-expanded={isActive}
             className={styles.toggle(activeColor)}
             color="transparent"
-            onClick={() => setIsActive(!isActive)}
+            onClick={toggleActiveState}
             size="full"
           />
         </div>
