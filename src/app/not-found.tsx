@@ -1,6 +1,5 @@
 import Button from '@app/components/atoms/Button/Button';
 import Header from '@app/components/organisms/Header/Header';
-import ThemePicker from '@app/components/organisms/ThemePicker/ThemePicker';
 
 export default function NotFound() {
   return (
@@ -19,7 +18,6 @@ export default function NotFound() {
         >
           Go to Home Page
         </Button>
-        <ThemePicker />
       </div>
     </>
   );
