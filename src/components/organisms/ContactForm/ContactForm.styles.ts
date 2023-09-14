@@ -17,6 +17,7 @@ const styles = {
     items-center
     mb-4
     text-sm
+    w-fit
   `),
 
   contacts: ctl(`
