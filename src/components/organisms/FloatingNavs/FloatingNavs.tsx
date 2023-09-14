@@ -1,6 +1,7 @@
 'use client';
 
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
+import { motion } from 'framer-motion';
 
 import Share from '../Share/Share';
 import ThemePicker from '../ThemePicker/ThemePicker';
@@ -10,9 +11,14 @@ export default function FloatingNavs() {
   const isMounted = useIsMounted();
 
   return isMounted ? (
-    <aside className={styles.aside}>
+    <motion.aside
+      className={styles.aside}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.75 }}
+    >
       <Share className={styles.share} isVertical />
       <ThemePicker />
-    </aside>
+    </motion.aside>
   ) : null;
 }

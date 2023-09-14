@@ -14,6 +14,7 @@ import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
 import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import FocusTrap from 'focus-trap-react';
+import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
 
@@ -57,7 +58,14 @@ export default function Header({ isHomepage = false }: HeaderProps) {
   const classes = styles(isActive, isMounted && scrollY > 0, isHomepage);
 
   return (
-    <header className={classes.header} ref={headerRef} id={HEADER_ID}>
+    <motion.header
+      className={classes.header}
+      ref={headerRef}
+      id={HEADER_ID}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75 }}
+    >
       <div className={classes.inner}>
         <Link
           aria-hidden={isActive}
@@ -101,6 +109,6 @@ export default function Header({ isHomepage = false }: HeaderProps) {
           </div>
         </FocusTrap>
       </div>
-    </header>
+    </motion.header>
   );
 }
