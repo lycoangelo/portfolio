@@ -86,7 +86,7 @@ export default function Hero({
               onClick={() => scrollToElement(CONTACT_FORM_ID)}
               size="lg"
             >
-              Contact
+              Get in Touch
             </Button>
           </div>
         )}
