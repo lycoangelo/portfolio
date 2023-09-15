@@ -97,14 +97,17 @@ export default function Header({ isHomepage = false }: HeaderProps) {
                       className={classes.link}
                       data-target={href}
                       onClick={() => scrollToSection(href)}
-                      tabIndex={isActive ? 0 : -1}
+                      tabIndex={isActive || !isBelowSm ? 0 : -1}
                     >
                       {label}
                     </a>
                   </li>
                 ))}
               </ul>
-              <Share className={classes.share} />
+              <Share
+                className={classes.share}
+                isFocusable={isActive || !isBelowSm}
+              />
             </nav>
           </div>
         </FocusTrap>

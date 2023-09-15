@@ -19,25 +19,42 @@ const socials = ['email', 'facebook', 'linkedin', 'twitter'];
 
 const socialButtonsMap = (
   classes: { button: string; icon: string },
+  isFocusable: boolean,
   url: string
 ): Record<string, () => JSX.Element> => ({
   email: () => (
-    <EmailShareButton className={classes.button} url={url}>
+    <EmailShareButton
+      className={classes.button}
+      url={url}
+      tabIndex={isFocusable ? 0 : -1}
+    >
       <EmailIcon size={20} />
     </EmailShareButton>
   ),
   facebook: () => (
-    <FacebookShareButton className={classes.button} url={url}>
+    <FacebookShareButton
+      className={classes.button}
+      url={url}
+      tabIndex={isFocusable ? 0 : -1}
+    >
       <FacebookIcon size={20} />
     </FacebookShareButton>
   ),
   linkedin: () => (
-    <LinkedinShareButton className={classes.button} url={url}>
+    <LinkedinShareButton
+      className={classes.button}
+      url={url}
+      tabIndex={isFocusable ? 0 : -1}
+    >
       <LinkedinIcon size={20} />
     </LinkedinShareButton>
   ),
   twitter: () => (
-    <TwitterShareButton className={classes.button} url={url}>
+    <TwitterShareButton
+      className={classes.button}
+      url={url}
+      tabIndex={isFocusable ? 0 : -1}
+    >
       <TwitterXIcon className={classes.icon} />
     </TwitterShareButton>
   )
@@ -45,6 +62,7 @@ const socialButtonsMap = (
 
 export default function Share({
   className = '',
+  isFocusable = false,
   isVertical = false
 }: ShareProps) {
   const [url, setUrl] = useState('');
@@ -61,6 +79,7 @@ export default function Share({
         {socials.map((social, index) => {
           const SocialButton = socialButtonsMap(
             { button: classes.button, icon: classes.icon },
+            isFocusable,
             url
           )[social];
 
