@@ -106,7 +106,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
               </ul>
               <Share
                 className={classes.share}
-                isFocusable={isActive || !isBelowSm}
+                isFocusable={(isActive && isBelowSm) || !isBelowSm}
               />
             </nav>
           </div>

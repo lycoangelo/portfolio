@@ -62,7 +62,7 @@ const socialButtonsMap = (
 
 export default function Share({
   className = '',
-  isFocusable = false,
+  isFocusable = true,
   isVertical = false
 }: ShareProps) {
   const [url, setUrl] = useState('');
