@@ -24,6 +24,7 @@ export interface PersonalDetailsAnimationProps {
 }
 
 export interface PersonalDetailsProps {
+  name: string;
   scrambleTexts: string[];
   sectionsCollection: {
     items: PersonalDetailsItemsType[];

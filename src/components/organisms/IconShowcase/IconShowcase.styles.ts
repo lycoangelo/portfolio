@@ -24,6 +24,7 @@ const styles = {
     ctl(`
 		absolute
 		duration-300
+		left-0
 		mt-20
 		top-0
 		w-full
@@ -45,6 +46,7 @@ const styles = {
 		flex
 		flex-wrap
 		items-start
+		pl-0
 		relative
 		w-full
 	`),

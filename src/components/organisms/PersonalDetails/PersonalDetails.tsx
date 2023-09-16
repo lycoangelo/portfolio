@@ -10,7 +10,7 @@ import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
 import { PERSONAL_DETAILS_ID } from '@app/lib/constants/selectors';
 import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import { Fragment, KeyboardEventHandler, useRef, useState } from 'react';
+import { KeyboardEventHandler, useRef, useState } from 'react';
 
 import {
   PersonalDetailsAnimationProps,
@@ -51,6 +51,7 @@ const Animation = ({
 );
 
 export default function PersonalDetailsComponent({
+  name,
   sectionsCollection,
   scrambleTexts
 }: PersonalDetailsProps) {
@@ -108,7 +109,7 @@ export default function PersonalDetailsComponent({
       ref={sectionRef}
       style={{ height }}
     >
-      <div className={styles.tabList}>
+      <ul aria-label={name} className={styles.tabList}>
         <Animation animationRef={animationRef} scrambleTexts={scrambleTexts} />
         {tabs.map((tab, index) => {
           const Component = personalDetailsMap[tab.__typename];
@@ -117,7 +118,7 @@ export default function PersonalDetailsComponent({
           const isSelected = index === activeTabIndex;
 
           return (
-            <Fragment key={id}>
+            <li className={styles.tabItem} key={id}>
               <div className={styles.tabWrapper}>
                 <Button
                   aria-label={`See ${tab.name}`}
@@ -155,10 +156,10 @@ export default function PersonalDetailsComponent({
                 />
                 <Component {...tab} />
               </div>
-            </Fragment>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </section>
   );
 }

@@ -122,6 +122,12 @@ const styles = {
     md:text-sm
   `),
 
+  tabItem: ctl(`
+    w-full
+
+    md:first:mt-[100px]
+  `),
+
   tabList: ctl(`
     flex
     flex-col
@@ -138,8 +144,6 @@ const styles = {
     w-[20.18%]
 
     md:w-[41.18%]
-
-    md:first:mt-[100px]
   `),
 
   title: ctl(`

@@ -1,7 +1,7 @@
 import Button from '@app/components/atoms/Button/Button';
 import { SquircleIcon } from '@app/components/atoms/Icon/Icon';
 import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
-import { Fragment, KeyboardEventHandler, useRef, useState } from 'react';
+import { KeyboardEventHandler, useRef, useState } from 'react';
 
 import Essay from '../Essay/Essay';
 import { IconShowcaseComponentProps } from './IconShowcase.interface';
@@ -15,7 +15,7 @@ export default function IconShowcase({
 
   const buttonsRef = useRef<HTMLButtonElement[]>([]);
   const essaysRef = useRef<HTMLDivElement[]>([]);
-  const tabListRef = useRef<HTMLDivElement>(null);
+  const tabListRef = useRef<HTMLUListElement>(null);
 
   const buttonsLength = buttonsRef.current.length;
   const height = useGetHighestHeight(essaysRef.current);
@@ -56,14 +56,14 @@ export default function IconShowcase({
 
   return (
     <div className={styles.container}>
-      <div aria-label={name} className={styles.wrapper} style={{ height }}>
-        <div className={styles.tabList} ref={tabListRef}>
+      <div className={styles.wrapper} style={{ height }}>
+        <ul aria-label={name} className={styles.tabList} ref={tabListRef}>
           {iconsCollection.items.map(
             ({ description, icon, name: iconName }, index) => {
               const isActive = index === activeIndex;
 
               return (
-                <Fragment key={index}>
+                <li key={index}>
                   <Button
                     aria-label={iconName}
                     aria-expanded={isActive}
@@ -92,11 +92,11 @@ export default function IconShowcase({
                       marginTop: (tabListRef.current?.offsetHeight || 0) + 40
                     }}
                   />
-                </Fragment>
+                </li>
               );
             }
           )}
-        </div>
+        </ul>
       </div>
     </div>
   );

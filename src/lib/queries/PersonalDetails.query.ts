@@ -3,6 +3,7 @@ import { RICHTEXT_FRAGMENT } from './fragments/richtext';
 const personalDetailsQuery = `
   query personalDetailsQuery($id: String!) {
     personalDetails(id: $id) {
+      name
       scrambleTexts
       sectionsCollection(limit: 10) {
         items {

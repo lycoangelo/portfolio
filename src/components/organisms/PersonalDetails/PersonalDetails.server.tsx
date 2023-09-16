@@ -47,7 +47,7 @@ const personalDetailsDataMap: (_props: PersonalDetailsItemsType) => Promise<{
 
 export async function getPersonalDetailsData({
   sectionsCollection: sections,
-  scrambleTexts
+  ...props
 }: PersonalDetailsProps) {
   const sectionsCollection = {
     items: await Promise.all(
@@ -59,21 +59,17 @@ export async function getPersonalDetailsData({
     )
   };
 
-  return { sectionsCollection, scrambleTexts };
+  return { sectionsCollection, ...props };
 }
 
-const getPersonalDetails = async (id: string) => {
+export default async function PersonalDetails({ id }: { id: string }) {
   const res = await fetchGraphQL(personalDetailsQuery, false, {
     id
   });
 
-  return await res.json();
-};
-
-export default async function PersonalDetails({ id }: { id: string }) {
   const {
     data: { personalDetails }
-  } = await getPersonalDetails(id);
+  } = await res.json();
 
   const data = await getPersonalDetailsData({ ...personalDetails });
 
