@@ -7,6 +7,7 @@ import { CONTACT_FORM_ID, HERO_ID } from '@app/lib/constants/selectors';
 import { scrollToElement } from '@app/lib/helpers/dom';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import va from '@vercel/analytics';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import useDownloader from 'react-use-downloader';
@@ -46,6 +47,16 @@ export default function Hero({
     transitionDelay: `${titleAnimationDuration + offset}ms`
   });
 
+  const handleDownloadClick = () => {
+    va.track('Clicked "Download CV"');
+    cv && download(cv.url, cv.title);
+  };
+
+  const handleScrollToContact = () => {
+    va.track('Clicked "Get in Touch"');
+    scrollToElement(CONTACT_FORM_ID);
+  };
+
   return (
     <section className={classes.container} id={HERO_ID} ref={sectionRef}>
       <div className={classes.content}>
@@ -74,7 +85,7 @@ export default function Hero({
               color="primary"
               hasBorderEffect
               icon="download"
-              onClick={() => download(cv.url, cv.title)}
+              onClick={handleDownloadClick}
               size="lg"
             >
               Download CV
@@ -83,7 +94,7 @@ export default function Hero({
               className={classes.cta}
               color="secondary"
               hasBorderEffect
-              onClick={() => scrollToElement(CONTACT_FORM_ID)}
+              onClick={handleScrollToContact}
               size="lg"
             >
               Get in Touch

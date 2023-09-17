@@ -3,6 +3,7 @@ import {
   updateElementChildrenTabIndex
 } from '@app/lib/helpers/dom';
 import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
+import va from '@vercel/analytics';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
 import { CarouselProps } from './Carousel.interface';
@@ -14,7 +15,8 @@ const Carousel: FC<CarouselProps> = ({
   children,
   navNext,
   navPrev,
-  setActiveIndex
+  setActiveIndex,
+  title
 }) => {
   const [slides, setSlides] = useState<HTMLElement[]>([]);
   const [slidesGrid, setSlidesGrid] = useState<number[]>([]);
@@ -27,14 +29,16 @@ const Carousel: FC<CarouselProps> = ({
   const handleMoveToNextSlide = useCallback(() => {
     if (totalSlides - 1 > activeIndex) {
       setActiveIndex(activeIndex + 1);
+      va.track(`Clicked "${title} Carousel Next" button`);
     }
-  }, [activeIndex, setActiveIndex, totalSlides]);
+  }, [activeIndex, setActiveIndex, title, totalSlides]);
 
   const handleMoveToPrevSlide = useCallback(() => {
     if (activeIndex > 0) {
       setActiveIndex(activeIndex - 1);
+      va.track(`Clicked "${title} Carousel Previous" button`);
     }
-  }, [activeIndex, setActiveIndex]);
+  }, [activeIndex, setActiveIndex, title]);
 
   const { isSwiping, swipeDistance } = useGetSwipeDistance({
     element: carouselRef.current,

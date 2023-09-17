@@ -1,5 +1,12 @@
 import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import va from '@vercel/analytics';
+import {
+  ChangeEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { useDebounce } from 'rooks';
 
 import { RangeProps } from './Range.interface';
@@ -34,28 +41,36 @@ export default function Range({
     endCallbackSensitivity,
     swipeLeftCallback: () => {
       if (value > 0) {
+        let newValue = value;
+
         if (gridsGap >= swipeDistance) {
-          setValue(value - 1);
+          newValue = value - 1;
         } else {
-          setValue(
-            rangeGrids.findIndex(
-              (grid) => rangeGrids[value] + swipeDistance >= grid
-            )
+          newValue = rangeGrids.findIndex(
+            (grid) => rangeGrids[value] + swipeDistance >= grid
           );
         }
+
+        setValue(newValue);
+        va.track(`Clicked "${name}" range to slide ${newValue + 1}`);
       }
     },
     swipeRightCallback: () => {
       if (max > value) {
+        let newValue = value;
+
         if (gridsGap >= Math.abs(swipeDistance)) {
-          setValue(value + 1);
+          newValue = value + 1;
         } else {
           const nextIndex = rangeGrids.findIndex(
             (grid) => rangeGrids[value] + swipeDistance >= grid
           );
 
-          setValue(nextIndex !== -1 ? nextIndex : rangeGrids.length - 1);
+          newValue = nextIndex !== -1 ? nextIndex : rangeGrids.length - 1;
         }
+
+        setValue(newValue);
+        va.track(`Clicked "${name}" range to slide ${newValue + 1}`);
       }
     }
   });
@@ -94,6 +109,12 @@ export default function Range({
     updateRangeGrid();
   }, [thumbWidth, updateRangeGrid, wrapperWidth]);
 
+  const handleValueChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const { value } = e.target;
+    setValue(parseInt(e.target.value));
+    va.track(`Clicked "${name}" range to slide ${value}`);
+  };
+
   const thumbPosition =
     rangeGrids[value] + (isSwiping ? swipeDistance : 0) || 0;
 
@@ -104,7 +125,7 @@ export default function Range({
         id={id}
         max={max}
         min={min}
-        onChange={(e) => setValue(parseInt(e.target.value))}
+        onChange={handleValueChange}
         type="range"
         value={value}
         {...props}

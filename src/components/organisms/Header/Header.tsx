@@ -59,13 +59,13 @@ export default function Header({ isHomepage = false }: HeaderProps) {
   const classes = styles(isActive, isMounted && scrollY > 0, isHomepage);
 
   const handleAnchorClick = (label: string, href: string) => {
-    va.track(label);
+    va.track(`Clicked "${label}"`);
     scrollToSection(href);
   };
 
   const handleMainMenuClick = () => {
     setIsActive(!isActive);
-    va.track('Main Menu Toggle');
+    va.track('Clicked "Main Menu Toggle"');
   };
 
   return (
@@ -82,7 +82,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
           aria-hidden={isActive}
           className={classes.branding}
           href="/"
-          onClick={() => va.track('branding')}
+          onClick={() => va.track('Clicked "Branding"')}
           title="Go to Homepage"
         >
           <b>L</b>A

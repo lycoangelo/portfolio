@@ -8,6 +8,7 @@ import iconMap, { IconType } from '@app/lib/constants/iconMap';
 import { CONTACT_FORM_ID } from '@app/lib/constants/selectors';
 import { validateEmail } from '@app/lib/helpers/validation';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
+import va from '@vercel/analytics';
 import { useRef, useState } from 'react';
 
 import {
@@ -79,9 +80,11 @@ export default function ContactForm({
       try {
         await sendContactRequest(payload);
         setIsSuccess(true);
+        va.track('Contact Form submitted successfully');
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error(error);
+        va.track('Contact Form submitted failed');
       }
     }
 
@@ -127,6 +130,7 @@ export default function ContactForm({
               className={styles.contact}
               href={hrefMap[contactKey]}
               key={index}
+              onClick={() => va.track(`Clicked "${contact.label}" link`)}
               rel="noreferrer"
               target="_blank"
             >
@@ -150,6 +154,7 @@ export default function ContactForm({
               label={label}
               ref={ref}
               isSubmitted={isSubmitted}
+              onFocus={() => va.track(`Clicked "${label}" field`)}
               type={type}
             />
           ))}

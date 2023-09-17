@@ -17,7 +17,12 @@ import { ShareProps } from './Share.interface';
 import styles from './Share.styles';
 
 const iconSize = 20;
-const socials = ['email', 'facebook', 'linkedin', 'twitter'];
+const socials = [
+  { label: 'Email', social: 'email' },
+  { label: 'Facebook', social: 'facebook' },
+  { label: 'LinkedIn', social: 'linkedin' },
+  { label: 'Twitter', social: 'twitter' }
+];
 
 const socialButtonsMap = (
   classes: { button: string; icon: string },
@@ -72,11 +77,11 @@ export default function Share({
   return (
     <div className={classes.container}>
       <ul className={classes.list}>
-        {socials.map((social, index) => {
+        {socials.map(({ social, label }, index) => {
           const SocialButton = socialButtonsMap(
             { button: classes.button, icon: classes.icon },
             isFocusable,
-            () => va.track(social),
+            () => va.track(`Clicked "Share to ${label}"`),
             url
           )[social];
 

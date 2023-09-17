@@ -10,7 +10,14 @@ import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
 import { PERSONAL_DETAILS_ID } from '@app/lib/constants/selectors';
 import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import { KeyboardEventHandler, useRef, useState } from 'react';
+import va from '@vercel/analytics';
+import {
+  KeyboardEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 
 import {
   PersonalDetailsAnimationProps,
@@ -102,6 +109,25 @@ export default function PersonalDetailsComponent({
     }
   };
 
+  const handleTabChange = (index: number) => {
+    setActiveTabIndex(index);
+    va.track(`Clicked "${tabs[index].name}"`);
+  };
+
+  const handleFocusableElementsClick = useCallback<EventListener>((e) => {
+    va.track(`Clicked "${(e.currentTarget as HTMLElement)?.textContent}"`);
+  }, []);
+
+  useEffect(() => {
+    panelsRef.current.forEach((panel) => {
+      if (!panel) return;
+      const allFocusableElements = panel.querySelectorAll('a[href]');
+      allFocusableElements.forEach((element) => {
+        element.addEventListener('click', handleFocusableElementsClick);
+      });
+    });
+  }, [handleFocusableElementsClick]);
+
   return (
     <section
       className={styles.container}
@@ -125,7 +151,7 @@ export default function PersonalDetailsComponent({
                   aria-expanded={isSelected}
                   className={styles.tab(isSelected)}
                   color="transparent"
-                  onClick={() => setActiveTabIndex(index)}
+                  onClick={() => handleTabChange(index)}
                   onKeyDown={handleArrowKeys}
                   ref={(el) =>
                     (buttonsRef.current[index] = el as HTMLButtonElement)

@@ -3,6 +3,7 @@
 import Button from '@app/components/atoms/Button/Button';
 import { themeColors, ThemeColors } from '@app/lib/constants/theme';
 import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
+import va from '@vercel/analytics';
 import FocusTrap from 'focus-trap-react';
 import { useEffect, useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
@@ -36,10 +37,13 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
     } else {
       setIsActive(true);
     }
+
+    va.track(`Clicked "Changed theme to ${color}"`);
   };
 
   const toggleActiveState = () => {
     setIsActive(!isActive);
+    va.track(`Clicked "Theme Toggle"`);
   };
 
   useEffect(() => {

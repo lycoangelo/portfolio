@@ -2,6 +2,7 @@ import Button from '@app/components/atoms/Button/Button';
 import { ArrowRightIcon } from '@app/components/atoms/Icon/Icon';
 import RichText from '@app/components/atoms/RichText/RichText';
 import { getMonthShortName, getYear } from '@app/lib/helpers/date';
+import va from '@vercel/analytics';
 import { useEffect, useRef, useState } from 'react';
 
 import { ProjectCardProps } from './ProjectCard.interface';
@@ -74,6 +75,7 @@ export default function ProjectCard({
                   className={classes.link}
                   color="transparent"
                   href={link}
+                  onClick={() => va.track(`Clicked "${name}" link`)}
                   size="fit"
                   tabIndex={isFlipped ? -1 : 0}
                 >

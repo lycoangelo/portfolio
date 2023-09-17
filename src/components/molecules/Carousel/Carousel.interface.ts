@@ -7,4 +7,5 @@ export interface CarouselProps {
   navNext: HTMLButtonElement | null;
   navPrev: HTMLButtonElement | null;
   setActiveIndex: Dispatch<SetStateAction<number>>;
+  title: string;
 }

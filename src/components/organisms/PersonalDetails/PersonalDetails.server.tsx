@@ -67,6 +67,8 @@ export default async function PersonalDetails({ id }: { id: string }) {
     id
   });
 
+  if (!res) return null;
+
   const {
     data: { personalDetails }
   } = await res.json();
