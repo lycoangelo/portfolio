@@ -94,7 +94,6 @@ module.exports = {
       gray: '#3c3c3c',
       inactive: '#707070',
       transparent: 'transparent',
-      error: '#ff0000',
 
       'teal-primary': '#00c9e3',
       'teal-secondary': '#0193a7',

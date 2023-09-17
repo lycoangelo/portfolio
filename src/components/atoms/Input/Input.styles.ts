@@ -4,8 +4,9 @@ import { TypeTypes } from './Input.interface';
 
 const styles = {
   error: ctl(`
+		ml-3
+		text-inactive
 		text-xs
-		text-error
 	`),
 
   input: ctl(`
