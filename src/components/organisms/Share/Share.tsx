@@ -1,6 +1,7 @@
 'use client';
 
 import { TwitterXIcon } from '@app/components/atoms/Icon/Icon';
+import va from '@vercel/analytics';
 import { useEffect, useState } from 'react';
 import {
   EmailIcon,
@@ -15,50 +16,45 @@ import {
 import { ShareProps } from './Share.interface';
 import styles from './Share.styles';
 
+const iconSize = 20;
 const socials = ['email', 'facebook', 'linkedin', 'twitter'];
 
 const socialButtonsMap = (
   classes: { button: string; icon: string },
   isFocusable: boolean,
+  onClick: () => void,
   url: string
-): Record<string, () => JSX.Element> => ({
-  email: () => (
-    <EmailShareButton
-      className={classes.button}
-      url={url}
-      tabIndex={isFocusable ? 0 : -1}
-    >
-      <EmailIcon size={20} />
-    </EmailShareButton>
-  ),
-  facebook: () => (
-    <FacebookShareButton
-      className={classes.button}
-      url={url}
-      tabIndex={isFocusable ? 0 : -1}
-    >
-      <FacebookIcon size={20} />
-    </FacebookShareButton>
-  ),
-  linkedin: () => (
-    <LinkedinShareButton
-      className={classes.button}
-      url={url}
-      tabIndex={isFocusable ? 0 : -1}
-    >
-      <LinkedinIcon size={20} />
-    </LinkedinShareButton>
-  ),
-  twitter: () => (
-    <TwitterShareButton
-      className={classes.button}
-      url={url}
-      tabIndex={isFocusable ? 0 : -1}
-    >
-      <TwitterXIcon className={classes.icon} />
-    </TwitterShareButton>
-  )
-});
+): Record<string, () => JSX.Element> => {
+  const props = {
+    className: classes.button,
+    onClick,
+    tabIndex: isFocusable ? 0 : -1,
+    url
+  };
+
+  return {
+    email: () => (
+      <EmailShareButton {...props}>
+        <EmailIcon size={iconSize} />
+      </EmailShareButton>
+    ),
+    facebook: () => (
+      <FacebookShareButton {...props}>
+        <FacebookIcon size={iconSize} />
+      </FacebookShareButton>
+    ),
+    linkedin: () => (
+      <LinkedinShareButton {...props}>
+        <LinkedinIcon size={iconSize} />
+      </LinkedinShareButton>
+    ),
+    twitter: () => (
+      <TwitterShareButton {...props}>
+        <TwitterXIcon className={classes.icon} />
+      </TwitterShareButton>
+    )
+  };
+};
 
 export default function Share({
   className = '',
@@ -80,6 +76,7 @@ export default function Share({
           const SocialButton = socialButtonsMap(
             { button: classes.button, icon: classes.icon },
             isFocusable,
+            () => va.track(social),
             url
           )[social];
 

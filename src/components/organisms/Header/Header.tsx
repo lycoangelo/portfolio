@@ -13,6 +13,7 @@ import { scrollToElement } from '@app/lib/helpers/dom';
 import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
 import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
+import va from '@vercel/analytics';
 import FocusTrap from 'focus-trap-react';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
@@ -57,6 +58,16 @@ export default function Header({ isHomepage = false }: HeaderProps) {
 
   const classes = styles(isActive, isMounted && scrollY > 0, isHomepage);
 
+  const handleAnchorClick = (label: string, href: string) => {
+    va.track(label);
+    scrollToSection(href);
+  };
+
+  const handleMainMenuClick = () => {
+    setIsActive(!isActive);
+    va.track('Main Menu Toggle');
+  };
+
   return (
     <motion.header
       className={classes.header}
@@ -71,6 +82,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
           aria-hidden={isActive}
           className={classes.branding}
           href="/"
+          onClick={() => va.track('branding')}
           title="Go to Homepage"
         >
           <b>L</b>A
@@ -82,7 +94,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
               aria-label={`${isActive ? 'Close' : 'Open'} main menu`}
               className={classes.toggle}
               data-toggle
-              onClick={() => setIsActive(!isActive)}
+              onClick={handleMainMenuClick}
               ref={closeRef}
             >
               <span className={classes.hamburgerTop} />
@@ -96,7 +108,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
                     <a
                       className={classes.link}
                       data-target={href}
-                      onClick={() => scrollToSection(href)}
+                      onClick={() => handleAnchorClick(label, href)}
                       tabIndex={isActive || !isBelowSm ? 0 : -1}
                     >
                       {label}
