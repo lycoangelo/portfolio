@@ -12,6 +12,7 @@ import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
 import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
 import va from '@vercel/analytics';
 import {
+  Fragment,
   KeyboardEventHandler,
   useCallback,
   useEffect,
@@ -135,7 +136,7 @@ export default function PersonalDetailsComponent({
       ref={sectionRef}
       style={{ height }}
     >
-      <ul aria-label={name} className={styles.tabList}>
+      <div aria-label={name} className={styles.tabList}>
         <Animation animationRef={animationRef} scrambleTexts={scrambleTexts} />
         {tabs.map((tab, index) => {
           const Component = personalDetailsMap[tab.__typename];
@@ -144,7 +145,7 @@ export default function PersonalDetailsComponent({
           const isSelected = index === activeTabIndex;
 
           return (
-            <li className={styles.tabItem} key={id}>
+            <Fragment key={id}>
               <div className={styles.tabWrapper}>
                 <Button
                   aria-label={`See ${tab.name}`}
@@ -182,10 +183,10 @@ export default function PersonalDetailsComponent({
                 />
                 <Component {...tab} />
               </div>
-            </li>
+            </Fragment>
           );
         })}
-      </ul>
+      </div>
     </section>
   );
 }
