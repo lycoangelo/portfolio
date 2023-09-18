@@ -22,6 +22,15 @@ export default function GoogleAnalytics() {
           process.env.NEXT_PUBLIC_GA_GTM
         }
       />
+      <Script id="ga">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-XVHDF7LL09');
+        `}
+      </Script>
       <Script id="google-analytics">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
