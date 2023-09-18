@@ -1,6 +1,7 @@
 import { Quicksand, Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
 
+import GoogleAnalytics from '@app/components/atoms/GoogleAnalytics/GoogleAnalytics';
 import Footer from '@app/components/organisms/Footer/Footer';
 import ctl from '@netlify/classnames-template-literals';
 import { Analytics } from '@vercel/analytics/react';
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body className={fontsVariables}>
+        <GoogleAnalytics />
         <Analytics />
         {children}
         {/* @ts-expect-error Server Component */}
