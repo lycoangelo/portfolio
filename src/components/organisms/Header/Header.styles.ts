@@ -37,7 +37,7 @@ const styles = (
 		fixed
 		py-10
 		top-0
-		transition-all
+		transition-[drop-shadow]
 		w-full
 
 		lg:py-[60px]

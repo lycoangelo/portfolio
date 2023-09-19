@@ -107,6 +107,7 @@ export default function Hero({
         className={classes.background}
         initial={{ opacity: 0 }}
         animate={{ opacity: startAnimation ? 1 : 0 }}
+        transition={{ duration: 1.5 }}
       >
         <figure className={classes.backgroundWrapper}>
           <Image
