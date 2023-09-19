@@ -38,8 +38,8 @@ const styles: ObjectKey = {
     `),
 
   container: ctl(`
-    relative
     mt-[30px]
+    relative
   `),
 
   legends: ctl(`

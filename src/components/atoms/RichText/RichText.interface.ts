@@ -26,6 +26,7 @@ export interface ContentBody {
     };
   };
 }
+
 export interface RichTextProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   contentBody: ContentBody;
