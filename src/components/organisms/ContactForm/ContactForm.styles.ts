@@ -12,6 +12,12 @@ const rightColumnsCommonClass = `
 `;
 
 const styles = {
+  consent: ctl(`
+    mt-5
+
+    [&_strong]:text-primary
+  `),
+
   contact: ctl(`
     flex
     items-center

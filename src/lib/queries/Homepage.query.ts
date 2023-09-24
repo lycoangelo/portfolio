@@ -41,6 +41,9 @@ const homepageQuery = `
         }
       }
       contactForm {
+        consent {
+          ${RICHTEXT_FRAGMENT}
+        }
         name
         title
         contactsCollection(limit: 5) {

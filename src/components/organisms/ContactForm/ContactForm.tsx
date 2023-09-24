@@ -2,6 +2,7 @@
 
 import Button from '@app/components/atoms/Button/Button';
 import Input from '@app/components/atoms/Input/Input';
+import RichText from '@app/components/atoms/RichText/RichText';
 import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
 import TimeOdometer from '@app/components/molecules/TimeOdometer/TimeOdometer';
 import iconMap, { IconType } from '@app/lib/constants/iconMap';
@@ -19,9 +20,10 @@ import {
 import styles from './ContactForm.styles';
 
 export default function ContactForm({
+  consent,
+  contactsCollection,
   name,
-  title,
-  contactsCollection
+  title
 }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -158,6 +160,7 @@ export default function ContactForm({
               type={type}
             />
           ))}
+          <RichText className={styles.consent} contentBody={consent} />
           <Button
             className={styles.submit}
             hasBorderEffect

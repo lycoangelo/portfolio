@@ -1,22 +1,25 @@
+import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
+
 interface ContactProps {
-  name: string;
   contact: string;
   label: string;
+  name: string;
 }
 
 export interface ContactFormProps {
-  name: string;
-  title: string;
+  consent: ContentBody;
   contactsCollection: {
     items: ContactProps[];
   };
+  name: string;
+  title: string;
 }
 
 export interface ContactRequest {
-  name?: string;
   email?: string;
-  subject?: string;
   message?: string;
+  name?: string;
+  subject?: string;
 }
 
 export interface ContactResponse {
