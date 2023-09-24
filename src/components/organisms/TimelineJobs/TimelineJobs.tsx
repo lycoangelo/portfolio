@@ -1,6 +1,7 @@
 import Button from '@app/components/atoms/Button/Button';
 import { getYear } from '@app/lib/helpers/date';
 import { stringToKebabCase } from '@app/lib/helpers/string';
+import va from '@vercel/analytics';
 import { useState } from 'react';
 
 import { TimelineJobsProps } from './TimelineJobs.interface';
@@ -9,6 +10,11 @@ import styles from './TimelineJobs.styles';
 export default function TimelineJobs({ jobsCollection }: TimelineJobsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const timelines = jobsCollection.items;
+
+  const handleTabChange = (index: number) => {
+    setActiveTabIndex(index);
+    va.track(`Clicked "${timelines[index].title} timeline tab"`);
+  };
 
   return (
     <div className={styles.timelines}>
@@ -28,7 +34,7 @@ export default function TimelineJobs({ jobsCollection }: TimelineJobsProps) {
                 className={styles.timelineTab(isActive)}
                 color={index === activeTabIndex ? 'active' : 'primary'}
                 id={`tab-${index}`}
-                onClick={() => setActiveTabIndex(index)}
+                onClick={() => handleTabChange(index)}
                 size="sm"
                 role="tab"
               >
