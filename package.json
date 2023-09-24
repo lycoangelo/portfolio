@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@netlify/classnames-template-literals": "^1.0.3",
-    "@svgr/webpack": "^7.0.0",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "18.11.18",
     "@types/nodemailer": "^6.4.7",
     "@types/react": "18.2.22",
