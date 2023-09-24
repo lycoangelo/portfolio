@@ -57,7 +57,7 @@ export default async function Home() {
   return (
     <>
       <Header isHomepage />
-      <main className="overflow-hidden">
+      <main className="overflow-hidden relative z-40">
         <Hero {...heroData} />
         {/* @ts-expect-error Server Component */}
         <PersonalDetails id={personalDetails.sys.id} />
