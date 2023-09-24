@@ -39,13 +39,14 @@ const styles = (
 		top-0
 		transition-[drop-shadow]
 		w-full
+		z-50
 
 		lg:py-[60px]
 
 		${
       isScrolled
-        ? 'z-50 drop-shadow-[0px_2px_15px_rgba(255,255,255,0.18)]'
-        : 'z-40 drop-shadow-[0_0_0_rgba(255,255,255,0.18)]'
+        ? 'drop-shadow-[0px_2px_15px_rgba(255,255,255,0.18)]'
+        : 'drop-shadow-[0_0_0_rgba(255,255,255,0.18)]'
     }
 	`),
 
