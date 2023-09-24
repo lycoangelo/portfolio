@@ -2,7 +2,7 @@ import Button from '@app/components/atoms/Button/Button';
 import { SquircleIcon } from '@app/components/atoms/Icon/Icon';
 import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
 import va from '@vercel/analytics';
-import { KeyboardEventHandler, useRef, useState } from 'react';
+import { KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 
 import Essay from '../Essay/Essay';
 import { IconShowcaseComponentProps } from './IconShowcase.interface';
@@ -56,10 +56,31 @@ export default function IconShowcase({
     }
   };
 
+  const handleLinkClicks: EventListener = (e) => {
+    const link = e.target as HTMLAnchorElement;
+    va.track(`Clicked "${link.textContent}" link`);
+  };
+
   const handleTabChange = (index: number) => {
     setActiveTabIndex(index);
     va.track(`Clicked "${tabs[index].name}"`);
   };
+
+  useEffect(() => {
+    const links = essaysRef.current
+      .map((essay) => [...essay.querySelectorAll('a[href')])
+      .flat();
+
+    links.forEach((link) => {
+      link.addEventListener('click', handleLinkClicks);
+    });
+
+    return () => {
+      links.forEach((link) => {
+        link.removeEventListener('click', handleLinkClicks);
+      });
+    };
+  }, []);
 
   return (
     <div className={styles.container}>
