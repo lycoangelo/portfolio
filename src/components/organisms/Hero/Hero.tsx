@@ -49,7 +49,7 @@ export default function Hero({
 
   const handleDownloadClick = () => {
     va.track('Clicked "Download CV"');
-    cv && download(cv.url, cv.title);
+    cv && download(cv.url, cv.title + '.pdf');
   };
 
   const handleScrollToContact = () => {
