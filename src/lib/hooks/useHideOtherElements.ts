@@ -29,7 +29,7 @@ export const useHideOtherElements = (
       } else if (parentElement.tagName !== 'MAIN') {
         parentElement.childNodes.forEach((node) => {
           if (node !== element.parentElement) {
-            updateAriaHidden(node as Element, isActive);
+            updateAriaHidden(node as Element, !isActive);
           }
         });
       }
