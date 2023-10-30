@@ -4,16 +4,14 @@ export async function fetchGraphQL(
   preview = false,
   variables = {}
 ) {
-  const {
-    CF_SPACE_ID: spaceId,
-    CF_ENVIRONMENT: environment,
-    CF_PREVIEW_ACCESS_TOKEN: previewToken,
-    CF_DELIVERY_ACCESS_TOKEN: deliveryToken
-  } = process.env;
+  const { CF_SPACE_ID, CF_PREVIEW_ACCESS_TOKEN, CF_DELIVERY_ACCESS_TOKEN } =
+    process.env;
 
-  const url = `https://graphql.contentful.com/content/v1/spaces/${spaceId}/environments/${environment}`;
+  const url = `https://graphql.contentful.com/content/v1/spaces/${CF_SPACE_ID}`;
 
-  const accessToken = preview ? previewToken : deliveryToken;
+  const accessToken = preview
+    ? CF_PREVIEW_ACCESS_TOKEN
+    : CF_DELIVERY_ACCESS_TOKEN;
 
   return fetch(url, {
     method: 'POST',
