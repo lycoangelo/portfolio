@@ -47,11 +47,6 @@ export default function Header({ isHomepage = false }: HeaderProps) {
 
   useHideOtherElements(isActive, wrapperRef.current);
 
-  const scrollToSection = (href: string) => {
-    scrollToElement(href);
-    setIsActive(false);
-  };
-
   useEffect(() => {
     setIsActive(false);
   }, [isBelowSm]);
@@ -60,7 +55,8 @@ export default function Header({ isHomepage = false }: HeaderProps) {
 
   const handleAnchorClick = (label: string, href: string) => {
     va.track(`Clicked "${label}"`);
-    scrollToSection(href);
+    scrollToElement(href);
+    setIsActive(false);
   };
 
   const handleMainMenuClick = () => {
