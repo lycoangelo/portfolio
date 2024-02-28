@@ -93,10 +93,10 @@ export const updateElementChildrenTabIndex = (
  * @param {string} href - The ID or anchor reference of the target section.
  */
 export const scrollToElement = (href: string) => {
-  // Calculate the scroll position based on the target section's offset and element's height
+  // Calculate the scroll position based on the target section's offset and header's height
   const targetOffset = document.getElementById(href)?.offsetTop ?? 0;
-  const elementHeight = document.getElementById(HEADER_ID)?.offsetHeight ?? 0;
-  const scrollPosition = targetOffset - elementHeight - 20;
+  const headerHeight = document.getElementById(HEADER_ID)?.offsetHeight ?? 0;
+  const scrollPosition = targetOffset - headerHeight - 20;
 
   // Scroll to the element with a smooth animation
   window.scrollTo({
