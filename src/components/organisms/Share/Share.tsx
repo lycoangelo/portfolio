@@ -17,6 +17,7 @@ import { ShareProps } from './Share.interface';
 import styles from './Share.styles';
 
 const iconSize = 20;
+
 const socials = [
   { label: 'Email', social: 'email' },
   { label: 'Facebook', social: 'facebook' },
