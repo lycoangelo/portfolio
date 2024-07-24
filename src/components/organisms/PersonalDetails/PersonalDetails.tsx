@@ -154,9 +154,9 @@ export default function PersonalDetailsComponent({
                   color="transparent"
                   onClick={() => handleTabChange(index)}
                   onKeyDown={handleArrowKeys}
-                  ref={(el) =>
-                    (buttonsRef.current[index] = el as HTMLButtonElement)
-                  }
+                  ref={(el) => {
+                    buttonsRef.current[index] = el as HTMLButtonElement;
+                  }}
                   size="fit"
                 >
                   {tab.name}
