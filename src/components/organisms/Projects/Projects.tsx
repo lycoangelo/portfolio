@@ -25,11 +25,14 @@ export default function Projects({
   const { items: projects } = projectsCollection;
 
   const [activeIndex, setActiveIndex] = useState(0);
+
   const [cardsFlipState, setCardsFlipState] = useState(
     projects.map(() => false)
   );
+
   const [carouselNavNext, setCarouselNavNext] =
     useState<HTMLButtonElement | null>(null);
+
   const [carouselPrevNext, setCarouselPrevNext] =
     useState<HTMLButtonElement | null>(null);
 
@@ -82,7 +85,7 @@ export default function Projects({
             <Button
               aria-hidden
               className={styles.bullet(isFlipped)}
-              color={activeIndex === index ? 'active' : 'primary'}
+              color={isActive ? 'active' : 'primary'}
               key={index}
               onClick={() => handleBulletClick(index)}
               tabIndex={-1}

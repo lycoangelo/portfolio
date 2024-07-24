@@ -23,7 +23,8 @@ const styles = {
       md:w-[120px]
 
       lg:mr-4
-      lg:p-7
+      lg:px-7
+      lg:py-4
       lg:text-xl
       lg:h-[100px]
       lg:w-[140px]
@@ -94,25 +95,25 @@ const styles = {
 
   logo: (isFlipped: boolean, isActive: boolean) =>
     ctl(`
-    brightness-[100]
-    grayscale
-    h-full
-    object-contain
-    transition-all
-    w-full
+      brightness-[100]
+      grayscale
+      h-full
+      object-contain
+      transition-all
+      w-full
 
-    ${
-      isFlipped
-        ? `
-        [:hover>&]:brightness-[100]
-        [:focus>&]:brightness-[100]
-      `
-        : `
-        [:focus>&]:brightness-0
-        ${isActive && '[:hover>&]:brightness-0'}
-      `
-    }
-  `),
+      ${
+        isFlipped
+          ? `
+          [:hover>&]:brightness-[100]
+          [:focus>&]:brightness-[100]
+        `
+          : `
+          [:focus>&]:brightness-0
+          ${isActive && '[:hover>&]:brightness-0'}
+        `
+      }
+    `),
 
   marquee: ctl(`
     col-start-4
