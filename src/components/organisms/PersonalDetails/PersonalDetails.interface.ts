@@ -1,4 +1,4 @@
-import { Ref } from 'react';
+import { ReactNode, Ref } from 'react';
 
 import { EssayProps } from '../Essay/Essay.interface';
 import { IconShowcaseProps } from '../IconShowcase/IconShowcase.interface';
@@ -33,5 +33,5 @@ export interface PersonalDetailsProps {
 
 export interface PersonalDetailsMap {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: (_props: any) => JSX.Element | null;
+  [key: string]: (_props: any) => ReactNode | JSX.Element | null;
 }
