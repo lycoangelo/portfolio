@@ -60,9 +60,9 @@ export default async function Home() {
       <main className="overflow-hidden relative z-40">
         <Hero {...heroData} />
         <PersonalDetails id={personalDetails.sys.id} />
+        <DropMotion />
         <Projects {...projects} />
         <ContactForm {...contactForm} />
-        <DropMotion />
         <FloatingNavs />
       </main>
     </>
