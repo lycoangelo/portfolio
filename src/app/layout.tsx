@@ -45,7 +45,6 @@ export default function RootLayout({
         <GoogleAnalytics />
         <Analytics />
         {children}
-        {/* @ts-expect-error Server Component */}
         <Footer />
       </body>
     </html>
