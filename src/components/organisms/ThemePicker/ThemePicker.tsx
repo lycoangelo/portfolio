@@ -25,10 +25,10 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
   const toggleRef = useRef<HTMLDivElement>(null);
 
   useLockBodyScroll(isActive);
-
   useHideOtherElements(isActive, listRef.current);
 
-  const activeColor = cookies.theme || 'teal';
+  const activeColor =
+    cookies.theme || process.env.NEXT_PUBLIC_THEME_COLOR || 'teal';
 
   const handleClick = (color: ThemeColors) => {
     if (isActive) {
