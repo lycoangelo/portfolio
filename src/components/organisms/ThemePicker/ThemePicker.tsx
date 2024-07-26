@@ -27,7 +27,7 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
   useLockBodyScroll(isActive);
   useHideOtherElements(isActive, listRef.current);
 
-  const activeColor = cookies.theme || 'teal';
+  const activeColor = cookies.theme || 'red';
 
   const handleClick = (color: ThemeColors) => {
     if (isActive) {
