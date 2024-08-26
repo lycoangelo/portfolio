@@ -23,7 +23,7 @@
     "aria-hidden": "^1.2.3",
     "contentful": "^10.5.2",
     "focus-trap-react": "^10.2.1",
-    "framer-motion": "^11.3.17",
+    "framer-motion": "^11.3.30",
     "html-react-parser": "^3.0.16",
     "next": "^14.2.3",
     "nodemailer": "^6.9.9",
