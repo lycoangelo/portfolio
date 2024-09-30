@@ -2175,10 +2175,10 @@ contentful-sdk-core@^8.3.1:
     p-throttle "^4.1.1"
     qs "^6.11.2"
 
-contentful@^10.5.2:
-  version "10.15.2"
-  resolved "https://registry.yarnpkg.com/contentful/-/contentful-10.15.2.tgz#f36368e3b5c9e47088a7d7ec7b426c2005fe67c0"
-  integrity sha512-JJ+qFzxDtbQ4FfPdRF01OVFagy2ZGDHKakgsLTIj2sdnCRa6sAgTMW+jmbMkDX0B8nDRbUng6A7inRLRdLxHcw==
+contentful@^11.0.3:
+  version "11.0.3"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-11.0.3.tgz#94921e25add48386099f9c05e9d7b1eafb9aac05"
+  integrity sha512-Pn0vPPujVFkSs/FZ7BGr63e42dO9yUcvhxZMZrqD4kXHcC5n/xOFF11wWPgH5n3ZDCOBmEuiwUYLFcgcJODP7Q==
   dependencies:
     "@contentful/content-source-maps" "^0.11.0"
     "@contentful/rich-text-types" "^16.6.1"
