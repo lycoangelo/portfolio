@@ -5,6 +5,7 @@ import GoogleAnalytics from '@app/components/atoms/GoogleAnalytics/GoogleAnalyti
 import Footer from '@app/components/organisms/Footer/Footer';
 import ctl from '@netlify/classnames-template-literals';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import './globals.css';
 
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body className={fontsVariables}>
         <GoogleAnalytics />
         <Analytics />
+        <SpeedInsights />
         {children}
         <Footer />
       </body>
