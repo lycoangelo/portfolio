@@ -2,22 +2,18 @@ import ctl from '@netlify/classnames-template-literals';
 
 const styles = (className: string, isFlipped: boolean) => ({
   arrow: ctl(`
-    h-5
+    size-5
     ml-2
     -rotate-45
-    w-5
+    sm:size-6
 
-    sm:h-6
-    sm:w-6
-
-    lg:h-8
+    lg:size-8
     lg:ml-3
-    lg:w-8
 
     [&_path]:fill-primary
-
     [a_&_path:last-child]:origin-right
     [a_&_path:last-child]:transition-all
+
     [a:hover_&_path:last-child]:scale-0
   `),
   back: ctl(`
@@ -28,14 +24,13 @@ const styles = (className: string, isFlipped: boolean) => ({
     border-white
     flex
     flex-col
-    h-full
+    size-full
     overflow-hidden
     p-8
     pt-20
     rounded-3xl
     rotate-x-180
     rotate-z-180
-    w-full
     z-0
   `),
 
@@ -91,22 +86,20 @@ const styles = (className: string, isFlipped: boolean) => ({
     border-inactive
     flex
     flex-col
-    h-full
+    size-full
     left-0
     overflow-hidden
     p-8
     rounded-3xl
     top-0
-    w-full
   `),
 
   inner: ctl(`
     duration-500
-    h-full
+    size-full
     relative
     transition-all
     transform-style-3d
-    w-full
 
     ${
       isFlipped &&

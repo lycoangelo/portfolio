@@ -50,19 +50,17 @@ const styles = {
     block
   `),
   leftQuote: ctl(`
-    h-[14px]
+    size-[14px]
     min-h-[14px]
     min-w-[14px]
     mr-4
     relative
     top-[7px]
-    w-[14px]
+    lg:size-[18px]
     
-    lg:h-[18px]
     lg:min-h-[18px]
     lg:min-w-[18px]
     lg:top-[5px]
-    lg:w-[18px]
   `)
 };
 

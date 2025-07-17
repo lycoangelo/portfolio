@@ -2,12 +2,9 @@ import ctl from '@netlify/classnames-template-literals';
 
 const styles = {
   arrow: ctl(`
-    h-5
+    size-5
     pointer-events-none
-    w-5
-
-    lg:h-8
-    lg:w-8
+    lg:size-8
   `),
 
   button: (isPrevBtn: boolean) =>

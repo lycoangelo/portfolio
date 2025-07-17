@@ -29,10 +29,9 @@ const styles: ObjectKey = {
 
       before:block
       before:duration-500
-      before:h-2.5
+      before:size-2.5
       before:mr-1.5
       before:transition-colors
-      before:w-2.5
       
       ${levelsBG[level]}
     `),

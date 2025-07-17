@@ -8,7 +8,7 @@ const styles = {
     left-1/2
     overflow-hidden
     top-0
-    w-[1px]
+    w-px
     -z-10
 
     after:absolute

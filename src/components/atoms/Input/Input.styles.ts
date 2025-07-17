@@ -13,14 +13,13 @@ const styles = {
 		appearance-none
 		bg-transparent
 		p-3
-		mt-[1px]
+		mt-px
 		resize-none
-		h-full
-		w-full
-
+		size-full
 		focus:outline-0
 
 		[&:-webkit-autofill:first-line]:bg-transparent
+
 		checked:bg-transparent
 	`),
 

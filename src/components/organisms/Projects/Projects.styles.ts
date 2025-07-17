@@ -97,10 +97,9 @@ const styles = {
     ctl(`
       brightness-[100]
       grayscale
-      h-full
+      size-full
       object-contain
       transition-all
-      w-full
 
       ${
         isFlipped
@@ -130,12 +129,11 @@ const styles = {
     flex
     flex-col
     justify-center
-    h-full
+    size-full
     mt-5
     pb-8
-    w-full
-
     lg:col-start-3
+
     lg:col-end-11
     lg:mt-10
   `),

@@ -21,22 +21,21 @@ const styles = {
 
     after:absolute
     after:-bottom-2
-    after:h-4
-    after:w-4
+    after:size-4
     after:rounded-full
-
     md:after:bg-primary
 
     [:last-child:not(:nth-child(odd))>&]:md:border-l
+
     [:last-child:not(:nth-child(even))>&]:md:border-r
-
     [:not(:first-child)>&]:border-r
+
     [:not(:first-child)>&]:md:border-r-0
-
     [:nth-child(even)>&]:md:after:-left-2
-    [:nth-child(even)>&]:md:pl-5
 
+    [:nth-child(even)>&]:md:pl-5
     [:nth-child(odd)>&]:after:-right-2
+
     [:nth-child(odd)>&]:md:pr-3
   `),
 
@@ -74,26 +73,25 @@ const styles = {
     after:-right-2
 
     after:-top-2
-    after:h-4
-
-    after:w-4
+    after:size-4
 
     after:rounded-full
 
     after:bg-primary
-    md:col-span-6
 
+    md:col-span-6
     md:pt-5
 
     after:md:content-none
+
     lg:col-span-5
     lg:col-start-2
     [:not(:last-child):not(:first-child)>&]:md:border-r-0
     [:not(:last-child)>&]:border-r
     [:nth-child(even)>&]:md:pl-5
     [:nth-child(even)>&]:md:pr-0
-
     [:nth-child(odd)>&]:md:pr-5
+
     [:not(:last-child)>&]:pb-14
     [:last-child>&]:pb-5
   `),
