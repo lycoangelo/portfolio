@@ -34,8 +34,7 @@ const styles: { [key: string]: any } = {
     md:after:absolute
     md:after:bottom-[-5.5px]
     md:after:left-[-5.5px]
-    md:after:h-[11px]
-    md:after:w-[11px]
+    md:after:size-[11px]
     md:after:rounded-full
     md:after:bg-primary
   `),
@@ -51,14 +50,12 @@ const styles: { [key: string]: any } = {
     after:absolute
     after:bottom-[-5.5px]
     after:left-[-5.5px]
-    after:h-[11px]
-    after:w-[11px]
+    after:size-[11px]
     after:rounded-full
     after:bg-primary
-
     md:border-0
-    md:p-0
 
+    md:p-0
     md:after:content-none
   `),
 
@@ -99,6 +96,8 @@ const styles: { [key: string]: any } = {
 
   timelineTab: (isActive: boolean) =>
     ctl(`
+
+
     max-w-full
     ml-5
     relative
@@ -106,18 +105,10 @@ const styles: { [key: string]: any } = {
 
     after:absolute
     after:-left-5
-    after:h-[1px]
+    after:h-px
     after:bg-primary
     after:transition-all
 
-    before:absolute
-    before:bg-inactive
-    before:h-[1px]
-    before:-left-5
-    before:w-5
-
-    md:before:w-2.5
-    
     ${
       isActive
         ? `
@@ -131,6 +122,14 @@ const styles: { [key: string]: any } = {
         after:w-0
       `
     }
+
+    before:absolute
+    before:bg-inactive
+    before:h-px
+    before:-left-5
+    before:w-5
+
+    md:before:w-2.5
 
     [:first-child>&]:md:ml-0
     [:first-child>&]:md:mr-[9px]
@@ -167,14 +166,14 @@ const styles: { [key: string]: any } = {
     before:top-1/2
     before:z-10
     before:h-[calc(100%+50%)]
-    before:w-[1px]
+    before:w-px
     before:bg-inactive
 
     after:absolute
     after:top-1/2
     after:z-20
     after:h-[calc(100%+50%)]
-    after:w-[1px]
+    after:w-px
     after:transition-all
     after:duration-300
 
@@ -195,10 +194,10 @@ const styles: { [key: string]: any } = {
     ${
       isFirstChild
         ? `
-      after:md:right-[-1px]
+      after:md:right-px
       after:md:top-1/2
 
-      before:md:right-[-1px]
+      before:md:right-px
       before:md:top-1/2
     `
         : `
