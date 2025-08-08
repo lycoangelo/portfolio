@@ -17,16 +17,15 @@ const styles = {
 
     before:absolute
     before:bg-white
-    before:h-[1px]
+    before:h-px
     before:w-full
   `),
 
   range: ctl(`
     absolute
-    h-full
+    size-full
     opacity-0
     pointer-events-none
-    w-full
   `),
 
   thumb: (isShow: boolean) =>
@@ -47,11 +46,10 @@ const styles = {
     ctl(`
     flex
     items-center
-    h-full
+    size-full
     left-0
     relative
     top-0
-    w-full
 
     ${className}
   `)

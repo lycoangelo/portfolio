@@ -32,8 +32,7 @@ const styles = {
       before:left-1
       before:top-1
       before:-z-10
-      before:h-full
-      before:w-full
+      before:size-full
       before:bg-primary
 
       ${colors[color]}
@@ -41,14 +40,10 @@ const styles = {
     `),
 
   image: ctl(`
-    h-5
-    w-5
+    size-5
+    md:size-6
 
-    md:h-6
-    md:w-6
-
-    lg:h-7
-    lg:w-7
+    lg:size-7
   `)
 };
 

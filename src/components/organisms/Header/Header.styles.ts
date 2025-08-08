@@ -28,8 +28,7 @@ const styles = (
 	`),
 
   closeIcon: ctl(`
-		h-5
-		w-5
+		size-5
 	`),
 
   header: ctl(`
@@ -128,15 +127,13 @@ const styles = (
   list: ctl(`
 		flex
 		flex-col
-		h-auto
+		size-auto
 		justify-center
-		w-auto
-
 		sm:flex-row
+
 		sm:items-center
-		sm:h-full
+		sm:size-full
 		sm:justify-end
-		sm:w-full
 	`),
 
   nav: ctl(`

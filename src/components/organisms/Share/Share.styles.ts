@@ -3,15 +3,14 @@ import ctl from '@netlify/classnames-template-literals';
 const styles = (className: string, isVertical: boolean) => ({
   button: ctl(`
     !bg-white
-    h-5
+    size-5
     flex
     items-center
     justify-center
     overflow-hidden
     rounded-full
-    w-5
-
     [&_svg]:overflow-hidden
+
     [&_svg]:rounded-full
     [&_path]:!fill-primary
     [&_rect]:!fill-white
