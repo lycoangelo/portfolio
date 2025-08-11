@@ -37,7 +37,7 @@
     "react-share": "^5.1.1",
     "react-use-downloader": "^1.2.4",
     "rooks": "^7.11.1",
-    "typescript": "5.2.2"
+    "typescript": "5.7.3"
   },
   "devDependencies": {
     "@netlify/classnames-template-literals": "^1.0.3",
