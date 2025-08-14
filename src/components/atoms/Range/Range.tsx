@@ -141,8 +141,8 @@ export default function Range({
                 thumbPosition > firstRangeGrid
                   ? firstRangeGrid
                   : thumbPosition < 0
-                  ? 0
-                  : thumbPosition,
+                    ? 0
+                    : thumbPosition,
               transitionDuration: isSwiping ? '0ms' : undefined,
               width: thumbWidth
             }}

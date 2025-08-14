@@ -3,6 +3,7 @@
 import { useIsMounted } from '@app/lib/hooks/useIsMounted';
 import { motion } from 'framer-motion';
 import { CookiesProvider } from 'react-cookie';
+
 import Share from '../Share/Share';
 import ThemePicker from '../ThemePicker/ThemePicker';
 import styles from './FloatingNavs.styles';

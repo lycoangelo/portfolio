@@ -50,7 +50,7 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
       isActive
         ? (listRef?.current?.offsetHeight ?? 0) +
             (toggleRef?.current?.offsetHeight ?? 0)
-        : toggleRef?.current?.offsetHeight ?? 0
+        : (toggleRef?.current?.offsetHeight ?? 0)
     );
   }, [isActive]);
 
