@@ -182,23 +182,33 @@ const styles = (
 		sm:hidden
 	`),
 
-  wrapper: ctl(`
+  container: ctl(`
 		fixed
 		flex
-		h-screen
 		items-center
 		left-0
-		transition-colors
 		top-0
 		w-screen
 
 		sm:col-start-4
 		sm:col-end-13
-		sm:h-auto
-		sm:relative
 		sm:w-full
 
+		sm:col-start-4
+		sm:col-end-13
+		sm:relative
+
 		lg:col-end-12
+	`),
+
+  wrapper: ctl(`
+		flex
+		h-screen
+		items-center
+		transition-colors
+
+		sm:h-auto
+		sm:w-full
 
 		${isActive ? 'bg-[rgba(0,0,0,0.8)]' : 'bg-transparent pointer-events-none'}
 		${!isHomepage && 'hidden'}

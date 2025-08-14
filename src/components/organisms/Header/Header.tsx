@@ -3,11 +3,11 @@
 import Link from 'next/link';
 
 import {
-  PERSONAL_DETAILS_ID,
   CONTACT_FORM_ID,
-  PROJECTS_ID,
+  HEADER_ID,
   HERO_ID,
-  HEADER_ID
+  PERSONAL_DETAILS_ID,
+  PROJECTS_ID
 } from '@app/lib/constants/selectors';
 import { scrollToElement } from '@app/lib/helpers/dom';
 import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
@@ -84,39 +84,41 @@ export default function Header({ isHomepage = false }: HeaderProps) {
           <b>L</b>A
         </Link>
         <FocusTrap active={isActive}>
-          <div className={classes.wrapper} ref={wrapperRef}>
-            <button
-              aria-expanded={isActive}
-              aria-label={`${isActive ? 'Close' : 'Open'} main menu`}
-              className={classes.toggle}
-              data-toggle
-              onClick={handleMainMenuClick}
-              ref={closeRef}
-            >
-              <span className={classes.hamburgerTop} />
-              <span className={classes.hamburgerCenter} />
-              <span className={classes.hamburgerBottom} />
-            </button>
-            <nav aria-hidden={!isActive && isBelowSm} className={classes.nav}>
-              <ul className={classes.list}>
-                {links.map(({ href, label }, index) => (
-                  <li className={classes.item} key={index}>
-                    <a
-                      className={classes.link}
-                      data-target={href}
-                      onClick={() => handleAnchorClick(label, href)}
-                      tabIndex={isActive || !isBelowSm ? 0 : -1}
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <Share
-                className={classes.share}
-                isFocusable={(isActive && isBelowSm) || !isBelowSm}
-              />
-            </nav>
+          <div className={classes.container}>
+            <div className={classes.wrapper} ref={wrapperRef}>
+              <button
+                aria-expanded={isActive}
+                aria-label={`${isActive ? 'Close' : 'Open'} main menu`}
+                className={classes.toggle}
+                data-toggle
+                onClick={handleMainMenuClick}
+                ref={closeRef}
+              >
+                <span className={classes.hamburgerTop} />
+                <span className={classes.hamburgerCenter} />
+                <span className={classes.hamburgerBottom} />
+              </button>
+              <nav aria-hidden={!isActive && isBelowSm} className={classes.nav}>
+                <ul className={classes.list}>
+                  {links.map(({ href, label }, index) => (
+                    <li className={classes.item} key={index}>
+                      <a
+                        className={classes.link}
+                        data-target={href}
+                        onClick={() => handleAnchorClick(label, href)}
+                        tabIndex={isActive || !isBelowSm ? 0 : -1}
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <Share
+                  className={classes.share}
+                  isFocusable={(isActive && isBelowSm) || !isBelowSm}
+                />
+              </nav>
+            </div>
           </div>
         </FocusTrap>
       </div>
