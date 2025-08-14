@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import Button from '@app/components/atoms/Button/Button';
-import { themeColors, ThemeColors } from '@app/lib/constants/theme';
-import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
-import va from '@vercel/analytics';
-import FocusTrap from 'focus-trap-react';
-import { useEffect, useRef, useState } from 'react';
-import { useCookies } from 'react-cookie';
-import { useLockBodyScroll } from 'rooks';
+import Button from "@app/components/atoms/Button/Button";
+import { themeColors, ThemeColors } from "@app/lib/constants/theme";
+import { useHideOtherElements } from "@app/lib/hooks/useHideOtherElements";
+import va from "@vercel/analytics";
+import FocusTrap from "focus-trap-react";
+import { useEffect, useRef, useState } from "react";
+import { useCookies } from "react-cookie";
+import { useLockBodyScroll } from "rooks";
 
-import { ThemePickerProps } from './ThemePicker.interface';
-import styles from './ThemePicker.styles';
+import { ThemePickerProps } from "./ThemePicker.interface";
+import styles from "./ThemePicker.styles";
 
-const themeCookieName = 'theme';
+const themeCookieName = "theme";
 
-export default function ThemePicker({ className = '' }: ThemePickerProps) {
+export default function ThemePicker({ className = "" }: ThemePickerProps) {
   const [isActive, setIsActive] = useState(false);
   const [listHeight, setListHeight] = useState(0);
 
@@ -27,7 +27,7 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
   useLockBodyScroll(isActive);
   useHideOtherElements(isActive, listRef.current);
 
-  const activeColor = cookies.theme || 'red';
+  const activeColor = cookies.theme || "teal";
 
   const handleClick = (color: ThemeColors) => {
     if (isActive) {
@@ -55,7 +55,7 @@ export default function ThemePicker({ className = '' }: ThemePickerProps) {
   }, [isActive]);
 
   useEffect(() => {
-    document.body.setAttribute('theme', activeColor);
+    document.body.setAttribute("theme", activeColor);
   }, [activeColor, setCookie]);
 
   return (
