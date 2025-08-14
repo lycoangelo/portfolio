@@ -1,6 +1,6 @@
-import { HTMLInputTypeAttribute, InputHTMLAttributes, Ref } from 'react';
+import { HTMLInputTypeAttribute, InputHTMLAttributes, Ref } from "react";
 
-export type TypeTypes = HTMLInputTypeAttribute | 'textarea' | undefined;
+export type TypeTypes = HTMLInputTypeAttribute | "textarea" | undefined;
 
 type InputElement = HTMLInputElement | HTMLTextAreaElement;
 

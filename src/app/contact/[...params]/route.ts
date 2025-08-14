@@ -1,7 +1,7 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-import nodemailer from 'nodemailer';
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
+import nodemailer from "nodemailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
 
 type ParamsProps = {
   params: Promise<{
@@ -33,14 +33,14 @@ export async function POST(request: Request, { params }: ParamsProps) {
       text: `
         Name: ${name}
         Email: ${email}
-        Message: ${message.replaceAll('<question-mark>', '?')}
+        Message: ${message.replaceAll("<question-mark>", "?")}
       `
     };
 
     await transporter.sendMail(mailOptions);
 
-    return NextResponse.json({ message: 'Email successfully sent!' });
+    return NextResponse.json({ message: "Email successfully sent!" });
   } catch (error) {
-    return NextResponse.json({ message: 'Something went wrong!' });
+    return NextResponse.json({ message: "Something went wrong!" });
   }
 }

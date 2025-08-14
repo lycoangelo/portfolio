@@ -1,7 +1,7 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = {
-  container: (className = '') =>
+  container: (className = "") =>
     ctl(`
       ${className}
     `),

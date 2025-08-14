@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 
 import {
   CONTACT_FORM_ID,
@@ -8,26 +8,26 @@ import {
   HERO_ID,
   PERSONAL_DETAILS_ID,
   PROJECTS_ID
-} from '@app/lib/constants/selectors';
-import { scrollToElement } from '@app/lib/helpers/dom';
-import { useBreakpoint } from '@app/lib/hooks/useBreakpoint';
-import { useHideOtherElements } from '@app/lib/hooks/useHideOtherElements';
-import { useIsMounted } from '@app/lib/hooks/useIsMounted';
-import va from '@vercel/analytics';
-import FocusTrap from 'focus-trap-react';
-import { motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
-import { useLockBodyScroll, useWindowScrollPosition } from 'rooks';
+} from "@app/lib/constants/selectors";
+import { scrollToElement } from "@app/lib/helpers/dom";
+import { useBreakpoint } from "@app/lib/hooks/useBreakpoint";
+import { useHideOtherElements } from "@app/lib/hooks/useHideOtherElements";
+import { useIsMounted } from "@app/lib/hooks/useIsMounted";
+import va from "@vercel/analytics";
+import FocusTrap from "focus-trap-react";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useLockBodyScroll, useWindowScrollPosition } from "rooks";
 
-import Share from '../Share/Share';
-import { HeaderProps } from './Header.interface';
-import styles from './Header.styles';
+import Share from "../Share/Share";
+import { HeaderProps } from "./Header.interface";
+import styles from "./Header.styles";
 
 const links = [
-  { label: 'Home', href: HERO_ID },
-  { label: 'Profile', href: PERSONAL_DETAILS_ID },
-  { label: 'Projects', href: PROJECTS_ID },
-  { label: 'Contact', href: CONTACT_FORM_ID }
+  { label: "Home", href: HERO_ID },
+  { label: "Profile", href: PERSONAL_DETAILS_ID },
+  { label: "Projects", href: PROJECTS_ID },
+  { label: "Contact", href: CONTACT_FORM_ID }
 ];
 
 export default function Header({ isHomepage = false }: HeaderProps) {
@@ -88,7 +88,7 @@ export default function Header({ isHomepage = false }: HeaderProps) {
             <div className={classes.wrapper} ref={wrapperRef}>
               <button
                 aria-expanded={isActive}
-                aria-label={`${isActive ? 'Close' : 'Open'} main menu`}
+                aria-label={`${isActive ? "Close" : "Open"} main menu`}
                 className={classes.toggle}
                 data-toggle
                 onClick={handleMainMenuClick}

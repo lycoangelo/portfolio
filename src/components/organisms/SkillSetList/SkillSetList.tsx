@@ -1,9 +1,9 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import { skillsLegends } from '@app/lib/constants/legends';
+import { skillsLegends } from "@app/lib/constants/legends";
 
-import { SkillSetListProps } from './SkillSetList.interface';
-import styles from './SkillSetList.styles';
+import { SkillSetListProps } from "./SkillSetList.interface";
+import styles from "./SkillSetList.styles";
 
 export default function SkillSetList({ listCollection }: SkillSetListProps) {
   return (

@@ -1,6 +1,6 @@
 export interface SectionHeaderProps {
   className?: string;
-  layout?: 'left' | 'right';
+  layout?: "left" | "right";
   name: string;
   title: string;
 }

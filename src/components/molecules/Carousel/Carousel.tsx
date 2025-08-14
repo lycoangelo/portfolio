@@ -1,13 +1,13 @@
 import {
   getElementPosition,
   updateElementChildrenTabIndex
-} from '@app/lib/helpers/dom';
-import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
-import va from '@vercel/analytics';
-import { FC, useCallback, useEffect, useRef, useState } from 'react';
+} from "@app/lib/helpers/dom";
+import { useGetSwipeDistance } from "@app/lib/hooks/useGetSwipeDistance";
+import va from "@vercel/analytics";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 
-import { CarouselProps } from './Carousel.interface';
-import styles from './Carousel.styles';
+import { CarouselProps } from "./Carousel.interface";
+import styles from "./Carousel.styles";
 
 const Carousel: FC<CarouselProps> = ({
   activeIndex,
@@ -77,7 +77,7 @@ const Carousel: FC<CarouselProps> = ({
 
     slides.forEach((slide, index) => {
       const isActive = fullSlidesIndexes.includes(index);
-      slide.setAttribute('aria-hidden', (!isActive).toString());
+      slide.setAttribute("aria-hidden", (!isActive).toString());
       updateElementChildrenTabIndex(slide, isActive);
     });
   }, [activeIndex, slides]);
@@ -91,10 +91,10 @@ const Carousel: FC<CarouselProps> = ({
   useEffect(() => {}, [activeIndex, slides, slidesGrid]);
 
   useEffect(() => {
-    window.addEventListener('resize', updateSlidesGrid);
+    window.addEventListener("resize", updateSlidesGrid);
 
     return () => {
-      window.removeEventListener('resize', updateSlidesGrid);
+      window.removeEventListener("resize", updateSlidesGrid);
     };
   }, [updateSlidesGrid]);
 
@@ -104,20 +104,20 @@ const Carousel: FC<CarouselProps> = ({
 
   useEffect(() => {
     if (navNext) {
-      navNext.addEventListener('click', handleMoveToNextSlide);
+      navNext.addEventListener("click", handleMoveToNextSlide);
 
       return () => {
-        navNext.removeEventListener('click', handleMoveToNextSlide);
+        navNext.removeEventListener("click", handleMoveToNextSlide);
       };
     }
   }, [handleMoveToNextSlide, navNext]);
 
   useEffect(() => {
     if (navPrev) {
-      navPrev.addEventListener('click', handleMoveToPrevSlide);
+      navPrev.addEventListener("click", handleMoveToPrevSlide);
 
       return () => {
-        navPrev.removeEventListener('click', handleMoveToPrevSlide);
+        navPrev.removeEventListener("click", handleMoveToPrevSlide);
       };
     }
   }, [handleMoveToPrevSlide, navPrev]);
@@ -129,14 +129,14 @@ const Carousel: FC<CarouselProps> = ({
     <div
       className={styles.container(className)}
       ref={carouselRef}
-      style={{ cursor: isSwiping ? 'grabbing' : 'grab' }}
+      style={{ cursor: isSwiping ? "grabbing" : "grab" }}
     >
       <div
         className={styles.slider}
         ref={sliderRef}
         style={{
           right: slideRightPos,
-          transitionDuration: isSwiping ? '0ms' : undefined
+          transitionDuration: isSwiping ? "0ms" : undefined
         }}
       >
         {children}

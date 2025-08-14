@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = {
   container: (isLeftAligned: boolean) =>
@@ -6,7 +6,7 @@ const styles = {
 			flex
 			items-center
 
-			${isLeftAligned ? 'justify-end' : 'justify-start'}
+			${isLeftAligned ? "justify-end" : "justify-start"}
 		`),
 
   srOnly: ctl(`

@@ -1,6 +1,6 @@
-import { ImageProps } from 'next/image';
+import { ImageProps } from "next/image";
 
-import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
+import { ContentBody } from "@app/components/atoms/RichText/RichText.interface";
 
 export interface HeroProps {
   background: ImageProps;

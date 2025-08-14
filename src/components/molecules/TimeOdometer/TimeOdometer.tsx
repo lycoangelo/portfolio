@@ -1,12 +1,12 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import { getParsePHTime, getTimeIndicator } from '@app/lib/helpers/date';
-import { useEffect, useState } from 'react';
+import { getParsePHTime, getTimeIndicator } from "@app/lib/helpers/date";
+import { useEffect, useState } from "react";
 
-import { TimeOdometerProps } from './TimeOdometer.interface';
-import styles from './TimeOdometer.styles';
+import { TimeOdometerProps } from "./TimeOdometer.interface";
+import styles from "./TimeOdometer.styles";
 
-const ReactOdometer = dynamic(() => import('react-odometerjs'), {
+const ReactOdometer = dynamic(() => import("react-odometerjs"), {
   ssr: false
 });
 

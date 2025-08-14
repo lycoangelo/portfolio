@@ -1,4 +1,4 @@
-import { HEADER_ID } from '../constants/selectors';
+import { HEADER_ID } from "../constants/selectors";
 
 /**
  * Retrieves and returns a list of ancestor elements for a given HTML element.
@@ -62,7 +62,7 @@ export const getEventPosition = (e: MouseEvent | TouchEvent) => ({
  * @param {boolean} isFocusable A boolean indicating whether the elements should be made focusable or not.
  *                              If true, elements' tabindex will be set. If false, tabindex will be removed.
  */
-const customTabIndexAttr = 'data-custom-tabindex';
+const customTabIndexAttr = "data-custom-tabindex";
 
 export const updateElementChildrenTabIndex = (
   element: Element,
@@ -78,10 +78,10 @@ export const updateElementChildrenTabIndex = (
     // Check if the focusableElement has the 'data-custom-tabindex' attribute
     if (
       !focusableElement.hasAttribute(customTabIndexAttr) ||
-      focusableElement.getAttribute(customTabIndexAttr) === 'false'
+      focusableElement.getAttribute(customTabIndexAttr) === "false"
     ) {
       // Update tabindex only if it doesn't have the 'data-custom-tabindex' attribute
-      focusableElement.setAttribute('tabindex', isFocusable ? '0' : '-1');
+      focusableElement.setAttribute("tabindex", isFocusable ? "0" : "-1");
     }
   });
 };
@@ -100,7 +100,7 @@ export const scrollToElement = (href: string) => {
 
   // Scroll to the element with a smooth animation
   window.scrollTo({
-    behavior: 'smooth',
+    behavior: "smooth",
     top: scrollPosition
   });
 };

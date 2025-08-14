@@ -1,15 +1,15 @@
-import { ThemeColors } from '@app/lib/constants/theme';
-import ctl from '@netlify/classnames-template-literals';
+import { ThemeColors } from "@app/lib/constants/theme";
+import ctl from "@netlify/classnames-template-literals";
 
 const colorsMap: { [key: ThemeColors]: string } = {
-  blue: 'bg-blue-primary',
-  green: 'bg-green-primary',
-  orange: 'bg-orange-primary',
-  purple: 'bg-purple-primary',
-  red: 'bg-red-primary',
-  teal: 'bg-teal-primary',
-  yellow: 'bg-yellow-primary',
-  gray: 'bg-gray-primary'
+  blue: "bg-blue-primary",
+  green: "bg-green-primary",
+  orange: "bg-orange-primary",
+  purple: "bg-purple-primary",
+  red: "bg-red-primary",
+  teal: "bg-teal-primary",
+  yellow: "bg-yellow-primary",
+  gray: "bg-gray-primary"
 };
 
 const styles = {
@@ -64,7 +64,7 @@ const styles = {
 
     ${
       isToggle
-        ? 'w-5'
+        ? "w-5"
         : `
         first:mt-1
         last:mb-4 w-full

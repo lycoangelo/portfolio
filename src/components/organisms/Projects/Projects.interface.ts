@@ -1,6 +1,6 @@
-import { ImageProps } from 'next/image';
+import { ImageProps } from "next/image";
 
-import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
+import { ContentBody } from "@app/components/atoms/RichText/RichText.interface";
 
 export interface ProjectProps {
   description: ContentBody;
@@ -23,5 +23,5 @@ export interface ProjectsProps {
     items: ProjectProps[];
   };
   title: string;
-  variant: 'carousel' | 'timeline';
+  variant: "carousel" | "timeline";
 }

@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import Button from '@app/components/atoms/Button/Button';
-import Input from '@app/components/atoms/Input/Input';
-import RichText from '@app/components/atoms/RichText/RichText';
-import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
-import TimeOdometer from '@app/components/molecules/TimeOdometer/TimeOdometer';
-import iconMap, { IconType } from '@app/lib/constants/iconMap';
-import { CONTACT_FORM_ID } from '@app/lib/constants/selectors';
-import { validateEmail } from '@app/lib/helpers/validation';
-import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import va from '@vercel/analytics';
-import { useRef, useState } from 'react';
+import Button from "@app/components/atoms/Button/Button";
+import Input from "@app/components/atoms/Input/Input";
+import RichText from "@app/components/atoms/RichText/RichText";
+import SectionHeader from "@app/components/molecules/SectionHeader/SectionHeader";
+import TimeOdometer from "@app/components/molecules/TimeOdometer/TimeOdometer";
+import iconMap, { IconType } from "@app/lib/constants/iconMap";
+import { CONTACT_FORM_ID } from "@app/lib/constants/selectors";
+import { validateEmail } from "@app/lib/helpers/validation";
+import useToggleClassInView from "@app/lib/hooks/useToggleAnchorClass";
+import va from "@vercel/analytics";
+import { useRef, useState } from "react";
 
 import {
   ContactFormProps,
   ContactRequest,
   ContactResponse
-} from './ContactForm.interface';
-import styles from './ContactForm.styles';
+} from "./ContactForm.interface";
+import styles from "./ContactForm.styles";
 
 export default function ContactForm({
   consent,
@@ -33,7 +33,7 @@ export default function ContactForm({
   const nameRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
 
-  const sectionRef = useToggleClassInView(CONTACT_FORM_ID, 'text-white');
+  const sectionRef = useToggleClassInView(CONTACT_FORM_ID, "text-white");
 
   const validateForm = () => {
     const email = emailRef.current?.value;
@@ -47,7 +47,7 @@ export default function ContactForm({
 
     const isValid =
       !Object.values(payload).some(
-        (value) => value === null || value === undefined || value === ''
+        (value) => value === null || value === undefined || value === ""
       ) && validateEmail(email);
 
     return { isValid, payload };
@@ -59,11 +59,11 @@ export default function ContactForm({
     const response = await fetch(
       `/contact/${request.email}/${request.subject}/${
         request.name
-      }/${request.message?.replaceAll('?', '<question-mark>')}/contact-request`,
+      }/${request.message?.replaceAll("?", "<question-mark>")}/contact-request`,
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }
       }
     );
@@ -82,11 +82,11 @@ export default function ContactForm({
       try {
         await sendContactRequest(payload);
         setIsSuccess(true);
-        va.track('Contact Form submitted successfully');
+        va.track("Contact Form submitted successfully");
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error(error);
-        va.track('Contact Form submitted failed');
+        va.track("Contact Form submitted failed");
       }
     }
 
@@ -94,10 +94,10 @@ export default function ContactForm({
   };
 
   const fields = [
-    { label: 'Name', ref: nameRef },
-    { label: 'Email', ref: emailRef, type: 'email' },
-    { label: 'Subject', ref: subjectRef },
-    { label: 'Message', ref: messageRef, type: 'textarea' }
+    { label: "Name", ref: nameRef },
+    { label: "Email", ref: emailRef, type: "email" },
+    { label: "Subject", ref: subjectRef },
+    { label: "Message", ref: messageRef, type: "textarea" }
   ];
 
   return (
@@ -151,7 +151,7 @@ export default function ContactForm({
         <form className={styles.form} onSubmit={submitForm}>
           {fields.map(({ label, ref, type }) => (
             <Input
-              className={styles.input(type === 'textarea')}
+              className={styles.input(type === "textarea")}
               key={label}
               label={label}
               ref={ref}

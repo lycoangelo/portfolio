@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
-import Button from '@app/components/atoms/Button/Button';
-import { FlipIcon } from '@app/components/atoms/Icon/Icon';
-import Carousel from '@app/components/molecules/Carousel/Carousel';
-import CarouselNav from '@app/components/molecules/CarouselNav/CarouselNav';
-import ProjectCard from '@app/components/molecules/ProjectCard/ProjectCard';
-import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
-import { PROJECTS_ID } from '@app/lib/constants/selectors';
-import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import va from '@vercel/analytics';
-import { useEffect, useRef, useState } from 'react';
-import Marquee from 'react-fast-marquee';
+import Button from "@app/components/atoms/Button/Button";
+import { FlipIcon } from "@app/components/atoms/Icon/Icon";
+import Carousel from "@app/components/molecules/Carousel/Carousel";
+import CarouselNav from "@app/components/molecules/CarouselNav/CarouselNav";
+import ProjectCard from "@app/components/molecules/ProjectCard/ProjectCard";
+import SectionHeader from "@app/components/molecules/SectionHeader/SectionHeader";
+import { PROJECTS_ID } from "@app/lib/constants/selectors";
+import useToggleClassInView from "@app/lib/hooks/useToggleAnchorClass";
+import va from "@vercel/analytics";
+import { useEffect, useRef, useState } from "react";
+import Marquee from "react-fast-marquee";
 
-import { ProjectsProps } from './Projects.interface';
-import styles from './Projects.styles';
+import { ProjectsProps } from "./Projects.interface";
+import styles from "./Projects.styles";
 
 export default function Projects({
   name,
@@ -39,7 +39,7 @@ export default function Projects({
   const carouselNavNextRef = useRef<HTMLButtonElement>(null);
   const carouselNavPrevRef = useRef<HTMLButtonElement>(null);
 
-  const sectionRef = useToggleClassInView(PROJECTS_ID, 'text-white');
+  const sectionRef = useToggleClassInView(PROJECTS_ID, "text-white");
 
   const updateCardsFlipState = (index: number) => {
     const newState = [...cardsFlipState];
@@ -47,7 +47,7 @@ export default function Projects({
     newState[index] = description && !newState[index];
     setCardsFlipState(newState);
 
-    const state = newState[index] ? 'Read More' : 'Back';
+    const state = newState[index] ? "Read More" : "Back";
     va.track(`Clicked "${name}" "${state}" button`);
   };
 
@@ -55,8 +55,8 @@ export default function Projects({
     const isActive = activeIndex === index;
     isActive ? updateCardsFlipState(index) : setActiveIndex(index);
 
-    const activeState = isActive ? ' active' : ' inactive';
-    const flipState = cardsFlipState[index] ? ' reversed ' : ' ';
+    const activeState = isActive ? " active" : " inactive";
+    const flipState = cardsFlipState[index] ? " reversed " : " ";
 
     va.track(
       `Clicked "${projects[index].name}"${activeState + flipState}bullet`
@@ -85,7 +85,7 @@ export default function Projects({
             <Button
               aria-hidden
               className={styles.bullet(isFlipped)}
-              color={isActive ? 'active' : 'primary'}
+              color={isActive ? "active" : "primary"}
               key={index}
               onClick={() => handleBulletClick(index)}
               tabIndex={-1}

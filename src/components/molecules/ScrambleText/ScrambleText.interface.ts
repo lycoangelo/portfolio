@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes } from "react";
 
 export interface TextScrambleProps extends HTMLAttributes<HTMLSpanElement> {
   texts: string[];

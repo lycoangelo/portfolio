@@ -1,6 +1,6 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
-import { ButtonColors, ButtonSizes, ObjectKey } from './Button.interface';
+import { ButtonColors, ButtonSizes, ObjectKey } from "./Button.interface";
 
 const borderEffect: string = `
   after:absolute
@@ -79,9 +79,9 @@ const colors: ButtonColors = {
 };
 
 const sizes: ButtonSizes = {
-  auto: 'w-auto',
-  fit: 'w-fit',
-  full: 'w-full',
+  auto: "w-auto",
+  fit: "w-fit",
+  full: "w-full",
   sm: `
     leading-3
     min-w-btn-2xs
@@ -134,7 +134,7 @@ const sizes: ButtonSizes = {
 };
 
 const iconColors: ObjectKey = {
-  active: '[&_path]:fill-white',
+  active: "[&_path]:fill-white",
   primary: `
     [&_path]:fill-white
     [button:active_&_path]:fill-black

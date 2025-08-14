@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = {
   bullet: (isFlipped: boolean) =>
@@ -109,7 +109,7 @@ const styles = {
         `
           : `
           [:focus>&]:brightness-0
-          ${isActive && '[:hover>&]:brightness-0'}
+          ${isActive && "[:hover>&]:brightness-0"}
         `
       }
     `),

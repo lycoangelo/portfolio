@@ -1,6 +1,6 @@
-import { useCallback, useLayoutEffect, useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from "react";
 
-import { getEventPosition } from '../helpers/dom';
+import { getEventPosition } from "../helpers/dom";
 
 interface Props {
   allowMouseLeave?: boolean;
@@ -81,37 +81,37 @@ export const useGetSwipeDistance = ({
   useLayoutEffect(() => {
     if (!element) return;
 
-    element.addEventListener('mousedown', swipeStartEvent, { passive: true });
-    element.addEventListener('touchstart', swipeStartEvent, { passive: true });
+    element.addEventListener("mousedown", swipeStartEvent, { passive: true });
+    element.addEventListener("touchstart", swipeStartEvent, { passive: true });
 
     if (allowMouseLeave) {
-      document.addEventListener('mousemove', swipeMoveEvent, { passive: true });
-      document.addEventListener('mouseup', swipeEndEvent, { passive: true });
-      document.addEventListener('touchmove', swipeMoveEvent, { passive: true });
-      document.addEventListener('touchend', swipeEndEvent, { passive: true });
+      document.addEventListener("mousemove", swipeMoveEvent, { passive: true });
+      document.addEventListener("mouseup", swipeEndEvent, { passive: true });
+      document.addEventListener("touchmove", swipeMoveEvent, { passive: true });
+      document.addEventListener("touchend", swipeEndEvent, { passive: true });
     } else {
-      element.addEventListener('mousemove', swipeMoveEvent, { passive: true });
-      element.addEventListener('mouseup', swipeEndEvent, { passive: true });
-      element.addEventListener('touchmove', swipeMoveEvent, { passive: true });
-      element.addEventListener('touchend', swipeEndEvent, { passive: true });
+      element.addEventListener("mousemove", swipeMoveEvent, { passive: true });
+      element.addEventListener("mouseup", swipeEndEvent, { passive: true });
+      element.addEventListener("touchmove", swipeMoveEvent, { passive: true });
+      element.addEventListener("touchend", swipeEndEvent, { passive: true });
     }
 
     return () => {
       if (!element) return;
 
-      element.removeEventListener('mousedown', swipeStartEvent);
-      element.removeEventListener('touchstart', swipeStartEvent);
+      element.removeEventListener("mousedown", swipeStartEvent);
+      element.removeEventListener("touchstart", swipeStartEvent);
 
       if (allowMouseLeave) {
-        document.removeEventListener('mousemove', swipeMoveEvent);
-        document.removeEventListener('mouseup', swipeEndEvent);
-        document.removeEventListener('touchmove', swipeMoveEvent);
-        document.removeEventListener('touchend', swipeEndEvent);
+        document.removeEventListener("mousemove", swipeMoveEvent);
+        document.removeEventListener("mouseup", swipeEndEvent);
+        document.removeEventListener("touchmove", swipeMoveEvent);
+        document.removeEventListener("touchend", swipeEndEvent);
       } else {
-        element.removeEventListener('mousemove', swipeMoveEvent);
-        element.removeEventListener('mouseup', swipeEndEvent);
-        element.removeEventListener('touchmove', swipeMoveEvent);
-        element.removeEventListener('touchend', swipeEndEvent);
+        element.removeEventListener("mousemove", swipeMoveEvent);
+        element.removeEventListener("mouseup", swipeEndEvent);
+        element.removeEventListener("touchmove", swipeMoveEvent);
+        element.removeEventListener("touchend", swipeEndEvent);
       }
     };
   }, [

@@ -1,15 +1,15 @@
-import Button from '@app/components/atoms/Button/Button';
-import { ArrowRightIcon } from '@app/components/atoms/Icon/Icon';
-import RichText from '@app/components/atoms/RichText/RichText';
-import { getMonthShortName, getYear } from '@app/lib/helpers/date';
-import va from '@vercel/analytics';
-import { useEffect, useRef, useState } from 'react';
+import Button from "@app/components/atoms/Button/Button";
+import { ArrowRightIcon } from "@app/components/atoms/Icon/Icon";
+import RichText from "@app/components/atoms/RichText/RichText";
+import { getMonthShortName, getYear } from "@app/lib/helpers/date";
+import va from "@vercel/analytics";
+import { useEffect, useRef, useState } from "react";
 
-import { ProjectCardProps } from './ProjectCard.interface';
-import styles from './ProjectCard.styles';
+import { ProjectCardProps } from "./ProjectCard.interface";
+import styles from "./ProjectCard.styles";
 
 export default function ProjectCard({
-  className = '',
+  className = "",
   company,
   description,
   endDate,

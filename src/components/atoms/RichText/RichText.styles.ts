@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = {
   richtext: (className: string) =>
@@ -7,27 +7,27 @@ const styles = {
 
       ${className}
     `),
-  a: 'text-primary font-semibold hover:underline',
-  figure: 'relative w-full',
-  image: 'w-full h-auto',
-  em: 'italic',
-  h1: 'text-2xl lg:text-6xl',
-  h2: 'text-1xl lg:text-5xl',
-  h3: 'text-xl lg:text-4xl',
-  h4: 'text-lg lg:text-3xl',
-  h5: 'text-base lg:text-2xl',
-  h6: 'text-base lg:text-xl',
-  ol: 'list-decimal pl-5 text-left w-fit',
-  p: 'text-sm leading-7 white-space-normal [li>&]:mb-0',
-  strong: 'font-bold',
-  sub: 'align-sub',
-  sup: 'align-super',
-  u: 'underline',
-  ul: 'list-disc pl-5 text-left',
-  table: 'w-full',
-  td: 'border border-l',
-  th: 'border border-l',
-  tr: '',
+  a: "text-primary font-semibold hover:underline",
+  figure: "relative w-full",
+  image: "w-full h-auto",
+  em: "italic",
+  h1: "text-2xl lg:text-6xl",
+  h2: "text-1xl lg:text-5xl",
+  h3: "text-xl lg:text-4xl",
+  h4: "text-lg lg:text-3xl",
+  h5: "text-base lg:text-2xl",
+  h6: "text-base lg:text-xl",
+  ol: "list-decimal pl-5 text-left w-fit",
+  p: "text-sm leading-7 white-space-normal [li>&]:mb-0",
+  strong: "font-bold",
+  sub: "align-sub",
+  sup: "align-super",
+  u: "underline",
+  ul: "list-disc pl-5 text-left",
+  table: "w-full",
+  td: "border border-l",
+  th: "border border-l",
+  tr: "",
   blockquote: ctl(`
     flex
     font-normal

@@ -1,6 +1,6 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
-import { TypeTypes } from './Input.interface';
+import { TypeTypes } from "./Input.interface";
 
 const styles = {
   error: ctl(`
@@ -33,7 +33,7 @@ const styles = {
 			${className}
 
 			${
-        type === 'textarea'
+        type === "textarea"
           ? `
 					border
 					border-inactive

@@ -1,5 +1,5 @@
-import Button from '@app/components/atoms/Button/Button';
-import Header from '@app/components/organisms/Header/Header';
+import Button from "@app/components/atoms/Button/Button";
+import Header from "@app/components/organisms/Header/Header";
 
 export default function NotFound() {
   return (

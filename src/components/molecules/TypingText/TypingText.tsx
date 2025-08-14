@@ -1,22 +1,22 @@
-import { sanitizeString } from '@app/lib/helpers/string';
-import { useInView } from 'framer-motion';
-import parse from 'html-react-parser';
-import { useState, useEffect, useRef } from 'react';
+import { sanitizeString } from "@app/lib/helpers/string";
+import { useInView } from "framer-motion";
+import parse from "html-react-parser";
+import { useState, useEffect, useRef } from "react";
 
-import { TypingTextProps } from './TypingText.interface';
-import styles from './TypingText.styles';
+import { TypingTextProps } from "./TypingText.interface";
+import styles from "./TypingText.styles";
 
 const TypingText = ({
   className,
   divProps,
   duration = 300,
   hideCursor,
-  layout = 'left',
-  tag = 'p',
+  layout = "left",
+  tag = "p",
   text,
   textProps
 }: TypingTextProps) => {
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
 
   const typingTextRef = useRef(null);
@@ -27,7 +27,7 @@ const TypingText = ({
 
   const startAnimation = useInView(typingTextRef, {
     once: true,
-    margin: '-20% 0px'
+    margin: "-20% 0px"
   });
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const TypingText = ({
 
   return (
     <div
-      className={styles.container(layout === 'left')}
+      className={styles.container(layout === "left")}
       ref={typingTextRef}
       {...divProps}
     >

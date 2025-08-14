@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import Script from "next/script";
 
 export function NoScriptGA() {
   return (
@@ -18,7 +18,7 @@ export default function GoogleAnalytics() {
     <>
       <Script
         src={
-          'https://www.googletagmanager.com/gtag/js?id=' +
+          "https://www.googletagmanager.com/gtag/js?id=" +
           process.env.NEXT_PUBLIC_GA_GTM
         }
       />

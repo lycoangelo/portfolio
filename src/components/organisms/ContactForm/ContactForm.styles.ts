@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const rightColumnsCommonClass = `
   relative
@@ -67,7 +67,7 @@ const styles = {
     w-full
     [&:not(:first-child)]:mt-5
 
-    ${isTextArea && 'h-40'}
+    ${isTextArea && "h-40"}
   `),
 
   submit: ctl(`

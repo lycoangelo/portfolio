@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = {
   background: ctl(`
@@ -39,7 +39,7 @@ const styles = {
     transition-all
     -translate-y-1/2
 
-    ${isShow ? 'opacity-100' : 'opacity-0'}
+    ${isShow ? "opacity-100" : "opacity-0"}
   `),
 
   wrapper: (className: string) =>

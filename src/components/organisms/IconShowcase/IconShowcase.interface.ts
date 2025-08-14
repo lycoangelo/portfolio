@@ -1,4 +1,4 @@
-import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
+import { ContentBody } from "@app/components/atoms/RichText/RichText.interface";
 
 export interface IconProps {
   description: ContentBody;

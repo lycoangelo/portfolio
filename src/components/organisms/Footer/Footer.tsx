@@ -1,12 +1,12 @@
-import { fetchGraphQL } from '@app/lib/helpers/api';
-import globalsQuery from '@app/lib/queries/global-settings.query';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { fetchGraphQL } from "@app/lib/helpers/api";
+import globalsQuery from "@app/lib/queries/global-settings.query";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-import styles from './Footer.styles';
+import styles from "./Footer.styles";
 
 export default async function Footer() {
   const response = await fetchGraphQL(
-    globalsQuery('footerText { json }'),
+    globalsQuery("footerText { json }"),
     false
   );
 

@@ -1,4 +1,4 @@
-import { ProjectProps } from '@app/components/organisms/Projects/Projects.interface';
+import { ProjectProps } from "@app/components/organisms/Projects/Projects.interface";
 
 export interface ProjectCardProps extends ProjectProps {
   className?: string;

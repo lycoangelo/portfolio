@@ -1,30 +1,30 @@
-import { Quicksand, Roboto } from 'next/font/google';
-import localFont from 'next/font/local';
+import { Quicksand, Roboto } from "next/font/google";
+import localFont from "next/font/local";
 
-import GoogleAnalytics from '@app/components/atoms/GoogleAnalytics/GoogleAnalytics';
-import Footer from '@app/components/organisms/Footer/Footer';
-import ctl from '@netlify/classnames-template-literals';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import GoogleAnalytics from "@app/components/atoms/GoogleAnalytics/GoogleAnalytics";
+import Footer from "@app/components/organisms/Footer/Footer";
+import ctl from "@netlify/classnames-template-literals";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import './globals.css';
+import "./globals.css";
 
-const quicksand = Quicksand({ subsets: ['latin'], variable: '--quicksand' });
+const quicksand = Quicksand({ subsets: ["latin"], variable: "--quicksand" });
 
 const roboto = Roboto({
-  subsets: ['latin'],
-  variable: '--roboto',
-  weight: ['100', '300', '400', '500', '700', '900']
+  subsets: ["latin"],
+  variable: "--roboto",
+  weight: ["100", "300", "400", "500", "700", "900"]
 });
 
 const apekMK3ExtraLight = localFont({
-  src: '../assets/fonts/Apex-Mk3-ExtraLight.ttf',
-  variable: '--apek-mk3-200'
+  src: "../assets/fonts/Apex-Mk3-ExtraLight.ttf",
+  variable: "--apek-mk3-200"
 });
 
 const apekMK3ExtraMedium = localFont({
-  src: '../assets/fonts/Apex-Mk3-Medium.ttf',
-  variable: '--apek-mk3-500'
+  src: "../assets/fonts/Apex-Mk3-Medium.ttf",
+  variable: "--apek-mk3-500"
 });
 
 const fontsVariables = ctl(`

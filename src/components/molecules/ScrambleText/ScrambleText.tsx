@@ -1,14 +1,14 @@
-import { useIsMounted } from '@app/lib/hooks/useIsMounted';
-import React, { useState, useEffect } from 'react';
+import { useIsMounted } from "@app/lib/hooks/useIsMounted";
+import React, { useState, useEffect } from "react";
 
-import { TextScrambleProps } from './ScrambleText.interface';
-import { randomItem, nextItem } from './ScrambleText.utils';
+import { TextScrambleProps } from "./ScrambleText.interface";
+import { randomItem, nextItem } from "./ScrambleText.utils";
 
 const symbols: string[] =
-  'ABCDEFGHIJKLMNOPQRSTYUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+  "ABCDEFGHIJKLMNOPQRSTYUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
 
 const TextScramble = ({
-  className = '',
+  className = "",
   letterSpeed = 5,
   nextLetterSpeed = 100,
   paused = false,
@@ -29,7 +29,7 @@ const TextScramble = ({
   const leftIndexes: number[] = [];
 
   const defaultLeftIndexes = (): void => {
-    currentText.split('').forEach((_, i) => {
+    currentText.split("").forEach((_, i) => {
       leftIndexes.push(i);
     });
   };
@@ -42,7 +42,7 @@ const TextScramble = ({
       if (!paused) {
         const updatedText: string[] = [];
 
-        currentText.split('').forEach((_, i) => {
+        currentText.split("").forEach((_, i) => {
           if (!leftIndexes.includes(i)) {
             updatedText[i] = currentText[i];
 

@@ -1,4 +1,4 @@
-import { ContentBody } from '@app/components/atoms/RichText/RichText.interface';
+import { ContentBody } from "@app/components/atoms/RichText/RichText.interface";
 
 interface ContactProps {
   contact: string;

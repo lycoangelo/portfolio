@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = {
   animation: (isMobile: boolean) =>
@@ -21,7 +21,7 @@ const styles = {
     md:-order-1
     md:w-[41.18%]
 
-    ${isMobile ? 'block md:hidden' : 'hidden md:block'}
+    ${isMobile ? "block md:hidden" : "hidden md:block"}
   `),
 
   animationText: ctl(`
@@ -117,7 +117,7 @@ const styles = {
 
     xs:text-xs
 
-    ${isActive && '!text-primary'}
+    ${isActive && "!text-primary"}
 
     md:text-sm
   `),

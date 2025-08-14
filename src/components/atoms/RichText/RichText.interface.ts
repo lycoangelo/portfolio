@@ -1,6 +1,6 @@
-import { Options } from '@contentful/rich-text-react-renderer';
-import { Document } from '@contentful/rich-text-types';
-import { HTMLAttributes, Ref } from 'react';
+import { Options } from "@contentful/rich-text-react-renderer";
+import { Document } from "@contentful/rich-text-types";
+import { HTMLAttributes, Ref } from "react";
 
 export interface ContentBody {
   json: Document;

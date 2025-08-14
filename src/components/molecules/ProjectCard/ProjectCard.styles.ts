@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = (className: string, isFlipped: boolean) => ({
   arrow: ctl(`
@@ -53,7 +53,7 @@ const styles = (className: string, isFlipped: boolean) => ({
     lg:text-base
   `),
 
-  dateSeparator: 'mx-1',
+  dateSeparator: "mx-1",
 
   description: ctl(`
     hyphens-auto
@@ -116,7 +116,7 @@ const styles = (className: string, isFlipped: boolean) => ({
     text-sm
   `),
 
-  link: '!text-left',
+  link: "!text-left",
 
   name: ctl(`
     mb-2.5

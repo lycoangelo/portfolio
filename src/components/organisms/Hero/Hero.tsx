@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
-import TypingText from '@app/components/molecules/TypingText/TypingText';
-import { CONTACT_FORM_ID, HERO_ID } from '@app/lib/constants/selectors';
-import { scrollToElement } from '@app/lib/helpers/dom';
-import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import va from '@vercel/analytics';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import useDownloader from 'react-use-downloader';
+import TypingText from "@app/components/molecules/TypingText/TypingText";
+import { CONTACT_FORM_ID, HERO_ID } from "@app/lib/constants/selectors";
+import { scrollToElement } from "@app/lib/helpers/dom";
+import useToggleClassInView from "@app/lib/hooks/useToggleAnchorClass";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import va from "@vercel/analytics";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import useDownloader from "react-use-downloader";
 
-import Button from '../../atoms/Button/Button';
-import { HeroProps } from './Hero.interface';
-import styles from './Hero.styles';
+import Button from "../../atoms/Button/Button";
+import { HeroProps } from "./Hero.interface";
+import styles from "./Hero.styles";
 
 const typeDuration = 150;
 
@@ -30,11 +30,11 @@ export default function Hero({
 
   const descriptionRef = useRef(null);
 
-  const sectionRef = useToggleClassInView(HERO_ID, 'text-white');
+  const sectionRef = useToggleClassInView(HERO_ID, "text-white");
 
   const startAnimation = useInView(descriptionRef, {
     once: true,
-    margin: '-20% 0px 0px'
+    margin: "-20% 0px 0px"
   });
 
   const classes = styles(startAnimation);
@@ -49,7 +49,7 @@ export default function Hero({
 
   const handleDownloadClick = () => {
     va.track('Clicked "Download CV"');
-    cv && download(cv.url, cv.title.replaceAll(' ', '_') + '.pdf');
+    cv && download(cv.url, cv.title.replaceAll(" ", "_") + ".pdf");
   };
 
   const handleScrollToContact = () => {

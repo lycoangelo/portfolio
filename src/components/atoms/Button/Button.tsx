@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-import iconMap from '@app/lib/constants/iconMap';
-import { useIsExternalLink } from '@app/lib/hooks/useIsExternalLink';
-import { Ref } from 'react';
+import iconMap from "@app/lib/constants/iconMap";
+import { useIsExternalLink } from "@app/lib/hooks/useIsExternalLink";
+import { Ref } from "react";
 
-import { ButtonProps } from './Button.interface';
-import styles from './Buttons.styles';
+import { ButtonProps } from "./Button.interface";
+import styles from "./Buttons.styles";
 
 const Button = ({
   children,
-  color = 'primary',
+  color = "primary",
   hasBorderEffect,
   href,
-  icon = '',
-  iconClassName = '',
-  size = 'sm',
+  icon = "",
+  iconClassName = "",
+  size = "sm",
   ref,
-  type = 'button',
+  type = "button",
   ...props
 }: ButtonProps) => {
   const Icon = iconMap[icon];
@@ -75,6 +75,6 @@ const Button = ({
   );
 };
 
-Button.displayName = 'Button';
+Button.displayName = "Button";
 
 export default Button;

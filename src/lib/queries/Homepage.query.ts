@@ -1,6 +1,6 @@
-import { IMAGE_FRAGMENT } from './fragments/image';
-import { RICHTEXT_FRAGMENT } from './fragments/richtext';
-import { SYS_ID_FRAGMENT } from './fragments/sys-id';
+import { IMAGE_FRAGMENT } from "./fragments/image";
+import { RICHTEXT_FRAGMENT } from "./fragments/richtext";
+import { SYS_ID_FRAGMENT } from "./fragments/sys-id";
 
 const homepageQuery = `
   query homepageQuery {

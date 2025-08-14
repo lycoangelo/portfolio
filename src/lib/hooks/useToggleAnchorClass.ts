@@ -1,9 +1,9 @@
-import { useInView } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const useToggleClassInView = (id: string, className: string) => {
   const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { margin: '-50% 0px' });
+  const isInView = useInView(ref, { margin: "-50% 0px" });
 
   useEffect(() => {
     const personalDetailsElement = document.querySelector(

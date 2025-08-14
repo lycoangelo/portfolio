@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = {
   arrow: ctl(`
@@ -14,10 +14,10 @@ const styles = {
 
       disabled:opacity-30
 
-      ${isPrevBtn ? 'rotate-90' : '-rotate-90'}
+      ${isPrevBtn ? "rotate-90" : "-rotate-90"}
     `),
 
-  container: (className = '') =>
+  container: (className = "") =>
     ctl(`
       relative
 

@@ -1,4 +1,4 @@
-import { RICHTEXT_FRAGMENT } from './fragments/richtext';
+import { RICHTEXT_FRAGMENT } from "./fragments/richtext";
 
 const personalDetailsQuery = `
   query personalDetailsQuery($id: String!) {

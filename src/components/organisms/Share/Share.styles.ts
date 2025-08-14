@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = (className: string, isVertical: boolean) => ({
   button: ctl(`
@@ -53,14 +53,14 @@ const styles = (className: string, isVertical: boolean) => ({
     relative
     rounded-full
 
-    ${isVertical ? 'mb-3' : 'mr-3'}
+    ${isVertical ? "mb-3" : "mr-3"}
   `),
 
   list: ctl(`
 		flex
     items-center
 
-    ${isVertical && 'flex-col'}
+    ${isVertical && "flex-col"}
   `),
 
   toggle: ctl(`

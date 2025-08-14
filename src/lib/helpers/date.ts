@@ -2,7 +2,7 @@ import {
   daysOfWeek,
   monthsOfYear,
   monthsOfYearShortNames
-} from '../constants/dates';
+} from "../constants/dates";
 
 // Get the current date
 const today = new Date();
@@ -71,7 +71,7 @@ export const getMonthShortName = (dateString: string): string =>
  */
 export const formatDate = (
   dateString: string,
-  locales = 'en-US',
+  locales = "en-US",
   options?: Intl.DateTimeFormatOptions
 ) =>
   new Intl.DateTimeFormat(locales, options).format(convertToDate(dateString));
@@ -105,25 +105,25 @@ export const getMillisecondsToday = () => today.getMilliseconds();
  * @returns {string} - The formatted local time string in the Philippines.
  */
 export const getLocaleTimeString = () =>
-  new Date().toLocaleTimeString('en-PH', {
+  new Date().toLocaleTimeString("en-PH", {
     hour12: true,
-    timeZone: 'Asia/Manila'
+    timeZone: "Asia/Manila"
   });
 
 /**
  * Gets the local time in the Philippines without the AM/PM indicator.
  * @returns {string} - The formatted local time string without the AM/PM indicator.
  */
-export const getPHTime = () => getLocaleTimeString().replace(/\s[AP]M$/, '');
+export const getPHTime = () => getLocaleTimeString().replace(/\s[AP]M$/, "");
 
 /**
  * Gets the parsed local time in the Philippines as a numeric value.
  * @returns {number} - The parsed local time without colons.
  */
-export const getParsePHTime = () => parseInt(getPHTime().replace(/:/g, ''));
+export const getParsePHTime = () => parseInt(getPHTime().replace(/:/g, ""));
 
 /**
  * Gets the time indicator (AM/PM) of the local time in the Philippines.
  * @returns {string} - The time indicator (AM/PM) of the local time.
  */
-export const getTimeIndicator = () => getLocaleTimeString().split(' ')[1];
+export const getTimeIndicator = () => getLocaleTimeString().split(" ")[1];

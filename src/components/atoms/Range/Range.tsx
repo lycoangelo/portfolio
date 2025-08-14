@@ -1,19 +1,19 @@
-import { useGetSwipeDistance } from '@app/lib/hooks/useGetSwipeDistance';
-import va from '@vercel/analytics';
+import { useGetSwipeDistance } from "@app/lib/hooks/useGetSwipeDistance";
+import va from "@vercel/analytics";
 import {
   ChangeEventHandler,
   useCallback,
   useEffect,
   useRef,
   useState
-} from 'react';
-import { useDebounce } from 'rooks';
+} from "react";
+import { useDebounce } from "rooks";
 
-import { RangeProps } from './Range.interface';
-import styles from './Range.styles';
+import { RangeProps } from "./Range.interface";
+import styles from "./Range.styles";
 
 export default function Range({
-  className = '',
+  className = "",
   max = 10,
   min = 0,
   name,
@@ -26,7 +26,7 @@ export default function Range({
   const [wrapperWidth, setWrapperWidth] = useState(0);
 
   const firstRangeGrid = rangeGrids[0];
-  const id = name.replaceAll(' ', '-');
+  const id = name.replaceAll(" ", "-");
 
   const sliderRange = wrapperWidth - thumbWidth;
   const gridsGap = firstRangeGrid - rangeGrids[1];
@@ -100,9 +100,9 @@ export default function Range({
   }, [updateElementsWidth]);
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [handleResize, updateRangeGrid]);
 
   useEffect(() => {
@@ -143,7 +143,7 @@ export default function Range({
                   : thumbPosition < 0
                     ? 0
                     : thumbPosition,
-              transitionDuration: isSwiping ? '0ms' : undefined,
+              transitionDuration: isSwiping ? "0ms" : undefined,
               width: thumbWidth
             }}
           />

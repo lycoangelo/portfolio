@@ -1,4 +1,4 @@
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 /**
  * Converts a string to kebab-case.
@@ -8,8 +8,8 @@ import parse from 'html-react-parser';
  */
 export const stringToKebabCase = (text: string) => {
   return text
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/([a-z])([A-Z])/g, '$1-$2') // Convert camelCase to kebab-case
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/([a-z])([A-Z])/g, "$1-$2") // Convert camelCase to kebab-case
     .toLowerCase(); // Convert the entire string to lowercase
 };
 
@@ -21,9 +21,9 @@ export const stringToKebabCase = (text: string) => {
  */
 export const removeHtmlTags = (input: string) =>
   input
-    .replace(/<\/?[^>]+(>|$)/g, ' ')
+    .replace(/<\/?[^>]+(>|$)/g, " ")
     .trim()
-    .replace(/\s+/g, ' ');
+    .replace(/\s+/g, " ");
 
 /**
  * Decodes HTML entities in a string.

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 /**
  * Determines whether a URL is an external or internal link.
@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
  * @param {string} url - The URL to check.
  * @returns {boolean} - true if the URL is an external link, false if it is an internal link.
  */
-export const useIsExternalLink = (url = '') => {
+export const useIsExternalLink = (url = "") => {
   const [isExternal, setIsExternal] = useState(false);
 
   useEffect(() => {

@@ -1,9 +1,9 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const styles = {
-  container: (layout = 'string', className = '') =>
+  container: (layout = "string", className = "") =>
     ctl(`
-      ${layout === 'right' ? 'text-left' : 'text-right'}
+      ${layout === "right" ? "text-left" : "text-right"}
       ${className}
     `),
 

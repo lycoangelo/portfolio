@@ -1,11 +1,11 @@
-import Button from '@app/components/atoms/Button/Button';
-import { getYear } from '@app/lib/helpers/date';
-import { stringToKebabCase } from '@app/lib/helpers/string';
-import va from '@vercel/analytics';
-import { useState } from 'react';
+import Button from "@app/components/atoms/Button/Button";
+import { getYear } from "@app/lib/helpers/date";
+import { stringToKebabCase } from "@app/lib/helpers/string";
+import va from "@vercel/analytics";
+import { useState } from "react";
 
-import { TimelineJobsProps } from './TimelineJobs.interface';
-import styles from './TimelineJobs.styles';
+import { TimelineJobsProps } from "./TimelineJobs.interface";
+import styles from "./TimelineJobs.styles";
 
 export default function TimelineJobs({ jobsCollection }: TimelineJobsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -32,7 +32,7 @@ export default function TimelineJobs({ jobsCollection }: TimelineJobsProps) {
                 aria-controls={stringToKebabCase(title)}
                 aria-selected={isActive}
                 className={styles.timelineTab(isActive)}
-                color={index === activeTabIndex ? 'active' : 'primary'}
+                color={index === activeTabIndex ? "active" : "primary"}
                 id={`tab-${index}`}
                 onClick={() => handleTabChange(index)}
                 size="sm"

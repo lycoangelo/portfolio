@@ -1,8 +1,8 @@
-import { validateEmail } from '@app/lib/helpers/validation';
-import { ChangeEvent, Ref, useEffect, useState } from 'react';
+import { validateEmail } from "@app/lib/helpers/validation";
+import { ChangeEvent, Ref, useEffect, useState } from "react";
 
-import { InputProps } from './Input.interface';
-import styles from './Input.styles';
+import { InputProps } from "./Input.interface";
+import styles from "./Input.styles";
 
 type ErrorMessageMap = {
   [key: string]: string;
@@ -16,11 +16,11 @@ const Input = ({
   type,
   ...props
 }: InputProps) => {
-  const [errorType, setErrorType] = useState('');
+  const [errorType, setErrorType] = useState("");
 
   const errorMessageMap: ErrorMessageMap = {
     required: `Please enter your ${label}`,
-    'invalid-email': 'Please enter a valid email address'
+    "invalid-email": "Please enter a valid email address"
   };
 
   const handleOnChange = (
@@ -30,22 +30,22 @@ const Input = ({
     const { value } = e.target;
 
     if (value) {
-      if (type === 'email' && !validateEmail(value)) {
-        setErrorType('invalid-email');
+      if (type === "email" && !validateEmail(value)) {
+        setErrorType("invalid-email");
       } else {
-        setErrorType('');
+        setErrorType("");
       }
     } else {
-      setErrorType('required');
+      setErrorType("required");
     }
   };
 
   useEffect(() => {
     if (
       isSubmitted &&
-      !!(ref && 'current' in ref && ref.current && !ref.current.value)
+      !!(ref && "current" in ref && ref.current && !ref.current.value)
     ) {
-      setErrorType('required');
+      setErrorType("required");
     }
   }, [isSubmitted, ref]);
 
@@ -53,7 +53,7 @@ const Input = ({
     <>
       <label className={styles.label(className, type)}>
         <span className={styles.labelText}>{label}:</span>
-        {type === 'textarea' ? (
+        {type === "textarea" ? (
           <textarea
             {...props}
             className={styles.input}

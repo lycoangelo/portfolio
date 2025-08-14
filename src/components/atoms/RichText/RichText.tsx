@@ -1,11 +1,11 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, INLINES, MARKS, Node } from '@contentful/rich-text-types';
-import { ReactNode } from 'react';
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS, INLINES, MARKS, Node } from "@contentful/rich-text-types";
+import { ReactNode } from "react";
 
-import { ContentBody, RichTextProps } from './RichText.interface';
-import styles from './RichText.styles';
+import { ContentBody, RichTextProps } from "./RichText.interface";
+import styles from "./RichText.styles";
 
 const richTextOptions = (content: ContentBody) => {
   const assetMap = new Map();
@@ -114,7 +114,7 @@ const richTextOptions = (content: ContentBody) => {
     },
     renderText: (text: string) =>
       text
-        .split('\n')
+        .split("\n")
         .reduce((children: ReactNode[], textSegment: string, index: number) => {
           return [...children, index > 0 && <br key={index} />, textSegment];
         }, [])
@@ -122,7 +122,7 @@ const richTextOptions = (content: ContentBody) => {
 };
 
 const RichText = ({
-  className = '',
+  className = "",
   contentBody,
   options,
   ref,
@@ -139,6 +139,6 @@ const RichText = ({
   );
 };
 
-RichText.displayName = 'RichText';
+RichText.displayName = "RichText";
 
 export default RichText;

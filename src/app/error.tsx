@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-'use client'; // Error components must be Client Components
+"use client"; // Error components must be Client Components
 
-import Button from '@app/components/atoms/Button/Button';
-import Header from '@app/components/organisms/Header/Header';
-import { useEffect } from 'react';
+import Button from "@app/components/atoms/Button/Button";
+import Header from "@app/components/organisms/Header/Header";
+import { useEffect } from "react";
 
 export default function Error({
   error,

@@ -1,4 +1,4 @@
-import { RICHTEXT_FRAGMENT } from './fragments/richtext';
+import { RICHTEXT_FRAGMENT } from "./fragments/richtext";
 
 const projectDescriptionQuery = `
 	query projectDescriptionQuery($id: String!) {

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useDebounce, useWindowSize } from 'rooks';
+import { useEffect, useState } from "react";
+import { useDebounce, useWindowSize } from "rooks";
 
 const getBreakpoints = (width: number) => ({
   isXs: width >= 0,
@@ -21,11 +21,11 @@ export const useBreakpoint = () => {
   }, 100);
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     setWidth(window.innerWidth);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [handleResize]);
 

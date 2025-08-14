@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { TwitterXIcon } from '@app/components/atoms/Icon/Icon';
-import va from '@vercel/analytics';
-import { useEffect, useState } from 'react';
+import { TwitterXIcon } from "@app/components/atoms/Icon/Icon";
+import va from "@vercel/analytics";
+import { useEffect, useState } from "react";
 import {
   EmailIcon,
   EmailShareButton,
@@ -11,18 +11,18 @@ import {
   LinkedinIcon,
   LinkedinShareButton,
   TwitterShareButton
-} from 'react-share';
+} from "react-share";
 
-import { ShareProps } from './Share.interface';
-import styles from './Share.styles';
+import { ShareProps } from "./Share.interface";
+import styles from "./Share.styles";
 
 const iconSize = 20;
 
 const socials = [
-  { label: 'Email', social: 'email' },
-  { label: 'Facebook', social: 'facebook' },
-  { label: 'LinkedIn', social: 'linkedin' },
-  { label: 'Twitter', social: 'twitter' }
+  { label: "Email", social: "email" },
+  { label: "Facebook", social: "facebook" },
+  { label: "LinkedIn", social: "linkedin" },
+  { label: "Twitter", social: "twitter" }
 ];
 
 const socialButtonsMap = (
@@ -63,11 +63,11 @@ const socialButtonsMap = (
 };
 
 export default function Share({
-  className = '',
+  className = "",
   isFocusable = true,
   isVertical = false
 }: ShareProps) {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
     setUrl(window.location.href);

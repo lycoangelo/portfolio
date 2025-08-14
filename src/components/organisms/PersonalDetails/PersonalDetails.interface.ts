@@ -1,9 +1,9 @@
-import { ReactNode, Ref } from 'react';
+import { ReactNode, Ref } from "react";
 
-import { EssayProps } from '../Essay/Essay.interface';
-import { IconShowcaseProps } from '../IconShowcase/IconShowcase.interface';
-import { SkillSetListProps } from '../SkillSetList/SkillSetList.interface';
-import { TimelineJobsProps } from '../TimelineJobs/TimelineJobs.interface';
+import { EssayProps } from "../Essay/Essay.interface";
+import { IconShowcaseProps } from "../IconShowcase/IconShowcase.interface";
+import { SkillSetListProps } from "../SkillSetList/SkillSetList.interface";
+import { TimelineJobsProps } from "../TimelineJobs/TimelineJobs.interface";
 
 export interface ComponentMapProps {
   name: string;

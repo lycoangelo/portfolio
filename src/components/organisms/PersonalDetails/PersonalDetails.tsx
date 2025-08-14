@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import Button from '@app/components/atoms/Button/Button';
-import ScrambleText from '@app/components/molecules/ScrambleText/ScrambleText';
-import SectionHeader from '@app/components/molecules/SectionHeader/SectionHeader';
-import Essay from '@app/components/organisms/Essay/Essay';
-import IconShowcase from '@app/components/organisms/IconShowcase/IconShowcase';
-import SkillSetList from '@app/components/organisms/SkillSetList/SkillSetList';
-import TimelineJobs from '@app/components/organisms/TimelineJobs/TimelineJobs';
-import { PERSONAL_DETAILS_ID } from '@app/lib/constants/selectors';
-import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
-import useToggleClassInView from '@app/lib/hooks/useToggleAnchorClass';
-import va from '@vercel/analytics';
+import Button from "@app/components/atoms/Button/Button";
+import ScrambleText from "@app/components/molecules/ScrambleText/ScrambleText";
+import SectionHeader from "@app/components/molecules/SectionHeader/SectionHeader";
+import Essay from "@app/components/organisms/Essay/Essay";
+import IconShowcase from "@app/components/organisms/IconShowcase/IconShowcase";
+import SkillSetList from "@app/components/organisms/SkillSetList/SkillSetList";
+import TimelineJobs from "@app/components/organisms/TimelineJobs/TimelineJobs";
+import { PERSONAL_DETAILS_ID } from "@app/lib/constants/selectors";
+import { useGetHighestHeight } from "@app/lib/hooks/useGetHighestHeight";
+import useToggleClassInView from "@app/lib/hooks/useToggleAnchorClass";
+import va from "@vercel/analytics";
 import {
   Fragment,
   KeyboardEventHandler,
@@ -18,14 +18,14 @@ import {
   useEffect,
   useRef,
   useState
-} from 'react';
+} from "react";
 
 import {
   PersonalDetailsAnimationProps,
   PersonalDetailsProps,
   PersonalDetailsMap
-} from './PersonalDetails.interface';
-import styles from './PersonalDetails.styles';
+} from "./PersonalDetails.interface";
+import styles from "./PersonalDetails.styles";
 
 const personalDetailsMap: PersonalDetailsMap = {
   Essay,
@@ -69,7 +69,7 @@ export default function PersonalDetailsComponent({
   const buttonsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const panelsRef = useRef<(HTMLElement | null)[]>([]);
 
-  const sectionRef = useToggleClassInView(PERSONAL_DETAILS_ID, 'text-white');
+  const sectionRef = useToggleClassInView(PERSONAL_DETAILS_ID, "text-white");
 
   const buttonsLength = buttonsRef.current.length;
   const tabs = sectionsCollection.items;
@@ -89,7 +89,7 @@ export default function PersonalDetailsComponent({
     const nextTabButton = currentTabPanel?.nextElementSibling
       ?.childNodes[0] as HTMLButtonElement;
 
-    if (['ArrowLeft', 'ArrowUp'].includes(key)) {
+    if (["ArrowLeft", "ArrowUp"].includes(key)) {
       e.preventDefault();
 
       if (previousTabButton) {
@@ -99,7 +99,7 @@ export default function PersonalDetailsComponent({
       }
     }
 
-    if (['ArrowRight', 'ArrowDown'].includes(key)) {
+    if (["ArrowRight", "ArrowDown"].includes(key)) {
       e.preventDefault();
 
       if (nextTabButton) {
@@ -122,9 +122,9 @@ export default function PersonalDetailsComponent({
   useEffect(() => {
     panelsRef.current.forEach((panel) => {
       if (!panel) return;
-      const allFocusableElements = panel.querySelectorAll('a[href]');
+      const allFocusableElements = panel.querySelectorAll("a[href]");
       allFocusableElements.forEach((element) => {
-        element.addEventListener('click', handleFocusableElementsClick);
+        element.addEventListener("click", handleFocusableElementsClick);
       });
     });
   }, [handleFocusableElementsClick]);
@@ -141,7 +141,7 @@ export default function PersonalDetailsComponent({
         {tabs.map((tab, index) => {
           const Component = personalDetailsMap[tab.__typename];
 
-          const id = tab.name.replaceAll(' ', '-');
+          const id = tab.name.replaceAll(" ", "-");
           const isSelected = index === activeTabIndex;
 
           return (

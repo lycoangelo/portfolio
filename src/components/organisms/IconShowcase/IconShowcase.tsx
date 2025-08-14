@@ -1,12 +1,12 @@
-import Button from '@app/components/atoms/Button/Button';
-import { SquircleIcon } from '@app/components/atoms/Icon/Icon';
-import { useGetHighestHeight } from '@app/lib/hooks/useGetHighestHeight';
-import va from '@vercel/analytics';
-import { KeyboardEventHandler, useEffect, useRef, useState } from 'react';
+import Button from "@app/components/atoms/Button/Button";
+import { SquircleIcon } from "@app/components/atoms/Icon/Icon";
+import { useGetHighestHeight } from "@app/lib/hooks/useGetHighestHeight";
+import va from "@vercel/analytics";
+import { KeyboardEventHandler, useEffect, useRef, useState } from "react";
 
-import Essay from '../Essay/Essay';
-import { IconShowcaseComponentProps } from './IconShowcase.interface';
-import styles from './IconShowcase.styles';
+import Essay from "../Essay/Essay";
+import { IconShowcaseComponentProps } from "./IconShowcase.interface";
+import styles from "./IconShowcase.styles";
 
 export default function IconShowcase({
   iconsCollection,
@@ -35,7 +35,7 @@ export default function IconShowcase({
     const nextTabButton =
       currentTabPanel?.nextElementSibling as HTMLButtonElement;
 
-    if (['ArrowLeft', 'ArrowUp'].includes(key)) {
+    if (["ArrowLeft", "ArrowUp"].includes(key)) {
       e.preventDefault();
 
       if (previousTabButton) {
@@ -45,7 +45,7 @@ export default function IconShowcase({
       }
     }
 
-    if (['ArrowRight', 'ArrowDown'].includes(key)) {
+    if (["ArrowRight", "ArrowDown"].includes(key)) {
       e.preventDefault();
 
       if (nextTabButton) {
@@ -68,16 +68,16 @@ export default function IconShowcase({
 
   useEffect(() => {
     const links = essaysRef.current
-      .map((essay) => [...essay.querySelectorAll('a[href')])
+      .map((essay) => [...essay.querySelectorAll("a[href")])
       .flat();
 
     links.forEach((link) => {
-      link.addEventListener('click', handleLinkClicks);
+      link.addEventListener("click", handleLinkClicks);
     });
 
     return () => {
       links.forEach((link) => {
-        link.removeEventListener('click', handleLinkClicks);
+        link.removeEventListener("click", handleLinkClicks);
       });
     };
   }, []);
@@ -105,7 +105,7 @@ export default function IconShowcase({
                 >
                   <SquircleIcon
                     className={styles.icon}
-                    color={isActive ? 'primary' : 'black'}
+                    color={isActive ? "primary" : "black"}
                     image={icon}
                   />
                 </Button>

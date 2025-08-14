@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const styles: { [key: string]: any } = {
@@ -59,7 +59,7 @@ const styles: { [key: string]: any } = {
     md:after:content-none
   `),
 
-  present: 'text-silver',
+  present: "text-silver",
 
   role: ctl(`
     mt-1

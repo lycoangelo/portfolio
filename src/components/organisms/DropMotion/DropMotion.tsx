@@ -1,4 +1,4 @@
-import styles from './DropMotion.styles';
+import styles from "./DropMotion.styles";
 
 export default function DropMotion() {
   return (

@@ -1,4 +1,4 @@
-import { Dispatch, Ref, SetStateAction } from 'react';
+import { Dispatch, Ref, SetStateAction } from "react";
 
 export interface CarouselNavProps {
   activeIndex: number;

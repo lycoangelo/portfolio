@@ -21,49 +21,49 @@
     @apply min-w-screen-min text-white;
   }
 
-  [theme='teal'] {
+  [theme="teal"] {
     --primary-color: #00c9e3;
     --secondary-color: #0193a7;
     --tertiary-color: #005864;
   }
 
-  [theme='orange'] {
+  [theme="orange"] {
     --primary-color: #ff6e00;
     --secondary-color: #b36500;
     --tertiary-color: #783f13;
   }
 
-  [theme='green'] {
+  [theme="green"] {
     --primary-color: #00c64f;
     --secondary-color: #019b70;
     --tertiary-color: #015d43;
   }
 
-  [theme='blue'] {
+  [theme="blue"] {
     --primary-color: #2a86f6;
     --secondary-color: #0357bd;
     --tertiary-color: #013a81;
   }
 
-  [theme='red'] {
+  [theme="red"] {
     --primary-color: #ff0000;
     --secondary-color: #c00808;
     --tertiary-color: #6e0101;
   }
 
-  [theme='yellow'] {
+  [theme="yellow"] {
     --primary-color: #cdbb00;
     --secondary-color: #aa9002;
     --tertiary-color: #575201;
   }
 
-  [theme='purple'] {
+  [theme="purple"] {
     --primary-color: #c900fb;
     --secondary-color: #a113ac;
     --tertiary-color: #62027a;
   }
 
-  [theme='gray'] {
+  [theme="gray"] {
     --primary-color: #818181;
     --secondary-color: #545454;
     --tertiary-color: #3a3a3a;

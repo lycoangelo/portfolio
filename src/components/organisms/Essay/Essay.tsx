@@ -1,9 +1,9 @@
-import RichText from '@app/components/atoms/RichText/RichText';
+import RichText from "@app/components/atoms/RichText/RichText";
 
-import { EssayProps } from './Essay.interface';
-import styles from './Essay.styles';
+import { EssayProps } from "./Essay.interface";
+import styles from "./Essay.styles";
 
-const Essay = ({ className = '', essay, ref, ...props }: EssayProps) => {
+const Essay = ({ className = "", essay, ref, ...props }: EssayProps) => {
   return (
     <div className={styles.essay(className)} ref={ref} {...props}>
       <RichText contentBody={essay} />
@@ -11,6 +11,6 @@ const Essay = ({ className = '', essay, ref, ...props }: EssayProps) => {
   );
 };
 
-Essay.displayName = 'Essay';
+Essay.displayName = "Essay";
 
 export default Essay;

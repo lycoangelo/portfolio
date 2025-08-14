@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 interface ObjectKey {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -6,15 +6,15 @@ interface ObjectKey {
 }
 
 const levelsBG: ObjectKey = {
-  novice: 'before:bg-tertiary',
-  intermediate: 'before:bg-secondary',
-  advanced: 'before:bg-primary'
+  novice: "before:bg-tertiary",
+  intermediate: "before:bg-secondary",
+  advanced: "before:bg-primary"
 };
 
 const skillsBg: ObjectKey = {
-  novice: 'bg-tertiary text-silver',
-  intermediate: 'bg-secondary text-white',
-  advanced: 'bg-primary text-black'
+  novice: "bg-tertiary text-silver",
+  intermediate: "bg-secondary text-white",
+  advanced: "bg-primary text-black"
 };
 
 const styles: ObjectKey = {

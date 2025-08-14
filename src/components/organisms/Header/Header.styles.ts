@@ -1,4 +1,4 @@
-import ctl from '@netlify/classnames-template-literals';
+import ctl from "@netlify/classnames-template-literals";
 
 const hamburgerCommonClass = `
   absolute
@@ -44,8 +44,8 @@ const styles = (
 
 		${
       isScrolled
-        ? 'drop-shadow-[0px_2px_15px_rgba(255,255,255,0.18)]'
-        : 'drop-shadow-[0_0_0_rgba(255,255,255,0.18)]'
+        ? "drop-shadow-[0px_2px_15px_rgba(255,255,255,0.18)]"
+        : "drop-shadow-[0_0_0_rgba(255,255,255,0.18)]"
     }
 	`),
 
@@ -159,7 +159,7 @@ const styles = (
 		sm:pt-0
 		sm:w-full
 
-		${isActive ? 'translate-x-1/3' : 'translate-x-full'}
+		${isActive ? "translate-x-1/3" : "translate-x-full"}
 	`),
 
   share: ctl(`
@@ -210,8 +210,8 @@ const styles = (
 		sm:h-auto
 		sm:w-full
 
-		${isActive ? 'bg-[rgba(0,0,0,0.8)]' : 'bg-transparent pointer-events-none'}
-		${!isHomepage && 'hidden'}
+		${isActive ? "bg-[rgba(0,0,0,0.8)]" : "bg-transparent pointer-events-none"}
+		${!isHomepage && "hidden"}
 	`)
 });
 

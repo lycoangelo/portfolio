@@ -1,4 +1,4 @@
-import styles from './Loading.styles';
+import styles from "./Loading.styles";
 
 export default function Loading() {
   return (
@@ -7,7 +7,7 @@ export default function Loading() {
         .fill(undefined)
         .map((_, index) => (
           <div
-            style={{ animationDelay: index * 0.1 + 's' }}
+            style={{ animationDelay: index * 0.1 + "s" }}
             className={styles.wave}
             key={index}
           />

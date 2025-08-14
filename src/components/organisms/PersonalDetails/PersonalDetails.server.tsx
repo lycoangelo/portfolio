@@ -1,24 +1,24 @@
-import { EssayProps } from '@app/components/organisms/Essay/Essay.interface';
-import { IconShowcaseProps } from '@app/components/organisms/IconShowcase/IconShowcase.interface';
+import { EssayProps } from "@app/components/organisms/Essay/Essay.interface";
+import { IconShowcaseProps } from "@app/components/organisms/IconShowcase/IconShowcase.interface";
 import {
   ComponentMapProps,
   PersonalDetailsItemsType,
   PersonalDetailsProps
-} from '@app/components/organisms/PersonalDetails/PersonalDetails.interface';
-import { SkillSetListProps } from '@app/components/organisms/SkillSetList/SkillSetList.interface';
-import { TimelineJobsProps } from '@app/components/organisms/TimelineJobs/TimelineJobs.interface';
-import { fetchGraphQL } from '@app/lib/helpers/api';
-import iconQuery from '@app/lib/queries/Icon.query';
-import personalDetailsQuery from '@app/lib/queries/PersonalDetails.query';
+} from "@app/components/organisms/PersonalDetails/PersonalDetails.interface";
+import { SkillSetListProps } from "@app/components/organisms/SkillSetList/SkillSetList.interface";
+import { TimelineJobsProps } from "@app/components/organisms/TimelineJobs/TimelineJobs.interface";
+import { fetchGraphQL } from "@app/lib/helpers/api";
+import iconQuery from "@app/lib/queries/Icon.query";
+import personalDetailsQuery from "@app/lib/queries/PersonalDetails.query";
 
-import PersonalDetailsComponent from './PersonalDetails';
+import PersonalDetailsComponent from "./PersonalDetails";
 
 const personalDetailsDataMap: (_props: PersonalDetailsItemsType) => Promise<{
   [key: string]: PersonalDetailsItemsType;
 }> = async (props) => {
   let iconsData;
 
-  if (props.__typename === 'IconShowcase') {
+  if (props.__typename === "IconShowcase") {
     const { iconsCollection } = props as IconShowcaseProps;
 
     iconsData = await Promise.all(
@@ -54,7 +54,7 @@ export async function getPersonalDetailsData({
       sections.items.map(async (item) => {
         const itemData = await personalDetailsDataMap(item);
 
-        return itemData[item.__typename || ''];
+        return itemData[item.__typename || ""];
       })
     )
   };
