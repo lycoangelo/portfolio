@@ -1,89 +1,80 @@
 import { validateEmail } from '@app/lib/helpers/validation';
-import {
-  ChangeEvent,
-  ForwardedRef,
-  forwardRef,
-  RefObject,
-  useEffect,
-  useState
-} from 'react';
+import { ChangeEvent, Ref, useEffect, useState } from 'react';
 
 import { InputProps } from './Input.interface';
 import styles from './Input.styles';
-
-type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
 type ErrorMessageMap = {
   [key: string]: string;
 };
 
-const Input = forwardRef<InputElement, InputProps>(
-  (
-    { className, label, isSubmitted, type, ...props }: InputProps,
-    ref: ForwardedRef<InputElement>
+const Input = ({
+  className,
+  label,
+  isSubmitted,
+  ref,
+  type,
+  ...props
+}: InputProps) => {
+  const [errorType, setErrorType] = useState('');
+
+  const errorMessageMap: ErrorMessageMap = {
+    required: `Please enter your ${label}`,
+    'invalid-email': 'Please enter a valid email address'
+  };
+
+  const handleOnChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const [errorType, setErrorType] = useState('');
+    if (!isSubmitted) return;
+    const { value } = e.target;
 
-    const errorMessageMap: ErrorMessageMap = {
-      required: `Please enter your ${label}`,
-      'invalid-email': 'Please enter a valid email address'
-    };
-
-    const handleOnChange = (
-      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-      if (!isSubmitted) return;
-      const { value } = e.target;
-
-      if (value) {
-        if (type === 'email' && !validateEmail(value)) {
-          setErrorType('invalid-email');
-        } else {
-          setErrorType('');
-        }
+    if (value) {
+      if (type === 'email' && !validateEmail(value)) {
+        setErrorType('invalid-email');
       } else {
-        setErrorType('required');
+        setErrorType('');
       }
-    };
+    } else {
+      setErrorType('required');
+    }
+  };
 
-    useEffect(() => {
-      if (
-        isSubmitted &&
-        !!(ref && 'current' in ref && ref.current && !ref.current.value)
-      ) {
-        setErrorType('required');
-      }
-    }, [isSubmitted, ref]);
+  useEffect(() => {
+    if (
+      isSubmitted &&
+      !!(ref && 'current' in ref && ref.current && !ref.current.value)
+    ) {
+      setErrorType('required');
+    }
+  }, [isSubmitted, ref]);
 
-    return (
-      <>
-        <label className={styles.label(className, type)}>
-          <span className={styles.labelText}>{label}:</span>
-          {type === 'textarea' ? (
-            <textarea
-              {...props}
-              className={styles.input}
-              onChange={handleOnChange}
-              ref={ref as RefObject<HTMLTextAreaElement>}
-            />
-          ) : (
-            <input
-              {...props}
-              className={styles.input}
-              onChange={handleOnChange}
-              ref={ref as RefObject<HTMLInputElement>}
-              type={type}
-            />
-          )}
-        </label>
-        {errorType && (
-          <span className={styles.error}>{errorMessageMap[errorType]}</span>
+  return (
+    <>
+      <label className={styles.label(className, type)}>
+        <span className={styles.labelText}>{label}:</span>
+        {type === 'textarea' ? (
+          <textarea
+            {...props}
+            className={styles.input}
+            onChange={handleOnChange}
+            ref={ref as Ref<HTMLTextAreaElement>}
+          />
+        ) : (
+          <input
+            {...props}
+            className={styles.input}
+            onChange={handleOnChange}
+            ref={ref as Ref<HTMLInputElement>}
+            type={type}
+          />
         )}
-      </>
-    );
-  }
-);
-
-Input.displayName = 'Input';
+      </label>
+      {errorType && (
+        <span className={styles.error}>{errorMessageMap[errorType]}</span>
+      )}
+    </>
+  );
+};
 
 export default Input;

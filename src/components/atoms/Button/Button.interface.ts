@@ -1,5 +1,10 @@
 import iconMap from '@app/lib/constants/iconMap';
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode,
+  Ref
+} from 'react';
 
 export interface ObjectKey {
   [key: string]: string;
@@ -31,5 +36,6 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
     icon?: keyof typeof iconMap;
     iconClassName?: string;
     size?: keyof ButtonSizes;
+    ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
     type?: 'button' | 'submit' | 'reset';
   };
