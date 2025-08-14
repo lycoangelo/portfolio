@@ -1,6 +1,6 @@
 import { Options } from '@contentful/rich-text-react-renderer';
 import { Document } from '@contentful/rich-text-types';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, Ref } from 'react';
 
 export interface ContentBody {
   json: Document;
@@ -31,4 +31,5 @@ export interface RichTextProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   contentBody: ContentBody;
   options?: (_args: ContentBody) => Options;
+  ref?: Ref<HTMLDivElement>;
 }

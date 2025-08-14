@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { MARKS, BLOCKS, INLINES, Node } from '@contentful/rich-text-types';
-import React, { forwardRef, LegacyRef, ReactNode } from 'react';
+import { BLOCKS, INLINES, MARKS, Node } from '@contentful/rich-text-types';
+import { ReactNode } from 'react';
 
 import { ContentBody, RichTextProps } from './RichText.interface';
 import styles from './RichText.styles';
@@ -121,23 +121,23 @@ const richTextOptions = (content: ContentBody) => {
   };
 };
 
-const RichText = forwardRef(
-  ({ className = '', contentBody, options, ...props }: RichTextProps, ref) => {
-    const renderOptions = options
-      ? options(contentBody)
-      : richTextOptions(contentBody);
+const RichText = ({
+  className = '',
+  contentBody,
+  options,
+  ref,
+  ...props
+}: RichTextProps) => {
+  const renderOptions = options
+    ? options(contentBody)
+    : richTextOptions(contentBody);
 
-    return (
-      <div
-        className={styles.richtext(className)}
-        ref={ref as LegacyRef<HTMLDivElement>}
-        {...props}
-      >
-        {documentToReactComponents(contentBody?.json, renderOptions)}
-      </div>
-    );
-  }
-);
+  return (
+    <div className={styles.richtext(className)} ref={ref} {...props}>
+      {documentToReactComponents(contentBody?.json, renderOptions)}
+    </div>
+  );
+};
 
 RichText.displayName = 'RichText';
 

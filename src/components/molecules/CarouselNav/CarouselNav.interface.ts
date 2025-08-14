@@ -4,8 +4,8 @@ export interface CarouselNavProps {
   activeIndex: number;
   className?: string;
   name: string;
-  navNextRef?: Ref<unknown>;
-  navPrevRef?: Ref<unknown>;
+  navNextRef?: Ref<HTMLButtonElement>;
+  navPrevRef?: Ref<HTMLButtonElement>;
   setActiveIndex: Dispatch<SetStateAction<number>>;
   totalIndexes: number;
 }

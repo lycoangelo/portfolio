@@ -3,15 +3,16 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
-interface ParamsProps {
-  params: {
+type ParamsProps = {
+  params: Promise<{
     params: string[];
-  };
-}
+  }>;
+};
 
 export async function POST(request: Request, { params }: ParamsProps) {
   try {
-    const [email, subject, name, message] = params.params;
+    const { params: parameters } = await params;
+    const [email, subject, name, message] = parameters;
 
     const transportOptions: SMTPTransport.Options = {
       host: process.env.TRANSPORTER_HOST,
