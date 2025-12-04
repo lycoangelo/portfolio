@@ -205,12 +205,13 @@ const styles = (
 		flex
 		h-screen
 		items-center
+		pointer-events-none
 		transition-colors
 
 		sm:h-auto
 		sm:w-full
 
-		${isActive ? "bg-[rgba(0,0,0,0.8)]" : "bg-transparent pointer-events-none"}
+		${isActive ? "bg-[rgba(0,0,0,0.8)]" : "bg-transparent"}
 		${!isHomepage && "hidden"}
 	`)
 });
