@@ -187,6 +187,7 @@ const styles = (
 		flex
 		items-center
 		left-0
+		pointer-events-none
 		top-0
 		w-screen
 
